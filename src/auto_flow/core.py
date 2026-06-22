@@ -2,11 +2,12 @@ from playwright.sync_api import sync_playwright, TimeoutError, Locator
 from playwright.sync_api._generated import Page
 from src.auto_flow.config import THIS_PROFILE, OUTPUT_DATA_DIR
 from src.auto_flow.loggers import main_logger
-from data.input.prompts import pair_prompts
+from src.auto_flow.utils.prompts_reader import script_prompts
 
 GOOGLE_FLOW_URL = 'https://labs.google/fx/vi/tools/flow'
 PROJECT_NAME = 'testproject'
-GEN_IMAGE_TIME_SLEEP = 7000 # ms
+GEN_IMAGE_TIME_SLEEP = 15 * 1000 # ms
+this_scene = script_prompts.scenes[0]
 
 def create_images(page: Page):
     # Nếu chế độ tạo video đang bật thì chuyển thành chế độ tạo ảnh
@@ -19,11 +20,16 @@ def create_images(page: Page):
         page.get_by_role("button", name="🍌 Nano Banana 2")
         page.keyboard.press('Escape')
 
+    # 
+
+    page.pause()
+
     # Nếu đang ở chế độ tạo ảnh sẵn rồi thì tiến hành tạo ảnh
-    # for pair_prompt in pair_prompts:
-    #     page.get_by_role("paragraph").filter(has_text="Bạn muốn tạo gì?").fill(pair_prompt.get('image'))
-    #     page.get_by_role("button", name="arrow_forward Tạo").click()
-    #     page.wait_for_timeout(GEN_IMAGE_TIME_SLEEP)
+
+    for pair_prompt in this_scene.pair_prompts:
+        page.get_by_role("paragraph").filter(has_text="Bạn muốn tạo gì?").fill(pair_prompt.image)
+        page.get_by_role("button", name="arrow_forward Tạo").click()
+        page.wait_for_timeout(GEN_IMAGE_TIME_SLEEP)
 
 def create_videos(page: Page):
     # Nếu chế độ tạo ảnh đang bật thì chuyển sang chế độ tạo video
@@ -79,12 +85,20 @@ def main_script():
         page = context.new_page() # Tạo 1 page
         page.goto(GOOGLE_FLOW_URL, wait_until='networkidle') # Di chuyển đến URL FLOW
 
-        print('Tạo mới 1 dự án.')
-        page.locator('#__next > div.sc-c7ee1759-1.jhwuTJ > div > div > button').click() # Nút tạo mới project
+        # Nếu có dự án với tên đó rồi thì vào, không thì tạo mới
+        project = page.locator("div:has-text('testproject') > a")
+        if project.is_visible():
+            ## Vào dự án để làm việc tiếp
+            project.click()
+        else:
+            ## Tạo mới 1 dự án và đặt tên
+            print('Tạo mới 1 dự án.')
+            page.locator('#__next > div.sc-c7ee1759-1.jhwuTJ > div > div > button').click() # Nút tạo mới project
+            print('Đặt tên dự án.')
+            page.get_by_role("textbox", name="Văn bản có thể chỉnh sửa").fill(PROJECT_NAME)
+            page.get_by_role("button", name="done Xong").click()
 
-        print('Đặt tên dự án.')
-        page.get_by_role("textbox", name="Văn bản có thể chỉnh sửa").fill(PROJECT_NAME)
-        page.get_by_role("button", name="done Xong").click()
+
 
         #Kiểm tra và tắt chế độ tác nhân nếu đang bật
         tac_nhan_btn = page.get_by_role("button", name="Tác nhân", exact=True)
