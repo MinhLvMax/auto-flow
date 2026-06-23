@@ -25,7 +25,8 @@ PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 AUTH_DIR = RUNTIME_DIR / 'auth'
 
 
-THIS_PROFILE = PROFILE_DIR / 'taikhoantaoradelamgi98' # Về sau nên cho nó nhận từ cli, nên để là user1 user2 cho đỡ hiểu nhầm logic
+FLOW_PROFILE = PROFILE_DIR / 'taikhoantaoradelamgi98' # Về sau nên cho nó nhận từ cli, nên để là user1 user2 cho đỡ hiểu nhầm logic
+CHATGPT_PROFILE = PROFILE_DIR / 'phuongno1progroup'
 
 if __name__ == '__main__':
 

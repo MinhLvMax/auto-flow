@@ -1,6 +1,6 @@
 import re
 from playwright.sync_api import sync_playwright, TimeoutError, Locator
-from .config import THIS_PROFILE, OUTPUT_DATA_DIR
+from .config import FLOW_PROFILE, OUTPUT_DATA_DIR
 from .loggers import main_logger
 from data.input.prompts import pair_prompts
 
@@ -44,7 +44,7 @@ def chuan_bi(page):
 def run():
     with (sync_playwright() as p):
         context = p.chromium.launch_persistent_context(
-            user_data_dir=THIS_PROFILE,
+            user_data_dir=FLOW_PROFILE,
             headless=False,
             channel='chrome',
             accept_downloads=True,

@@ -1,16 +1,27 @@
 import re
-
-from playwright.sync_api import sync_playwright, TimeoutError, Locator
+from playwright.sync_api import sync_playwright, TimeoutError, Locator, Error
 from playwright.sync_api._generated import Page
-from src.auto_flow.config import THIS_PROFILE, OUTPUT_DATA_DIR
+from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR, CHATGPT_PROFILE
 from src.auto_flow.loggers import main_logger
 from src.auto_flow.utils.prompts_reader import script_prompts
 from src.auto_flow.utils.helpers import debug_locator
 
 GOOGLE_FLOW_URL = 'https://labs.google/fx/vi/tools/flow'
 PROJECT_NAME = 'testproject'
-GEN_IMAGE_TIME_SLEEP = 15 * 1000  # ms
+GEN_TIME_SLEEP = 20 * 1000  # ms
 this_scene = script_prompts.scenes[0]
+
+
+def sap_xep_theo_cu_nhat(page: Page):
+    # Chọn xếp theo cũ nhất
+    print('Sap xep theo thu tu cu nhat den moi nhat tu tren xuong')
+    sap_xep_va_loc_btn = page.get_by_role("button", name="filter_list Sắp xếp và lọc")
+    sap_xep_va_loc_btn.click()
+    moi_nhat_radio = page.get_by_role("menuitem", name="radio_button_unchecked Cũ nhất")
+    moi_nhat_radio.wait_for()
+    moi_nhat_radio.click()
+    page.keyboard.press("Escape")
+    page.wait_for_timeout(1000)  # Chờ cho nó đóng menu
 
 
 def create_images(page: Page):
@@ -35,7 +46,7 @@ def create_images(page: Page):
     for pair_prompt in this_scene.pair_prompts:
         page.get_by_role("paragraph").filter(has_text="Bạn muốn tạo gì?").fill(pair_prompt.image)
         page.get_by_role("button", name="arrow_forward Tạo").click()
-        page.wait_for_timeout(GEN_IMAGE_TIME_SLEEP)
+        page.wait_for_timeout(GEN_TIME_SLEEP)
 
 
 def create_videos(page: Page):
@@ -74,55 +85,105 @@ def create_videos(page: Page):
 
         page.keyboard.press("Escape")
 
-    page.pause()
+        # Duyệt và tạo video
+        images = page.get_by_role("link",
+                                  name="Hình ảnh được tạo")  # Hình ảnh chưa được tạo xong hết thì đã chạy tạo ảnh => sẽ bị thiếu
 
-    pass
+        # Bổ sung thêm cơ chế chờ đủ ảnh được tạo mới tạo video
+        while True:
+            images_count = images.count()
+            if images_count == len(this_scene.pair_prompts):
+                print("Đã đủ số lượng ảnh cần tạo, bắt đầu quá trình tạo video.")
+                break
+            page.wait_for_timeout(5000)
+            print("Chưa đủ ảnh, chưa bắt đầu quá trình tạo video.")
+
+        image_count = images.count()
+        for i, pair_prompt in zip(range(image_count), this_scene.pair_prompts):
+            print(f'{images.count()=}', f'{i=}')
+
+            # Ép trang cuộn xuống dưới cùng và ngược lại để tất cả phần tử được render vào DOM
+            # page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            # page.wait_for_timeout(1000)
+            # page.evaluate("window.scrollTo(0, 0)")
+            # page.wait_for_timeout(1000)
+
+            item_i = images.nth(i)
+            print(f'{item_i=}')
+            page.keyboard.press("Escape")
+            # item_i.scroll_into_view_if_needed()
+            item_i.hover()
+            page.wait_for_timeout(1000)  # Tạm nghỉ để nó đóng thằng hover trước đó
+            more_btn = page.get_by_test_id("virtuoso-item-list").get_by_role("button", name="more_vert Khác")
+            try:
+                more_btn.click()
+            except Error as e:
+                for idx in range(more_btn.count()):
+                    print(
+                        idx,
+                        more_btn.nth(idx).bounding_box()
+                    )
+                debug_locator(more_btn)
+                print(e)
+                print('Dừng và kiểm tra lỗi')
+                page.pause()
+                return
+            tao_anh_dong_btn = page.get_by_role("menuitem", name="motion_blur Tạo ảnh động")
+            tao_anh_dong_btn.wait_for()
+            tao_anh_dong_btn.click()
+            input_prompt = page.get_by_role("paragraph").filter(has_text="Bạn muốn tạo gì?")
+            input_prompt.fill(pair_prompt.video)
+            create_btn = page.get_by_role("button", name="arrow_forward Tạo")
+            create_btn.click()
+            page.wait_for_timeout(GEN_TIME_SLEEP)
 
 
 def main_script():
     with (sync_playwright() as p):
-        context = p.chromium.launch_persistent_context(  # Khởi tạo context
-            user_data_dir=THIS_PROFILE,  # Sử dụng 1 profile
+        print('Khoi tao context')
+
+        flow_context = p.chromium.launch_persistent_context(  # Khởi tạo context
+            user_data_dir=FLOW_PROFILE,  # Sử dụng 1 profile
             headless=False,  # Không ẩn trình duyệt
             channel='chrome',  # Dùng kênh chrome
             accept_downloads=True,  # Cho phép downdload
             # downloads_path=OUTPUT_DATA_DIR # Folder download mặc định
         )
-        page = context.new_page()  # Tạo 1 page
-        page.goto(GOOGLE_FLOW_URL, wait_until='networkidle')  # Di chuyển đến URL FLOW
+
+
+        print('Tao page')
+        page_flow = flow_context.new_page()  # Tạo 1 page
+        print('Goto Google Flow Url')
+        page_flow.goto(GOOGLE_FLOW_URL, wait_until='networkidle')  # Di chuyển đến URL FLOW
+        page_flow.keyboard.press("Escape")
+        page_flow.pause()  # Tạm dừng để xóa dự án để chạy lại kiểm thử
 
         # Nếu có dự án với tên đó rồi thì vào, không thì tạo mới
-        project = page.locator("div:has-text('testproject') > a")
+        project = page_flow.locator("div:has-text('testproject') > a")
         if project.is_visible():
             ## Vào dự án để làm việc tiếp
+            print('Du an da co san, vao lam viec tiep')
             project.click()
         else:
             ## Tạo mới 1 dự án và đặt tên
             print('Tạo mới 1 dự án.')
-            page.locator('#__next > div.sc-c7ee1759-1.jhwuTJ > div > div > button').click()  # Nút tạo mới project
+            page_flow.locator('#__next > div.sc-c7ee1759-1.jhwuTJ > div > div > button').click()  # Nút tạo mới project
             print('Đặt tên dự án.')
-            page.get_by_role("textbox", name="Văn bản có thể chỉnh sửa").fill(PROJECT_NAME)
-            page.get_by_role("button", name="done Xong").click()
+            page_flow.get_by_role("textbox", name="Văn bản có thể chỉnh sửa").fill(PROJECT_NAME)
+            page_flow.get_by_role("button", name="done Xong").click()
 
         # Kiểm tra và tắt chế độ tác nhân nếu đang bật
-        tac_nhan_btn = page.get_by_role("button", name="Tác nhân", exact=True)
+        tac_nhan_btn = page_flow.get_by_role("button", name="Tác nhân", exact=True)
         pressed = tac_nhan_btn.get_attribute("aria-pressed")
         if pressed == 'true':
+            print('Tat che do tac nhan')
             tac_nhan_btn.click()
 
-        # create_images(page)
-        create_videos(page)
+        sap_xep_theo_cu_nhat(page_flow)
+        create_images(page_flow)
+        create_videos(page_flow)
+        page_flow.pause()  # Dừng để xem kết quả
 
-        print("Xóa dự án.")
-        page.pause()
-        page.locator(r'xpath=/html/body/div[1]/div[1]/div[2]/div[1]/nav/div/button[2]').click()
-        delete_btn = page.locator(r'xpath=/html/body/div[3]/div/button[3]')
-        delete_btn.wait_for()
-        delete_btn.click()
-        confirm_btn = page.locator(r'/html/body/div[1]/div[2]/div[2]/div/button[2]')
-        confirm_btn.wait_for()
-        confirm_btn.click()
-        page.pause()
 
 
 if __name__ == '__main__':
