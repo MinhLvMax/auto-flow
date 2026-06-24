@@ -1,4 +1,4 @@
-from src.auto_flow.utils.helpers import read_json
+from src.auto_flow.utils.playwright_helpers import read_json
 from src.auto_flow.config import INPUT_DATA_DIR
 from src.auto_flow.schemas.script import Script
 
