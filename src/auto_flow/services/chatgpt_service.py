@@ -1,4 +1,3 @@
-from asyncio import wait_for
 
 from playwright.sync_api import sync_playwright, TimeoutError, Locator, Error
 from playwright.sync_api._generated import Page
@@ -19,7 +18,7 @@ def single_chat(input: str):
         page.goto(CHATGPT_URL)
         input_entry = page.get_by_role("textbox", name="Chat with ChatGPT")
         input_entry.fill(input)
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(10000)
         sendbtn = page.get_by_test_id("send-button")
         sendbtn.click()
         text_output = page.locator('div > p')

@@ -1,7 +1,7 @@
 import re
 from playwright.sync_api import sync_playwright, TimeoutError, Locator
-from .config import FLOW_PROFILE, OUTPUT_DATA_DIR
-from .loggers import main_logger
+from config import FLOW_PROFILE, OUTPUT_DATA_DIR
+from loggers import main_logger
 from data.input.prompts import pair_prompts
 
 GOOGLE_FLOW_URL = 'https://labs.google/fx/vi/tools/flow'
