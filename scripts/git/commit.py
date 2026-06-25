@@ -10,7 +10,6 @@ if not user_commit:
 commands = [
     ['git', 'add', '.'],
     ['git', 'commit', '-m', user_commit],
-    ['git', 'push']
 ]
 
 for cmd in commands:
