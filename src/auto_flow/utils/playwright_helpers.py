@@ -123,16 +123,7 @@ def read_json(file_path: Path) -> dict:
 #             create_btn.click()
 #             page.wait_for_timeout(GEN_TIME_SLEEP)
 
-def sap_xep_theo_cu_nhat(page: Page):
-    # Chọn xếp theo cũ nhất
-    print('Sap xep theo thu tu cu nhat den moi nhat tu tren xuong')
-    sap_xep_va_loc_btn = page.get_by_role("button", name="filter_list Sắp xếp và lọc")
-    sap_xep_va_loc_btn.click()
-    moi_nhat_radio = page.get_by_role("menuitem", name="radio_button_unchecked Cũ nhất")
-    moi_nhat_radio.wait_for()
-    moi_nhat_radio.click()
-    page.keyboard.press("Escape")
-    page.wait_for_timeout(1000)  # Chờ cho nó đóng menu
+
 
 
 def debug_locator(locator: Locator):
@@ -166,111 +157,4 @@ def debug_locator(locator: Locator):
         print("\n--------------------")
 
 
-def close_notifications(page: Page):
-    notifications = [
-        page.get_by_text("check_circleĐã xoá dự ánĐóng").first,
-        page.get_by_text("check_circleQuá trình nâng cấ"),
-        page.get_by_text("check_circleĐã tăng độ phân"),
-    ]
-    for notification in notifications:
-        if notification.is_visible():
-            page.get_by_role("button", name="Đóng").click()
-            page.wait_for_timeout(2000)
 
-
-def safe_click(locator: Locator, page):
-    close_notifications(page)
-    try:
-        locator.click()
-    except:
-        close_notifications(page)
-        locator.click()
-
-
-def turn_on_create_image_mode(page: Page):
-    # Chuyển thành chế độ tạo ảnh
-    setup_btn = page.locator("button").filter(
-        has_text=re.compile(r"(Nano Banana|Video)")
-    )
-    if setup_btn.is_visible():
-        setup_btn.click()
-        btn_image_tab = page.get_by_role("tab", name="image Hình ảnh")
-        btn_image_tab.wait_for()
-        btn_image_tab.click()
-        page.get_by_role("tab", name="1x").click()
-        model_drop_down_btn = page.get_by_role("button").filter(
-            has_text="arrow_drop_down"
-        )
-        model_drop_down_btn.click()
-        page.get_by_role("button", name="🍌 Nano Banana 2")
-        page.keyboard.press('Escape')
-
-
-def turn_on_create_video_mode(page: Page):
-    # Chuyển thành chế độ tạo video
-    setup_btn = page.locator("button").filter(
-        has_text=re.compile(r"(Nano Banana|Video)")
-    )
-    if setup_btn.is_visible():
-        setup_btn.click()
-
-        create_video_mod_btn = page.get_by_role("tab", name="play_circle Video")
-        create_video_mod_btn.wait_for()
-        create_video_mod_btn.click()
-
-        thanh_phan_mode_btn = page.get_by_role("tab", name="chrome_extension Thành phần")
-        thanh_phan_mode_btn.click()
-
-        chon_ty_le_btn = page.get_by_role("tab", name="crop_16_9 16:")
-        chon_ty_le_btn.click()
-
-        chon_so_luong = page.get_by_role("tab", name="1x")
-        chon_so_luong.click()
-
-        model_drop_down_btn = page.get_by_role("button").filter(
-            has_text="arrow_drop_down"
-        )
-        model_drop_down_btn.click()
-
-        chon_mo_hinh_btn = page.get_by_role("button", name="volume_up Veo 3.1 - Lite [")
-        chon_mo_hinh_btn.wait_for()
-        chon_mo_hinh_btn.click()
-
-        chon_thoi_gian_btn = page.get_by_role("tab", name="8s")
-        chon_thoi_gian_btn.wait_for()
-        chon_thoi_gian_btn.click()
-
-        page.keyboard.press("Escape")
-
-
-def download_item(page: Page, item: Locator, path: Path):
-    close_notifications(page)
-    page.keyboard.press('Escape')
-    item.hover()
-
-    # Click 3 chấm
-    try:
-        page.get_by_test_id("virtuoso-item-list").get_by_role("button", name="more_vert Khác").click()
-    except Error as e:
-        item.hover()
-        page.get_by_test_id("virtuoso-item-list").get_by_role("button", name="more_vert Khác").click()
-
-    # Click tải xuống
-    page.get_by_text("downloadTải xuống").click()
-    # Tìm nút
-    ref_1k_btn = page.get_by_role("menuitem", name="1K Kích thước gốc")  # Nút này tải ảnh
-    ref_1080p_btn = page.get_by_role("menuitem", name="1080p Đã tăng độ phân giải")  # Nút này tải video
-    downloadbtn = None
-    if ref_1k_btn.is_visible():
-        downloadbtn = ref_1k_btn.first
-        print("-> Phát hiện nút 1K")
-    elif ref_1080p_btn.is_visible():
-        downloadbtn = ref_1080p_btn.first
-        print("-> Phát hiện nút 1080p")
-
-    # Bắt sự kiện tải và lưu file ảnh
-    with page.expect_download(timeout=0) as download_info:
-        downloadbtn.click()
-        download = download_info.value
-        filename = download.suggested_filename
-        download.save_as(path / f"{filename}")
