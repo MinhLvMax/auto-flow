@@ -1,9 +1,4 @@
-import subprocess
-from src.auto_flow.config import BASE_DIR
+from scripts.git.command_runner import command_runner
+from scripts.git.command_manager import command_manager
 
-commands = [
-    ['git', 'push']
-]
-
-for cmd in commands:
-    subprocess.run(cmd, cwd=BASE_DIR)
+command_runner.run(command_manager.git_push)

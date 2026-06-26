@@ -1,16 +1,11 @@
-import subprocess
-from src.auto_flow.config import BASE_DIR
+from scripts.git.command_runner import command_runner
 from datetime import datetime
 
-user_commit = input("Nhập commit code: ")
+command_runner.freeze_requirements()
 
+user_commit = input("Nhập commit code: ")
 if not user_commit:
     user_commit = datetime.now().strftime("Auto commit %Y-%m-%d %H:%M:%S")
 
-commands = [
-    ['git', 'add', '.'],
-    ['git', 'commit', '-m', user_commit],
-]
-
-for cmd in commands:
-    subprocess.run(cmd, cwd=BASE_DIR)
+command_runner.run(command_runner.command_manager.git_add)
+command_runner.run(command_runner.command_manager.git_commit(user_commit))
