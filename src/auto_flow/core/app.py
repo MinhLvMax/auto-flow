@@ -2,17 +2,12 @@ import re
 from pathlib import Path
 from playwright.sync_api import sync_playwright, TimeoutError, Locator, Error
 from playwright.sync_api._generated import Page
-
 from schemas import action_manager
 from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR, CHATGPT_PROFILE
 from src.auto_flow.loggers import main_logger
 from src.auto_flow.utils.prompts_reader import script_prompts
-from src.auto_flow.utils.playwright_helpers import debug_locator, turn_on_create_image_mode, turn_on_create_video_mode, \
-    download_item
-from src.auto_flow.utils.playwright_helpers import safe_click, close_notifications
-from src.auto_flow.schemas.locator_manager import LocatorManager
+from src.auto_flow.utils.playwright_helpers import debug_locator
 from src.auto_flow.schemas.action_manager import ActionManager
-from utils.playwright_helpers import click_more_btn
 
 
 class FlowManager:
@@ -28,24 +23,25 @@ class FlowManager:
         self.gen_time_sleep = 20000
         self.check_time_sleep = 10000
 
-
     def run_main_flow(self):
         self.page.goto(self.url, wait_until='networkidle')  # Di chuyển đến URL FLOW
+
+        self.action_manager.navigate_to_project(self.scene.scene_name)
 
         # Tạo folder lưu phân cảnh nếu chưa có
         SCENE_DIR = OUTPUT_DATA_DIR / self.project_name
         SCENE_DIR.mkdir(parents=True, exist_ok=True)
 
         for pair in self.pair_prompts:
-            self.create_a_image(pair.image)
-            number_of_images_created = self.locator_manager.get_images().count()
-            first_image = self.find_first_image(number_of_images_created)
-            download_item(self.page, first_image, SCENE_DIR)
+            self.action_manager.create_a_image(pair.image)
+            number_of_images_created = self.action_manager.get_images_count()
+            first_image = self.action_manager.find_first_image(number_of_images_created)
+            self.action_manager.download_item(first_image, SCENE_DIR)
 
-            self.create_a_video(pair.video, first_image)
-            number_of_videos_created = self.locator_manager.get_videos().count()
-            first_video = self.find_first_video(number_of_videos_created)
-            download_item(self.page, first_video, SCENE_DIR)
+            self.action_manager.create_a_video(pair.video, first_image)
+            number_of_videos_created = self.action_manager.get_videos_count()
+            first_video = self.action_manager.find_first_video(number_of_videos_created)
+            self.action_manager.download_item(first_video, SCENE_DIR)
 
 
 def orchestrator():
@@ -61,11 +57,8 @@ def orchestrator():
         )
 
         page_flow = flow_context.new_page()  # Tạo 1 page
-
-
         for scene in script_prompts.scenes:
             flowmanager = FlowManager(page_flow, scene)
-            flowmanager.navigate_to_project()
             flowmanager.run_main_flow()
 
 

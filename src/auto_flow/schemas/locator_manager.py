@@ -7,6 +7,9 @@ class LocatorManager:
     def __init__(self, page):
         self.page = page
 
+    def get_download_btn(self):
+        return self.page.get_by_text("downloadTải xuống")
+
     def get_16_9_btn(self):
         return self.page.get_by_role("tab", name="crop_16_9 16:")
 
@@ -66,7 +69,7 @@ class LocatorManager:
     def get_input_prompt_entry(self):
         return self.page.get_by_role("paragraph").filter(has_text="Bạn muốn tạo gì?")
 
-    def get_create_button(self):
+    def get_send_button(self):
         return self.page.get_by_role("button", name="arrow_forward Tạo")
 
     def get_project_btn(self, prject_name):

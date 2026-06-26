@@ -1,3 +1,4 @@
+import random
 import re
 from cmath import nan
 from pathlib import Path
@@ -10,6 +11,12 @@ class ActionManager:
     def __init__(self, page):
         self.page = page
         self.locator_manager = LocatorManager(page)
+
+    def get_videos_count(self):
+        return self.locator_manager.get_videos().count()
+
+    def get_images_count(self):
+        return self.locator_manager.get_images().count()
 
     def find_first_image(self, number_of_images_created: int, time_sleep: int = 5000):
         while True:
@@ -35,11 +42,15 @@ class ActionManager:
         first_video = videos.first
         return first_video
 
+    def click_send_btn(self):
+        send_btn = self.locator_manager.get_send_button()
+        self.page.wait_for_timeout(random.randint(500, 2000))
+        self.safe_click(send_btn)
 
     def create_a_image(self, prompt: str):
-        self.turn_on_create_image_mode(self.page)
+        self.turn_on_create_image_mode()
         self.locator_manager.get_input_prompt_entry().fill(prompt)
-        self.locator_manager.get_create_button().click()
+        self.click_send_btn()
 
     def create_a_video(self, prompt: str, first_image: Locator):
         self.turn_on_create_video_mode(self.page)
@@ -51,8 +62,7 @@ class ActionManager:
         input_entry = self.locator_manager.get_input_prompt_entry()
         input_entry.fill(prompt)
 
-        create_btn = self.locator_manager.get_create_button()
-        self.safe_click(create_btn)
+        self.click_send_btn()
 
     def navigate_to_project(self, project_name):
         self.page.keyboard.press("Escape")
@@ -161,31 +171,35 @@ class ActionManager:
             page.keyboard.press("Escape")
 
     def click_more_btn(self, item: Locator):
-        item.hover()
-        self.page.get_by_test_id("virtuoso-item-list").get_by_role("button", name="more_vert Khác").first.click()
+        item.click(button='right')
+        # self.page.get_by_test_id("virtuoso-item-list").get_by_role("button", name="more_vert Khác").first.click()
+
+    def click_download_btn(self, item: Locator):
+        self.click_more_btn(item)
+        self.locator_manager.get_download_btn().click()
 
     def download_item(self, item: Locator, path: Path):
-        self.close_notifications(self.page)
+        self.close_notifications()
         self.page.keyboard.press('Escape')
 
-        self.click_more_btn(item)
-
-        # Click tải xuống
-        self.page.get_by_text("downloadTải xuống").click()
+        # Tải xuống
+        self.click_download_btn(item)
         # Tìm nút
         ref_1k_btn = self.page.get_by_role("menuitem", name="1K Kích thước gốc")  # Nút này tải ảnh
         ref_1080p_btn = self.page.get_by_role("menuitem", name="1080p Đã tăng độ phân giải")  # Nút này tải video
-        downloadbtn = None
+        downloadtylebtn = None
         if ref_1k_btn.is_visible():
-            downloadbtn = ref_1k_btn.first
+            downloadtylebtn = ref_1k_btn.first
             print("-> Phát hiện nút 1K")
         elif ref_1080p_btn.is_visible():
-            downloadbtn = ref_1080p_btn.first
+            downloadtylebtn = ref_1080p_btn.first
             print("-> Phát hiện nút 1080p")
+
 
         # Bắt sự kiện tải và lưu file ảnh
         with self.page.expect_download(timeout=0) as download_info:
-            downloadbtn.click()
+            downloadtylebtn.click()
+            # Cần làm hàm kiểm tra xem có đang tải không, nếu không thì ấn tải lại sau 10 giây
             download = download_info.value
             filename = download.suggested_filename
             download.save_as(path / f"{filename}")
