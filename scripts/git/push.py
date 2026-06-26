@@ -1,4 +1,3 @@
-from scripts.git.command_runner import command_runner
-from scripts.git.command_manager import command_manager
+from scripts.git.schemas.command_runner import command_runner
 
-command_runner.run(command_manager.git_push)
+command_runner.run(command_runner.command_manager.git_push)
