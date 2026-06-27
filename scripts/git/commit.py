@@ -3,6 +3,8 @@ from datetime import datetime
 
 command_runner.freeze_requirements()
 
+command_runner.run(command_runner.command_manager.git_status)
+
 user_commit = input("Nhập commit code: ")
 if not user_commit:
     user_commit = datetime.now().strftime("Auto commit %Y-%m-%d %H:%M:%S")
