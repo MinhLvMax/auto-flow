@@ -12,6 +12,7 @@ class CommandRunner:
         return subprocess.run(cmd, cwd=self.cwd, check=True, **kwargs)
 
     def freeze_requirements(self):
+        print(self.freeze_requirements.__name__)
         with open(Path(self.cwd) / "requirements.txt", "w", encoding='utf-8') as f:
             self.run(self.command_manager.pip_freeze, stdout=f)
 
