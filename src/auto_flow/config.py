@@ -27,6 +27,9 @@ RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
 PROFILE_DIR = RUNTIME_DIR / 'profiles'
 PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 
+SCRIPTS_DIR = RUNTIME_DIR / 'scripts'
+SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+
 AUTH_DIR = RUNTIME_DIR / 'auth'
 
 
