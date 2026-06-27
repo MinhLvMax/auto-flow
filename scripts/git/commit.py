@@ -1,4 +1,4 @@
-from scripts.git.schemas.command_runner import command_runner
+from scripts.git.services.command_runner import command_runner
 from datetime import datetime
 
 command_runner.freeze_requirements()

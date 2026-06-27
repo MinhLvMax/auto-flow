@@ -4,6 +4,8 @@ class CommandManager:
         self.git_add = ["git", "add", "."]
         self.git_pull = ["git", "pull"]
         self.git_push = ["git", "push"]
+        self.git_log = ["git", "log"]
+
         self.pip_freeze = ["pip", "freeze"]
         pass
 

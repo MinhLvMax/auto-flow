@@ -1,5 +1,5 @@
 import subprocess
-from scripts.git.schemas.command_manager import command_manager
+from scripts.git.services.command_manager import command_manager
 from src.auto_flow.config import BASE_DIR
 from pathlib import Path
 
