@@ -18,6 +18,9 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 INPUT_DATA_DIR = DATA_DIR / 'input'
 INPUT_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+INPUT_SCRIPTS_DIR = INPUT_DATA_DIR / 'scripts'
+INPUT_SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+
 OUTPUT_DATA_DIR = DATA_DIR / 'output'
 OUTPUT_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -27,8 +30,8 @@ RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
 PROFILE_DIR = RUNTIME_DIR / 'profiles'
 PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 
-SCRIPTS_DIR = RUNTIME_DIR / 'scripts'
-SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+RUN_TIME_SCRIPTS_DIR = RUNTIME_DIR / 'scripts'
+RUN_TIME_SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
 
 AUTH_DIR = RUNTIME_DIR / 'auth'
 
