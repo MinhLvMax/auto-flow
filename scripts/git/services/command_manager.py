@@ -5,13 +5,14 @@ class CommandManager:
         self.git_pull = ["git", "pull"]
         self.git_push = ["git", "push"]
         self.git_log = ["git", "log"]
-
+        self.pip_install_requirements = ['pip', 'install', '-r', 'requirements.txt']
         self.pip_freeze = ["pip", "freeze"]
         pass
 
     @staticmethod
     def git_commit(message: str):
         return ["git", "commit", "-m", message]
+
 
 command_manager = CommandManager()
 
