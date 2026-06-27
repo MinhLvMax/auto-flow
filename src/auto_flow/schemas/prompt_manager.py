@@ -6,3 +6,4 @@ class PromptManager:
         pass
 
     def get_prompts(self):
+        pass
