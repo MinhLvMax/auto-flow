@@ -1,9 +1,7 @@
 import random
-import re
-from cmath import nan
 from pathlib import Path
 from playwright.sync_api import Page
-from src.auto_flow.schemas.locator_manager import LocatorManager, Locator
+from src.auto_flow.managers.locator_manager import LocatorManager, Locator
 
 class ActionManager:
     '''Định nghĩa các loạt thao tác hành động thực hiện các nút trên giao diện'''

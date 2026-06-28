@@ -1,13 +1,8 @@
-import re
-from pathlib import Path
-from playwright.sync_api import sync_playwright, TimeoutError, Locator, Error
+from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
-from schemas import action_manager
-from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR, CHATGPT_PROFILE
-from src.auto_flow.loggers import main_logger
+from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR
 from src.auto_flow.utils.prompts_reader import script_prompts
-from src.auto_flow.utils.playwright_helpers import debug_locator
-from src.auto_flow.schemas.action_manager import ActionManager
+from src.auto_flow.managers.action_manager import ActionManager
 
 
 class FlowManager:
