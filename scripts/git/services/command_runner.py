@@ -9,7 +9,10 @@ class CommandRunner:
         self.command_manager = command_manager
 
     def run(self, cmd, **kwargs):
-        return subprocess.run(cmd, cwd=self.cwd, check=True, **kwargs)
+        try:
+            return subprocess.run(cmd, cwd=self.cwd, check=True, **kwargs)
+        except subprocess.CalledProcessError:
+            print('Lỗi kết nối mạng')
 
     def freeze_requirements(self):
         with open(Path(self.cwd) / "requirements.txt", "w", encoding='utf-8') as f:
