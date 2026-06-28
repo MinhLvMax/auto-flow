@@ -7,5 +7,3 @@ script_prompts = Script(**prompts)
 
 # Chắc là cần phải làm thêm cái giao diện nhập kịch bản, và các prompt thì llmgen cho theo công tắc
 
-
-__all__ = ['script_prompts']

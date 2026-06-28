@@ -3,6 +3,7 @@ from groq import Groq
 import time
 import json
 from src.auto_flow.config import GROQ_API_KEY
+from src.auto_flow.constants.string_format.prompt_format import SUMMARIZE_PROMPT
 
 class GroqServices:
     def __init__(
@@ -38,6 +39,18 @@ class GroqServices:
 
         return response.choices[0].message.content
 
+    def chat_json(self, text, model_name, system_prompt = ''):
+        response = self.client.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role": "system", "content": system_prompt + " Trả về JSON."},
+                {"role": "user", "content": text}
+            ],
+            response_format={"type": "json_object"}  # Ép buộc trả về JSON
+        )
+
+        return response.choices[0].message.content
+
     def chat_history(
             self,
             model_name,
@@ -50,6 +63,19 @@ class GroqServices:
 
         return response.choices[0].message.content
 
+    def summary(
+            self,
+            text,
+            model_name,
+    ) -> str:
+        formatted_prompt = SUMMARIZE_PROMPT.format(content=text)
+        response = self.chat(formatted_prompt, model_name)
+        return response
+
+
+
+groq_services = GroqServices()
+__all__ = ['groq_services']
 
 if __name__ == '__main__':
     g = GroqServices()

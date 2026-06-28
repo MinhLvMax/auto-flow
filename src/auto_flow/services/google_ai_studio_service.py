@@ -21,7 +21,7 @@ class GoogleAIStudioService:
             config={"system_instruction": system_msg},
             contents=prompt
         )
-        return response.text
+        return response.context
 
 
 if __name__ == '__main__':

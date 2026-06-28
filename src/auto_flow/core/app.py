@@ -52,7 +52,7 @@ def orchestrator():
         )
 
         page_flow = flow_context.new_page()  # Tạo 1 page
-        for scene in script_prompts.scenes:
+        for scene in script_prompts.content:
             flowmanager = FlowManager(page_flow, scene)
             flowmanager.run_main_flow()
 
