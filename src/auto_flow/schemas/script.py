@@ -1,4 +1,4 @@
-from src.auto_flow.schemas.pair_prompt import PairPrompt
+from src.auto_flow.schemas.script_prompt_result import ScriptPromptResult
 from src.auto_flow.services.file_services import FileServices
 
 
@@ -8,7 +8,7 @@ class Script:
         self.path = path
         self.name = path.stem
         self.summary = ''
-        self.prompts: list[PairPrompt] = []
+        self.prompts: list[ScriptPromptResult] = []
 
     @property
     def content(self):
