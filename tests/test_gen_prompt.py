@@ -1,3 +1,4 @@
+import random
 import time
 from pathlib import Path
 from src.auto_flow.constants.enums.prompt_result_status import PromptResultStatus
@@ -66,15 +67,19 @@ for scene in scenes:
             type=PromptResultType.IMAGE,
         )
         try:
+            # Tạo prompt ảnh
             image_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock, GroqModelName.LLAMA_3_1_8B_INSTANT)
+            # Gán prompt vào thuộc tính prompt kết quả
             prompt_image_result.prompt = image_prompt
+            # Set trạng thái tạo là success
             prompt_image_result.status = PromptResultStatus.SUCCESS
             print(f'{image_prompt=}')
         except Exception as e:
             print(e)
+            # Nếu gặp lỗi thì set trạng thái tạo là failed
             prompt_image_result.status = PromptResultStatus.FAILED
 
-        # Đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
+        # Dù thành công hay thất bại thì cũng đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
         scene_prompt_result.prompts.append(prompt_image_result)
 
         # Khai báo đối tượng kết quả prompt đơn lẻ cho video
@@ -83,25 +88,29 @@ for scene in scenes:
             type=PromptResultType.VIDEO,
         )
 
-        time.sleep(15)
+        time.sleep(random.randint(15, 20))
 
         try:
+            # Tạo prompt video
             video_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock,
                                                             GroqModelName.LLAMA_3_1_8B_INSTANT)
+            # Đưa prompt video vào thuộc tính của prompt kết quả
             prompt_video_result.prompt = video_prompt
+            # Set trạng thái thành công
             prompt_video_result.status = PromptResultStatus.SUCCESS
             print(f'{video_prompt=}')
         except Exception as e:
             print(e)
+            # Lỗi thì set trạng thái thất bại
             prompt_video_result.status = PromptResultStatus.FAILED
 
-        # Đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
+        # Dù thất bại hay thành công thì cũng đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
         scene_prompt_result.prompts.append(prompt_video_result)
 
-        time.sleep(15)
+        time.sleep(random.randint(15, 20))
 
 
     # Đẩy phân cảnh vào kết quả prompt kịch bản
-    script_prompt_result.prompts.append(scene_prompt_result)
+    script_prompt_result.scenes_prompts.append(scene_prompt_result)
     file_services.save_pydantic_json(script_prompt_result, output_prompt_path)
 

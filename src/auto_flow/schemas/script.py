@@ -8,7 +8,7 @@ class Script:
         self.path = path
         self.name = path.stem
         self.summary = ''
-        self.prompts: list[ScriptPromptResult] = []
+        # self.prompts: list[ScriptPromptResult] = []
 
     @property
     def content(self):
