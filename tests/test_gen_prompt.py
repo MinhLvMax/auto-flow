@@ -17,11 +17,15 @@ from src.auto_flow.config import OUTPUT_DATA_DIR, INPUT_DATA_DIR
 # Khai báo các biến tĩnh
 
 # Đường dẫn đến kịch bản
-b12_path = INPUT_DATA_DIR / 'scripts' / '#12.xlsx'
+b12_path = INPUT_DATA_DIR / 'scripts' / '#13.xlsx'
 # Đường dẫn style lock
 style_lock_path = INPUT_DATA_DIR / 'style_lock.txt'
+
 # Đường dẫn đến folder chứa prompt kịch bản
 output_prompt_path = OUTPUT_DATA_DIR / f'{b12_path.stem}.json'
+summary_model_name = GroqModelName.LLAMA_3_1_8B_INSTANT
+gen_image_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
+gen_video_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
 
 # Khai báo các dịch vụ
 
@@ -40,26 +44,28 @@ file_services = FileServices()
 # Chuẩn bị dữ liệu
 
 # Nội dung các phân cảnh
-start_scene = 12 # Lấy con số này trừ đi 1 sẽ ra phân cảnh bắt đầu thật sự
-end_scene = len(script.content)
-scenes = script.content[start_scene:start_scene + 2]
+start_scene = 5  # Lấy con số này trừ đi 2 sẽ ra phân cảnh bắt đầu thật sự
+# end_scene = len(script.content)
+end_scene = start_scene + 1
+
+scenes = script.content[start_scene:end_scene]
 
 # Tóm tắt kịch bản
-script.summary = script_analyzer.summary_script(script, GroqModelName.LLAMA_3_1_8B_INSTANT)
+script.summary = script_analyzer.summary_script(script, summary_model_name)
 # Đọc style lock
 style_lock = file_services.read_txt(style_lock_path)
 
 # Chạy thử nhiệm
 
 # Khởi tạo kết quả prompt kịch bản
-script_prompt_result = ScriptPromptResult(name=script.name)
+script_prompt_result = ScriptPromptResult(script_name=script.name)
 # Duyệt phân cảnh tạo prompt
 for scene in scenes:
     # Lấy tên phân cảnh là giá trị cột index
     scene_name = scene.get(ScriptColumn.INDEX)
     print(f'{scene_name=}')
     # Khai báo đối tượng kết quả prompt phân cảnh
-    scene_prompt_result = ScenePromptResult(name=str(scene_name))
+    scene_prompt_result = ScenePromptResult(scene_name=str(scene_name))
     # Lấy bối cảnh là nội dung phân cảnh
     context = scene.get(ScriptColumn.SCRIPT)
     # Chia thành danh sách câu
@@ -75,7 +81,7 @@ for scene in scenes:
         try:
             # Tạo prompt ảnh
             image_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock,
-                                                            GroqModelName.LLAMA_3_1_8B_INSTANT)
+                                                            gen_image_model_name)
             # Gán prompt vào thuộc tính prompt kết quả
             prompt_image_result.prompt = image_prompt
             # Set trạng thái tạo là success
@@ -99,8 +105,10 @@ for scene in scenes:
 
         try:
             # Tạo prompt video
-            video_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock,
-                                                            GroqModelName.LLAMA_3_1_8B_INSTANT)
+            video_prompt = prompt_engineer.gen_video_prompt(image_prompt=prompt_image_result.prompt, sentence=sentence,
+                                                            context=context, script_summary=script.summary,
+                                                            style_lock=style_lock,
+                                                            model_name=gen_video_model_name)
             # Đưa prompt video vào thuộc tính của prompt kết quả
             prompt_video_result.prompt = video_prompt
             # Set trạng thái thành công
@@ -117,6 +125,7 @@ for scene in scenes:
         time.sleep(random.randint(15, 20))
 
         output_path = prompt_file_dir / f'{scene_name}.json'
+        print(f'{output_path=}')
         file_services.save_pydantic_json(scene_prompt_result, output_path)
 
     # Đẩy phân cảnh vào kết quả prompt kịch bản
