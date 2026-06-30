@@ -1,6 +1,5 @@
 import random
 import time
-from pathlib import Path
 from src.auto_flow.constants.enums.prompt_result_status import PromptResultStatus
 from src.auto_flow.constants.enums.prompt_result_type import PromptResultType
 from src.auto_flow.constants.groq_model__name import GroqModelName
@@ -13,20 +12,24 @@ from src.auto_flow.schemas.scene_prompt_result import ScenePromptResult
 from src.auto_flow.schemas.script_prompt_result import ScriptPromptResult
 from src.auto_flow.schemas.script import Script
 from src.auto_flow.utils.helpers import split_sentences
-from src.auto_flow.config import OUTPUT_DATA_DIR
+from src.auto_flow.config import OUTPUT_DATA_DIR, INPUT_DATA_DIR
+
 # Khai báo các biến tĩnh
 
 # Đường dẫn đến kịch bản
-b12_path = Path(r'D:\minhlvfile\pythonproject\auto-flow\data\input\scripts\#12.xlsx')
+b12_path = INPUT_DATA_DIR / 'scripts' / '#12.xlsx'
 # Đường dẫn style lock
-style_lock_path = Path(r'D:\minhlvfile\pythonproject\auto-flow\data\input\style_lock')
+style_lock_path = INPUT_DATA_DIR / 'style_lock.txt'
 # Đường dẫn đến folder chứa prompt kịch bản
-output_prompt_path = Path(fr'D:\minhlvfile\pythonproject\auto-flow\data\output\{b12_path.stem}.json')
+output_prompt_path = OUTPUT_DATA_DIR / f'{b12_path.stem}.json'
 
 # Khai báo các dịch vụ
 
 # Khai báo kịch bản
 script = Script(b12_path)
+# Tạo thư mục kết quả dựa trên tên kịch bản
+prompt_file_dir = OUTPUT_DATA_DIR / b12_path.stem
+prompt_file_dir.mkdir(parents=True, exist_ok=True)
 # Khai báo prompt_engneer dịch vụ
 prompt_engineer = PromptEngineer()
 # Khai báo nhà phân tích nội dung
@@ -37,7 +40,10 @@ file_services = FileServices()
 # Chuẩn bị dữ liệu
 
 # Nội dung các phân cảnh
-scenes = script.content[1:]
+start_scene = 12 # Lấy con số này trừ đi 1 sẽ ra phân cảnh bắt đầu thật sự
+end_scene = len(script.content)
+scenes = script.content[start_scene:start_scene + 2]
+
 # Tóm tắt kịch bản
 script.summary = script_analyzer.summary_script(script, GroqModelName.LLAMA_3_1_8B_INSTANT)
 # Đọc style lock
@@ -68,7 +74,8 @@ for scene in scenes:
         )
         try:
             # Tạo prompt ảnh
-            image_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock, GroqModelName.LLAMA_3_1_8B_INSTANT)
+            image_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock,
+                                                            GroqModelName.LLAMA_3_1_8B_INSTANT)
             # Gán prompt vào thuộc tính prompt kết quả
             prompt_image_result.prompt = image_prompt
             # Set trạng thái tạo là success
@@ -80,7 +87,7 @@ for scene in scenes:
             prompt_image_result.status = PromptResultStatus.FAILED
 
         # Dù thành công hay thất bại thì cũng đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
-        scene_prompt_result.prompts.append(prompt_image_result)
+        scene_prompt_result.prompt_result.append(prompt_image_result)
 
         # Khai báo đối tượng kết quả prompt đơn lẻ cho video
         prompt_video_result = PromptResult(
@@ -105,12 +112,13 @@ for scene in scenes:
             prompt_video_result.status = PromptResultStatus.FAILED
 
         # Dù thất bại hay thành công thì cũng đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
-        scene_prompt_result.prompts.append(prompt_video_result)
+        scene_prompt_result.prompt_result.append(prompt_video_result)
 
         time.sleep(random.randint(15, 20))
 
+        output_path = prompt_file_dir / f'{scene_name}.json'
+        file_services.save_pydantic_json(scene_prompt_result, output_path)
 
     # Đẩy phân cảnh vào kết quả prompt kịch bản
-    script_prompt_result.scenes_prompts.append(scene_prompt_result)
-    file_services.save_pydantic_json(script_prompt_result, output_prompt_path)
-
+    # script_prompt_result.scene_prompt_result.append(scene_prompt_result)
+    # file_services.save_pydantic_json(script_prompt_result, output_prompt_path)
