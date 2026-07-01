@@ -26,6 +26,9 @@ output_prompt_path = OUTPUT_DATA_DIR / f'{b12_path.stem}.json'
 summary_model_name = GroqModelName.LLAMA_3_1_8B_INSTANT
 gen_image_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
 gen_video_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
+start_scene_idx = 1  # Lấy con số này trừ đi 2 sẽ ra phân cảnh bắt đầu thật sự
+# end_scene = len(script.content)
+end_scene_idx = start_scene_idx + 1
 
 # Khai báo các dịch vụ
 
@@ -43,12 +46,8 @@ file_services = FileServices()
 
 # Chuẩn bị dữ liệu
 
-# Nội dung các phân cảnh
-start_scene = 5  # Lấy con số này trừ đi 2 sẽ ra phân cảnh bắt đầu thật sự
-# end_scene = len(script.content)
-end_scene = start_scene + 1
-
-scenes = script.content[start_scene:end_scene]
+# Nội dung các phân cảnh cần tạo prompt
+scenes = script.content[start_scene_idx:end_scene_idx]
 
 # Tóm tắt kịch bản
 script.summary = script_analyzer.summary_script(script, summary_model_name)
@@ -74,55 +73,23 @@ for scene in scenes:
     for sentence in sentences:
         print(f'{sentence=}')
         # Khai báo đối tượng kết quả prompt đơn lẻ cho ảnh
-        prompt_image_result = PromptResult(
-            sentence=sentence,
-            type=PromptResultType.IMAGE,
-        )
-        try:
-            # Tạo prompt ảnh
-            image_prompt = prompt_engineer.gen_image_prompt(sentence, context, script.summary, style_lock,
-                                                            gen_image_model_name)
-            # Gán prompt vào thuộc tính prompt kết quả
-            prompt_image_result.prompt = image_prompt
-            # Set trạng thái tạo là success
-            prompt_image_result.status = PromptResultStatus.SUCCESS
-            print(f'{image_prompt=}')
-        except Exception as e:
-            print(e)
-            # Nếu gặp lỗi thì set trạng thái tạo là failed
-            prompt_image_result.status = PromptResultStatus.FAILED
-
-        # Dù thành công hay thất bại thì cũng đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
+        prompt_image_result = prompt_engineer.gen_image_prompt_result_obj(sentence=sentence, context=context,
+                                                                          script_summary=script.summary,
+                                                                          style_lock=style_lock,
+                                                                          gen_image_model_name=gen_image_model_name)
+        time.sleep(random.randint(15, 30))
+        # Đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
         scene_prompt_result.prompt_result.append(prompt_image_result)
 
         # Khai báo đối tượng kết quả prompt đơn lẻ cho video
-        prompt_video_result = PromptResult(
-            sentence=sentence,
-            type=PromptResultType.VIDEO,
-        )
-
-        time.sleep(random.randint(15, 20))
-
-        try:
-            # Tạo prompt video
-            video_prompt = prompt_engineer.gen_video_prompt(image_prompt=prompt_image_result.prompt, sentence=sentence,
-                                                            context=context, script_summary=script.summary,
-                                                            style_lock=style_lock,
-                                                            model_name=gen_video_model_name)
-            # Đưa prompt video vào thuộc tính của prompt kết quả
-            prompt_video_result.prompt = video_prompt
-            # Set trạng thái thành công
-            prompt_video_result.status = PromptResultStatus.SUCCESS
-            print(f'{video_prompt=}')
-        except Exception as e:
-            print(e)
-            # Lỗi thì set trạng thái thất bại
-            prompt_video_result.status = PromptResultStatus.FAILED
-
-        # Dù thất bại hay thành công thì cũng đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
+        prompt_video_result = prompt_engineer.gen_video_prompt_result_obj(image_prompt=prompt_image_result.prompt,
+                                                                          sentence=sentence, context=context,
+                                                                          script_summary=script.summary,
+                                                                          style_lock=style_lock,
+                                                                          model_name=gen_video_model_name)
+        time.sleep(random.randint(15, 30))
+        # Đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
         scene_prompt_result.prompt_result.append(prompt_video_result)
-
-        time.sleep(random.randint(15, 20))
 
         output_path = prompt_file_dir / f'{scene_name}.json'
         print(f'{output_path=}')
