@@ -9,7 +9,7 @@ class ScriptAnalyzer:
 
     def summary_script(self, script: Script, model_name) -> str:
         string_content = ''
-        scenes = script.content[1:]
+        scenes = script.excel_content
         for scene in scenes:
             string_content += scene.get(ScriptColumn.SCRIPT)
         return self.llm_services.summary(string_content, model_name)

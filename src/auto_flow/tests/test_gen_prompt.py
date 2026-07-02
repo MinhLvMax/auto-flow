@@ -47,7 +47,7 @@ file_services = FileServices()
 # Chuẩn bị dữ liệu
 
 # Nội dung các phân cảnh cần tạo prompt
-scenes = script.content[start_scene_idx:end_scene_idx]
+scenes = script.excel_content[start_scene_idx:end_scene_idx]
 
 # Tóm tắt kịch bản
 script.summary = script_analyzer.summary_script(script, summary_model_name)
@@ -82,7 +82,7 @@ for scene in scenes:
         scene_prompt_result.prompt_result.append(prompt_image_result)
 
         # Khai báo đối tượng kết quả prompt đơn lẻ cho video
-        prompt_video_result = prompt_engineer.gen_video_prompt_result_obj(image_prompt=prompt_image_result.prompt,
+        prompt_video_result = prompt_engineer.gen_video_prompt_result_obj(image_prompt=prompt_image_result.content,
                                                                           sentence=sentence, context=context,
                                                                           script_summary=script.summary,
                                                                           style_lock=style_lock,

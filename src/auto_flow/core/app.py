@@ -1,19 +1,21 @@
 from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
+from src.auto_flow.services.file_services import FileServices
+from src.auto_flow.schemas.scene_prompt_result import ScenePromptResult
 from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR
-from src.auto_flow.utils.prompts_reader import script_prompts
 from src.auto_flow.managers.action_manager import ActionManager
 
 
-class FlowManager:
+class FlowCreateImageVideo:
 
-    def __init__(self, page: Page, scene):
+    def __init__(self, page: Page, scene_prompt: ScenePromptResult):
         self.page = page
         # self.locator_manager = LocatorManager(page)
         self.action_manager = ActionManager(page)
-        self.scene = scene
-        self.project_name = scene.scene_name
-        self.pair_prompts = scene.pair_prompts
+        self.file_services = FileServices()
+        self.scene = scene_prompt
+        self.project_name = scene_prompt.scene_name
+        self.pair_prompts = scene_prompt.pairs_prompts
         self.url = 'https://labs.google/fx/vi/tools/flow'
         self.gen_time_sleep = 20000
         self.check_time_sleep = 10000
@@ -28,18 +30,18 @@ class FlowManager:
         SCENE_DIR.mkdir(parents=True, exist_ok=True)
 
         for pair in self.pair_prompts:
-            self.action_manager.create_a_image(pair.image)
+            self.action_manager.create_a_image(pair.image_prompt.content)
             number_of_images_created = self.action_manager.get_images_count()
             first_image = self.action_manager.find_first_image(number_of_images_created)
             self.action_manager.download_item(first_image, SCENE_DIR)
 
-            self.action_manager.create_a_video(pair.video, first_image)
+            self.action_manager.create_a_video(pair.video_prompt.content, first_image)
             number_of_videos_created = self.action_manager.get_videos_count()
             first_video = self.action_manager.find_first_video(number_of_videos_created)
             self.action_manager.download_item(first_video, SCENE_DIR)
 
 
-def orchestrator():
+def orchestrator(script_prompt_folder_path, start_index, end_index):
     with (sync_playwright() as p):
         print('Khoi tao context')
 
@@ -51,12 +53,17 @@ def orchestrator():
             # downloads_path=OUTPUT_DATA_DIR # Folder download mặc định
         )
 
+        file_services = FileServices()
+
         page_flow = flow_context.new_page()  # Tạo 1 page
-        for scene in script_prompts.content:
-            flowmanager = FlowManager(page_flow, scene)
+        list_scene_prompts = file_services.get_scenes_prompt_list(script_prompt_folder_path)
+        selected_scenes = list_scene_prompts[start_index:end_index] # Kiểm soát theo index
+        for scene in selected_scenes:
+            flowmanager = FlowCreateImageVideo(page_flow, scene)
             flowmanager.run_main_flow()
 
 
 if __name__ == '__main__':
-    orchestrator()
+    script_prompt_path = OUTPUT_DATA_DIR / '#13'
+    orchestrator(script_prompt_path)
     pass

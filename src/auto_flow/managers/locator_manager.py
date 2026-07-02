@@ -76,8 +76,7 @@ class LocatorManager:
         return self.page.locator(f"div:has-text('{prject_name}') > a")
 
     def get_create_new_project_btn(self) -> Locator:
-        return self.page.locator(
-            '#__next > div.sc-c7ee1759-1.jhwuTJ > div > div > button')
+        return self.page.get_by_role("button", name="add_2 Dự án mới")
 
     def get_project_name_entry(self):
         return self.page.get_by_role("textbox", name="Văn bản có thể chỉnh sửa")

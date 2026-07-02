@@ -1,7 +1,11 @@
 import random
 from pathlib import Path
+
+from openpyxl.worksheet import page
 from playwright.sync_api import Page
+from src.auto_flow.services.anonymous import Anonymous
 from src.auto_flow.managers.locator_manager import LocatorManager, Locator
+
 
 class ActionManager:
     '''Định nghĩa các loạt thao tác hành động thực hiện các nút trên giao diện'''
@@ -9,6 +13,7 @@ class ActionManager:
     def __init__(self, page):
         self.page = page
         self.locator_manager = LocatorManager(page)
+        self.anonymous = Anonymous()
 
     def get_videos_count(self):
         return self.locator_manager.get_videos().count()
@@ -43,22 +48,23 @@ class ActionManager:
     def click_send_btn(self):
         send_btn = self.locator_manager.get_send_button()
         self.page.wait_for_timeout(random.randint(500, 2000))
-        self.safe_click(send_btn)
+        self.anonymous.random_wait_time_click(send_btn)
 
     def create_a_image(self, prompt: str):
         self.turn_on_create_image_mode()
-        self.locator_manager.get_input_prompt_entry().fill(prompt)
+        input_prompt_entry = self.locator_manager.get_input_prompt_entry()
+        self.anonymous.random_wait_time_fill(input_prompt_entry, prompt)
         self.click_send_btn()
 
     def create_a_video(self, prompt: str, first_image: Locator):
         self.turn_on_create_video_mode(self.page)
         self.click_more_btn(first_image)
         tao_anh_dong_btn = self.locator_manager.get_create_amimation_btn()
-        self.safe_click(tao_anh_dong_btn)
+        self.anonymous.random_wait_time_click(tao_anh_dong_btn)
         self.page.keyboard.press("Escape")
 
         input_entry = self.locator_manager.get_input_prompt_entry()
-        input_entry.fill(prompt)
+        self.anonymous.random_wait_time_fill(input_entry, prompt)
 
         self.click_send_btn()
 
@@ -70,12 +76,14 @@ class ActionManager:
         if project.is_visible():
             ## Vào dự án để làm việc tiếp
             print('Du an da co san, vao lam viec tiep')
-            project.click()
+            self.anonymous.random_wait_time_click(project)
+
         else:
             ## Tạo mới 1 dự án và đặt tên
             print('Tạo mới 1 dự án.')
             create_new_prj_btn = self.locator_manager.get_create_new_project_btn()
-            create_new_prj_btn.click()
+            self.page.pause()
+            self.anonymous.random_wait_time_click(create_new_prj_btn)
             # Nút tạo mới project
             print('Đặt tên dự án.')
             self.locator_manager.get_project_name_entry().fill(project_name)
@@ -111,13 +119,13 @@ class ActionManager:
                 self.locator_manager.get_close_notif_btn().click()
                 self.page.wait_for_timeout(2000)
 
-    def safe_click(self, locator: Locator):
-        self.close_notifications()
-        try:
-            locator.click()
-        except:
-            self.close_notifications()
-            locator.click()
+    # def safe_click(self, locator: Locator):
+    #     self.close_notifications()
+    #     try:
+    #         self.anonymous.random_wait_time_click(locator)
+    #     except:
+    #         self.close_notifications()
+    #         self.anonymous.random_wait_time_click(locator)
 
     def turn_on_create_image_mode(self):
         # Chuyển thành chế độ tạo ảnh
@@ -192,7 +200,6 @@ class ActionManager:
         elif ref_1080p_btn.is_visible():
             downloadtylebtn = ref_1080p_btn.first
             print("-> Phát hiện nút 1080p")
-
 
         # Bắt sự kiện tải và lưu file ảnh
         with self.page.expect_download(timeout=0) as download_info:

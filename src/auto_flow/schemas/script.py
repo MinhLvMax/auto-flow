@@ -11,5 +11,5 @@ class Script:
         # self.prompts: list[ScriptPromptResult] = []
 
     @property
-    def content(self):
+    def excel_content(self):
         return self.file_services.read_excel(self.path)

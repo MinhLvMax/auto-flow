@@ -22,7 +22,6 @@ class PromptFlow:
         self.gen_image_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
         self.gen_video_model_name = GroqModelName.META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT
         self.script = Script(script_path)
-
         self.prompt_file_dir = OUTPUT_DATA_DIR / script_path.stem
         self.prompt_file_dir.mkdir(parents=True, exist_ok=True)
         # Khai báo prompt_engneer dịch vụ
@@ -36,7 +35,7 @@ class PromptFlow:
 
     def run(self, start_scene_idx, end_scene_idx):
         self.script.summary = self.script_analyzer.summary_script(self.script, self.summary_model_name)
-        scenes = self.script.content[start_scene_idx:end_scene_idx]
+        scenes = self.script.excel_content[start_scene_idx:end_scene_idx]
 
         # Khởi tạo kết quả prompt kịch bản
         script_prompt_result = ScriptPromptResult(script_name=self.script.name)
@@ -54,29 +53,24 @@ class PromptFlow:
             # Duyệt danh sách câu
             for sentence in sentences:
                 print(f'{sentence=}')
-                # Khai báo đối tượng kết quả prompt đơn lẻ cho ảnh
-                prompt_image_result = self.prompt_engineer.gen_image_prompt_result_obj(sentence=sentence, context=context,
-                                                                                  script_summary=self.script.summary,
-                                                                                  style_lock=self.style_lock,
-                                                                                  gen_image_model_name=self.gen_image_model_name)
-                time.sleep(random.randint(15, 30))
-                # Đưa prompt ảnh vừa tạo ra vào kết quả prompt phân cảnh
-                scene_prompt_result.prompt_result.append(prompt_image_result)
 
-                # Khai báo đối tượng kết quả prompt đơn lẻ cho video
-                prompt_video_result = self.prompt_engineer.gen_video_prompt_result_obj(
-                    image_prompt=prompt_image_result.prompt,
-                    sentence=sentence, context=context,
-                    script_summary=self.script.summary,
-                    style_lock=self.style_lock,
-                    model_name=self.gen_video_model_name)
-                time.sleep(random.randint(15, 30))
-                # Đưa prompt video vừa tạo ra vào kết quả prompt phân cảnh
-                scene_prompt_result.prompt_result.append(prompt_video_result)
+                pari_prompt = self.prompt_engineer.gen_pair_prompt(sentence=sentence,
+                                                                   context=context,
+                                                                   script_summary=self.script.summary,
+                                                                   style_lock=self.style_lock,
+                                                                   gen_image_model_name=self.gen_image_model_name,
+                                                                   gen_video_model_name=self.gen_video_model_name)
+                scene_prompt_result.pairs_prompts.append(pari_prompt)
 
                 output_path = self.prompt_file_dir / f'{scene_name}.json'
                 print(f'{output_path=}')
                 self.file_services.save_pydantic_json(scene_prompt_result, output_path)
+
+                # Dừng 30 giây
+                sleep_time = 30
+                for remaining in range(sleep_time, 0, -1):
+                    print(f"Còn {remaining} giây...")
+                    time.sleep(1)
 
 if __name__ == '__main__':
     # Đường dẫn đến kịch bản
@@ -84,4 +78,4 @@ if __name__ == '__main__':
     # Đường dẫn style lock
     style_lock_path = INPUT_DATA_DIR / 'style_lock.txt'
     pflow = PromptFlow(script_path=script_path, style_lock_path=style_lock_path)
-    pflow.run()
+    pflow.run(0,2)
