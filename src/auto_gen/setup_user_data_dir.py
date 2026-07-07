@@ -1,9 +1,13 @@
 import subprocess
-from src.auto_flow.config import FLOW_PROFILE, CHROME_PATH
+from pathlib import Path
+
+CHROME_PATH = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+USER_DATA_DIR = Path(r'D:\projects\auto-flow\src\auto_gen\profiles\user0')
+USER_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 cmd = [
     CHROME_PATH,
-    f"--user-data-dir={FLOW_PROFILE}"
+    f"--user-data-dir={USER_DATA_DIR}"
 ]
 
 subprocess.Popen(cmd)
