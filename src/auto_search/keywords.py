@@ -1,2 +1,2 @@
 KEYWORDS = [
-    "gas giant aurora", "planet aurora from space", "polar aurora planet", "magnetosphere aurora", "space aurora planet"]
+    "superionic water", "superionic ice", "superionic ice crystal", "high pressure ice", "exotic ice", "planetary interior water"]
