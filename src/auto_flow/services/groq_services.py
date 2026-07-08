@@ -1,8 +1,6 @@
 from typing import List, Dict
 from groq import Groq
-import time
-import json
-from src.auto_flow.config import GROQ_API_KEY
+from src.config import GROQ_API_KEY
 from src.auto_flow.constants.string_format.prompt_format import SUMMARIZE_PROMPT
 
 class GroqServices:

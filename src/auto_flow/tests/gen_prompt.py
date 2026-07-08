@@ -1,4 +1,4 @@
-from src.auto_flow.config import INPUT_DATA_DIR
+from src.config import INPUT_DATA_DIR
 from src.auto_flow.services.prompt_flow import PromptFlow
 
 # Đường dẫn đến excel kịch bản

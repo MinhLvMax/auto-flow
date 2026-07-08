@@ -1,5 +1,5 @@
 from groq import Groq
-from src.auto_flow.config import GROQ_API_KEY
+from src.config import GROQ_API_KEY
 from src.auto_prompt.llm.base import LLM
 from pydantic import BaseModel
 from src.auto_prompt.constant.prompt_format import JSON_RESPONSE_PROMPT

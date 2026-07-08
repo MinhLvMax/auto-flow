@@ -1,7 +1,4 @@
-
-from playwright.sync_api import sync_playwright, TimeoutError, Locator, Error
-from playwright.sync_api._generated import Page
-from src.auto_flow.config import CHATGPT_PROFILE
+from src.config import CHATGPT_PROFILE
 from src.auto_flow.utils.playwright_helpers import debug_locator
 from playwright.sync_api import sync_playwright
 

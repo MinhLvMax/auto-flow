@@ -6,7 +6,7 @@ import os
 GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
 GROQ_API_KEY =os.getenv('GROQ_API_KEY')
 
-BASE_DIR = Path(__file__).resolve().parents[2]  # Đường dẫn file chính của dự án
+BASE_DIR = Path(__file__).resolve().parents[1]  # Đường dẫn file chính của dự án
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 PATH_FOLDER_LOG = BASE_DIR / 'logs'
@@ -17,6 +17,9 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 INPUT_DATA_DIR = DATA_DIR / 'input'
 INPUT_DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+INTERMEDIATE_DATA_DIR = DATA_DIR / 'intermediate'
+INTERMEDIATE_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 INPUT_SCRIPTS_DIR = INPUT_DATA_DIR / 'scripts'
 INPUT_SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)

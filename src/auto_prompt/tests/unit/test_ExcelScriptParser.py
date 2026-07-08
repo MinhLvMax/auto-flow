@@ -1,4 +1,4 @@
-from src.auto_prompt.script.reader.excel_parser import ExcelScriptParser
+from src.auto_prompt.repository.reader.script_parser.excel_parser import ExcelScriptParser
 
 path = r'D:\projects\auto-flow\data\input\scripts\#13.xlsx'
 esp = ExcelScriptParser()

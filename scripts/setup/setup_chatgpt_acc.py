@@ -1,5 +1,5 @@
 import subprocess
-from src.auto_flow.config import CHATGPT_PROFILE, CHROME_PATH
+from src.config import CHATGPT_PROFILE, CHROME_PATH
 
 cmd = [
     CHROME_PATH,

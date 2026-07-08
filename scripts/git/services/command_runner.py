@@ -1,6 +1,6 @@
 import subprocess
 from scripts.git.services.command_manager import command_manager
-from src.auto_flow.config import BASE_DIR
+from src.config import BASE_DIR
 from pathlib import Path
 
 class CommandRunner:

@@ -1,4 +1,4 @@
-from src.auto_flow.config import OUTPUT_DATA_DIR
+from src.config import OUTPUT_DATA_DIR
 from src.auto_flow.core.app import orchestrator
 
 # Đường dẫn tới folder prompt kịch bản

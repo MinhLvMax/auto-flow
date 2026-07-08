@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 from playwright.sync_api._generated import Page
 from src.auto_flow.services.file_services import FileServices
 from src.auto_flow.schemas.scene_prompt_result import ScenePromptResult
-from src.auto_flow.config import FLOW_PROFILE, OUTPUT_DATA_DIR
+from src.config import FLOW_PROFILE, OUTPUT_DATA_DIR
 from src.auto_flow.managers.action_manager import ActionManager
 
 

@@ -32,4 +32,7 @@ Câu hiện tại:
 {sentence}
 
 Hãy đưa ra quyết định dựa trên ngữ cảnh và câu hiện tại.
+If the context is None, always treat the sentence as the beginning of a new unit
+If there is no reason, return "" for json key
+new_unit must be boolean true/false (NOT string)
 """

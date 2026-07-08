@@ -15,7 +15,7 @@ class SentenceBoundaryService:
     def analyze(
             self,
             paragraph: str,
-    ) -> list[BaseModel]:
+    ) -> list[dict]:
         results = []
 
         previous = None
@@ -29,7 +29,7 @@ class SentenceBoundaryService:
                 SentenceBoundaryDecision(
                     sentence=sentence,
                     decision=decision,
-                )
+                ).model_dump()
             )
             previous = sentence
 

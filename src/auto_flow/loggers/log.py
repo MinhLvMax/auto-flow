@@ -1,6 +1,6 @@
 import logging
 import os
-from src.auto_flow.config import PATH_FOLDER_LOG
+from src.config import PATH_FOLDER_LOG
 from .custom_logger import CustomLogger
 from pathlib import Path
 
