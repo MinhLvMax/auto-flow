@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 
-class ContextFactory:
+class ChromeContextFactory:
     def __init__(self):
         self.playwright = sync_playwright().start()
 
