@@ -31,7 +31,7 @@ class GroqModelName:
 class GroqServices:
     def __init__(
             self,
-            api_key: str
+            api_key: str = None
     ):
         self.client = Groq(api_key=api_key)
 

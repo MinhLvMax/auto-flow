@@ -1,5 +1,4 @@
 import re
-
 from .base_page import BasePage
 from playwright.sync_api import Page
 
