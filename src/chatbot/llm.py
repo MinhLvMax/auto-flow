@@ -1,8 +1,6 @@
 import json
 from typing import List, Dict
 from groq import Groq
-from src.config import GROQ_API_KEY
-from src.auto_flow.constants.string_format.prompt_format import SUMMARIZE_PROMPT
 from pathlib import Path
 
 
@@ -33,7 +31,7 @@ class GroqModelName:
 class GroqServices:
     def __init__(
             self,
-            api_key: str = GROQ_API_KEY
+            api_key: str
     ):
         self.client = Groq(api_key=api_key)
 
@@ -87,14 +85,14 @@ class GroqServices:
 
         return response.choices[0].message.content
 
-    def summary(
-            self,
-            text,
-            model_name,
-    ) -> str:
-        formatted_prompt = SUMMARIZE_PROMPT.format(content=text)
-        response = self.chat(formatted_prompt, model_name)
-        return response
+    # def summary(
+    #         self,
+    #         text,
+    #         model_name,
+    # ) -> str:
+    #     formatted_prompt = SUMMARIZE_PROMPT.format(content=text)
+    #     response = self.chat(formatted_prompt, model_name)
+    #     return response
 
 
 def build_tree(path, max_depth=None, current_depth=0):
@@ -159,15 +157,16 @@ def system_notification(msg=None, separator_length=80):
 
 
 SYSTEM_PROMPT = """
-Bạn là trợ lý AI quản lý kho thư mục.
+Bạn là trợ lý AI quản lý kho thư mục, bạn hiểu kiến trúc cây thư mục.
 
 Nhiệm vụ của bạn là hỗ trợ người dùng tra cứu tài nguyên được trong thư mục.
 
-Dữ liệu thư mục mà bạn biết: 
+Dữ liệu thư mục mà bạn quản lý: 
 {data}
 """
 
 if __name__ == '__main__':
+
 
     path = Path(r"C:\Users\Admin\Downloads")
     model_name = GroqModelName.LLAMA_3_1_8B_INSTANT
@@ -176,11 +175,13 @@ if __name__ == '__main__':
     TAG_SYSTEM = '- Quản lý kho:\n'
 
     current_file = Path(__file__).resolve()
+    print(f'{current_file=}')
     index_file_path = current_file.parent / f'{path.stem}_index.json'
     if not index_file_path.exists():
         print(system_notification('Tiến hành quét nội dung thư mục...'))
         data = scan_directory(path)
         save_json(data, index_file_path)
+    print(f'{index_file_path=}')
     data = read_json(index_file_path)
     g = GroqServices()
     chat_history = [
@@ -202,3 +203,10 @@ if __name__ == '__main__':
         response = g.chat_history(model_name, chat_history)
         print(system_notification(f'{TAG_SYSTEM} {response}'))
     pass
+
+# Các lệnh gói
+'''
+cd src
+cd chatbot
+pyinstaller --onefile llm.py
+'''
