@@ -31,7 +31,7 @@ class GroqModelName:
 class GroqServices:
     def __init__(
             self,
-            api_key: str = None
+            api_key: str
     ):
         self.client = Groq(api_key=api_key)
 
@@ -116,9 +116,33 @@ IGNORE_DIRS = {
     ".venv",
     "venv",
     "node_modules",
-    'profiles'
+    'profiles',
+    '_internal'
 }
 
+def build_tree(path, max_depth=None, current_depth=0):
+    path = Path(path)
+
+    if path.is_file():
+        return None
+
+    if max_depth is not None and current_depth >= max_depth:
+        return {}
+
+    tree = {}
+
+    for child in sorted(path.iterdir()):
+        # Bỏ qua folder/file không cần thiết
+        if child.name in IGNORE_DIRS:
+            continue
+
+        tree[child.name] = build_tree(
+            child,
+            max_depth,
+            current_depth + 1
+        )
+
+    return tree
 
 def read_json(path):
     path = Path(path)
@@ -167,12 +191,11 @@ Dữ liệu thư mục mà bạn quản lý:
 
 if __name__ == '__main__':
 
-
     path = Path(r"C:\Users\Admin\Downloads")
     model_name = GroqModelName.LLAMA_3_1_8B_INSTANT
 
-    TAG_USER = '- Người dùng: '
-    TAG_SYSTEM = '- Quản lý kho:\n'
+    TAG_USER = '- Người dùng hỏi: '
+    TAG_SYSTEM = '- AI đáp:\n'
 
     current_file = Path(__file__).resolve()
     print(f'{current_file=}')
@@ -181,13 +204,17 @@ if __name__ == '__main__':
         print(system_notification('Tiến hành quét nội dung thư mục...'))
         data = scan_directory(path)
         save_json(data, index_file_path)
+    data = read_json(index_file_path)
     print(f'{index_file_path=}')
+    from pprint import pprint
+
+    pprint(data[:5])
     data = read_json(index_file_path)
     g = GroqServices()
     chat_history = [
         {
             'role': 'system',
-            'content': SYSTEM_PROMPT.format(data=data)
+            'content': SYSTEM_PROMPT.format(data=data[:100])
         }
     ]
     first_msg = g.chat_history(model_name, chat_history)
@@ -204,9 +231,9 @@ if __name__ == '__main__':
         print(system_notification(f'{TAG_SYSTEM} {response}'))
     pass
 
-# Các lệnh gói
+    # Các lệnh gói
 '''
 cd src
 cd chatbot
-pyinstaller --onefile llm.py
+pyinstaller --onefile llm1.py
 '''

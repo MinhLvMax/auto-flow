@@ -5,6 +5,12 @@ class SentenceBoundaryDetectorBase(ABC):
 
     @abstractmethod
     def detect(self, sentence: str, context) -> BaseModel:
+        '''
+        Dùng để nhận diện câu có phải là bắt đầu phân cảnh mới hay không
+        :param sentence:
+        :param context:
+        :return:
+        '''
         """
         Return format:
         {
@@ -12,4 +18,4 @@ class SentenceBoundaryDetectorBase(ABC):
             "reason": str
         }
         """
-        pass
+        return BaseModel()

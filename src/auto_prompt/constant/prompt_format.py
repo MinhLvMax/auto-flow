@@ -1,3 +1,4 @@
+# Prompt yêu cầu trả về json với schema bất kì
 JSON_RESPONSE_PROMPT = '''
 {text}
 Return ONLY a valid JSON object.
@@ -12,6 +13,7 @@ Rules:
 - All required fields must be present
 '''
 
+# Prompt nhận diện câu có phải là phân cảnh mới không
 SENTENCE_BOUNDARY_PROMPT = """
 Bạn là chuyên gia phân tích kịch bản.
 
