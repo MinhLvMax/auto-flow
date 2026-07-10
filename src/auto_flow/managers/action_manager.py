@@ -82,7 +82,7 @@ class ActionManager:
             ## Tạo mới 1 dự án và đặt tên
             print('Tạo mới 1 dự án.')
             create_new_prj_btn = self.locator_manager.get_create_new_project_btn()
-            self.page.pause()
+            self.page.pause_page()
             self.anonymous.random_wait_time_click(create_new_prj_btn)
             # Nút tạo mới project
             print('Đặt tên dự án.')
