@@ -15,7 +15,7 @@ class GoogleFlowPage(BasePage):
 
     def create_with_google_flow(self):
         if self.create_with_google_flow_btn.is_visible():
-            self.create_with_google_flow_btn.click()
+            self.random_time_click(self.create_with_google_flow_btn)
 
     def _is_exist_project(self, project_name):
         return self.page.get_by_text(f"{project_name}editEdit project").is_visible()
@@ -26,7 +26,7 @@ class GoogleFlowPage(BasePage):
         return project_page
 
     def _create_new_project(self, project_name):
-        self.create_new_project_btn.click()
+        self.random_time_click(self.create_new_project_btn)
         new_project_page = self._get_project_page()
         new_project_page.set_project_name(project_name)
         return new_project_page
@@ -36,7 +36,7 @@ class GoogleFlowPage(BasePage):
         a = span.locator("xpath=ancestor::div[2]/a")
         # self.debug_locator(a)
         # url_project = a.get_attribute("href")
-        a.click()
+        self.random_time_click(a)
         return self._get_project_page()
 
     def get_or_create_new_project(self, project_name):
@@ -44,5 +44,8 @@ class GoogleFlowPage(BasePage):
             return self._open_exist_project_page(project_name)
         else:
             return self._create_new_project(project_name)
+
+
+
 
 

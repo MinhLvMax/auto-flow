@@ -1,4 +1,6 @@
-from playwright.sync_api import Page, Locator
+import time
+
+from playwright.sync_api import Page, Locator, expect
 import random
 
 
@@ -31,18 +33,41 @@ class BasePage:
             self,
             locator: Locator,
             min_delay: float = 0.2,
-            max_delay: float = 1.0,
+            max_delay: float = 1,
     ):
         self.page.wait_for_timeout(
             random.uniform(min_delay, max_delay) * 1000
         )
+
+        try:
+            html = locator.evaluate("e => e.outerHTML")
+            print(f"[CLICK] {html[:150]}...")
+        except Exception:
+            print("[CLICK] <cannot get html>")
+
         locator.click()
 
     def click_random_order(self, *locators: Locator):
         locators = list(locators)
         random.shuffle(locators)
         for locator in locators:
-            locator.click()
+            if locator != None:
+                self.random_time_click(locator)
+
+    def wait_for_seconds(self, seconds: float= 2):
+        """
+        Hard wait for fixed seconds.
+        """
+        self.page.wait_for_timeout(seconds * 1000)
+
+    def wait_visible(self, locator, timeout=30000):
+        expect(locator).to_be_visible(timeout=timeout)
+
+    def wait_hidden(self, locator, timeout=30000):
+        expect(locator).to_be_hidden(timeout=timeout)
+
+    def wait_enabled(self, locator, timeout=30000):
+        expect(locator).to_be_enabled(timeout=timeout)
 
     def debug_locator(self, locator: Locator):
         count = locator.count()

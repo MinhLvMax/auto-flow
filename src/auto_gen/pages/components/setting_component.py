@@ -16,9 +16,9 @@ class SettingComponent(BaseComponent):
         self.video_tab = page.get_by_role("tab", name="play_circle Video")
 
     def go_to_image_mode(self):
-        self.images_tab.click()
+        self.random_time_click(self.images_tab)
         return ImageSettingComponent(self.page)
 
     def go_to_video_mode(self):
-        self.video_tab.click()
+        self.random_time_click(self.video_tab)
         return VideoSettingComponent(self.page)

@@ -1,9 +1,7 @@
-import random
+
 import re
-
-from google.genai.types import VoiceConfig
-
 from src.auto_gen.pages.components.base_component import BaseComponent
+from src.auto_gen.pages.generation_config import VideoGenerationConfig
 from src.auto_gen.constant import VideoModelNameString, RatiosMode, VideoGenerationMode
 from playwright.sync_api import Page
 
@@ -32,6 +30,9 @@ class VideoSettingComponent(BaseComponent):
         )
 
         # Các nút chọn thời lượng
+        self.dur_4s_btn = self.page.get_by_role("tab", name="4s")
+        self.dur_6s_btn = self.page.get_by_role("tab", name="6s")
+        self.dur_8s_btn = self.page.get_by_role("tab", name="8s")
 
     def _get_ratio_locator(self, ratio: RatiosMode):
         if ratio == RatiosMode.R_16_9:
@@ -49,25 +50,33 @@ class VideoSettingComponent(BaseComponent):
         if quantity == 4:
             return self.quantity_x4
 
+    def _get_duration_locator(self, duration: int):
+        if duration == 4:
+            return self.dur_4s_btn
+        if duration == 6:
+            return self.dur_6s_btn
+        if duration == 8:
+            return self.dur_8s_btn
+
     def _get_video_generation_mode_locator(self, mode: VideoGenerationMode):
         if mode == VideoGenerationMode.FRAMES:
             return self.frames_mode
         elif mode == VideoGenerationMode.INGREDIENTS:
             return self.ingrediens_mode
 
-    def configure(self, generator_mode: VideoGenerationMode, ratio: RatiosMode, quantity, model_name: VideoModelNameString, duration):
+    def configure(self, config: VideoGenerationConfig):
         # Tìm các nút
-        generator_mode_locator = self._get_video_generation_mode_locator(generator_mode)
-        ratio_locator = self._get_ratio_locator(ratio)
-        quantity_locator = self._get_quantity_locator(quantity)
-        self.choose_model_btn.click()
+        generator_mode_locator = self._get_video_generation_mode_locator(config.generation_mode)
+        ratio_locator = self._get_ratio_locator(config.ratio)
+        quantity_locator = self._get_quantity_locator(config.quantity)
+        dur_locator = self._get_duration_locator(config.duration)
+        self.random_time_click(self.choose_model_btn)
         list_model = ListVideoModelComponent(self.page)
-        model_locator = list_model.get_model_locator_by_name(model_name)
-        model_locator.click()
+        model_locator = list_model.get_model_locator_by_name(config.model_name)
+        self.random_time_click(model_locator)
         # Cho các locator vào danh sách rồi xáo trộn lên rồi click
-        self.click_random_order(generator_mode_locator, ratio_locator, quantity_locator)
+        self.click_random_order(generator_mode_locator, ratio_locator, quantity_locator, dur_locator)
         self.close_component()
-
 
 
 class ListVideoModelComponent(BaseComponent):

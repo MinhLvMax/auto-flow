@@ -3,7 +3,7 @@ import random
 from playwright.sync_api import Page
 from pages.components.base_component import BaseComponent
 from src.auto_gen.constant import ImageModelNameString, RatiosMode
-
+from src.auto_gen.pages.generation_config import ImageGenerationConfig
 class ImageSettingComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
@@ -50,14 +50,14 @@ class ImageSettingComponent(BaseComponent):
         if quantity == 4:
             return self.quantity_x4
 
-    def configure(self, ratio: RatiosMode, quantity: int, model_name: ImageModelNameString):
+    def configure(self, config: ImageGenerationConfig):
         # Tìm các nút
-        ratio_locator = self._get_ratio_locator(ratio)
-        quantity_locator = self._get_quantity_locator(quantity)
-        self.choose_model_btn.click()
+        ratio_locator = self._get_ratio_locator(config.ratio)
+        quantity_locator = self._get_quantity_locator(config.quantity)
+        self.random_time_click(self.choose_model_btn)
         list_model = ListImageModelComponent(self.page)
-        model_locator = list_model.get_model_locator_by_name(model_name)
-        model_locator.click()
+        model_locator = list_model.get_model_locator_by_name(config.model_name)
+        self.random_time_click(model_locator)
         # Cho các locator vào danh sách rồi xáo trộn lên rồi click
         locators = [
             ratio_locator,
@@ -65,7 +65,7 @@ class ImageSettingComponent(BaseComponent):
         ]
         random.shuffle(locators)
         for locator in locators:
-            locator.click()
+            self.random_time_click(locator)
         self.close_component()
 
 class ListImageModelComponent(BaseComponent):
