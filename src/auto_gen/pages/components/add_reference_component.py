@@ -1,5 +1,5 @@
 import re
-from components.base_component import BaseComponent
+from src.auto_gen.pages.components.base_component import BaseComponent
 
 
 class AddReferenceComponent(BaseComponent):

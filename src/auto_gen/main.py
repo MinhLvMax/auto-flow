@@ -12,22 +12,25 @@ from src.auto_gen.constant import GenMode
 context_factory_obj = ChromeContextFactory()
 user_profile = BASE_DIR / r'src\auto_gen\profiles\user0'
 gen_context = context_factory_obj.create_context(user_profile=user_profile,
-                                                 download_path=Path('../downloads'))
+                                       download_path=Path('../downloads'))
 
 
 # Trang chủ chứa các dự án
 google_flow_page_obj = GoogleFlowPage(gen_context.new_page())
+
+# Từ chỗ này trở xuống call dịch vụ
 google_flow_page_obj.go_to_this_page()
 google_flow_page_obj.create_with_google_flow()
 
 # Trang của 1 dự án cụ thể
-prj_page = google_flow_page_obj.get_or_create_new_project('Minh bài 13 phần 21')
+prj_page = google_flow_page_obj.get_or_create_new_project('Minh bài 13 phần outro')
 
 # Các đối tượng đọc ghi
 reader = JsonReader()
 writer = JsonWriter()
 
-data = reader.read(path=Path('input.json'))
+data = reader.read(path=Path('input/input.json'))
+
 
 start = time.time()
 for i, pair in enumerate(data):
@@ -54,7 +57,7 @@ for i, pair in enumerate(data):
         prj_page.wait_until_creating_video_below(1)
 
     print('Lưu trạng thái gen')
-    writer.write(Path('input.json'), data)
+    writer.write(Path('input/input.json'), data)
 
     print('Nghỉ 1 chút')
     prj_page.wait_for_seconds(random.randint(5, 10))

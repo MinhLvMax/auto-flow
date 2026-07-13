@@ -9,5 +9,5 @@ class JsonReader:
 
 if __name__ == '__main__':
     jsonreader = JsonReader()
-    data = jsonreader.read(Path('input.json'))
+    data = jsonreader.read(Path('input/input.json'))
     print(data)
