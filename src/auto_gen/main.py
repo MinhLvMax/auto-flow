@@ -26,7 +26,6 @@ google_flow_page_obj.create_with_google_flow()
 # print('Dừng để thêm tính năng tự tải sau khi tạo') # chưa làm xong
 # google_flow_page_obj.pause_page()
 
-gen_service = GenService(google_flow_page_obj)
 # Cấu hình gen ảnh
 image_generation_config = ImageGenerationConfig(
     model_name=ImageModelNameString.Nano_Banana_pro
@@ -35,6 +34,7 @@ image_generation_config = ImageGenerationConfig(
 video_generation_config = VideoGenerationConfig(
     model_name=VideoModelNameString.VEO_3_1_FAST
 )
+gen_service = GenService(google_flow_page_obj, image_generation_config, video_generation_config)
 gen_service.run_prompt_folder(Path('./input/Minh bài 14'))
 
 # ===========

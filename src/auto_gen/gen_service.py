@@ -33,8 +33,7 @@ class GenService:
 
     def run_prompt_file(self, prompt_path: Path):
         print(f'Chạy phân cảnh {prompt_path}')
-        self.google_flow_page_obj.go_to_this_page()
-        self.google_flow_page_obj.create_with_google_flow()
+
 
         data = self.reader.read(path=prompt_path)
 
@@ -45,6 +44,9 @@ class GenService:
         if self._is_prompt_completed(data):
             print(f"{prompt_path} đã hoàn thành, bỏ qua.")
             return
+
+        self.google_flow_page_obj.go_to_this_page()
+        self.google_flow_page_obj.create_with_google_flow()
 
         prj_page = self.google_flow_page_obj.get_or_create_new_project(prompt_path.stem)
 
@@ -84,7 +86,7 @@ class GenService:
         end = time.time()
         print(f"Thời gian chạy: {end - start:.2f} giây")
 
-    def run_prompt_folder(self, prompt_folder_path, resolution_download: Resolution | None = None):
+    def run_prompt_folder(self, prompt_folder_path):
         '''
 
         :param prompt_folder_path: folder chứa các json prompt
@@ -93,7 +95,7 @@ class GenService:
         print(f'Chạy tạo dự án {prompt_folder_path}')
         prompt_folder_path = self._get_prompt_files(prompt_folder_path)
         for prompt_file_path in prompt_folder_path:
-            self.run_prompt_file(prompt_file_path, resolution_download)
+            self.run_prompt_file(prompt_file_path)
 
     def _get_prompt_files(self, prompt_folder: Path) -> list[Path]:
         print('Lấy danh sách file json')

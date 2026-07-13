@@ -1,0 +1,11 @@
+{text}
+Return ONLY a valid JSON object.
+
+Schema:
+{schema}
+
+Rules:
+- Do not wrap in ```json
+- Do not include explanations
+- Do not add extra fields
+- All required fields must be present
