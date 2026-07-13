@@ -1,12 +1,14 @@
 import re
 import time
 
+from src.auto_gen.constant.resoluion import Resolution
 from src.auto_gen.constant import RatiosMode, ImageModelNameString, VideoGenerationMode, VideoModelNameString, GenMode
 from .base_page import BasePage
 from .generation_config import BaseGenerationConfig, ImageGenerationConfig, VideoGenerationConfig
 from playwright.sync_api import Page
 from src.auto_gen.pages.components.setting_component import SettingComponent
 from src.auto_gen.pages.components.add_reference_component import AddReferenceComponent
+from src.auto_gen.pages.components.right_click_menu_component import RightClickMenuComponent
 
 
 class GoogleFlowProjectPage(BasePage):
@@ -101,7 +103,6 @@ class GoogleFlowProjectPage(BasePage):
 
     def send_a_prompt(self, prompt: str, mode: GenMode, config):
         self.fill_prompt(prompt)
-        print(f'{prompt=}')
         if mode == GenMode.IMAGE:
             self.turn_on_image_mode(config)
         if mode == GenMode.VIDEO:
@@ -128,7 +129,7 @@ class GoogleFlowProjectPage(BasePage):
         print("QUEUE:", self.queued_video.all_inner_texts())
         print("GENERATE:", self.generating_video.all_inner_texts())
         return (
-                # self.submitting_video.count()
+            # self.submitting_video.count()
                 + self.queued_video.count()
                 + self.generating_video.count()
         )
@@ -151,7 +152,18 @@ class GoogleFlowProjectPage(BasePage):
         add_ref_com_obj.add_latest_image()
         return True
 
-    def create_video_from_latest_image(self, prompt, config):
+    def create_video_from_latest_image(self, prompt, config: VideoGenerationConfig):
         self._get_lasted_img(config)
         self.send_a_prompt(prompt, GenMode.VIDEO, config)
+        if config.resolution:
+            self.download_lasted_video(config.resolution)
         return True
+
+    def download_lasted_video(self, resolution: Resolution):
+        self.random_time_click(self.videos)
+        lasted_video_locator = self.page.get_by_role("button").filter(has_text=re.compile(r"^$")).first
+        lasted_video_locator.hover()
+        lasted_video_locator.click(button='right')
+        right_click_menu = RightClickMenuComponent(self.page)
+        right_click_menu.download_this_video(resolution)
+        return
