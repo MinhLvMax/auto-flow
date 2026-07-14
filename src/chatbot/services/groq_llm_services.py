@@ -1,8 +1,8 @@
 from groq import Groq
-from pydantic import BaseModel
-from src.chatbot.text_reader import TextReader
+from pydantic import BaseModel, ValidationError
 from src.chatbot.services.prompt_service import PromptService
 from src.config import GROQ_API_KEY
+from src.loggers import main_logger
 
 
 class GroqModelName:
@@ -32,8 +32,8 @@ class GroqModelName:
 class GroqServices:
     def __init__(
             self,
-            api_key: str = None,
-            prompt_services = None,
+            api_key: str = '',
+            prompt_services=None,
     ):
         self.api_key = api_key or GROQ_API_KEY
         self.client = Groq(api_key=self.api_key)
@@ -43,7 +43,7 @@ class GroqServices:
             self,
             text: str,
             model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
-            system_prompt: str | None = None
+            system_prompt: str | None = None, response_format: dict | None = None,
     ) -> str:
         messages = []
 
@@ -58,32 +58,69 @@ class GroqServices:
             "content": text
         })
 
+        kwargs = {}
+
+        if response_format is not None:
+            kwargs["response_format"] = response_format
+
         response = self.client.chat.completions.create(
             model=model_name,
-            messages=messages
+            messages=messages,
+            **kwargs
         )
 
         return response.choices[0].message.content
 
     def chat_json(
             self,
-            text: str,
+            messages: list[dict],
             response_model: type[BaseModel],
             model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
             system_prompt: str | None = None
     ) -> BaseModel:
-        schemas_describle = {
+        schema = {
             field_name: field_info.description
             for field_name, field_info in response_model.model_fields.items()
         }
-        prompt = self.prompt_service.render('json_output', text=text, schema=schemas_describle)
-        response = self.chat(prompt, model_name, system_prompt, {'type': 'json_object'})
-        return response_model.model_validate_json(response)
+
+        prompt = self.prompt_service.render(
+            "json_output",
+            schema=schema
+        )
+
+        system_content = prompt
+
+        if system_prompt:
+            system_content = f"{system_prompt}\n\n{prompt}"
+        main_logger.debug(system_content)
+        messages = [
+            {
+                "role": "system",
+                "content": system_content
+            },
+            *messages
+        ]
+
+        response = self.client.chat.completions.create(
+            model=model_name,
+            messages=messages,
+            response_format={"type": "json_object"}
+        )
+
+        main_logger.debug(response)
+
+        try:
+            return response_model.model_validate_json(
+            response.choices[0].message.content
+            )
+        except ValidationError as e:
+            main_logger.exception(e)
+            raise
 
     def chat_history(
             self,
-            model_name,
-            messages: list[dict[str, str]]
+            messages: list[dict[str, str]],
+            model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
     ) -> str:
         response = self.client.chat.completions.create(
             model=model_name,

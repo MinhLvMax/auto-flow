@@ -1,11 +1,9 @@
-from idlelib import history
-
 from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
 from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.models.intent_classification import IntentClassification
+from src.chatbot.models.entity_extraction_result import EntityExtractionResult
 
-class ClassificationNode(BaseNode):
+class ExtractEntitiesNode(BaseNode):
     def __init__(self, llm_service = None):
         super().__init__()
         self.llm_service = llm_service or GroqServices()
@@ -19,16 +17,16 @@ class ClassificationNode(BaseNode):
                 'content': state.user_input,
             }
         ]
-        result = self.llm_service.chat_json(messages, IntentClassification)
+        result = self.llm_service.chat_json(messages, EntityExtractionResult)
         new_state = State(
-            classification_results=result.model_dump(),
+            entity_extraction_result=result.model_dump()
         ).model_dump()
         self.loger.debug(new_state)
         return new_state
 
 if __name__ == '__main__':
     data = {
-        'user_input': 'Kho dữ liệu tôi làm về vũ trụ chưa'
+        'user_input': 'Kho dữ liệu của tôi có làm về sao mộc và sao hỏa chưa'
     }
-    classification_node = ClassificationNode()
+    classification_node = ExtractEntitiesNode()
     print(classification_node.__call__(data))

@@ -1,9 +1,11 @@
 from pathlib import Path
+from src.config import BASE_DIR
 
 class PromptService:
+    default_prompt_dir = BASE_DIR / 'src' / 'chatbot' / 'prompts'
 
     def __init__(self, prompt_dir = None):
-        self.prompt_dir = Path(prompt_dir) or Path('../prompts')
+        self.prompt_dir = Path(prompt_dir or self.default_prompt_dir)
         self.cache = {}
 
     def render(self, name, **kwargs):

@@ -33,7 +33,7 @@ class BasePage:
             self,
             locator: Locator,
             min_delay: float = 0.2,
-            max_delay: float = 1,
+            max_delay: float = 0.8,
     ):
         self.page.wait_for_timeout(
             random.uniform(min_delay, max_delay) * 1000

@@ -1,4 +1,3 @@
-{text}
 Return ONLY a valid JSON object.
 
 Schema:

@@ -1,5 +1,6 @@
 from pathlib import Path
 
+# Chạy để tạo trước các file json chứa prompt, tôi lên chatgpt tạo prompt dán vào
 
 def create_empty_files(
     prefix: str,
@@ -25,6 +26,7 @@ def create_empty_files(
 
 
 if __name__ == '__main__':
-    project_name = 'Minh bài 14'
-    chapter_total = 31
+    project_name = 'Minh bài 16'
+    chapter_total = 32
+
     create_empty_files(prefix=project_name, count=chapter_total)

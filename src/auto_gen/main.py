@@ -34,8 +34,11 @@ image_generation_config = ImageGenerationConfig(
 video_generation_config = VideoGenerationConfig(
     model_name=VideoModelNameString.VEO_3_1_FAST
 )
+
+# Khởi tạo dịch vụ gen
 gen_service = GenService(google_flow_page_obj, image_generation_config, video_generation_config)
-gen_service.run_prompt_folder(Path('./input/Minh bài 14'))
+# Truyền folder prompt vào và chạy
+gen_service.run_prompt_folder(Path('./input/Minh bài 16'))
 
 # ===========
 # # Trang của 1 dự án cụ thể
