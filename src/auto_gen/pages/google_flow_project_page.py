@@ -134,7 +134,7 @@ class GoogleFlowProjectPage(BasePage):
                 + self.generating_video.count()
         )
 
-    def wait_until_creating_video_below(self, max_creating: int = 2, timeout=60_000, poll_interval=5000):
+    def wait_until_creating_video_below(self, max_creating: int = 2, timeout=120_000, poll_interval=5000):
         start = time.time()
         while self._creating_video_count() >= max_creating:
             print(f'{self._creating_video_count()=}')

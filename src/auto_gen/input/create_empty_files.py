@@ -26,7 +26,7 @@ def create_empty_files(
 
 
 if __name__ == '__main__':
-    project_name = 'Minh bài 16'
-    chapter_total = 32
+    project_name = 'Minh bài 17'
+    chapter_total = 31
 
     create_empty_files(prefix=project_name, count=chapter_total)

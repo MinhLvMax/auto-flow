@@ -28,7 +28,7 @@ google_flow_page_obj.create_with_google_flow()
 
 # Cấu hình gen ảnh
 image_generation_config = ImageGenerationConfig(
-    model_name=ImageModelNameString.Nano_Banana_pro
+    model_name=ImageModelNameString.Nano_Banana_2
 )
 # Cấu hình gen video
 video_generation_config = VideoGenerationConfig(
@@ -38,7 +38,7 @@ video_generation_config = VideoGenerationConfig(
 # Khởi tạo dịch vụ gen
 gen_service = GenService(google_flow_page_obj, image_generation_config, video_generation_config)
 # Truyền folder prompt vào và chạy
-gen_service.run_prompt_folder(Path('./input/Minh bài 16'))
+gen_service.run_prompt_folder(Path('./input/Minh bài 17'))
 
 # ===========
 # # Trang của 1 dự án cụ thể
