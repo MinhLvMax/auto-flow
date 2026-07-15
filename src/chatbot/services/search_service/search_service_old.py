@@ -1,6 +1,6 @@
 # services/search_service.py
 from pathlib import Path
-from src.chatbot.services.json_reader import JsonReader
+from services.file_service.json_reader import JsonReader
 from src.config import BASE_DIR
 from difflib import SequenceMatcher
 

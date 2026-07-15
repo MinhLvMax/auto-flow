@@ -1,8 +1,11 @@
 from groq import Groq
 from pydantic import BaseModel, ValidationError
+
+from src.chatbot.models.history import History
 from src.chatbot.services.prompt_service import PromptService
 from src.config import GROQ_API_KEY
 from src.loggers import main_logger
+from src.chatbot.models.llm_response_model import LLMResponseModel
 
 
 class GroqModelName:
@@ -74,25 +77,27 @@ class GroqServices:
     def chat_json(
             self,
             messages: list[dict],
-            response_model: type[BaseModel],
+            response_model: type[LLMResponseModel],
             model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
             system_prompt: str | None = None
     ) -> BaseModel:
-        schema = {
-            field_name: field_info.description
-            for field_name, field_info in response_model.model_fields.items()
-        }
 
+        # lấy mô tả schema
+        schema = response_model.llm_schema()
+
+        # format prompt trả về json, truyển mô tả schema vào
         prompt = self.prompt_service.render(
             "json_output",
             schema=schema
         )
 
+        # Nếu không có system prompt
         system_content = prompt
 
+        # nếu có system prompt
         if system_prompt:
             system_content = f"{system_prompt}\n\n{prompt}"
-        main_logger.debug(system_content)
+
         messages = [
             {
                 "role": "system",
@@ -107,11 +112,9 @@ class GroqServices:
             response_format={"type": "json_object"}
         )
 
-        main_logger.debug(response)
-
         try:
             return response_model.model_validate_json(
-            response.choices[0].message.content
+                response.choices[0].message.content
             )
         except ValidationError as e:
             main_logger.exception(e)
