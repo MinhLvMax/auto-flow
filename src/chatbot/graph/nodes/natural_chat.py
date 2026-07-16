@@ -11,7 +11,7 @@ class NaturalChatNode(BaseNode):
         self.llm_service = llm_service or GroqServices()
         self.prompt_service = prompt_service or PromptService()
 
-    def __call__(self, raw_state: dict):
+    def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
 
         natural_instruction = self.prompt_service.render('natural')
@@ -27,5 +27,4 @@ class NaturalChatNode(BaseNode):
             exclude_defaults=True
         )
 
-        self.loger.debug(update_dict)
         return update_dict

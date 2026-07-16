@@ -7,4 +7,4 @@ class State(BaseModel):
     classification_results: IntentClassification | None = None
     entity_extraction_result: EntityExtractionResult | None = None
     history: History = Field(default_factory=History)
-    found_paths: list[str] = Field(default_factory=list)
+    found_paths: list[dict] = Field(default_factory=list)

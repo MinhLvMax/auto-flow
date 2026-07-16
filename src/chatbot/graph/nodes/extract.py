@@ -12,19 +12,18 @@ class ExtractEntitiesNode(BaseNode):
         self.llm_service = llm_service or GroqServices()
         self.prompt_service = promp_service or PromptService()
 
-    def __call__(self, raw_state: dict):
+    def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
         messages = state.history.to_messages(last_n=3)
         instruction = self.prompt_service.render('extract_entities_instruction')
         result = self.llm_service.chat_json(messages, EntityExtractionResult, system_prompt=instruction)
-
+        self.loger.debug(result.model_dump())
         update_dict = State(
             entity_extraction_result=result.model_dump()
         ).model_dump(
             exclude_none=True,
             exclude_defaults=True
         )
-        self.loger.debug(update_dict)
         return update_dict
 
 if __name__ == '__main__':

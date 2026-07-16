@@ -2,7 +2,6 @@ from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.graph.nodes.base_node import BaseNode
-from src.loggers import main_logger
 
 
 class RetrievalChatNode(BaseNode):
@@ -11,10 +10,11 @@ class RetrievalChatNode(BaseNode):
         self.llm_service = llm_service or GroqServices()
         self.prompt_service = prompt_service or PromptService()
 
-    def __call__(self, raw_state: dict):
+    def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
 
-        context = self.prompt_service.render('search_context', paths=state.found_paths[:20])
+        paths = state.found_paths[:20] # Lấy 2 chục cái đầu để đưa vào llm nói
+        context = self.prompt_service.render('search_context', paths=paths)
         retrieval_instruction = self.prompt_service.render('retrieval')
         system_prompt = '\n\n'.join([retrieval_instruction, context])
 
@@ -29,6 +29,4 @@ class RetrievalChatNode(BaseNode):
             exclude_none=True,
             exclude_defaults=True
         )
-
-        self.loger.debug(update_dict)
         return update_dict

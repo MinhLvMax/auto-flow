@@ -32,7 +32,7 @@ image_generation_config = ImageGenerationConfig(
 )
 # Cấu hình gen video
 video_generation_config = VideoGenerationConfig(
-    model_name=VideoModelNameString.VEO_3_1_FAST
+    model_name=VideoModelNameString.VEO_3_1_LITE_LOWER_PRIORITY
 )
 
 # Khởi tạo dịch vụ gen

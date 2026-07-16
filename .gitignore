@@ -6,6 +6,7 @@ data/
 logs/
 .venv/
 runtime/
+.chainlit/
 
 
 src/chatbot/taikhoantaoradelamgi98/

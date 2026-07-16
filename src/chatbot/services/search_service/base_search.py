@@ -1,19 +1,22 @@
 from abc import ABC, abstractmethod
+
 from src.config import BASE_DIR
 from src.chatbot.services.file_service.json_reader import JsonReader
+from src.loggers import main_logger
+
 
 class BaseSearch(ABC):
-    default_path = BASE_DIR / 'src' / 'chatbot' / 'tree_dir.json'
+    default_path = BASE_DIR / 'src' / 'chatbot' / 'indexing' / 'index.json'
 
-    def __init__(self, tree_path=None):
-        self.tree_path = tree_path or self.default_path
-        self.tree_data = self._load_index()
+    def __init__(self, root_path=None):
+        self.root_path = root_path or self.default_path
+        self.indexed_data = self._load_index()
 
     def _load_index(self):
-        if not self.tree_path.exists():
+        if not self.root_path.exists():
             return {}
 
-        return JsonReader().read(self.tree_path) or {}
+        return JsonReader().read(self.root_path) or {}
 
     @abstractmethod
     def search(self, query) -> list[str]:
