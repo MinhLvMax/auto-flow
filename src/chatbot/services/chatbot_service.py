@@ -1,5 +1,5 @@
 from src.chatbot.models.history import History
-from src.chatbot.graph.workflow import build_workflow
+from src.chatbot.graph.workflows.orchestrator import build_workflow
 from src.chatbot.graph.state import State
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.services.groq_llm_services import GroqServices

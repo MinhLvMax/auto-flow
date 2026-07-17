@@ -1,9 +1,7 @@
 from pathlib import Path
 import json
-import re
-from tkinter import Tk, filedialog
-
-from indexing.build_tree import select_folder
+# from tkinter import Tk, filedialog
+# from src.chatbot.indexing.build_tree import select_folder
 from src.chatbot.text_nomalizer import TextNormalizer
 
 
@@ -49,21 +47,21 @@ class Indexer:
         with open(output, "w", encoding="utf-8") as f:
             json.dump(index, f, ensure_ascii=False, indent=2)
 
-    def select_folder(self):
-        root = Tk()
-        root.withdraw()  # Ẩn cửa sổ chính
-
-        folder = filedialog.askdirectory(
-            title="Chọn thư mục cần build tree"
-        )
-
-        root.destroy()
-
-        return folder if folder else None
+    # def select_folder(self):
+    #     root = Tk()
+    #     root.withdraw()  # Ẩn cửa sổ chính
+    #
+    #     folder = filedialog.askdirectory(
+    #         title="Chọn thư mục cần build tree"
+    #     )
+    #
+    #     root.destroy()
+    #
+    #     return folder if folder else None
 
 
 if __name__ == '__main__':
-    path = select_folder()
-    indexer = Indexer()
-    indexer.build_index(path, 'index.json')
+    # path = select_folder()
+    # indexer = Indexer()
+    # indexer.build_index(path, 'index.json')
     pass
