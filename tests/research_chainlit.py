@@ -32,9 +32,11 @@ async def start():
         content="Xin chào! Tôi có thể giúp gì cho bạn?",
     ).send()
 
+
 @cl.on_settings_update
 async def update(settings):
     print(settings)
+
 
 @cl.on_message
 async def on_message(message: cl.Message):
@@ -89,9 +91,9 @@ async def on_no(action: cl.Action):
         content=f"Bạn chọn: {action.payload['value']}"
     ).send()
 
+
 @cl.action_callback("view_file")
 async def view_file(action: cl.Action):
-
     path = Path(action.payload["path"])
 
     if Path(path).exists():
@@ -100,4 +102,3 @@ async def view_file(action: cl.Action):
         await cl.Message(
             content=f"Không tìm thấy file: {path}"
         ).send()
-

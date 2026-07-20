@@ -6,6 +6,8 @@ class History(BaseModel):
     messages: list[dict] = []
 
     def add(self, role: str, content: str):
+        if role == 'system':
+            return
         self.messages.append({
             "role": role,
             "content": content
@@ -20,7 +22,8 @@ class History(BaseModel):
         :param system_prompt:
         :return:
         '''
-        messages = self.messages
+        # Loại bỏ các tin system message ra để ghi đề system mess mới tránh lẫn vai trò
+        messages = [msg for msg in self.messages if msg.get("role") in ("user", "assistant")]
 
         if last_n is not None:
             messages = messages[-last_n:]

@@ -1,4 +1,4 @@
-from groq import Groq
+from groq import Groq, BadRequestError
 from pydantic import BaseModel, ValidationError
 
 from src.chatbot.models.history import History
@@ -105,17 +105,17 @@ class GroqServices:
             },
             *messages
         ]
-
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages,
-            response_format={"type": "json_object"}
-        )
-
         try:
+            response = self.client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                response_format={"type": "json_object"})
             return response_model.model_validate_json(
                 response.choices[0].message.content
             )
+        except BadRequestError as e:
+            main_logger.exception(e)
+            raise
         except ValidationError as e:
             main_logger.exception(e)
             raise

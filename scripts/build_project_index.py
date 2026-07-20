@@ -102,12 +102,12 @@ def select_folder():
 
 if __name__ == "__main__":
     # folder = select_folder() # Chọn đường dẫn cụ thể
-    from src.config import BASE_DIR
-    folder = BASE_DIR # Gán luôn bằng đường dẫn dự án
+    from scripts.config import PROJECT_PATH
+    folder = PROJECT_PATH # Gán luôn bằng đường dẫn dự án
     if folder is None:
         exit()
 
-    output_file = Path("codebase_context.txt")
+    output_file = PROJECT_PATH / "codebase_context.txt"
 
     with open(output_file, "w", encoding="utf-8") as f:
         # 1. Ghi tiêu đề và sơ đồ cây thư mục ở đầu file

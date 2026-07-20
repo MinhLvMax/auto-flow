@@ -2,6 +2,7 @@ from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.graph.nodes.base_node import BaseNode
+from src.chatbot.graph.config import WorkFLowConfig
 from src.chatbot.models.entity_extraction_result import EntityExtractionResult
 from src.loggers import main_logger
 
@@ -16,7 +17,7 @@ class ExtractEntitiesNode(BaseNode):
         state = State.model_validate(raw_state)
         messages = state.history.to_messages(last_n=3)
         instruction = self.prompt_service.render('extract_entities_instruction')
-        result = self.llm_service.chat_json(messages, EntityExtractionResult, system_prompt=instruction)
+        result = self.llm_service.chat_json(messages, EntityExtractionResult, system_prompt=instruction, model_name=WorkFLowConfig.EXTRACT_MODEL)
         self.loger.debug(result.model_dump())
         update_dict = State(
             entity_extraction_result=result.model_dump()

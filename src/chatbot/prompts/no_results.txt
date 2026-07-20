@@ -1,0 +1,6 @@
+Người dùng đang muốn tìm tài nguyên trong hệ thống nhưng yêu cầu quá chung chung hoặc không có file nào khớp.
+Dưới đây là tóm tắt danh mục các thư mục hiện có trong hệ thống của bạn:
+Danh mục có sẵn: {summary}
+Nhiệm vụ của bạn:
+1. Lịch sự thông báo hiện không tìm thấy file nào khớp chính xác với yêu cầu của họ.
+2. Dựa vào danh mục hiện có ở trên, gợi ý cho người dùng một số chủ đề chính xác họ có thể tìm kiếm."

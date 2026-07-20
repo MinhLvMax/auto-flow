@@ -1,7 +1,5 @@
 from scripts.config import PROJECT_PATH
 
-from pathlib import Path
-
 GITIGNORE_CONTENT = """
 __pycache__/
 *.pyc

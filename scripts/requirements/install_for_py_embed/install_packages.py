@@ -1,5 +1,5 @@
 from scripts.config import PROJECT_PATH
-from scripts.install_requirements.for_py_embed.setup_py_embed import python_embed_extract_dir
+from scripts.requirements.install_for_py_embed.setup_py_embed import python_embed_extract_dir
 
 # Cài package
 from scripts.run_cmd_method import run

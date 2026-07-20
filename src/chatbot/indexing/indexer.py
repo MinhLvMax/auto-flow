@@ -33,6 +33,11 @@ class Indexer:
 
         for path in paths:
             p = Path(path)
+            stat = p.stat()
+
+            size_kb = stat.st_size / 1024
+            size_mb = size_kb / 1024
+            file_size_str = f"{size_mb:.2f} MB" if size_mb >= 1.0 else f"{size_kb:.1f} KB"
 
             index.append({
                 "path": path,
@@ -41,11 +46,30 @@ class Indexer:
                 "folders": [
                     self.text_normalizer.normalize(x)
                     for x in p.parts[:-1]  # loại tên file ra, chỉ lấy các thành phần trước đó tức là folder thôi
-                ]
+                ],
+                'mtime': stat.st_mtime,
+                "ctime": stat.st_ctime, # Ngày tạo
+                'file_size': file_size_str,
+                "preview": self._get_text_preview(p, max_chars=300)  # Đoạn trích nội dung
             })
         print(f'Lưu tại {output}')
         with open(output, "w", encoding="utf-8") as f:
             json.dump(index, f, ensure_ascii=False, indent=2)
+
+    def _get_text_preview(self, path_obj: Path, max_chars=300) -> str:
+        """Đọc thử một đoạn nội dung ngắn nếu là file văn bản để làm preview"""
+        # Chỉ đọc các file văn bản phổ biến
+        text_suffixes = {".txt", ".md", ".json", ".csv"}
+        if path_obj.suffix.lower() not in text_suffixes:
+            return ""
+        try:
+            # Đọc tối đa số lượng ký tự quy định để tránh file quá nặng
+            with open(path_obj, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read(max_chars)
+                # Dọn dẹp các ký tự xuống dòng dư thừa để lưu trữ gọn gàng
+                return " ".join(content.split())
+        except Exception:
+            return ""
 
     # def select_folder(self):
     #     root = Tk()

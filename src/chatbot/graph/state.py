@@ -8,3 +8,4 @@ class State(BaseModel):
     entity_extraction_result: EntityExtractionResult | None = None
     history: History = Field(default_factory=History)
     found_paths: list[dict] = Field(default_factory=list)
+    dir_summary: str = ''

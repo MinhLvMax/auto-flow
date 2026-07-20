@@ -1,15 +1,16 @@
 import chainlit as cl
 from chainlit.input_widget import TextInput
 import asyncio
+import subprocess
 from src.chatbot.services.chatbot_service import ChatbotService
 from src.chatbot.indexing.indexer import Indexer
+from src.chatbot.config import INDEXED_DATA_PATH
 from src.loggers import main_logger
 from pathlib import Path
 from src.config import BASE_DIR
 
 main_logger.info('Khởi tạo dịch vụ chat')
 chatbot_service = ChatbotService()
-
 
 async def index_folder(path_to_index):
     loading_msg = cl.Message(
@@ -19,7 +20,7 @@ async def index_folder(path_to_index):
 
     # Xây dựng index
     # path_to_index = r'C:\Users\Admin\Downloads'
-    indexed_data_path = BASE_DIR / 'src' / 'chatbot' / 'indexing' / 'index.json'
+    indexed_data_path = INDEXED_DATA_PATH
     indexer = Indexer()
     await asyncio.to_thread(
         indexer.build_index,
@@ -30,6 +31,11 @@ async def index_folder(path_to_index):
     loading_msg.content = "✅ Đã lập chỉ mục cây thư mục dữ liệu thành công!"
     await loading_msg.update()
 
+@cl.action_callback('re_index')
+async def re_index(action: cl.Action):
+    path = cl.user_session.get('path_to_index', None)
+    await index_folder(path)
+    pass
 
 @cl.on_chat_start
 async def on_chat_start():
@@ -42,61 +48,70 @@ async def on_chat_start():
     #         )
     #     ]
     # ).send()
-
-    history = chatbot_service.create_session()
+    default_path_to_index = r'C:\\Users\\Admin\\Downloads' # Nên cải tiến lấy từ người dùng
+    history = chatbot_service.create_session(path_to_index=default_path_to_index)
     last_turn = history.last()
     first_mess = last_turn.get('content', 'Xin chào bạn.')
     await cl.Message(
         content=first_mess
     ).send()
     cl.user_session.set('history', history)
+    cl.user_session.set('path_to_index', default_path_to_index)
 
 
 @cl.on_message
 async def on_message(message: cl.Message):
     main_logger.info('Nhận xin nhắn và xử lý')
-    history = cl.user_session.get('history', None)
-    if history:
-        history.add('user', message.content)
-        new_history, paths_result = chatbot_service.chat(history=history)
-        response = new_history.last().get('content', 'None')
-        history.add('assistant', response)
-    else:
-        response = 'Thử lại'
-        paths_result = []
+    try:
+        history = cl.user_session.get('history', None)
+        if history:
+            history.add('user', message.content)
+            new_history, paths_result = chatbot_service.chat(history=history, path_to_index=cl.user_session.get('paths_to_index', None))
+            response = new_history.last().get('content', 'None')
+            history.add('assistant', response)
+        else:
+            response = 'Thử lại'
+            paths_result = []
 
-    cl.user_session.set('history', history)
-    cl.user_session.set('paths_result', paths_result)
+        cl.user_session.set('history', history)
+        cl.user_session.set('paths_result', paths_result)
 
-    actions = []
+        actions = []
 
-    if paths_result:
+        if paths_result:
+            actions.append(
+                cl.Action(
+                    name="show_search_results",
+                    label=f"Xem {len(paths_result)} tài liệu",
+                    payload={}
+                )
+            )
         actions.append(
             cl.Action(
-                name="show_search_results",
-                label=f"Xem {len(paths_result)} tài liệu",
+                name="re_index",
+                label='Re-index thư mục',
                 payload={}
             )
         )
-    actions.append(
-        cl.Action(
-            name="re_index",
-            label='Re-index thư mục',
-            payload={}
-        )
-    )
 
-    await cl.Message(
-        content=response,
-        actions=actions
-    ).send()
+        await cl.Message(
+            content=response,
+            actions=actions
+        ).send()
+    except Exception as e:
+        await cl.Message(
+            content= f'Có lỗi xảy ra: {e}'
+        ).send()
 
 
 @cl.action_callback("open_file")
 async def open_file(action: cl.Action):
-    import os
-    path = action.payload["path"]
-    os.startfile(path)
+    path = Path(action.payload["path"]).resolve()
+
+    subprocess.Popen(
+        f'explorer.exe /select,"{path}"'
+    )
+
 
 
 @cl.action_callback("show_search_results")

@@ -28,13 +28,15 @@ class KeywordSearch(BaseSearch):
                     score += 30
             # So sánh từ ngữ nằm trong tên
             matched = set(query_tokens) & set(data.get('normalize_stem').split())
-            score += len(matched) * 10
+            score += len(matched) * 30
+
             if score > 0:
                 rerank_path_result = FoundPathResult(
                     path=data.get('path', ''),
                     score=score
                 )
                 list_rerank_path_result.append(rerank_path_result.model_dump())
+
         return sorted(  # Sắp xếp kết quả giảm dần
             list_rerank_path_result,
             key=lambda x: x["score"],

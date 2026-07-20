@@ -7,6 +7,6 @@ def run(*command, workdir=PROJECT_PATH, **kwargs):
         [str(c) for c in command],
         cwd=Path(workdir),
         text=True,
-        check=False,
+        check=True,
         **kwargs,
     )
