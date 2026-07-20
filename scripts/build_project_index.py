@@ -19,6 +19,7 @@ IGNORE_LIST = {
     ".profiles",
     "profiles",
     "python_embed",
+    'python-embed',
     "envato_browser_profile",
     'logs',
 
