@@ -8,3 +8,5 @@ if msg == '':
     msg = f'Auto commit {timestamp}'
 
 run('git', 'commit', '-m', msg)
+
+import scripts.git.git_status
