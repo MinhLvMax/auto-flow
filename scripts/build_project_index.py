@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from tkinter import Tk, filedialog
+from scripts.config import PROJECT_PATH
 
 # Gộp tất cả thư mục, tên file, đuôi file cần bỏ qua vào một nơi duy nhất
 IGNORE_LIST = {
@@ -101,9 +102,8 @@ def select_folder():
 
 
 if __name__ == "__main__":
-    # folder = select_folder() # Chọn đường dẫn cụ thể
-    from scripts.config import PROJECT_PATH
-    folder = PROJECT_PATH # Gán luôn bằng đường dẫn dự án
+    folder = select_folder() # Chọn đường dẫn cụ thể
+    # folder = PROJECT_PATH # Gán luôn bằng đường dẫn dự án
     if folder is None:
         exit()
 

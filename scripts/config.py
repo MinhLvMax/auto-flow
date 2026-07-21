@@ -1,3 +1,3 @@
-from src.config import BASE_DIR
+from pathlib import Path
 
-PROJECT_PATH = BASE_DIR
+PROJECT_PATH = Path(__file__).resolve().parents[1]

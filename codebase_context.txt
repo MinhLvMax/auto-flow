@@ -1,3353 +1,63 @@
 # TỔNG QUAN KIẾN TRÚC DỰ ÁN (DIRECTORY TREE)
 ```text
-auto-flow/
-├── chainlit.md
-├── main.py
-├── research_chainlit.py
-├── run.bat
-├── scripts
-│   ├── build_project_index.py
+chatbot/
+├── chainlit_app.py
+├── config.py
+├── graph
 │   ├── config.py
-│   ├── create_gitignore.py
-│   ├── freeze_requirements.py
-│   ├── git_add.py
-│   ├── git_add_remote.py
-│   ├── git_branch_M_main.py
-│   ├── git_commit.py
-│   ├── git_init.py
-│   ├── git_log.py
-│   ├── git_pull.py
-│   ├── git_push.py
-│   ├── git_push_u_origin_main.py
-│   ├── git_remote_v.py
-│   ├── git_status.py
-│   ├── install_requirements
-│   │   ├── for_py_embed
-│   │   │   ├── install_packages.py
-│   │   │   └── setup_py_embed.py
-│   │   └── for_venv.py
-│   ├── pip_list.py
-│   └── run_cmd_method.py
-└── src
-    ├── __init__.py
-    ├── auto_content
-    │   ├── __init__.py
-    │   ├── extractor
-    │   │   └── generic_html_extractor.py
-    │   ├── interface
-    │   │   ├── content_extractor.py
-    │   │   └── knowledge_provider.py
-    │   ├── provider
-    │   │   ├── DuckDuckGoSearchProvider.py
-    │   │   └── YouTubeSearchProvider.py
-    │   ├── services
-    │   │   ├── research_service.py
-    │   │   └── youtube_ranking_service.py
-    │   └── tests
-    │       ├── __init__.py
-    │       ├── test_generic_extractor.py
-    │       ├── test_research_service.py
-    │       └── test_youtube_ranking.py
-    ├── auto_gen
-    │   ├── constant
-    │   │   ├── __init__.py
-    │   │   ├── gen_mode.py
-    │   │   ├── image_models_name.py
-    │   │   ├── ratios.py
-    │   │   ├── resoluion.py
-    │   │   ├── video_generation_mode.py
-    │   │   └── video_model_name.py
-    │   ├── context_factory
-    │   │   ├── chrome_context_factory.py
-    │   │   └── context_factory_base.py
-    │   ├── gen_service.py
-    │   ├── input
-    │   │   └── create_empty_files.py
-    │   ├── json_reader.py
-    │   ├── json_writer.py
-    │   ├── main.py
-    │   ├── pages
-    │   │   ├── base_page.py
-    │   │   ├── components
-    │   │   │   ├── add_reference_component.py
-    │   │   │   ├── base_component.py
-    │   │   │   ├── image_setting_component.py
-    │   │   │   ├── resolution_dropdown_component.py
-    │   │   │   ├── right_click_menu_component.py
-    │   │   │   ├── setting_component.py
-    │   │   │   └── video_setting_component.py
-    │   │   ├── generation_config
-    │   │   │   ├── __init__.py
-    │   │   │   ├── base_generation_config.py
-    │   │   │   ├── image_gen_config.py
-    │   │   │   └── video_gen_config.py
-    │   │   ├── google_flow_page.py
-    │   │   └── google_flow_project_page.py
-    │   └── setup_user_data_dir.py
-    ├── auto_prompt
-    │   ├── constant
-    │   │   └── prompt_format.py
-    │   ├── extractor
-    │   │   └── detector
-    │   │       ├── base.py
-    │   │       └── LLMSentenceBoundaryDetector.py
-    │   ├── llm
-    │   │   ├── base.py
-    │   │   ├── chatgpt.py
-    │   │   └── groq.py
-    │   ├── models
-    │   │   ├── llm_output
-    │   │   │   ├── sentence.py
-    │   │   │   └── sentence_boundary_decision_llm_result.py
-    │   │   ├── script_row.py
-    │   │   └── sentence_boundary_decision.py
-    │   ├── repository
-    │   │   ├── reader
-    │   │   │   ├── base.py
-    │   │   │   ├── json_reader.py
-    │   │   │   └── script_parser
-    │   │   │       ├── base.py
-    │   │   │       └── excel_parser.py
-    │   │   └── writer
-    │   │       ├── base.py
-    │   │       └── jsonwriter.py
-    │   ├── services
-    │   │   └── sentence_detector_service.py
-    │   └── tests
-    │       ├── test.html
-    │       └── unit
-    │           ├── __init__.py
-    │           ├── test_ExcelScriptParser.py
-    │           └── test_llm_sentence_boundary_detector.py
-    ├── auto_search
-    │   ├── keywords.py
-    │   ├── output
-    │   └── run.py
-    ├── chatbot
-    │   ├── chainlit_app.py
-    │   ├── config.py
-    │   ├── graph
-    │   │   ├── config.py
-    │   │   ├── nodes
-    │   │   │   ├── __init__.py
-    │   │   │   ├── base_node.py
-    │   │   │   ├── classification.py
-    │   │   │   ├── extract.py
-    │   │   │   ├── natural_chat.py
-    │   │   │   ├── retrieval_chat.py
-    │   │   │   └── search.py
-    │   │   ├── router.py
-    │   │   ├── state.py
-    │   │   └── workflows
-    │   │       ├── natural_chat.py
-    │   │       └── orchestrator.py
-    │   ├── indexing
-    │   │   ├── __init__.py
-    │   │   ├── build_tree.py
-    │   │   └── indexer.py
-    │   ├── models
-    │   │   ├── entity_extraction_result.py
-    │   │   ├── found_path_result.py
-    │   │   ├── history.py
-    │   │   ├── intent_classification.py
-    │   │   └── llm_response_model.py
-    │   ├── mvp_version.py
-    │   ├── prompts
-    │   ├── services
-    │   │   ├── __init__.py
-    │   │   ├── chatbot_service.py
-    │   │   ├── file_service
-    │   │   │   ├── __init__.py
-    │   │   │   ├── json_reader.py
-    │   │   │   └── json_writer.py
-    │   │   ├── groq_llm_services.py
-    │   │   ├── prompt_service.py
-    │   │   ├── search_service
-    │   │   │   ├── __init__.py
-    │   │   │   ├── base_search.py
-    │   │   │   └── keyword_search.py
-    │   │   └── text_reader.py
-    │   └── text_nomalizer.py
-    ├── config.py
-    └── loggers
-        ├── __init__.py
-        ├── custom_logger.py
-        └── log.py
+│   ├── nodes
+│   │   ├── __init__.py
+│   │   ├── base_node.py
+│   │   ├── classification.py
+│   │   ├── extract.py
+│   │   ├── natural_chat.py
+│   │   ├── retrieval_chat.py
+│   │   └── search.py
+│   ├── router.py
+│   ├── state.py
+│   └── workflows
+│       ├── natural_chat.py
+│       └── orchestrator.py
+├── indexing
+│   ├── __init__.py
+│   ├── build_tree.py
+│   └── indexer.py
+├── models
+│   ├── entity_extraction_result.py
+│   ├── found_path_result.py
+│   ├── history.py
+│   ├── intent_classification.py
+│   └── llm_response_model.py
+├── mvp_version.py
+├── prompts
+├── services
+│   ├── __init__.py
+│   ├── chatbot_service.py
+│   ├── file_service
+│   │   ├── __init__.py
+│   │   ├── json_reader.py
+│   │   └── json_writer.py
+│   ├── groq_llm_services.py
+│   ├── prompt_service.py
+│   ├── search_service
+│   │   ├── __init__.py
+│   │   ├── base_search.py
+│   │   └── keyword_search.py
+│   ├── storage_analysis_service.py
+│   └── text_reader.py
+└── text_nomalizer.py
 ```
 
 ================================================================================
 
 # CHI TIẾT MÃ NGUỒN CÁC FILE
 
-## FILE: `chainlit.md`
-```md
-# Welcome to Chainlit! 🚀🤖
-
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
-
-## Useful Links 🔗
-
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
-
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
-
-## Welcome screen
-
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
-```
-
-----------------------------------------
-
-## FILE: `main.py`
-```python
-import src.chatbot.chainlit_app
-#python -m chainlit run main.py
-#chainlit run main.py --host 0.0.0.0 --port 8000
-```
-
-----------------------------------------
-
-## FILE: `research_chainlit.py`
-```python
-from pathlib import Path
-import os
-import chainlit as cl
-from chainlit.input_widget import Select, Slider
-from src.chatbot.services.groq_llm_services import GroqServices
-
-
-# chainlit run research_chainlit.py -w
-
-@cl.on_chat_start
-async def start():
-    await cl.ChatSettings(
-        [
-            Select(
-                id="model",
-                label="Model",
-                values=["GPT-4o", "GPT-4o-mini", "Llama3"],
-                initial_index=0
-            ),
-            Slider(
-                id="temperature",
-                label="Temperature",
-                initial=0.7,
-                min=0,
-                max=2,
-                step=0.1
-            )
-        ]
-    ).send()
-
-    await cl.Message(
-        content="Xin chào! Tôi có thể giúp gì cho bạn?",
-    ).send()
-
-@cl.on_settings_update
-async def update(settings):
-    print(settings)
-
-@cl.on_message
-async def on_message(message: cl.Message):
-    actions = [
-        cl.Action(
-            name="yes",
-            label="Đồng ý",
-            payload={"value": "yes"}
-        ),
-        cl.Action(
-            name="no",
-            label="Không",
-            payload={"value": "no"}
-        )
-    ]
-
-    # files = [cl.File(
-    #     name="Ảnh",
-    #     path=r"C:\Users\Admin\Downloads\LD518.jpg",
-    # ), cl.File(
-    #     name="Video",
-    #     path=r"C:\Users\Admin\Downloads\AI.mp4",
-    # )]
-
-    actions += [cl.Action(
-        name="view_file",
-        label=r"LD518.jpg",
-        payload={"path": r"C:\Users\Admin\Downloads\LD518.jpg"}
-    ), cl.Action(
-        name="view_file",
-        label=r"AI.mp4",
-        payload={"path": r"C:\Users\Admin\Downloads\AI.mp4"}
-    )]
-
-    await cl.Message(
-        content=f"Bạn vừa gửi: {message.content}",
-        actions=actions,
-        # elements=files,
-    ).send()
-
-
-@cl.action_callback("yes")
-async def on_yes(action: cl.Action):
-    await cl.Message(
-        content=f"Bạn chọn: {action.payload['value']}"
-    ).send()
-
-
-@cl.action_callback("no")
-async def on_no(action: cl.Action):
-    await cl.Message(
-        content=f"Bạn chọn: {action.payload['value']}"
-    ).send()
-
-@cl.action_callback("view_file")
-async def view_file(action: cl.Action):
-
-    path = Path(action.payload["path"])
-
-    if Path(path).exists():
-        os.startfile(path)
-    else:
-        await cl.Message(
-            content=f"Không tìm thấy file: {path}"
-        ).send()
-
-```
-
-----------------------------------------
-
-## FILE: `run.bat`
-```bat
-@echo off
-
-cd /d %~dp0
-
-python-embed\python.exe -m chainlit run main.py
-
-pause
-```
-
-----------------------------------------
-
-## FILE: `scripts\build_project_index.py`
-```python
-import os
-from pathlib import Path
-from tkinter import Tk, filedialog
-
-# Gộp tất cả thư mục, tên file, đuôi file cần bỏ qua vào một nơi duy nhất
-IGNORE_LIST = {
-    # Thư mục cần bỏ qua
-    ".git",
-    ".venv",
-    "__pycache__",
-    "node_modules",
-    ".idea",
-    ".vscode",
-    ".obsidian",
-    "build",
-    "dist",
-    ".chainlit",
-    ".files",
-    ".profiles",
-    "profiles",
-    "python_embed",
-    'python-embed',
-    "envato_browser_profile",
-    'logs',
-
-    # File cụ thể cần bỏ qua
-    ".env",
-    ".gitignore",
-    "codebase_context.txt",  # Tránh tự đọc chính file output nếu chạy lại
-    'README.md',
-
-    # Đuôi file cần bỏ qua
-    ".json",
-    ".png",
-    ".jpg",
-    ".jpeg",
-    ".mp4",
-    ".zip",
-    ".txt",
-    ".pyc",
-    ".db",
-}
-
-
-def should_ignore(path: Path, ignore_set: set) -> bool:
-    """Kiểm tra đường dẫn có thuộc danh sách bỏ qua hay không"""
-    # 1. Kiểm tra nếu có bất kỳ thư mục cha nào trong đường dẫn nằm trong danh sách ignore
-    if any(part in ignore_set for part in path.parts):
-        return True
-
-    # 2. Kiểm tra tên file hoặc thư mục hiện tại
-    if path.name in ignore_set or path.name.lower() in ignore_set:
-        return True
-
-    # 3. Kiểm tra đuôi file (suffix)
-    if path.suffix.lower() in ignore_set:
-        return True
-
-    return False
-
-
-def generate_tree_string(path: Path, prefix: str = "", ignore_set=None) -> str:
-    """Tạo chuỗi sơ đồ cây thư mục trực quan"""
-    if ignore_set is None:
-        ignore_set = IGNORE_LIST
-
-    tree_str = ""
-    # Lọc bỏ các thư mục và file nằm trong danh sách ignore
-    children = sorted([
-        c for c in path.iterdir()
-        if not (c.name in ignore_set or c.suffix.lower() in ignore_set)
-    ])
-
-    for i, child in enumerate(children):
-        is_last = (i == len(children) - 1)
-        connector = "└── " if is_last else "├── "
-
-        tree_str += f"{prefix}{connector}{child.name}\n"
-
-        if child.is_dir():
-            indent = "    " if is_last else "│   "
-            tree_str += generate_tree_string(child, prefix + indent, ignore_set)
-
-    return tree_str
-
-
-def read_file(path: Path) -> str:
-    """Đọc nội dung file văn bản, bỏ qua lỗi giải mã"""
-    try:
-        return path.read_text(encoding="utf-8", errors="ignore")
-    except Exception:
-        return ""
-
-
-def select_folder():
-    root = Tk()
-    root.withdraw()
-    folder = filedialog.askdirectory(title="Chọn thư mục dự án")
-    root.destroy()
-    return Path(folder) if folder else None
-
-
-if __name__ == "__main__":
-    # folder = select_folder() # Chọn đường dẫn cụ thể
-    from scripts.config import PROJECT_PATH
-    folder = PROJECT_PATH # Gán luôn bằng đường dẫn dự án
-    if folder is None:
-        exit()
-
-    output_file = PROJECT_PATH / "codebase_context.txt"
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        # 1. Ghi tiêu đề và sơ đồ cây thư mục ở đầu file
-        f.write("# TỔNG QUAN KIẾN TRÚC DỰ ÁN (DIRECTORY TREE)\n")
-        f.write("```text\n")
-        f.write(f"{folder.name}/\n")
-        f.write(generate_tree_string(folder))
-        f.write("```\n\n")
-        f.write("=" * 80 + "\n\n")
-
-        # 2. Quét và ghi nội dung từng file code
-        f.write("# CHI TIẾT MÃ NGUỒN CÁC FILE\n\n")
-
-        for path in sorted(folder.rglob("*")):
-            # Bỏ qua nếu nằm trong danh sách ignore (áp dụng cho cả file và thư mục)
-            if should_ignore(path, IGNORE_LIST):
-                continue
-
-            # Chỉ xử lý file, bỏ qua thư mục
-            if not path.is_file():
-                continue
-
-            relative_path = path.relative_to(folder)
-            content = read_file(path)
-
-            if content.strip():
-                # Xác định ngôn ngữ lập trình để hiển thị cú pháp
-                lang = path.suffix.lstrip(".")
-                if lang == "py":
-                    lang = "python"
-
-                f.write(f"## FILE: `{relative_path}`\n")
-                f.write(f"```{lang}\n")
-                f.write(content)
-                if not content.endswith("\n"):
-                    f.write("\n")
-                f.write("```\n\n")
-                f.write("-" * 40 + "\n\n")
-
-    print(f"Đã xuất toàn bộ mã nguồn ra file: {output_file.absolute()}")
-```
-
-----------------------------------------
-
-## FILE: `scripts\config.py`
-```python
-from src.config import BASE_DIR
-
-PROJECT_PATH = BASE_DIR
-```
-
-----------------------------------------
-
-## FILE: `scripts\create_gitignore.py`
-```python
-from scripts.config import PROJECT_PATH
-
-from pathlib import Path
-
-GITIGNORE_CONTENT = """
-__pycache__/
-*.pyc
-.idea/
-.venv/
-.env
-"""
-
-
-def create_gitignore():
-    file = PROJECT_PATH / ".gitignore"
-
-    if file.exists():
-        print('Đã có file .gitignore rồi')
-        return
-
-    file.write_text(
-        GITIGNORE_CONTENT.strip(),
-        encoding="utf-8"
-    )
-
-if __name__ == '__main__':
-    create_gitignore()
-```
-
-----------------------------------------
-
-## FILE: `scripts\freeze_requirements.py`
-```python
-from scripts.run_cmd_method import run
-from scripts.config import PROJECT_PATH
-
-requirements = PROJECT_PATH / 'requirements.txt'
-
-with requirements.open('w', encoding='utf-8') as f:
-    run('python', '-m', 'pip', 'freeze', stdout=f)
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_add.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'add', '.')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_add_remote.py`
-```python
-from scripts.run_cmd_method import run
-
-link_repo = 'https://github.com/MinhLvMax/text2triple.git'
-run('git', 'remote', 'add', 'origin', link_repo)
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_branch_M_main.py`
-```python
-from scripts.run_cmd_method import run
-
-# Đổi tên nhánh thành main
-run('git', 'branch', '-M', 'main')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_commit.py`
-```python
-from scripts.run_cmd_method import run
-from datetime import datetime
-
-import scripts.git_add
-import scripts.git_status
-
-msg = input('Commit: ')
-if msg == '':
-    now = datetime.now()
-    timestamp = now.strftime("%Y%m%d%H%M%S")
-    msg = f'Auto commit {timestamp}'
-
-run('git', 'commit', '-m', msg)
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_init.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'init')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_log.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'log')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_pull.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'pull')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_push.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'push')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_push_u_origin_main.py`
-```python
-from scripts.run_cmd_method import run
-
-run('git', 'push', '-u', 'origin', 'main')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_remote_v.py`
-```python
-from scripts.run_cmd_method import run
-# Kiểm tra repository hiện tại đang kết nối tới remote nào và URL của chúng là gì.
-run('git', 'remote', '-v')
-```
-
-----------------------------------------
-
-## FILE: `scripts\git_status.py`
-```python
-from scripts.run_cmd_method import run
-
-run("git", "-c", "color.status=always", "status")
-```
-
-----------------------------------------
-
-## FILE: `scripts\install_requirements\for_py_embed\install_packages.py`
-```python
-from scripts.config import PROJECT_PATH
-from scripts.install_requirements.for_py_embed.setup_py_embed import python_embed_extract_dir
-
-# Cài package
-from scripts.run_cmd_method import run
-
-python_path = python_embed_extract_dir / "python.exe"
-run(python_path, '-m', 'pip', 'install', '-r', "requirements.txt",)
-
-```
-
-----------------------------------------
-
-## FILE: `scripts\install_requirements\for_py_embed\setup_py_embed.py`
-```python
-import urllib.request
-import zipfile
-from scripts.config import PROJECT_PATH
-from scripts.run_cmd_method import run
-
-# Tải
-url_py_embed = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip"
-python_embed_zip_path = PROJECT_PATH / "python_embed.zip"
-if not python_embed_zip_path.exists():
-    print("Đang tải Python Embed...")
-    urllib.request.urlretrieve(
-        url_py_embed,
-        python_embed_zip_path
-    )
-    print("Tải xong!")
-else:
-    print("Đã có python-embed.zip, bỏ qua.")
-
-# Giải nén
-python_embed_extract_dir = PROJECT_PATH / python_embed_zip_path.stem
-if not python_embed_extract_dir.exists():
-    print("Đang giải nén...")
-    with zipfile.ZipFile(python_embed_zip_path) as z:
-        z.extractall(python_embed_extract_dir)
-    print("Giải nén xong!")
-else:
-    print("Python Embed đã sẵn sàng, bỏ qua.")
-
-# Bật import site
-pth_file = next(python_embed_extract_dir.glob("python*._pth"), None)
-
-if pth_file:
-    text = pth_file.read_text(encoding="utf-8")
-
-    if "#import site" in text:
-        pth_file.write_text(
-            text.replace("#import site", "import site"),
-            encoding="utf-8",
-        )
-        print("Đã bật import site.")
-    else:
-        print("import site đã được bật.")
-else:
-    print("Không tìm thấy file python*._pth.")
-
-# Tải get-pip
-get_pip_path = python_embed_extract_dir / "get-pip.py"
-get_pip_url = "https://bootstrap.pypa.io/get-pip.py"
-
-if not get_pip_path.exists():
-    print("Đang tải get-pip.py...")
-    urllib.request.urlretrieve(
-        get_pip_url,
-        get_pip_path
-    )
-    print("Tải get-pip.py xong!")
-else:
-    print("Đã có get-pip.py, bỏ qua.")
-
-# Cài pip
-python_path = python_embed_extract_dir / "python.exe"
-
-run(
-    python_path,
-    get_pip_path,
-    workdir=python_embed_extract_dir,
-)
-```
-
-----------------------------------------
-
-## FILE: `scripts\install_requirements\for_venv.py`
-```python
-from scripts.run_cmd_method import run
-
-run("python", "-m", "pip", "install", "-r", "requirements.txt", )
-```
-
-----------------------------------------
-
-## FILE: `scripts\pip_list.py`
-```python
-from scripts.run_cmd_method import run
-
-run('pip', 'list')
-```
-
-----------------------------------------
-
-## FILE: `scripts\run_cmd_method.py`
-```python
-from pathlib import Path
-import subprocess
-from scripts.config import PROJECT_PATH
-
-def run(*command, workdir=PROJECT_PATH, **kwargs):
-    return subprocess.run(
-        [str(c) for c in command],
-        cwd=Path(workdir),
-        text=True,
-        check=True,
-        **kwargs,
-    )
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\extractor\generic_html_extractor.py`
-```python
-import requests
-from bs4 import BeautifulSoup
-from src.auto_content.interface.content_extractor import ContentExtractor
-from src.auto_content.interface.knowledge_provider import SourceHit, KnowledgeDocument
-
-
-class GenericHtmlExtractor(ContentExtractor):
-    @property
-    def extractor_name(self) -> str:
-        return "generic_html"
-
-    def can_extract(self, hit: SourceHit) -> bool:
-        if not hit.url:
-            return False
-
-        return hit.url.startswith("http://") or hit.url.startswith("https://")
-
-    def extract(self, hit: SourceHit) -> KnowledgeDocument:
-        if not hit.url:
-            raise ValueError("Cannot extract content because hit.url is empty")
-
-        response = requests.get(
-            hit.url,
-            timeout=20,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                )
-            },
-        )
-        response.raise_for_status()
-
-        soup = BeautifulSoup(response.text, "html.parser")
-
-        self._remove_noise_tags(soup)
-
-        title = self._extract_title(soup, hit)
-        content = self._extract_main_content(soup)
-
-        return KnowledgeDocument(
-            source_name=hit.source_name,
-            title=title,
-            url=hit.url,
-            content=content,
-            reliability_score=0.6,
-            raw={
-                "extractor": self.extractor_name,
-                "search_raw": hit.raw,
-                "status_code": response.status_code,
-                "html_length": len(response.text),
-                "content_length": len(content),
-            },
-        )
-
-    def _remove_noise_tags(self, soup: BeautifulSoup) -> None:
-        noise_tags = [
-            "script",
-            "style",
-            "noscript",
-            "nav",
-            "footer",
-            "header",
-            "aside",
-            "form",
-            "iframe",
-            "svg",
-        ]
-
-        for tag in soup(noise_tags):
-            tag.decompose()
-
-    def _extract_title(self, soup: BeautifulSoup, hit: SourceHit) -> str:
-        if hit.title:
-            return hit.title
-
-        if soup.title and soup.title.string:
-            return soup.title.string.strip()
-
-        h1 = soup.find("h1")
-        if h1:
-            return h1.get_text(strip=True)
-
-        return ""
-
-    def _extract_main_content(self, soup: BeautifulSoup) -> str:
-        main = (
-                soup.find("article")
-                or soup.find("main")
-                or soup.find("div", {"role": "main"})
-                or soup.body
-        )
-
-        if main is None:
-            return ""
-
-        paragraphs = main.find_all("p")
-
-        lines = []
-
-        for paragraph in paragraphs:
-            text = paragraph.get_text(separator=" ", strip=True)
-
-            if not text:
-                continue
-
-            if len(text) < 50:
-                continue
-
-            lines.append(text)
-
-        return "\n\n".join(lines)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\interface\content_extractor.py`
-```python
-from abc import ABC, abstractmethod
-from src.auto_content.interface.knowledge_provider import SourceHit, KnowledgeDocument
-
-
-class ContentExtractor(ABC):
-    @property
-    @abstractmethod
-    def extractor_name(self) -> str:
-        """
-        Tên extractor, dùng để log/debug.
-        Ví dụ: generic_html, wikipedia, youtube_transcript, pdf...
-        """
-        pass
-
-    @abstractmethod
-    def can_extract(self, hit: SourceHit) -> bool:
-        """
-        Kiểm tra extractor này có bóc được nội dung từ SourceHit này không.
-        """
-        pass
-
-    @abstractmethod
-    def extract(self, hit: SourceHit) -> KnowledgeDocument:
-        """
-        Bóc nội dung thật từ SourceHit và trả về KnowledgeDocument.
-        """
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\interface\knowledge_provider.py`
-```python
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from datetime import datetime
-from typing import Any
-
-
-@dataclass
-class ResearchQuery:
-    keyword: str
-    language: str = "en"
-    limit: int = 10
-    country: str | None = None
-    category: str | None = None
-
-
-@dataclass
-class SourceHit:
-    source_name: str
-    title: str
-    url: str | None = None
-    external_id: str | None = None
-    snippet: str | None = None
-    raw: dict[str, Any] | None = None
-
-
-@dataclass
-class KnowledgeDocument:
-    source_name: str
-    title: str
-    content: str
-    url: str | None = None
-    facts: dict[str, Any] | None = None
-    visual_keywords: list[str] | None = None
-    published_at: datetime | None = None
-    reliability_score: float = 0.5
-    raw: dict[str, Any] | None = None
-
-
-class KnowledgeProvider(ABC):
-    @property
-    @abstractmethod
-    def source_name(self) -> str:
-        pass
-
-    @abstractmethod
-    def search(self, query: ResearchQuery) -> list[SourceHit]:
-        pass
-
-    @abstractmethod
-    def fetch(self, hit: SourceHit) -> KnowledgeDocument:
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\provider\DuckDuckGoSearchProvider.py`
-```python
-from src.auto_content.interface.knowledge_provider import KnowledgeProvider, ResearchQuery, SourceHit, KnowledgeDocument
-from ddgs import DDGS
-
-class DuckDuckGoSearchProvider(KnowledgeProvider):
-    @property
-    def source_name(self) -> str:
-        return "duckduckgo"
-
-    def search(self, query: ResearchQuery) -> list[SourceHit]:
-        with DDGS() as ddgs:
-            results = ddgs.text(
-                query.keyword,
-                max_results=query.limit,
-            )
-
-        hits: list[SourceHit] = []
-
-        for item in results:
-            hits.append(
-                SourceHit(
-                    source_name=self.source_name,
-                    title=item.get("title", ""),
-                    url=item.get("href"),
-                    snippet=item.get("body"),
-                    raw=item,
-                )
-            )
-
-        return hits
-
-    def fetch(self, hit: SourceHit) -> KnowledgeDocument:
-        return KnowledgeDocument(
-            source_name=self.source_name,
-            title=hit.title,
-            url=hit.url,
-            content=hit.snippet or "",
-            reliability_score=0.4,
-            raw=hit.raw,
-        )
-
-if __name__ == '__main__':
-    rq = ResearchQuery(
-        keyword='Động phong nha kẻ bàng',
-    )
-    d = DuckDuckGoSearchProvider()
-    infor =  d.search(rq)
-    from pprint import pprint
-    pprint(infor)
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\provider\YouTubeSearchProvider.py`
-```python
-from yt_dlp import YoutubeDL
-
-from src.auto_content.interface.knowledge_provider import (
-    KnowledgeProvider,
-    ResearchQuery,
-    SourceHit,
-    KnowledgeDocument,
-)
-
-
-class YouTubeSearchProvider(KnowledgeProvider):
-    @property
-    def source_name(self) -> str:
-        return "youtube"
-
-    def search(self, query: ResearchQuery) -> list[SourceHit]:
-        ydl_opts = {
-            "quiet": True,
-            "no_warnings": True,
-            "skip_download": True,
-            "extract_flat": False,
-            "noplaylist": True,
-            "ignoreerrors": True,
-        }
-
-        search_text = f"ytsearch{query.limit}:{query.keyword}"
-
-        with YoutubeDL(ydl_opts) as ydl:
-            result = ydl.extract_info(search_text, download=False)
-
-        entries = result.get("entries", []) if result else []
-
-        hits: list[SourceHit] = []
-
-        for item in entries:
-            if not item:
-                continue
-
-            video_id = item.get("id")
-            url = item.get("webpage_url")
-
-            if not url and video_id:
-                url = f"https://www.youtube.com/watch?v={video_id}"
-
-            hits.append(
-                SourceHit(
-                    source_name=self.source_name,
-                    title=item.get("title", ""),
-                    url=url,
-                    external_id=video_id,
-                    snippet=item.get("description"),
-                    raw={
-                        "id": video_id,
-                        "title": item.get("title"),
-                        "url": url,
-                        "channel": item.get("channel") or item.get("uploader"),
-                        "view_count": item.get("view_count") or 0,
-                        "duration": item.get("duration"),
-                        "upload_date": item.get("upload_date"),
-                        "description": item.get("description"),
-                    },
-                )
-            )
-
-        return hits
-
-    def fetch(self, hit: SourceHit) -> KnowledgeDocument:
-        raw = hit.raw or {}
-
-        return KnowledgeDocument(
-            source_name=self.source_name,
-            title=hit.title,
-            url=hit.url,
-            content=hit.snippet or "",
-            facts={
-                "video_id": hit.external_id,
-                "channel": raw.get("channel"),
-                "view_count": raw.get("view_count"),
-                "duration": raw.get("duration"),
-                "upload_date": raw.get("upload_date"),
-            },
-            reliability_score=0.5,
-            raw=hit.raw,
-        )
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\services\research_service.py`
-```python
-from src.auto_content.interface.knowledge_provider import (
-    KnowledgeProvider,
-    ResearchQuery,
-    SourceHit,
-    KnowledgeDocument,
-)
-from src.auto_content.interface.content_extractor import ContentExtractor
-
-
-class ResearchService:
-    def __init__(
-        self,
-        provider: KnowledgeProvider,
-        extractor: ContentExtractor,
-    ):
-        self.provider = provider
-        self.extractor = extractor
-
-    def search(self, query: ResearchQuery) -> list[SourceHit]:
-        """
-        Chỉ tìm danh sách nguồn.
-        Ví dụ: DuckDuckGo trả về title, url, snippet.
-        """
-        return self.provider.search(query)
-
-    def research(self, query: ResearchQuery) -> list[KnowledgeDocument]:
-        """
-        Luồng chính:
-        1. Search ra SourceHit
-        2. Dùng extractor để bóc nội dung thật
-        3. Trả về list KnowledgeDocument
-        """
-        hits = self.search(query)
-
-        documents: list[KnowledgeDocument] = []
-
-        for hit in hits:
-            try:
-                document = self._extract_hit(hit)
-
-                if document.content.strip():
-                    documents.append(document)
-
-            except Exception as error:
-                print(f"Cannot extract: {hit.url} | {error}")
-
-        return documents
-
-    def _extract_hit(self, hit: SourceHit) -> KnowledgeDocument:
-        """
-        Ưu tiên dùng extractor để bóc nội dung thật.
-
-        Nếu extractor không xử lý được, tạm fallback về provider.fetch().
-        provider.fetch() hiện tại của bạn đang lấy snippet, nên chỉ là phương án dự phòng.
-        """
-        if self.extractor.can_extract(hit):
-            return self.extractor.extract(hit)
-
-        return self.provider.fetch(hit)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\services\youtube_ranking_service.py`
-```python
-from src.auto_content.interface.knowledge_provider import (
-    KnowledgeProvider,
-    ResearchQuery,
-    SourceHit,
-)
-
-
-class YouTubeRankingService:
-    def __init__(self, provider: KnowledgeProvider):
-        self.provider = provider
-
-    def find_top_viewed(
-            self,
-            keyword: str,
-            search_limit: int = 20,
-            top_n: int = 5,
-    ) -> list[SourceHit]:
-        query = ResearchQuery(
-            keyword=keyword,
-            limit=search_limit,
-        )
-
-        hits = self.provider.search(query)
-
-        youtube_hits = [
-            hit for hit in hits
-            if hit.url and "youtube.com/watch" in hit.url
-        ]
-
-        sorted_hits = sorted(
-            youtube_hits,
-            key=self._get_view_count,
-            reverse=True,
-        )
-
-        return sorted_hits[:top_n]
-
-    def _get_view_count(self, hit: SourceHit) -> int:
-        if not hit.raw:
-            return 0
-
-        return int(hit.raw.get("view_count") or 0)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\tests\test_generic_extractor.py`
-```python
-from pprint import pprint
-
-from src.auto_content.provider.DuckDuckGoSearchProvider import DuckDuckGoSearchProvider
-from src.auto_content.extractor.generic_html_extractor import GenericHtmlExtractor
-from src.auto_content.interface.knowledge_provider import ResearchQuery
-
-
-if __name__ == "__main__":
-    provider = DuckDuckGoSearchProvider()
-    extractor = GenericHtmlExtractor()
-
-    query = ResearchQuery(
-        keyword="Động Phong Nha Kẻ Bàng",
-        limit=3,
-    )
-
-    hits = provider.search(query)
-
-    first_hit = hits[0]
-
-    print("HIT:")
-    pprint(first_hit)
-
-    print("=" * 80)
-
-    if extractor.can_extract(first_hit):
-        document = extractor.extract(first_hit)
-
-        print("DOCUMENT TITLE:")
-        print(document.title)
-
-        print("DOCUMENT URL:")
-        print(document.url)
-
-        print("DOCUMENT CONTENT:")
-        print(document.content[:2000])
-    else:
-        print("Extractor cannot handle this hit")
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\tests\test_research_service.py`
-```python
-from src.auto_content.interface.knowledge_provider import ResearchQuery
-from src.auto_content.provider.DuckDuckGoSearchProvider import DuckDuckGoSearchProvider
-from src.auto_content.extractor.generic_html_extractor import GenericHtmlExtractor
-from src.auto_content.services.research_service import ResearchService
-
-
-if __name__ == "__main__":
-    provider = DuckDuckGoSearchProvider()
-    extractor = GenericHtmlExtractor()
-
-    research_service = ResearchService(
-        provider=provider,
-        extractor=extractor,
-    )
-
-    query = ResearchQuery(
-        keyword="Abuna Yemata Guh",
-        limit=5,
-    )
-
-    documents = research_service.research(query)
-
-    for document in documents:
-        print("=" * 80)
-        print("TITLE:")
-        print(document.title)
-
-        print("URL:")
-        print(document.url)
-
-        print("CONTENT:")
-        print(document.content)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_content\tests\test_youtube_ranking.py`
-```python
-from src.auto_content.provider.YouTubeSearchProvider import YouTubeSearchProvider
-from src.auto_content.services.youtube_ranking_service import YouTubeRankingService
-
-
-if __name__ == "__main__":
-    provider = YouTubeSearchProvider()
-
-    service = YouTubeRankingService(
-        provider=provider,
-    )
-
-    hits = service.find_top_viewed(
-        keyword="Abuna Yemata Guh",
-        search_limit=20,
-        top_n=5,
-    )
-
-    for index, hit in enumerate(hits, start=1):
-        raw = hit.raw or {}
-
-        print("=" * 80)
-        print(f"TOP {index}")
-        print("TITLE:", hit.title)
-        print("URL:", hit.url)
-        print("CHANNEL:", raw.get("channel"))
-        print("VIEWS:", raw.get("view_count"))
-        print("DURATION:", raw.get("duration"))
-        print("UPLOAD DATE:", raw.get("upload_date"))
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\__init__.py`
-```python
-from .image_models_name import *
-from .video_model_name import *
-from .image_models_name import *
-from .ratios import *
-from .video_generation_mode import *
-from .gen_mode import *
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\gen_mode.py`
-```python
-from enum import Enum
-
-
-class GenMode(str, Enum):
-    VIDEO = 'VIDEO_MODE'
-    IMAGE = 'IMAGE_MODE'
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\image_models_name.py`
-```python
-from enum import Enum
-
-
-class ImageModelNameString(str, Enum):
-    Nano_Banana_pro = "Nano Banana Pro"
-    Nano_Banana_2 = "Nano Banana 2"
-    Nano_Banana_2_lite = "Nano Banana 2 Lite"
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\ratios.py`
-```python
-from enum import Enum
-
-class RatiosMode(str, Enum):
-    R_16_9 = '16_9'
-    R_4_3 = '4_3'
-    R_1_1 = '1_1'
-    R_3_4 = '3_4'
-    R_9_16 = '9_16'
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\resoluion.py`
-```python
-from enum import Enum
-
-class Resolution(str, Enum):
-    R_720P = "720p"
-    R_1080P = "1080p"
-    R_4K = "4k"
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\video_generation_mode.py`
-```python
-from enum import Enum
-
-class VideoGenerationMode(str, Enum):
-    FRAMES = 'Frames'
-    INGREDIENTS = 'Ingredients'
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\constant\video_model_name.py`
-```python
-from enum import Enum
-
-
-class VideoModelNameString(str, Enum):
-    OMNI_FLASH = "Omni Flash"
-    VEO_3_1_LITE = 'Veo 3.1 - Lite'
-    VEO_3_1_FAST = 'Veo 3.1 - Fast'
-    VEO_3_1_QUALITY = 'Veo 3.1 - Quality'
-    VEO_3_1_LITE_LOWER_PRIORITY = 'Veo 3.1 - Lower Priority'
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\context_factory\chrome_context_factory.py`
-```python
-from playwright.sync_api import sync_playwright
-from pathlib import Path
-
-class ChromeContextFactory:
-    def __init__(self):
-        self.playwright = sync_playwright().start()
-
-    def create_context(self, user_profile: Path, download_path: Path):
-        return self.playwright.chromium.launch_persistent_context(
-            user_data_dir=user_profile,
-            headless=False,
-            channel="chrome",
-            accept_downloads=True,
-            downloads_path=download_path
-        )
-
-    def close(self):
-        self.playwright.stop()
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\gen_service.py`
-```python
-from src.auto_gen.pages.google_flow_page import GoogleFlowPage
-from src.auto_gen.json_reader import JsonReader
-from src.auto_gen.json_writer import JsonWriter
-from src.auto_gen.constant import GenMode
-from src.auto_gen.pages.generation_config import ImageGenerationConfig, VideoGenerationConfig
-from src.auto_gen.constant.resoluion import Resolution
-from pathlib import Path
-import time
-import random
-
-
-class GenService:
-    def __init__(
-            self,
-            google_flow_page_obj: GoogleFlowPage,
-            image_gen_config: ImageGenerationConfig | None = None,
-            video_gen_config: VideoGenerationConfig | None = None,
-    ):
-        self.google_flow_page_obj = google_flow_page_obj
-
-        self.image_gen_config = image_gen_config or ImageGenerationConfig()
-        self.video_gen_config = video_gen_config or VideoGenerationConfig()
-
-        self.reader = JsonReader()
-        self.writer = JsonWriter()
-
-
-    def _is_prompt_completed(self, data: list[dict]) -> bool:
-        return all(
-            pair.get("image_done") and pair.get("video_done")
-            for pair in data
-        )
-
-    def run_prompt_file(self, prompt_path: Path):
-        print(f'Chạy phân cảnh {prompt_path}')
-
-
-        data = self.reader.read(path=prompt_path)
-
-        if data is None:
-            print(f'{prompt_path} không có dữ liệu')
-            return
-
-        if self._is_prompt_completed(data):
-            print(f"{prompt_path} đã hoàn thành, bỏ qua.")
-            return
-
-        self.google_flow_page_obj.go_to_this_page()
-        self.google_flow_page_obj.create_with_google_flow()
-
-        prj_page = self.google_flow_page_obj.get_or_create_new_project(prompt_path.stem)
-
-        start = time.time()
-        for i, pair in enumerate(data):
-            print(f'Cặp thứ {i}/{len(data)}')
-            if pair.get("image_done"):
-                print("skip image")
-            else:
-                prj_page.send_a_prompt(
-                    pair.get('image'),
-                    GenMode.IMAGE,
-                    self.image_gen_config
-                )
-                prj_page.wait_until_creating_image_below(1)
-                pair["image_done"] = True
-
-            if pair.get("video_done"):
-                print("skip video")
-                continue
-            else:
-                prj_page.wait_until_creating_video_below(
-                    1)  # Check đầu check cuối cho chắc vì lúc vừa gửi video thì nó load mấy trạng thái khác nhau ko phát hiện chính xác được là có cái nào đang tạo hay không
-                prj_page.create_video_from_latest_image(
-                    pair.get('video'),
-                    self.video_gen_config
-                )
-                pair["video_done"] = True
-                prj_page.wait_until_creating_video_below(1)
-
-            print('Lưu trạng thái gen')
-            self.writer.write(prompt_path, data)
-
-            print('Nghỉ 1 chút')
-            prj_page.wait_for_seconds(random.randint(5, 10))
-
-        end = time.time()
-        print(f"Thời gian chạy: {end - start:.2f} giây")
-
-    def run_prompt_folder(self, prompt_folder_path):
-        '''
-
-        :param prompt_folder_path: folder chứa các json prompt
-        :return:
-        '''
-        print(f'Chạy tạo dự án {prompt_folder_path}')
-        prompt_folder_path = self._get_prompt_files(prompt_folder_path)
-        for prompt_file_path in prompt_folder_path:
-            self.run_prompt_file(prompt_file_path)
-
-    def _get_prompt_files(self, prompt_folder: Path) -> list[Path]:
-        print('Lấy danh sách file json')
-
-        files = sorted(
-            file
-            for file in prompt_folder.glob("*.json")
-            if file.is_file()
-        )
-
-        print(files)
-        return files
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\input\create_empty_files.py`
-```python
-from pathlib import Path
-
-# Chạy để tạo trước các file json chứa prompt, tôi lên chatgpt tạo prompt dán vào
-
-def create_empty_files(
-    prefix: str,
-    count: int,
-    data_folder: Path | str = ".",
-    exist_ok: bool = False,
-) -> list[Path]:
-    project_folder = Path(data_folder) / prefix
-    project_folder.mkdir(parents=True, exist_ok=True)
-
-    created = []
-
-    for i in range(count):
-        file_path = project_folder / f"{prefix} phân đoạn {i:02d}.json"
-
-        if file_path.exists() and not exist_ok:
-            continue
-
-        file_path.touch(exist_ok=True)
-        created.append(file_path)
-
-    return created
-
-
-if __name__ == '__main__':
-    project_name = 'Minh bài 17'
-    chapter_total = 31
-
-    create_empty_files(prefix=project_name, count=chapter_total)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\json_reader.py`
-```python
-import json
-from pathlib import Path
-
-class JsonReader:
-    def read(self, path: Path):
-        if path.stat().st_size == 0:
-            print(f'{path} File is empty')
-            return None
-        with open(path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return data
-
-if __name__ == '__main__':
-    jsonreader = JsonReader()
-    data = jsonreader.read(Path('input/input.json'))
-    print(data)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\json_writer.py`
-```python
-import json
-from pathlib import Path
-
-class JsonWriter:
-    def write(self, path: Path, data):
-        with open(path, 'w', encoding='utf-8') as f:
-            json.dump(
-                data,
-                f,
-                ensure_ascii=False,
-                indent=4
-            )
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\main.py`
-```python
-import random
-import time
-
-from src.auto_gen.constant.resoluion import Resolution
-from src.auto_gen.context_factory.chrome_context_factory import ChromeContextFactory
-from src.auto_gen.pages.generation_config import ImageGenerationConfig, VideoGenerationConfig
-from pathlib import Path
-from src.auto_gen.pages.google_flow_page import GoogleFlowPage
-from src.config import BASE_DIR
-from src.auto_gen.constant import GenMode, VideoModelNameString, ImageModelNameString
-from src.auto_gen.gen_service import GenService
-
-context_factory_obj = ChromeContextFactory()
-user_profile = BASE_DIR / r'src\auto_gen\profiles\user0'
-gen_context = context_factory_obj.create_context(user_profile=user_profile,
-                                       download_path=Path('../downloads'))
-
-
-# Trang chủ chứa các dự án
-google_flow_page_obj = GoogleFlowPage(gen_context.new_page())
-
-# Từ chỗ này trở xuống call dịch vụ
-google_flow_page_obj.go_to_this_page()
-google_flow_page_obj.create_with_google_flow()
-
-# print('Dừng để thêm tính năng tự tải sau khi tạo') # chưa làm xong
-# google_flow_page_obj.pause_page()
-
-# Cấu hình gen ảnh
-image_generation_config = ImageGenerationConfig(
-    model_name=ImageModelNameString.Nano_Banana_2
-)
-# Cấu hình gen video
-video_generation_config = VideoGenerationConfig(
-    model_name=VideoModelNameString.VEO_3_1_LITE_LOWER_PRIORITY
-)
-
-# Khởi tạo dịch vụ gen
-gen_service = GenService(google_flow_page_obj, image_generation_config, video_generation_config)
-# Truyền folder prompt vào và chạy
-gen_service.run_prompt_folder(Path('./input/Minh bài 17'))
-
-# ===========
-# # Trang của 1 dự án cụ thể
-# prj_page = google_flow_page_obj.get_or_create_new_project('Minh bài 13 phần outro')
-#
-# # Các đối tượng đọc ghi
-# reader = JsonReader()
-# writer = JsonWriter()
-#
-# data = reader.read(path=Path('input/input.json'))
-#
-#
-# start = time.time()
-# for i, pair in enumerate(data):
-#     print(f'Cặp thứ {i}/{len(data)}')
-#     if pair.get("image_done"):
-#         print("skip image")
-#     else:
-#         prj_page.send_a_prompt(
-#             pair.get('image'),
-#             GenMode.IMAGE,
-#             ImageGenerationConfig()
-#         )
-#         prj_page.wait_until_creating_image_below(1)
-#         pair["image_done"] = True
-#
-#     if pair.get("video_done"):
-#         print("skip video")
-#         continue
-#     else:
-#         prj_page.create_video_from_latest_image(
-#             pair.get('video'),
-#             VideoGenerationConfig()
-#         )
-#         pair["video_done"] = True
-#         prj_page.wait_until_creating_video_below(1)
-#
-#     print('Lưu trạng thái gen')
-#     writer.write(Path('input/input.json'), data)
-#
-#     print('Nghỉ 1 chút')
-#     prj_page.wait_for_seconds(random.randint(5, 10))
-#
-# end = time.time()
-# print(f"Thời gian chạy: {end - start:.2f} giây")
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\base_page.py`
-```python
-import time
-
-from playwright.sync_api import Page, Locator, expect
-import random
-
-
-class BasePage:
-    url = None
-
-    def __init__(self, page):
-        self.page: Page = page
-
-    def pause_page(self):
-        self.page.pause()
-
-    def close_page(self):
-        self.page.close()
-
-    def go_to_this_page(self):
-        '''
-        Tự di chuyển đến chính nó, khi nhảy nhiều page quá thì muốn quay lại page chính nó thì gọi hàm này
-        '''
-        if self.url is None:
-            raise NotImplementedError("Page phải khai báo url")
-        self.page.goto(self.url, wait_until='load')
-        self.wait_util_loaded()
-
-    def wait_util_loaded(self):
-        print("Loading page...")
-        self.page.wait_for_load_state("networkidle")
-
-    def random_time_click(
-            self,
-            locator: Locator,
-            min_delay: float = 0.2,
-            max_delay: float = 0.8,
-    ):
-        self.page.wait_for_timeout(
-            random.uniform(min_delay, max_delay) * 1000
-        )
-
-        try:
-            html = locator.evaluate("e => e.outerHTML")
-            print(f"[CLICK] {html[:150]}...")
-        except Exception:
-            print("[CLICK] <cannot get html>")
-
-        locator.click()
-
-    def click_random_order(self, *locators: Locator):
-        locators = list(locators)
-        random.shuffle(locators)
-        for locator in locators:
-            if locator != None:
-                self.random_time_click(locator)
-
-    def wait_for_seconds(self, seconds: float= 2):
-        """
-        Hard wait for fixed seconds.
-        """
-        self.page.wait_for_timeout(seconds * 1000)
-
-    def wait_visible(self, locator, timeout=30000):
-        expect(locator).to_be_visible(timeout=timeout)
-
-    def wait_hidden(self, locator, timeout=30000):
-        expect(locator).to_be_hidden(timeout=timeout)
-
-    def wait_enabled(self, locator, timeout=30000):
-        expect(locator).to_be_enabled(timeout=timeout)
-
-    def debug_locator(self, locator: Locator):
-        count = locator.count()
-
-        print("=" * 80)
-        print(f"Count: {count}")
-
-        for i in range(count):
-            item = locator.nth(i)
-
-            print(f"\n[{i}]")
-            print("tag:", item.evaluate("e => e.tagName"))
-            print("text:", repr(item.text_content()))
-            print("html:", item.evaluate("e => e.outerHTML"))
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\add_reference_component.py`
-```python
-import re
-from src.auto_gen.pages.components.base_component import BaseComponent
-
-
-class AddReferenceComponent(BaseComponent):
-    def __init__(self, page):
-        super().__init__(page)
-        self.images = page.get_by_role("tab", name="image Images")
-        self.filter_drop_down = page.get_by_role(
-            "button",
-            name=re.compile(
-                r"^(Recent|Newest|Oldest|Most Used|Favorites)\s+arrow_drop_down$"
-            )
-        )
-        self.newest_btn = page.get_by_role("menuitem", name="Newest")
-        self.add_to_prompt = page.get_by_role("button", name="Add to Prompt")
-
-    def add_latest_image(self):
-        if self.images.get_attribute("aria-selected") != "true":
-            self.random_time_click(self.images)
-        self.random_time_click(self.filter_drop_down)
-        self.random_time_click(self.newest_btn)
-        self.random_time_click(self.add_to_prompt)
-        self.close_component()
-        return True
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\base_component.py`
-```python
-from playwright.sync_api import Page
-from src.auto_gen.pages.base_page import BasePage
-
-class BaseComponent(BasePage):
-    def __init__(self, page: Page):
-        super().__init__(page)
-        self.page = page
-
-    def close_component(self):
-        self.page.keyboard.press('Escape')
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\image_setting_component.py`
-```python
-import re
-import random
-from playwright.sync_api import Page
-from pages.components.base_component import BaseComponent
-from src.auto_gen.constant import ImageModelNameString, RatiosMode
-from src.auto_gen.pages.generation_config import ImageGenerationConfig
-class ImageSettingComponent(BaseComponent):
-    def __init__(self, page: Page):
-        super().__init__(page)
-
-        # Các nút chọn tỷ lệ
-        self.ratio_16_9 = self.page.get_by_role("tab", name="crop_16_9 16:")
-        self.ratio_4_3 = self.page.get_by_role("tab", name="crop_landscape 4:")
-        self.ratio_1_1 = self.page.get_by_role("tab", name="crop_square 1:")
-        self.ratio_1_2 = self.page.get_by_role("tab", name="crop_square 1:")
-        self.ratio_3_4 = self.page.get_by_role("tab", name="crop_portrait 3:")
-        self.ratio_9_16 = self.page.get_by_role("tab", name="crop_9_16 9:")
-
-        # Các nút chọn số lượng
-        self.quantity_x1 = self.page.get_by_role("tab", name="1x")
-        self.quantity_x2 = self.page.get_by_role("tab", name="x2")
-        self.quantity_x3 = self.page.get_by_role("tab", name="x3")
-        self.quantity_x4 = self.page.get_by_role("tab", name="x4")
-
-        # Nút chọn model
-        self.choose_model_btn = self.page.get_by_role(
-            "button",
-            name=re.compile(r"arrow_drop_down$")
-        )
-
-    def _get_ratio_locator(self, ratio: RatiosMode):
-        if ratio == RatiosMode.R_16_9:
-            return self.ratio_16_9
-        if ratio == RatiosMode.R_4_3:
-            return self.ratio_4_3
-        if ratio == RatiosMode.R_1_1:
-            return self.ratio_1_1
-        if ratio == RatiosMode.R_3_4:
-            return self.ratio_3_4
-        if ratio == RatiosMode.R_9_16:
-            return self.ratio_9_16
-
-    def _get_quantity_locator(self, quantity: int):
-        if quantity == 1:
-            return self.quantity_x1
-        if quantity == 2:
-            return self.quantity_x2
-        if quantity == 3:
-            return self.quantity_x3
-        if quantity == 4:
-            return self.quantity_x4
-
-    def configure(self, config: ImageGenerationConfig):
-        # Tìm các nút
-        ratio_locator = self._get_ratio_locator(config.ratio)
-        quantity_locator = self._get_quantity_locator(config.quantity)
-        self.random_time_click(self.choose_model_btn)
-        list_model = ListImageModelComponent(self.page)
-        model_locator = list_model.get_model_locator_by_name(config.model_name)
-        self.random_time_click(model_locator)
-        # Cho các locator vào danh sách rồi xáo trộn lên rồi click
-        locators = [
-            ratio_locator,
-            quantity_locator,
-        ]
-        random.shuffle(locators)
-        for locator in locators:
-            self.random_time_click(locator)
-        self.close_component()
-
-class ListImageModelComponent(BaseComponent):
-    def __init__(self, page: Page):
-        super().__init__(page)
-        self.nano_pro = page.get_by_role("button", name="🍌 Nano Banana Pro")
-        self.nano_2 = page.get_by_role("button", name="🍌 Nano Banana 2", exact=True)
-        self.nano_2_lite = page.get_by_role("button", name="🍌 Nano Banana 2 Lite")
-
-    def get_model_locator_by_name(self, model_name):
-        if model_name == ImageModelNameString.Nano_Banana_pro:
-            return self.nano_pro
-        if model_name == ImageModelNameString.Nano_Banana_2:
-            return self.nano_2
-        if model_name == ImageModelNameString.Nano_Banana_2_lite:
-            return self.nano_2_lite
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\resolution_dropdown_component.py`
-```python
-from src.auto_gen.pages.components.base_component import BaseComponent
-from src.auto_gen.constant.resoluion import Resolution
-
-class ResolutionDropdownComponent(BaseComponent):
-    def __init__(self, page):
-        super().__init__(page)
-        self.r_720p = page.get_by_role("menuitem", name="720p Original Size")
-        self.r_1080p = page.get_by_role("menuitem", name="1080p Upscaled")
-        self.r_4k = page.get_by_role("menuitem", name="4K Upscaled · 50 credits")
-
-    def click_resolution(self, resolution: Resolution):
-        if resolution.R_720P:
-            self.random_time_click(self.r_720p)
-        elif resolution.R_1080P:
-            self.random_time_click(self.r_1080p)
-        elif resolution.R_4K:
-            self.random_time_click(self.r_4k)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\right_click_menu_component.py`
-```python
-from src.auto_gen.pages.components.base_component import BaseComponent
-from src.auto_gen.pages.components.resolution_dropdown_component import ResolutionDropdownComponent
-from src.auto_gen.constant.resoluion import Resolution
-
-class RightClickMenuComponent(BaseComponent):
-    def __init__(self, page):
-        super().__init__(page)
-        self.down_load_btn = page.get_by_text("downloadDownload")
-
-    def download_this_video(self, resolution: Resolution):
-        self.random_time_click(self.down_load_btn)
-        resolution_dropdown = ResolutionDropdownComponent(self.page)
-        resolution_dropdown.click_resolution(resolution)
-        return True
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\setting_component.py`
-```python
-from playwright.sync_api import Page
-from .base_component import BaseComponent
-from src.auto_gen.pages.components.image_setting_component import ImageSettingComponent
-from src.auto_gen.pages.components.video_setting_component import VideoSettingComponent
-
-
-class SettingComponent(BaseComponent):
-    '''
-    Ô wiget xuất hiện khi ấn vào setting
-    '''
-    def __init__(self, page: Page):
-        super().__init__(page)
-        # Nút tab ảnh
-        self.images_tab = page.get_by_role("tab", name="image Image")
-        # Nút tạo video
-        self.video_tab = page.get_by_role("tab", name="play_circle Video")
-
-    def go_to_image_mode(self):
-        self.random_time_click(self.images_tab)
-        return ImageSettingComponent(self.page)
-
-    def go_to_video_mode(self):
-        self.random_time_click(self.video_tab)
-        return VideoSettingComponent(self.page)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\components\video_setting_component.py`
-```python
-
-import re
-from src.auto_gen.pages.components.base_component import BaseComponent
-from src.auto_gen.pages.generation_config import VideoGenerationConfig
-from src.auto_gen.constant import VideoModelNameString, RatiosMode, VideoGenerationMode
-from playwright.sync_api import Page
-
-
-class VideoSettingComponent(BaseComponent):
-    def __init__(self, page):
-        super().__init__(page)
-        # Generation mode
-        self.frames_mode = page.get_by_role("tab", name="crop_free Frames")
-        self.ingrediens_mode = page.get_by_role("tab", name="chrome_extension Ingredients")
-
-        # Ratios
-        self.ratio_9_16 = page.get_by_role("tab", name="crop_9_16 9:")
-        self.ratio_16_9 = page.get_by_role("tab", name="crop_16_9 16:")
-
-        # Các nút chọn số lượng
-        self.quantity_x1 = self.page.get_by_role("tab", name="1x")
-        self.quantity_x2 = self.page.get_by_role("tab", name="x2")
-        self.quantity_x3 = self.page.get_by_role("tab", name="x3")
-        self.quantity_x4 = self.page.get_by_role("tab", name="x4")
-
-        # Nút chọn model
-        self.choose_model_btn = self.page.get_by_role(
-            "button",
-            name=re.compile(r"arrow_drop_down$")
-        )
-
-        # Các nút chọn thời lượng
-        self.dur_4s_btn = self.page.get_by_role("tab", name="4s")
-        self.dur_6s_btn = self.page.get_by_role("tab", name="6s")
-        self.dur_8s_btn = self.page.get_by_role("tab", name="8s")
-
-    def _get_ratio_locator(self, ratio: RatiosMode):
-        if ratio == RatiosMode.R_16_9:
-            return self.ratio_16_9
-        if ratio == RatiosMode.R_9_16:
-            return self.ratio_9_16
-
-    def _get_quantity_locator(self, quantity: int):
-        if quantity == 1:
-            return self.quantity_x1
-        if quantity == 2:
-            return self.quantity_x2
-        if quantity == 3:
-            return self.quantity_x3
-        if quantity == 4:
-            return self.quantity_x4
-
-    def _get_duration_locator(self, duration: int):
-        if duration == 4:
-            return self.dur_4s_btn
-        if duration == 6:
-            return self.dur_6s_btn
-        if duration == 8:
-            return self.dur_8s_btn
-
-    def _get_video_generation_mode_locator(self, mode: VideoGenerationMode):
-        if mode == VideoGenerationMode.FRAMES:
-            return self.frames_mode
-        elif mode == VideoGenerationMode.INGREDIENTS:
-            return self.ingrediens_mode
-
-    def configure(self, config: VideoGenerationConfig):
-        # Tìm các nút
-        generator_mode_locator = self._get_video_generation_mode_locator(config.generation_mode)
-        ratio_locator = self._get_ratio_locator(config.ratio)
-        quantity_locator = self._get_quantity_locator(config.quantity)
-        dur_locator = self._get_duration_locator(config.duration)
-        self.random_time_click(self.choose_model_btn)
-        list_model = ListVideoModelComponent(self.page)
-        model_locator = list_model.get_model_locator_by_name(config.model_name)
-        self.random_time_click(model_locator)
-        # Cho các locator vào danh sách rồi xáo trộn lên rồi click
-        self.click_random_order(generator_mode_locator, ratio_locator, quantity_locator, dur_locator)
-        self.close_component()
-
-
-class ListVideoModelComponent(BaseComponent):
-    def __init__(self, page: Page):
-        super().__init__(page)
-        self.omni = page.get_by_role("button", name="volume_up Omni Flash")
-        self.veo31lite = page.get_by_role("button", name="volume_up Veo 3.1 - Lite", exact=True)
-        self.veo31fast = page.get_by_role("button", name="volume_up Veo 3.1 - Fast")
-        self.veo31qual = page.get_by_role("button", name="volume_up Veo 3.1 - Quality")
-        self.veo31litelower = page.get_by_role("button", name="volume_up Veo 3.1 - Lite [")
-
-    def get_model_locator_by_name(self, model_name):
-        if model_name == VideoModelNameString.OMNI_FLASH:
-            return self.omni
-        elif model_name == VideoModelNameString.VEO_3_1_LITE:
-            return self.veo31lite
-        elif model_name == VideoModelNameString.VEO_3_1_FAST:
-            return self.veo31fast
-        elif model_name == VideoModelNameString.VEO_3_1_QUALITY:
-            return self.veo31qual
-        elif model_name == VideoModelNameString.VEO_3_1_LITE_LOWER_PRIORITY:
-            return self.veo31litelower
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\generation_config\__init__.py`
-```python
-from .base_generation_config import *
-from .image_gen_config import *
-from .video_gen_config import *
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\generation_config\base_generation_config.py`
-```python
-from dataclasses import dataclass
-from src.auto_gen.constant import RatiosMode
-
-@dataclass
-class BaseGenerationConfig:
-    quantity: int = 1
-    ratio: RatiosMode = RatiosMode.R_16_9
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\generation_config\image_gen_config.py`
-```python
-from dataclasses import dataclass
-from .base_generation_config import BaseGenerationConfig
-from src.auto_gen.constant.image_models_name import ImageModelNameString
-@dataclass
-class ImageGenerationConfig(BaseGenerationConfig):
-    model_name: str = ImageModelNameString.Nano_Banana_2
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\generation_config\video_gen_config.py`
-```python
-from dataclasses import dataclass
-
-from src.auto_gen.constant.resoluion import Resolution
-from .base_generation_config import BaseGenerationConfig
-from src.auto_gen.constant import VideoGenerationMode, VideoModelNameString
-
-@dataclass
-class VideoGenerationConfig(BaseGenerationConfig):
-    generation_mode: VideoGenerationMode = VideoGenerationMode.INGREDIENTS
-    model_name: str = VideoModelNameString.VEO_3_1_LITE_LOWER_PRIORITY
-    duration: int = 8
-    resolution: Resolution | None = None
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\google_flow_page.py`
-```python
-import re
-from playwright.sync_api import Page
-from src.auto_gen.pages.base_page import BasePage
-from src.auto_gen.pages.google_flow_project_page import GoogleFlowProjectPage
-
-
-class GoogleFlowPage(BasePage):
-    url = 'https://labs.google/fx/tools/flow'
-
-    def __init__(self, page: Page):
-        super().__init__(page)
-        self.go_to_this_page()
-        self.create_with_google_flow_btn = page.get_by_role("button", name="Create with Google Flow")
-        self.create_new_project_btn = page.get_by_role("button", name="add_2 New project")
-
-    def create_with_google_flow(self):
-        if self.create_with_google_flow_btn.is_visible():
-            self.random_time_click(self.create_with_google_flow_btn)
-
-    def _is_exist_project(self, project_name):
-        return self.page.get_by_text(f"{project_name}editEdit project").is_visible()
-
-    def _get_project_page(self):
-        project_page = GoogleFlowProjectPage(self.page)
-        project_page.wait_util_loaded()
-        return project_page
-
-    def _create_new_project(self, project_name):
-        self.random_time_click(self.create_new_project_btn)
-        new_project_page = self._get_project_page()
-        new_project_page.set_project_name(project_name)
-        return new_project_page
-
-    def _open_exist_project_page(self, project_name):
-        span = self.page.get_by_text(f"{project_name}editEdit project")
-        a = span.locator("xpath=ancestor::div[2]/a")
-        # self.debug_locator(a)
-        # url_project = a.get_attribute("href")
-        self.random_time_click(a)
-        return self._get_project_page()
-
-    def get_or_create_new_project(self, project_name):
-        if self._is_exist_project(project_name):
-            return self._open_exist_project_page(project_name)
-        else:
-            return self._create_new_project(project_name)
-
-
-
-
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\pages\google_flow_project_page.py`
-```python
-import re
-import time
-
-from src.auto_gen.constant.resoluion import Resolution
-from src.auto_gen.constant import RatiosMode, ImageModelNameString, VideoGenerationMode, VideoModelNameString, GenMode
-from .base_page import BasePage
-from .generation_config import BaseGenerationConfig, ImageGenerationConfig, VideoGenerationConfig
-from playwright.sync_api import Page
-from src.auto_gen.pages.components.setting_component import SettingComponent
-from src.auto_gen.pages.components.add_reference_component import AddReferenceComponent
-from src.auto_gen.pages.components.right_click_menu_component import RightClickMenuComponent
-
-
-class GoogleFlowProjectPage(BasePage):
-    '''
-    Đây là page khi mà mở vào trong một project
-    '''
-    url = None
-
-    def __init__(self, page: Page):
-        super().__init__(page)
-        # entry tên project
-        self.name_entry = page.get_by_role("textbox", name="Editable text")
-        # nút hoàn tất đặt tên
-        self.done_project_name_btn = page.get_by_role("button", name="done Done")
-        # mục tất cả media
-        self.all_media_btn = page.get_by_text("dashboardAll MediaAll Media")
-        # thông báo hoạt động bất thường
-        self.unusual_activity_notice = page.get_by_role("button", name="warning Failed We noticed")
-        # mục chỉ ảnh
-        self.images = page.get_by_text("imageView imagesImages")
-        # mục chỉ video
-        self.videos = page.get_by_text("videocamView videosVideos")
-        # entry nhập prompt
-        self.input_prompt = page.get_by_role("paragraph").filter(has_text="What do you want to create?")
-        # nút chế độ tác nhân
-        self.agent_btn = page.get_by_role("button", name="Tác nhân")
-        # nút thêm thành phần tham chiếu
-        self.add_image = page.get_by_role("button", name="add_2 Create")
-        # nút cài đặt
-        self.setting_btn = page.locator("button").filter(
-            has_text=re.compile(r"(Nano Banana|Video)")
-        )
-        # nút gửi prompt tạo
-        self.send_btn = page.get_by_role("button", name="arrow_forward Create")
-
-        # ảnh đang được tạo
-        self.creating_images = self.page.get_by_text(
-            re.compile(r"image\d+%.*")
-        )
-
-        # Các locator nhận diện video đang tạo
-        # # 1. Vừa submit, chưa có Queue, chưa có %
-        # self.submitting_video = page.get_by_text(
-        #     re.compile(r"^play_circle(?!\s+\d+%).*")
-        # )
-
-        # 2. Đang Queue
-        self.queued_video = page.get_by_role(
-            "button",
-            name=re.compile(r"^movie\s+Queued.*")
-        )
-
-        # 3. Đang Generate
-        self.generating_video = page.get_by_role(
-            "link",
-            name=re.compile(r"^play_circle\s+\d+%.*")
-        )
-
-    def turn_off_agent_btn(self):
-        pressed = self.agent_btn.get_attribute("aria-pressed")
-        if pressed == 'true':
-            print('Tắt chế độ tác nhân')
-            self.random_time_click(self.agent_btn)
-        return True
-
-    def set_project_name(self, project_name: str):
-        self.random_time_click(self.name_entry)
-        self.name_entry.fill(project_name)
-        self.random_time_click(self.done_project_name_btn)
-        return True
-
-    def _go_to_setting(self):
-        self.click_random_order(self.setting_btn)
-        print('Mở cửa sổ cài đặt')
-        return SettingComponent(self.page)
-
-    def fill_prompt(self, prompt):
-        self.input_prompt.fill(prompt)
-        return True
-
-    def turn_on_image_mode(self, config: ImageGenerationConfig):
-        setting_component = self._go_to_setting()
-        image_setting_component = setting_component.go_to_image_mode()
-        image_setting_component.configure(config)
-        return True
-
-    def turn_on_video_mode(self, config: VideoGenerationConfig):
-        setting_component = self._go_to_setting()
-        video_setting_component = setting_component.go_to_video_mode()
-        video_setting_component.configure(config)
-        return True
-
-    def send_a_prompt(self, prompt: str, mode: GenMode, config):
-        self.fill_prompt(prompt)
-        if mode == GenMode.IMAGE:
-            self.turn_on_image_mode(config)
-        if mode == GenMode.VIDEO:
-            self.turn_on_video_mode(config)
-        self.random_time_click(self.send_btn)
-
-    def wait_until_creating_image_below(
-            self,
-            max_creating: int = 2,
-            timeout: int = 60_000,
-            poll_interval: int = 5000,
-    ):
-        start = time.time()
-        while self.creating_images.count() >= max_creating:
-            print(f'{self.creating_images.count()=}')
-            if (time.time() - start) * 1000 > timeout:
-                raise TimeoutError(
-                    f"Still have {self.creating_images.count()} creating images after {timeout} ms"
-                )
-            self.page.wait_for_timeout(poll_interval)
-
-    def _creating_video_count(self) -> int:
-        # print("SUBMIT:", self.submitting_video.all_inner_texts())
-        print("QUEUE:", self.queued_video.all_inner_texts())
-        print("GENERATE:", self.generating_video.all_inner_texts())
-        return (
-            # self.submitting_video.count()
-                + self.queued_video.count()
-                + self.generating_video.count()
-        )
-
-    def wait_until_creating_video_below(self, max_creating: int = 2, timeout=120_000, poll_interval=5000):
-        start = time.time()
-        while self._creating_video_count() >= max_creating:
-            print(f'{self._creating_video_count()=}')
-            if (time.time() - start) * 1000 > timeout:
-                raise TimeoutError(
-                    f"Still have {self._creating_video_count()} creating images after {timeout} ms"
-                )
-            self.page.wait_for_timeout(poll_interval)
-        return True
-
-    def _get_lasted_img(self, config):
-        self.turn_on_video_mode(config)
-        self.random_time_click(self.add_image)
-        add_ref_com_obj = AddReferenceComponent(self.page)
-        add_ref_com_obj.add_latest_image()
-        return True
-
-    def create_video_from_latest_image(self, prompt, config: VideoGenerationConfig):
-        self._get_lasted_img(config)
-        self.send_a_prompt(prompt, GenMode.VIDEO, config)
-        if config.resolution:
-            self.download_lasted_video(config.resolution)
-        return True
-
-    def download_lasted_video(self, resolution: Resolution):
-        self.random_time_click(self.videos)
-        lasted_video_locator = self.page.get_by_role("button").filter(has_text=re.compile(r"^$")).first
-        lasted_video_locator.hover()
-        lasted_video_locator.click(button='right')
-        right_click_menu = RightClickMenuComponent(self.page)
-        right_click_menu.download_this_video(resolution)
-        return
-```
-
-----------------------------------------
-
-## FILE: `src\auto_gen\setup_user_data_dir.py`
-```python
-import subprocess
-from pathlib import Path
-from src.config import BASE_DIR
-
-CHROME_PATH = Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
-USER_DATA_DIR = BASE_DIR / r'src\auto_gen\profiles\user0'
-USER_DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-cmd = [
-    CHROME_PATH,
-    f"--user-data-dir={USER_DATA_DIR}"
-]
-
-subprocess.Popen(cmd)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\constant\prompt_format.py`
-```python
-# Prompt yêu cầu trả về json với schema bất kì
-JSON_RESPONSE_PROMPT = '''
-{text}
-Return ONLY a valid JSON object.
-
-Schema:
-{schema}
-
-Rules:
-- Do not wrap in ```json
-- Do not include explanations
-- Do not add extra fields
-- All required fields must be present
-'''
-
-# Prompt nhận diện câu có phải là phân cảnh mới không
-SENTENCE_BOUNDARY_PROMPT = """
-Bạn là chuyên gia phân tích kịch bản.
-
-Nhiệm vụ:
-Xác định xem câu hiện tại có bắt đầu một đơn vị nội dung (new unit) mới hay không.
-
-Đơn vị mới có thể xuất hiện khi có sự thay đổi rõ ràng về:
-- Chủ đề chính.
-- Bối cảnh hoặc địa điểm.
-- Thời gian.
-- Đối tượng hoặc nhân vật được tập trung.
-- Mạch nội dung chuyển sang ý lớn khác.
-
-Ngữ cảnh trước:
-{context}
-
-Câu hiện tại:
-{sentence}
-
-Hãy đưa ra quyết định dựa trên ngữ cảnh và câu hiện tại.
-If the context is None, always treat the sentence as the beginning of a new unit
-If there is no reason, return "" for json key
-new_unit must be boolean true/false (NOT string)
-"""
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\extractor\detector\base.py`
-```python
-from abc import ABC, abstractmethod
-from pydantic import BaseModel
-
-class SentenceBoundaryDetectorBase(ABC):
-
-    @abstractmethod
-    def detect(self, sentence: str, context) -> BaseModel:
-        '''
-        Dùng để nhận diện câu có phải là bắt đầu phân cảnh mới hay không
-        :param sentence:
-        :param context:
-        :return:
-        '''
-        """
-        Return format:
-        {
-            "new_unit": bool,
-            "reason": str
-        }
-        """
-        return BaseModel()
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\extractor\detector\LLMSentenceBoundaryDetector.py`
-```python
-from pydantic import BaseModel
-from src.auto_prompt.extractor.detector.base import SentenceBoundaryDetectorBase
-from src.auto_prompt.llm.base import LLM
-from src.auto_prompt.models.llm_output.sentence_boundary_decision_llm_result import SentenceBoundaryLLMResult
-from src.auto_prompt.constant.prompt_format import SENTENCE_BOUNDARY_PROMPT
-
-
-class LLMSentenceBoundaryDetector(SentenceBoundaryDetectorBase):
-
-    def __init__(
-            self,
-            llm: LLM,
-            model_name: str,
-    ):
-        self.llm = llm
-        self.model_name = model_name
-
-    def detect(
-            self,
-            sentence: str,
-            context: str | None = None
-    ) -> BaseModel:
-
-        prompt = SENTENCE_BOUNDARY_PROMPT.format(
-            sentence=sentence,
-            context=context or "None",
-        )
-
-        return self.llm.chat_json(
-            text=prompt,
-            model_name=self.model_name,
-            response_model=SentenceBoundaryLLMResult,
-        )
-
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\llm\base.py`
-```python
-from abc import ABC, abstractmethod
-from pydantic import BaseModel
-
-class LLM(ABC):
-
-    def __init__(self):
-        pass
-
-    @abstractmethod
-    def chat(
-            self,
-            user_prompt: str,
-            model_name: str,
-            system_prompt: str,
-    ) -> str:
-        """Basic chat interface"""
-        pass
-
-    def chat_json(
-            self,
-            text: str,
-            model_name: str,
-            response_model: type[BaseModel],
-            system_prompt: str | None = None
-    ) -> BaseModel:
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\llm\groq.py`
-```python
-from groq import Groq
-from src.config import GROQ_API_KEY
-from src.auto_prompt.llm.base import LLM
-from pydantic import BaseModel
-from src.auto_prompt.constant.prompt_format import JSON_RESPONSE_PROMPT
-
-
-class GroqLLM(LLM):
-    def __init__(self, api_key: str = GROQ_API_KEY):
-        super().__init__()
-        self.api_key = api_key
-        self.client = Groq(api_key=api_key)
-
-    def chat(
-            self,
-            text: str,
-            model_name: str,
-            system_prompt: str | None = None,
-            response_format: dict | None = None
-    ) -> str:
-        kwargs = {}
-        if response_format is not None:
-            kwargs["response_format"] = response_format
-        messages = []
-        self.client = Groq(api_key=self.api_key)
-        if system_prompt:
-            messages.append({
-                "role": "system",
-                "content": system_prompt
-            })
-
-        messages.append({
-            "role": "user",
-            "content": text
-        })
-
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages,
-            **kwargs
-        )
-        return response.choices[0].message.content
-
-    def chat_json(
-            self,
-            text: str,
-            model_name: str,
-            response_model: type[BaseModel],
-            system_prompt: str | None = None
-    ) -> BaseModel:
-        schemas_describle = {
-            field_name: field_info.description
-            for field_name, field_info in response_model.model_fields.items()
-        }
-        prompt = JSON_RESPONSE_PROMPT.format(text=text, schema=schemas_describle)
-        response = self.chat(prompt, model_name, system_prompt, {'type': 'json_object'})
-        return response_model.model_validate_json(response)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\models\llm_output\sentence.py`
-```python
-from dataclasses import dataclass, field
-
-
-@dataclass
-class SentenceInfo:
-    text: str
-
-    characters: list[str] = field(default_factory=list)
-    locations: list[str] = field(default_factory=list)
-    objects: list[str] = field(default_factory=list)
-    actions: list[str] = field(default_factory=list)
-
-    time: str | None = None
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\models\llm_output\sentence_boundary_decision_llm_result.py`
-```python
-from pydantic import BaseModel, Field
-
-
-class SentenceBoundaryLLMResult(BaseModel):
-    new_unit: bool = Field(..., description="Whether this sentence starts a new scene/unit")
-    reason: str | None = Field(default='', description="Short explanation for the decision")
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\models\script_row.py`
-```python
-from dataclasses import dataclass
-
-@dataclass
-class ScriptRow:
-    id: str | int
-    en: str
-    vi: str
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\models\sentence_boundary_decision.py`
-```python
-from pydantic import BaseModel
-from src.auto_prompt.models.llm_output.sentence_boundary_decision_llm_result import SentenceBoundaryLLMResult
-
-class SentenceBoundaryDecision(BaseModel):
-    sentence: str
-    decision: SentenceBoundaryLLMResult
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\reader\base.py`
-```python
-from abc import ABC, abstractmethod
-
-class Reader(ABC):
-    @abstractmethod
-    def parse(self, path):
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\reader\json_reader.py`
-```python
-import json
-from .base import Reader
-
-class JsonReader(Reader):
-    def parse(self, path):
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\reader\script_parser\base.py`
-```python
-from abc import ABC, abstractmethod
-
-from src.auto_prompt.models.script_row import ScriptRow
-
-
-class ScriptParser(ABC):
-
-    @abstractmethod
-    def parse(self, raw) -> list[ScriptRow]:
-        """Convert any script format → sentences"""
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\reader\script_parser\excel_parser.py`
-```python
-import pandas as pd
-from typing import Any, List
-from src.auto_prompt.models.script_row import ScriptRow
-from .base import ScriptParser
-
-class ScriptColumn:
-    INDEX = "Unnamed: 0"
-    SCRIPT = "KỊCH BẢN"
-    TRANSLATION = "DỊCH"
-    CHARACTER_COUNT = "KÝ TỰ"
-    TOTAL = "TỔNG"
-
-class ExcelScriptParser(ScriptParser):
-
-    def parse(self, raw: Any) -> List[ScriptRow]:
-        """
-        raw = path to .xlsx file
-        """
-
-        df = pd.read_excel(raw)
-
-        rows: List[ScriptRow] = []
-
-        for i, row in df.iterrows():
-
-            id = str(row.get(ScriptColumn.INDEX, "")).strip()
-            en = str(row.get(ScriptColumn.SCRIPT, "")).strip()
-            vi = str(row.get(ScriptColumn.TRANSLATION, "")).strip()
-            if not id or id.lower() == "nan":
-                continue
-            # skip empty row
-            if not en and not vi:
-                continue
-
-            rows.append(
-                ScriptRow(
-                    id=id,
-                    en=en,
-                    vi=vi,
-                )
-            )
-
-        return rows
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\writer\base.py`
-```python
-from abc import ABC, abstractmethod
-
-
-class Writer(ABC):
-    @abstractmethod
-    def save(self, data, output: str) -> None:
-        """Save the output to a file"""
-        pass
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\repository\writer\jsonwriter.py`
-```python
-from .base import Writer
-import json
-import os
-
-class JsonWriter(Writer):
-    def save(self, data, output_dir: str) -> None:
-        os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-        with open(output_dir, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\services\sentence_detector_service.py`
-```python
-import re
-from src.auto_prompt.models.sentence_boundary_decision import SentenceBoundaryDecision
-from src.auto_prompt.extractor.detector.base import SentenceBoundaryDetectorBase
-from pydantic import BaseModel
-
-
-class SentenceBoundaryService:
-
-    def __init__(
-            self,
-            detector: SentenceBoundaryDetectorBase,
-    ):
-        self.detector = detector
-
-    def analyze(
-            self,
-            paragraph: str,
-    ) -> list[dict]:
-        results = []
-
-        previous = None
-        sentences = self._split_to_list_sentence(paragraph)
-        for sentence in sentences:
-            decision = self.detector.detect(
-                sentence=sentence,
-                context=previous,
-            )
-            results.append(
-                SentenceBoundaryDecision(
-                    sentence=sentence,
-                    decision=decision,
-                ).model_dump()
-            )
-            previous = sentence
-
-        return results
-
-    def _split_to_list_sentence(self, paragraph: str) -> list[str]:
-        if not paragraph.strip():
-            return []
-
-        sentences = re.split(r'(?<=[.!?])\s+', paragraph.strip())
-        return [s.strip() for s in sentences if s.strip()]
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\tests\test.html`
-```html
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-</head>
-<body>
-
-
-</body>
-</html>
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\tests\unit\test_ExcelScriptParser.py`
-```python
-from src.auto_prompt.repository.reader.script_parser.excel_parser import ExcelScriptParser
-
-path = r'D:\projects\auto-flow\data\input\scripts\#13.xlsx'
-esp = ExcelScriptParser()
-data = esp.parse(path)
-from pprint import pprint
-pprint(data)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_prompt\tests\unit\test_llm_sentence_boundary_detector.py`
-```python
-import time
-
-from src.auto_prompt.llm.groq import GroqLLM
-from src.auto_prompt.extractor.detector.LLMSentenceBoundaryDetector import LLMSentenceBoundaryDetector
-from src.auto_prompt.repository.reader.json_reader import JsonReader
-from src.auto_prompt.repository.writer.jsonwriter import JsonWriter
-from src.auto_prompt.services.sentence_detector_service import SentenceBoundaryService
-from src.auto_flow.constants.groq_model__name import GroqModelName
-from src.auto_prompt.repository.reader.script_parser.excel_parser import ExcelScriptParser
-from src.config import INTERMEDIATE_DATA_DIR, INPUT_DATA_DIR
-from pathlib import Path
-
-llm = GroqLLM()
-detector = LLMSentenceBoundaryDetector(llm, GroqModelName.LLAMA_3_1_8B_INSTANT)
-sentence_detector_service = SentenceBoundaryService(detector)
-excel_script_parser = ExcelScriptParser()
-reader = JsonReader()
-writer = JsonWriter()
-
-
-script_path = INPUT_DATA_DIR / 'scripts' / '#13.xlsx'
-list_script_row = excel_script_parser.parse(script_path)
-detected_result_path = INTERMEDIATE_DATA_DIR / 'sentence_detection' / script_path.stem / f'{script_path.stem}.json'
-
-if detected_result_path.exists():
-    paragraph_detected_list = reader.parse(detected_result_path)
-    start_index = len(paragraph_detected_list)
-else:
-    paragraph_detected_list = []
-    start_index = 0
-
-for row in list_script_row[start_index:]:
-    paragraph = row.en
-    paragraph_detected = sentence_detector_service.analyze(paragraph)
-    print(paragraph_detected)
-    paragraph_detected_list.append(paragraph_detected)
-    print('Sleeptime...')
-    time.sleep(5)
-    writer.save(paragraph_detected_list, detected_result_path)
-```
-
-----------------------------------------
-
-## FILE: `src\auto_search\keywords.py`
-```python
-KEYWORDS = [
-    'Uranus planet','Planet Uranus', 'Uranus facts',
-]
-```
-
-----------------------------------------
-
-## FILE: `src\auto_search\run.py`
-```python
-from pathlib import Path
-from urllib.parse import quote_plus, urljoin
-from datetime import datetime
-import html
-import re
-import time
-from src.auto_search.keywords import KEYWORDS
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-
-
-# =========================
-# CẤU HÌNH
-# =========================
-
-
-
-RESULTS_PER_KEYWORD = 5
-time_str = datetime.now().strftime("%Y%m%d%H%M%S")
-
-OUTPUT_HTML = Path(f"output/{time_str}.html")
-OUTPUT_HTML.parent.mkdir(parents=True, exist_ok=True)
-
-HEADLESS = False
-
-USER_DATA_DIR = "envato_browser_profile"
-
-SEARCH_URL_TEMPLATE = "https://app.envato.com/search?itemType=stock-video&term={term}"
-
-
-# Chỉ nhận link dạng:
-# https://app.envato.com/stock-video/339e4510-12b6-45e6-970e-1369d851925c
-STOCK_VIDEO_REGEX = re.compile(
-    r"https?://app\.envato\.com/stock-video/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}",
-    re.IGNORECASE
-)
-
-RELATIVE_STOCK_VIDEO_REGEX = re.compile(
-    r"/stock-video/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}",
-    re.IGNORECASE
-)
-
-
-# =========================
-# HÀM PHỤ
-# =========================
-
-def build_search_url(keyword: str) -> str:
-    term = quote_plus(keyword.strip())
-    return SEARCH_URL_TEMPLATE.format(term=term)
-
-
-def normalize_video_url(url: str) -> str:
-    """
-    Chuẩn hóa link về dạng https://app.envato.com/stock-video/uuid
-    """
-    if url.startswith("/stock-video/"):
-        return urljoin("https://app.envato.com", url)
-
-    # Cắt bỏ query phía sau nếu có
-    return url.split("?")[0].split("#")[0]
-
-
-def add_unique_video_link(links: list[str], seen: set[str], url: str) -> None:
-    """
-    Thêm link vào list nếu đúng dạng stock-video và chưa bị trùng.
-    """
-    if not url:
-        return
-
-    url = normalize_video_url(url)
-
-    match = STOCK_VIDEO_REGEX.search(url)
-    if not match:
-        return
-
-    clean_video_url = match.group(0)
-
-    if clean_video_url not in seen:
-        seen.add(clean_video_url)
-        links.append(clean_video_url)
-
-
-def extract_all_stock_video_links_from_dom(page, max_scan: int = 300) -> list[str]:
-    """
-    Lấy tất cả link stock-video từ DOM, giữ nguyên thứ tự xuất hiện.
-    Không giới hạn 3 hay 5 link ở đây, vì cần nhiều candidate để lọc trùng.
-    """
-    links = []
-    seen = set()
-
-    anchors = page.locator('a[href*="/stock-video/"]')
-    count = anchors.count()
-
-    scan_count = min(count, max_scan)
-
-    for i in range(scan_count):
-        try:
-            href = anchors.nth(i).get_attribute("href")
-        except Exception:
-            continue
-
-        if not href:
-            continue
-
-        url = normalize_video_url(href)
-        add_unique_video_link(links, seen, url)
-
-    return links
-
-
-def extract_all_stock_video_links_from_html(page) -> list[str]:
-    """
-    Quét toàn bộ HTML/JSON trong page để lấy link stock-video.
-    """
-    links = []
-    seen = set()
-
-    content = page.content()
-
-    absolute_matches = STOCK_VIDEO_REGEX.findall(content)
-    for url in absolute_matches:
-        add_unique_video_link(links, seen, url)
-
-    relative_matches = RELATIVE_STOCK_VIDEO_REGEX.findall(content)
-    for relative_url in relative_matches:
-        url = normalize_video_url(relative_url)
-        add_unique_video_link(links, seen, url)
-
-    return links
-
-
-def extract_first_video_links(
-    page,
-    max_links: int = 5,
-    excluded_links: set[str] | None = None
-) -> list[str]:
-    """
-    Lấy link video, nhưng bỏ qua các link đã tồn tại trong excluded_links.
-    Dùng để tránh trùng link giữa các keyword.
-    """
-    if excluded_links is None:
-        excluded_links = set()
-
-    final_links = []
-    local_seen = set()
-
-    dom_links = extract_all_stock_video_links_from_dom(page)
-    html_links = extract_all_stock_video_links_from_html(page)
-
-    candidates = dom_links + html_links
-
-    for url in candidates:
-        if url in local_seen:
-            continue
-
-        local_seen.add(url)
-
-        # Bỏ qua link đã lấy ở keyword trước
-        if url in excluded_links:
-            continue
-
-        final_links.append(url)
-
-        if len(final_links) >= max_links:
-            break
-
-    return final_links
-
-
-def wait_and_scroll_page(page):
-    """
-    Đợi trang load và cuộn xuống để Envato render thêm item.
-    """
-    time.sleep(4)
-
-    for _ in range(4):
-        page.mouse.wheel(0, 1200)
-        time.sleep(1.5)
-
-    try:
-        page.wait_for_load_state("networkidle", timeout=15000)
-    except PlaywrightTimeoutError:
-        pass
-
-    time.sleep(2)
-
-
-def scrape_envato_links(keywords: list[str]) -> list[dict]:
-    """
-    Kết quả:
-    [
-        {
-            "keyword": "...",
-            "links": ["...", "...", "..."]
-        }
-    ]
-    """
-    final_results = []
-
-    with sync_playwright() as p:
-        browser_context = p.chromium.launch_persistent_context(
-            user_data_dir=USER_DATA_DIR,
-            headless=HEADLESS,
-            channel="chrome",
-            viewport={"width": 1440, "height": 1000},
-        )
-
-        page = browser_context.new_page()
-
-        for index, keyword in enumerate(keywords, start=1):
-            print(f"\n[{index}/{len(keywords)}] Keyword: {keyword}")
-
-            search_url = build_search_url(keyword)
-            print(f"Search URL: {search_url}")
-
-            links = []
-
-            try:
-                page.goto(search_url, wait_until="domcontentloaded", timeout=60000)
-
-                wait_and_scroll_page(page)
-
-                links = extract_first_video_links(
-                    page,
-                    max_links=RESULTS_PER_KEYWORD
-                )
-
-            except Exception as e:
-                print(f"Lỗi khi xử lý keyword '{keyword}': {e}")
-
-            print(f"Lấy được {len(links)} link video:")
-            for link in links:
-                print(" -", link)
-
-            final_results.append({
-                "keyword": keyword,
-                "links": links,
-            })
-
-        browser_context.close()
-
-    return final_results
-
-
-def make_html(results: list[dict], output_path: str) -> None:
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    html_parts = []
-
-    html_parts.append("""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Envato Video Links</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 24px;
-        background: #f5f5f5;
-        color: #222;
-    }
-
-    h1 {
-        margin-bottom: 8px;
-    }
-
-    .time {
-        color: #666;
-        margin-bottom: 24px;
-    }
-
-    .keyword-box {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 18px;
-    }
-
-    .keyword {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    ol {
-        margin-top: 8px;
-    }
-
-    li {
-        margin-bottom: 8px;
-    }
-
-    a {
-        color: #0066cc;
-        word-break: break-all;
-    }
-
-    .empty {
-        color: #b00020;
-        font-style: italic;
-    }
-</style>
-</head>
-<body>
-""")
-
-    html_parts.append("<h1>Envato Stock Video Links</h1>\n")
-    html_parts.append(f'<div class="time">Generated at: {html.escape(now)}</div>\n')
-
-    for item in results:
-        keyword = item["keyword"]
-        links = item["links"]
-
-        html_parts.append('<div class="keyword-box">\n')
-        html_parts.append(f'<div class="keyword">{html.escape(keyword)}</div>\n')
-
-        if links:
-            html_parts.append("<ol>\n")
-            for link in links:
-                safe_link = html.escape(link)
-                html_parts.append(
-                    f'<li><a href="{safe_link}" target="_blank">{safe_link}</a></li>\n'
-                )
-            html_parts.append("</ol>\n")
-        else:
-            html_parts.append('<div class="empty">Không lấy được link video nào.</div>\n')
-
-        html_parts.append("</div>\n")
-
-    html_parts.append("""
-</body>
-</html>
-""")
-
-    Path(output_path).write_text("".join(html_parts), encoding="utf-8")
-
-
-# =========================
-# CHẠY
-# =========================
-
-if __name__ == "__main__":
-    results = scrape_envato_links(KEYWORDS)
-    make_html(results, OUTPUT_HTML)
-
-    print("\nHoàn tất.")
-    print(f"File HTML đã tạo: {Path(OUTPUT_HTML).resolve()}")
-```
-
-----------------------------------------
-
-## FILE: `src\chatbot\chainlit_app.py`
+## FILE: `chainlit_app.py`
 ```python
 import chainlit as cl
 from chainlit.input_widget import TextInput
 import asyncio
+import subprocess
 from src.chatbot.services.chatbot_service import ChatbotService
 from src.chatbot.indexing.indexer import Indexer
 from src.chatbot.config import INDEXED_DATA_PATH
@@ -3412,7 +122,7 @@ async def on_message(message: cl.Message):
         history = cl.user_session.get('history', None)
         if history:
             history.add('user', message.content)
-            new_history, paths_result = chatbot_service.chat(history=history)
+            new_history, paths_result = chatbot_service.chat(history=history, path_to_index=cl.user_session.get('paths_to_index', None))
             response = new_history.last().get('content', 'None')
             history.add('assistant', response)
         else:
@@ -3452,9 +162,12 @@ async def on_message(message: cl.Message):
 
 @cl.action_callback("open_file")
 async def open_file(action: cl.Action):
-    import os
-    path = action.payload["path"]
-    os.startfile(path)
+    path = Path(action.payload["path"]).resolve()
+
+    subprocess.Popen(
+        f'explorer.exe /select,"{path}"'
+    )
+
 
 
 @cl.action_callback("show_search_results")
@@ -3495,16 +208,18 @@ async def show_search_results(action: cl.Action):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\config.py`
+## FILE: `config.py`
 ```python
 from src.config import BASE_DIR
 PROJECT_PATH = BASE_DIR
 INDEXED_DATA_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'index.json'
+FILES_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'files_index.json'
+FOLDERS_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'folders_index.json'
 ```
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\config.py`
+## FILE: `graph\config.py`
 ```python
 from src.chatbot.services.groq_llm_services import GroqModelName
 
@@ -3518,7 +233,7 @@ class WorkFLowConfig:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\__init__.py`
+## FILE: `graph\nodes\__init__.py`
 ```python
 from .classification import ClassificationNode
 from .natural_chat import NaturalChatNode
@@ -3529,7 +244,7 @@ from .retrieval_chat import RetrievalChatNode
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\base_node.py`
+## FILE: `graph\nodes\base_node.py`
 ```python
 from src.loggers import main_logger
 
@@ -3553,7 +268,7 @@ class BaseNode:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\classification.py`
+## FILE: `graph\nodes\classification.py`
 ```python
 
 from src.chatbot.graph.state import State
@@ -3594,7 +309,7 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\extract.py`
+## FILE: `graph\nodes\extract.py`
 ```python
 from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
@@ -3635,7 +350,7 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\natural_chat.py`
+## FILE: `graph\nodes\natural_chat.py`
 ```python
 from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
@@ -3653,7 +368,7 @@ class NaturalChatNode(BaseNode):
     def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
 
-        natural_instruction = self.prompt_service.render('natural')
+        natural_instruction = self.prompt_service.render('natural', summary=state.dir_summary)
         msges = state.history.to_messages(last_n=4, system_prompt=natural_instruction)
         system_output = self.llm_service.chat_history(msges, WorkFLowConfig.NATURAL_CHAT_MODEL)
 
@@ -3671,7 +386,7 @@ class NaturalChatNode(BaseNode):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\retrieval_chat.py`
+## FILE: `graph\nodes\retrieval_chat.py`
 ```python
 from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqServices
@@ -3688,11 +403,18 @@ class RetrievalChatNode(BaseNode):
 
     def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
-
-        paths = state.found_paths[:20]  # Lấy 2 chục cái đầu để đưa vào llm nói
-        context = self.prompt_service.render('search_context', paths=paths)
-        retrieval_instruction = self.prompt_service.render('retrieval')
-        system_prompt = '\n\n'.join([retrieval_instruction, context])
+        MIN_SCORE_THRESHOLD = 50
+        valid_paths = [
+            item for item in state.found_paths
+            if item.get("score", 0) >= MIN_SCORE_THRESHOLD
+        ]
+        if not valid_paths:
+            system_prompt = self.prompt_service.render('no_results', summary=state.dir_summary)
+        else:
+            paths = valid_paths[:10]  # Lấy một phần đầu để đưa vào llm nói
+            retrieval_instruction = self.prompt_service.render('retrieval')
+            context = self.prompt_service.render('search_context', paths=paths)
+            system_prompt = '\n\n'.join([retrieval_instruction, context])
 
         msg = state.history.to_messages(system_prompt=system_prompt, last_n=10)
         system_output = self.llm_service.chat_history(msg, model_name=WorkFLowConfig.RETRIEVAL_MODEL)
@@ -3710,7 +432,7 @@ class RetrievalChatNode(BaseNode):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\nodes\search.py`
+## FILE: `graph\nodes\search.py`
 ```python
 from src.chatbot.graph.nodes.base_node import BaseNode
 from src.chatbot.services.search_service.keyword_search import KeywordSearch
@@ -3756,7 +478,7 @@ class SearchNode(BaseNode):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\router.py`
+## FILE: `graph\router.py`
 ```python
 from src.chatbot.graph.state import State
 from src.chatbot.models.intent_classification import Intent
@@ -3774,7 +496,7 @@ def classification_router(raw_state):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\state.py`
+## FILE: `graph\state.py`
 ```python
 from pydantic import BaseModel, Field
 from src.chatbot.models.intent_classification import IntentClassification
@@ -3786,11 +508,12 @@ class State(BaseModel):
     entity_extraction_result: EntityExtractionResult | None = None
     history: History = Field(default_factory=History)
     found_paths: list[dict] = Field(default_factory=list)
+    dir_summary: str = ''
 ```
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\workflows\natural_chat.py`
+## FILE: `graph\workflows\natural_chat.py`
 ```python
 from langgraph.graph import StateGraph, START, END
 from src.chatbot.graph.nodes import NaturalChatNode
@@ -3806,7 +529,7 @@ def build_natural_graph():
 
 ----------------------------------------
 
-## FILE: `src\chatbot\graph\workflows\orchestrator.py`
+## FILE: `graph\workflows\orchestrator.py`
 ```python
 from langgraph.graph import StateGraph, START, END
 from src.chatbot.graph.state import State
@@ -3857,7 +580,7 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\indexing\build_tree.py`
+## FILE: `indexing\build_tree.py`
 ```python
 from pathlib import Path
 # from tkinter import Tk, filedialog
@@ -3956,19 +679,23 @@ def build_list_path(root_path: Path, dafault_ignore_dir) -> list[str]:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\indexing\indexer.py`
+## FILE: `indexing\indexer.py`
 ```python
 from pathlib import Path
 import json
+import os
 # from tkinter import Tk, filedialog
 # from src.chatbot.indexing.build_tree import select_folder
 from src.chatbot.text_nomalizer import TextNormalizer
+from src.chatbot.services.file_service.json_writer import JsonWriter
+from src.chatbot.config import FILES_INDEX_PATH, FOLDERS_INDEX_PATH
 
 
 class Indexer:
 
-    def __init__(self, text_normalizer=None):
+    def __init__(self, text_normalizer=None, json_writer=None):
         self.text_normalizer = text_normalizer or TextNormalizer()
+        self.json_writer = json_writer or JsonWriter()
 
     def build_list(self, root: str) -> list[str]:
         """
@@ -3977,9 +704,9 @@ class Indexer:
         paths = []
 
         for path in Path(root).rglob("*"):
+            print(f'Đang quét {path=}')
             if path.is_file():
                 paths.append(str(path.resolve()))
-
         return paths
 
     def build_index(self, root: str, output: str):
@@ -3989,47 +716,126 @@ class Indexer:
 
         paths = self.build_list(root)
 
-        index = []
+        files_index = []
 
-        for path in paths:
-            p = Path(path)
+        for i, path in enumerate(paths):
+            print(f'{i}/{len(paths)}, đang xử lý {path=}')
+            file_index = self._build_file_index(path)
+            files_index.append(file_index)
 
-            index.append({
-                "path": path,
-                'normalize_stem': self.text_normalizer.normalize(p.stem),
-                'suffix': p.suffix,
-                "folders": [
-                    self.text_normalizer.normalize(x)
-                    for x in p.parts[:-1]  # loại tên file ra, chỉ lấy các thành phần trước đó tức là folder thôi
-                ]
-            })
         print(f'Lưu tại {output}')
         with open(output, "w", encoding="utf-8") as f:
-            json.dump(index, f, ensure_ascii=False, indent=2)
+            json.dump(files_index, f, ensure_ascii=False, indent=2)
 
-    # def select_folder(self):
-    #     root = Tk()
-    #     root.withdraw()  # Ẩn cửa sổ chính
-    #
-    #     folder = filedialog.askdirectory(
-    #         title="Chọn thư mục cần build tree"
-    #     )
-    #
-    #     root.destroy()
-    #
-    #     return folder if folder else None
+    def build_index_v2(self, root_path: Path):
+        print(self.build_index_v2.__name__)
+        files_index = []
+        folders_index = []
+
+        for current_path, list_subfolders, list_files in os.walk(root_path):
+            current_path_obj = Path(current_path)
+            normalized_parts = [
+                self.text_normalizer.normalize(x)
+                for x in current_path_obj.parts[:-1]
+            ]
+            # Index folder
+            folders_index.append({
+                "path": str(current_path_obj),
+                'normalize_stem': self.text_normalizer.normalize(current_path_obj.stem),
+                "normalize_parts": normalized_parts,
+                "depth": len(current_path_obj.parts) - 1,
+                "file_count": len(list_files),
+                "subfolder_count": len(list_subfolders),
+            })
+
+            # Index file
+            for file in list_files:
+                print(f'Đang xử lý {file=}')
+                path = current_path_obj / file
+                stat = path.stat()
+                preview = self._get_text_preview(path, max_chars=300)
+                record = {
+                    "path": str(path),
+                    'normalize_stem': self.text_normalizer.normalize(path.stem),
+                    'suffix': path.suffix.lower(),
+                    "normalize_parts": normalized_parts,
+                    "mtime": int(stat.st_mtime),
+                    "ctime": int(stat.st_ctime),
+                    "size": stat.st_size,
+                }
+                if preview:
+                    record["preview"] = preview
+
+                files_index.append(record)
+
+        self.json_writer.write(FILES_INDEX_PATH, files_index)
+        print(f'Đã lưu {FILES_INDEX_PATH=}')
+        self.json_writer.write(FOLDERS_INDEX_PATH, folders_index)
+        print(f'Đã lưu {FOLDERS_INDEX_PATH=}')
+
+
+    def _build_file_index(self, path: str):
+        p = Path(path)
+        stat = p.stat()
+
+        size_kb = stat.st_size / 1024
+        size_mb = size_kb / 1024
+        file_size_str = f"{size_mb:.2f} MB" if size_mb >= 1.0 else f"{size_kb:.1f} KB"
+
+        return {
+            "path": path,
+            'normalize_stem': self.text_normalizer.normalize(p.stem),
+            'suffix': p.suffix,
+            "folders": [
+                self.text_normalizer.normalize(x)
+                for x in p.parts[:-1]  # loại tên file ra, chỉ lấy các thành phần trước đó tức là folder thôi
+            ],
+            'mtime': stat.st_mtime,
+            "ctime": stat.st_ctime,  # Ngày tạo
+            'file_size': file_size_str,
+            "preview": self._get_text_preview(p, max_chars=300)  # Đoạn trích nội dung
+        }
+
+
+    def _get_text_preview(self, path_obj: Path, max_chars=300) -> str:
+        """Đọc thử một đoạn nội dung ngắn nếu là file văn bản để làm preview"""
+        # Chỉ đọc các file văn bản phổ biến
+        text_suffixes = {".txt", ".md", ".json", ".csv"}
+        if path_obj.suffix.lower() not in text_suffixes:
+            return ""
+        try:
+            # Đọc tối đa số lượng ký tự quy định để tránh file quá nặng
+            with open(path_obj, "r", encoding="utf-8", errors="ignore") as f:
+                content = f.read(max_chars)
+                # Dọn dẹp các ký tự xuống dòng dư thừa để lưu trữ gọn gàng
+                return " ".join(content.split())
+        except Exception:
+            return ""
+
+
+# def select_folder(self):
+#     root = Tk()
+#     root.withdraw()  # Ẩn cửa sổ chính
+#
+#     folder = filedialog.askdirectory(
+#         title="Chọn thư mục cần build tree"
+#     )
+#
+#     root.destroy()
+#
+#     return folder if folder else None
 
 
 if __name__ == '__main__':
     # path = select_folder()
-    # indexer = Indexer()
-    # indexer.build_index(path, 'index.json')
+    indexer = Indexer()
+    indexer.build_index_v2(r'C:\Users\Admin\Downloads')
     pass
 ```
 
 ----------------------------------------
 
-## FILE: `src\chatbot\models\entity_extraction_result.py`
+## FILE: `models\entity_extraction_result.py`
 ```python
 from pydantic import BaseModel, Field
 from src.chatbot.models.llm_response_model import LLMResponseModel
@@ -4082,7 +888,7 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\models\found_path_result.py`
+## FILE: `models\found_path_result.py`
 ```python
 from pydantic import BaseModel
 
@@ -4093,7 +899,7 @@ class FoundPathResult(BaseModel):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\models\history.py`
+## FILE: `models\history.py`
 ```python
 from pydantic import BaseModel
 
@@ -4103,6 +909,8 @@ class History(BaseModel):
     messages: list[dict] = []
 
     def add(self, role: str, content: str):
+        if role == 'system':
+            return
         self.messages.append({
             "role": role,
             "content": content
@@ -4117,7 +925,8 @@ class History(BaseModel):
         :param system_prompt:
         :return:
         '''
-        messages = self.messages
+        # Loại bỏ các tin system message ra để ghi đề system mess mới tránh lẫn vai trò
+        messages = [msg for msg in self.messages if msg.get("role") in ("user", "assistant")]
 
         if last_n is not None:
             messages = messages[-last_n:]
@@ -4136,27 +945,45 @@ class History(BaseModel):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\models\intent_classification.py`
+## FILE: `models\intent_classification.py`
 ```python
 from enum import StrEnum
 from pydantic import BaseModel, Field
 from src.chatbot.models.llm_response_model import LLMResponseModel
 
+
 class Intent(StrEnum):
     NATURAL_CHAT = "NATURAL_CHAT"
     SEARCH = "SEARCH"
+    STORAGE_ANALYSIS = "STORAGE_ANALYSIS"
+
+    @classmethod
+    def intent_values(self):
+        return ", ".join(intent.value for intent in Intent)
 
 
 class IntentClassification(LLMResponseModel):
     intent: Intent = Field(
-        description="""
+        description=f'''
 Phân loại ý định của người dùng.
 
-- NATURAL_CHAT: Người dùng chỉ muốn trò chuyện, hỏi đáp hoặc trao đổi thông thường, không cần tìm kiếm dữ liệu.
-- SEARCH: Người dùng muốn tìm kiếm thông tin trong hệ thống, cây thư mục hoặc dữ liệu đã được lập chỉ mục.
+Các loại ý định:
 
-Chỉ trả về đúng một trong hai giá trị: NATURAL_CHAT hoặc SEARCH.
-"""
+- {Intent.NATURAL_CHAT.value}: 
+  Người dùng chỉ muốn trò chuyện, hỏi đáp hoặc trao đổi thông thường,
+  không cần sử dụng dữ liệu nội bộ.
+
+- {Intent.SEARCH.value}: 
+  Người dùng muốn tìm kiếm thông tin cụ thể trong hệ thống,
+  cây thư mục hoặc dữ liệu đã được lập chỉ mục.
+
+- {Intent.STORAGE_ANALYSIS.value}: 
+  Người dùng muốn biết thông tin tổng quan về kho dữ liệu,
+  cấu trúc thư mục, thống kê, các nhóm dữ liệu hoặc kiến thức
+  được tổng hợp từ toàn bộ kho.
+
+Chỉ trả về đúng một trong các giá trị: {Intent.intent_values()}
+'''
     )
 
     reason: str = Field(
@@ -4171,12 +998,11 @@ Chỉ trả về đúng một trong hai giá trị: NATURAL_CHAT hoặc SEARCH.
     #   "reason": "string"
     # }
     # """
-
 ```
 
 ----------------------------------------
 
-## FILE: `src\chatbot\models\llm_response_model.py`
+## FILE: `models\llm_response_model.py`
 ```python
 from typing import get_args, get_origin
 from pydantic import BaseModel
@@ -4259,7 +1085,7 @@ Field rules:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\mvp_version.py`
+## FILE: `mvp_version.py`
 ```python
 import json
 from typing import List, Dict
@@ -4504,7 +1330,7 @@ pyinstaller --onefile llm1.py
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\chatbot_service.py`
+## FILE: `services\chatbot_service.py`
 ```python
 import json
 from pathlib import Path
@@ -4514,7 +1340,7 @@ from src.chatbot.graph.state import State
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.services.groq_llm_services import GroqServices
 from src.loggers import main_logger
-from src.config import BASE_DIR
+from src.chatbot.config import INDEXED_DATA_PATH
 
 
 class ChatbotService:
@@ -4528,8 +1354,9 @@ class ChatbotService:
         dir_summary = self._get_directory_summary(kwargs.get('path_to_index'))
         main_logger.debug(dir_summary)
         system_prompt = self.prompt_service.render(name="system", summary=dir_summary)
-        history.add(role='system', content=system_prompt)
-        first_mess = self.llm_service.chat_history(history.to_messages())
+        # Tạo payload tạm thời để hỏi LLM câu chào đầu tiên
+        initial_payload = [{"role": "system", "content": system_prompt}]
+        first_mess = self.llm_service.chat_history(initial_payload)
         history.add(role='assistant', content=first_mess)
         return history
 
@@ -4557,9 +1384,11 @@ class ChatbotService:
             main_logger.error(f"Lỗi khi đọc tóm tắt thư mục: {e}")
             return "Không thể tải cấu trúc thư mục."
 
-    def chat(self, history=None):
+    def chat(self, history=None, path_to_index=None):
         main_logger.info('Chạy dịch vụ chat')
-        state_dict = State(history=history).model_dump()
+        dir_summary = self._get_directory_summary(path_to_index or INDEXED_DATA_PATH)
+        state_dict = State(history=history,
+                           dir_summary=dir_summary).model_dump()
         last_state_dict = self.workflow.invoke(state_dict)
         last_state_obj = State.model_validate(last_state_dict)
         return last_state_obj.history, last_state_obj.found_paths
@@ -4567,7 +1396,7 @@ class ChatbotService:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\file_service\json_reader.py`
+## FILE: `services\file_service\json_reader.py`
 ```python
 import json
 from pathlib import Path
@@ -4589,7 +1418,7 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\file_service\json_writer.py`
+## FILE: `services\file_service\json_writer.py`
 ```python
 import json
 from pathlib import Path
@@ -4607,7 +1436,7 @@ class JsonWriter:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\groq_llm_services.py`
+## FILE: `services\groq_llm_services.py`
 ```python
 from groq import Groq, BadRequestError
 from pydantic import BaseModel, ValidationError
@@ -4746,7 +1575,7 @@ class GroqServices:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\prompt_service.py`
+## FILE: `services\prompt_service.py`
 ```python
 from pathlib import Path
 from src.config import BASE_DIR
@@ -4769,7 +1598,7 @@ class PromptService:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\search_service\base_search.py`
+## FILE: `services\search_service\base_search.py`
 ```python
 from abc import ABC, abstractmethod
 
@@ -4800,7 +1629,7 @@ class BaseSearch(ABC):
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\search_service\keyword_search.py`
+## FILE: `services\search_service\keyword_search.py`
 ```python
 from pathlib import Path
 from src.chatbot.services.search_service.base_search import BaseSearch
@@ -4832,17 +1661,7 @@ class KeywordSearch(BaseSearch):
                     score += 30
             # So sánh từ ngữ nằm trong tên
             matched = set(query_tokens) & set(data.get('normalize_stem').split())
-            score += len(matched) * 10
-
-            # Kiểm tra đuôi file
-            file_suffix = data.get('suffix', '').lower().replace('.', '').strip()
-            if file_suffix:
-                # Nếu từ khóa tìm kiếm trùng khớp hoàn toàn với đuôi file
-                if normalized_query == file_suffix:
-                    score += 80
-                # Hoặc nếu trong các từ khóa có từ chứa đuôi file
-                elif file_suffix in query_tokens:
-                    score += 50
+            score += len(matched) * 30
 
             if score > 0:
                 rerank_path_result = FoundPathResult(
@@ -4867,7 +1686,34 @@ if __name__ == '__main__':
 
 ----------------------------------------
 
-## FILE: `src\chatbot\services\text_reader.py`
+## FILE: `services\storage_analysis_service.py`
+```python
+from src.chatbot.services.file_service.json_reader import JsonReader
+from src.chatbot.config import INDEXED_DATA_PATH, FILES_INDEX_PATH, FOLDERS_INDEX_PATH
+from src.chatbot.services.groq_llm_services import GroqServices
+
+class StorageAnalysisService:
+    '''
+    Cung cấp các cơ chế phân tích kho
+    '''
+    def __init__(self, files_index_path: None, folders_index_path: None, json_loader = None, llm_service = None):
+        self.files_index_path = files_index_path or FILES_INDEX_PATH
+        self.folders_index_path = folders_index_path or FOLDERS_INDEX_PATH
+        self.json_loader = json_loader or JsonReader()
+        self.llm_service = llm_service or GroqServices()
+
+
+
+
+
+
+
+
+```
+
+----------------------------------------
+
+## FILE: `services\text_reader.py`
 ```python
 from pathlib import Path
 
@@ -4882,7 +1728,7 @@ class TextReader:
 
 ----------------------------------------
 
-## FILE: `src\chatbot\text_nomalizer.py`
+## FILE: `text_nomalizer.py`
 ```python
 import re
 
@@ -4932,167 +1778,6 @@ class TextNormalizer:
         )
 
         return text.strip()
-```
-
-----------------------------------------
-
-## FILE: `src\config.py`
-```python
-from pathlib import Path
-from dotenv import load_dotenv
-load_dotenv()
-import os
-
-GOOGLE_API_KEY = os.getenv('GEMINI_API_KEY')
-GROQ_API_KEY =os.getenv('GROQ_API_KEY')
-
-BASE_DIR = Path(__file__).resolve().parents[1]  # Đường dẫn file chính của dự án
-CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-
-PATH_FOLDER_LOG = BASE_DIR / 'logs'
-PATH_FOLDER_LOG.mkdir(parents=True, exist_ok=True)
-
-if __name__ == '__main__':
-
-    print(f'{BASE_DIR=}')
-```
-
-----------------------------------------
-
-## FILE: `src\loggers\__init__.py`
-```python
-from .log import *
-```
-
-----------------------------------------
-
-## FILE: `src\loggers\custom_logger.py`
-```python
-from logging import Logger
-import inspect
-import json
-from pprint import pformat
-
-# Cả cái chuỗi này chính là 1 msg, msg được format lại để trả nhiều thông tin hơn
-MESSAGE_FORMAT = '''
-FILENAME: {}
-LINENO: {}
-FUNCTION: {}
-CODE_CONTEXT: {}
-MAIN MESSAGE: {}
-'''
-
-
-def normalize_message(msg) -> str:
-    '''
-    Hàm này để chuẩn hóa thông điệp log về dạng dễ đọc
-    :param msg:
-    :return:
-    '''
-    frame_info = inspect.stack()[
-        2]  # Lấy đối tượng frame vừa gọi tới hàm mà gọi hàm này, tức là cái method debug trong CustomLogger
-    if hasattr(msg,
-               "model_dump"):  # Kiểm tra để phòng msg là đối tượng Pydantic thì không thể chạy json.dumps bên dưới được
-        msg = msg.model_dump()
-
-    msg = pformat(msg, indent=2, width=120, compact=False)
-    filename = frame_info.filename
-    lineno = frame_info.lineno
-    function = frame_info.function
-    code_context = frame_info.code_context
-    msg = MESSAGE_FORMAT.format(filename, lineno, function, code_context, msg)
-    return msg
-
-
-class CustomLogger(Logger):
-
-    def debug(self, msg, *args, **kwargs):
-        '''
-        Format lại msg của mỗi dòng log để in nhiều thông tin hơn là 1 chuỗi msg
-        :param msg:
-        :param args:
-        :param kwargs:
-        :return:
-        '''
-        # frame_info = inspect.stack()[1] # Lấy đối tượng frame vừa gọi tới hàm này
-        # if hasattr(msg, "model_dump"): # Kiểm tra để phòng msg là đối tượng Pydantic thì không thể chạy json.dumps bên dưới được
-        #     msg = msg.model_dump()
-        #
-        # msg = json.dumps(msg, indent=2, ensure_ascii=False)
-        # filename = frame_info.filename
-        # lineno = frame_info.lineno
-        # function = frame_info.function
-        # code_context = frame_info.code_context
-        # msg = MESSAGE_FORMAT.format(filename, lineno, function, code_context, msg)
-        msg = normalize_message(msg)
-        super().debug(msg, *args, **kwargs)
-
-    def error(self, msg, *args, **kwargs):
-        msg = normalize_message(msg)
-        super().error(msg, *args, **kwargs)
-
-    def info(
-            self,
-            msg,
-            *args,
-            exc_info=None,
-            stack_info=False,
-            stacklevel=1,
-            extra=None,
-    ):
-        msg = normalize_message(msg)
-
-        super().info(msg, *args, exc_info=None,
-                     stack_info=False,
-                     stacklevel=1,
-                     extra=None, )
-```
-
-----------------------------------------
-
-## FILE: `src\loggers\log.py`
-```python
-import logging
-import os
-from src.config import PATH_FOLDER_LOG
-from .custom_logger import CustomLogger
-from pathlib import Path
-
-LOG_LEVELS = {
-    'debug': logging.DEBUG,
-    'info': logging.INFO,
-    'warning': logging.WARNING,
-    'error': logging.ERROR,
-}
-
-
-def get_custom_logger(logger_name, print_console: bool = False):
-    logging.setLoggerClass(CustomLogger)  # Set sử dụng class logger bọc tự định nghĩa
-    logger = logging.getLogger(logger_name)  # Khai báo logger dựa trên string tên
-    logger.setLevel(logging.DEBUG)
-    logger.propagate = False  # Tắt để tránh nó truyền lên add hander và in log 2 lần
-
-    folder_logger_path = Path(PATH_FOLDER_LOG) / (logger_name)
-    os.makedirs(folder_logger_path, exist_ok=True)  # Tạo folder con chứa các file log cụ thể của logger này nếu chưa có
-
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s") # Format hiển thị cho mỗi dòng log
-
-    for name, level in LOG_LEVELS.items():
-        debug_path = folder_logger_path / f'{name}.log'
-        file_hander = logging.FileHandler(debug_path, encoding="utf-8")
-        file_hander.setLevel(level)
-        file_hander.setFormatter(formatter)
-        logger.addHandler(file_hander)
-
-    if print_console:
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(formatter)
-        logger.addHandler(console_handler)
-    return logger
-
-main_logger  = get_custom_logger('main_logger', print_console=True)
-
-__all__ = ['main_logger']
 ```
 
 ----------------------------------------

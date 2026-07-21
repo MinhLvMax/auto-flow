@@ -1,9 +1,9 @@
 from langgraph.graph import StateGraph, START, END
 from src.chatbot.graph.state import State
 from src.chatbot.graph.nodes import ClassificationNode, ExtractEntitiesNode, NaturalChatNode, SearchNode, \
-    RetrievalChatNode
+    RetrievalChatNode, StorageAnalysisNode
 from src.chatbot.graph.router import classification_router
-from src.chatbot.graph.workflows.natural_chat import build_natural_graph
+from src.chatbot.graph.workflows import build_natural_graph, build_retrieval_graph, build_storage_analysis_graph
 
 def build_workflow():
     graph = StateGraph(State)
@@ -13,16 +13,15 @@ def build_workflow():
         ClassificationNode.__name__,
         classification_router,
     )
-    graph.add_node(ExtractEntitiesNode.__name__, ExtractEntitiesNode())
+    graph.add_node(build_retrieval_graph.__name__, build_retrieval_graph())
     graph.add_node(build_natural_graph.__name__, build_natural_graph())
-    # graph.add_node(NaturalChatNode.__name__, NaturalChatNode())
-    graph.add_node(SearchNode.__name__, SearchNode())
-    graph.add_node(RetrievalChatNode.__name__, RetrievalChatNode())
+    graph.add_node(build_storage_analysis_graph.__name__, build_storage_analysis_graph())
 
+    # Điểm đầu
     graph.set_entry_point(ClassificationNode.__name__)
 
-    graph.add_edge(ExtractEntitiesNode.__name__, SearchNode.__name__)
-    graph.add_edge(SearchNode.__name__, RetrievalChatNode.__name__)
+    # Điểm cuối tự chỉ định trong luồng con
+
 
     return graph.compile()
 

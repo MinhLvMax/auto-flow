@@ -2,21 +2,39 @@ from enum import StrEnum
 from pydantic import BaseModel, Field
 from src.chatbot.models.llm_response_model import LLMResponseModel
 
+
 class Intent(StrEnum):
     NATURAL_CHAT = "NATURAL_CHAT"
     SEARCH = "SEARCH"
+    STORAGE_ANALYSIS = "STORAGE_ANALYSIS"
+
+    @classmethod
+    def intent_values(self):
+        return ", ".join(intent.value for intent in Intent)
 
 
 class IntentClassification(LLMResponseModel):
     intent: Intent = Field(
-        description="""
+        description=f'''
 Phân loại ý định của người dùng.
 
-- NATURAL_CHAT: Người dùng chỉ muốn trò chuyện, hỏi đáp hoặc trao đổi thông thường, không cần tìm kiếm dữ liệu.
-- SEARCH: Người dùng muốn tìm kiếm thông tin trong hệ thống, cây thư mục hoặc dữ liệu đã được lập chỉ mục.
+Các loại ý định:
 
-Chỉ trả về đúng một trong hai giá trị: NATURAL_CHAT hoặc SEARCH.
-"""
+- {Intent.NATURAL_CHAT.value}: 
+  Người dùng chỉ muốn trò chuyện, hỏi đáp hoặc trao đổi thông thường,
+  không cần sử dụng dữ liệu nội bộ.
+
+- {Intent.SEARCH.value}: 
+  Người dùng muốn tìm kiếm thông tin cụ thể trong hệ thống,
+  cây thư mục hoặc dữ liệu đã được lập chỉ mục.
+
+- {Intent.STORAGE_ANALYSIS.value}: 
+  Người dùng muốn biết thông tin tổng quan về kho dữ liệu,
+  cấu trúc thư mục, thống kê, các nhóm dữ liệu hoặc kiến thức
+  được tổng hợp từ toàn bộ kho.
+
+Chỉ trả về đúng một trong các giá trị: {Intent.intent_values()}
+'''
     )
 
     reason: str = Field(
@@ -31,4 +49,3 @@ Chỉ trả về đúng một trong hai giá trị: NATURAL_CHAT hoặc SEARCH.
     #   "reason": "string"
     # }
     # """
-

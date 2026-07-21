@@ -1,13 +1,11 @@
 import chainlit as cl
-from chainlit.input_widget import TextInput
 import asyncio
 import subprocess
 from src.chatbot.services.chatbot_service import ChatbotService
 from src.chatbot.indexing.indexer import Indexer
-from src.chatbot.config import INDEXED_DATA_PATH
+from src.chatbot.config import DEDAULT_ROOT_PATH
 from src.loggers import main_logger
 from pathlib import Path
-from src.config import BASE_DIR
 
 main_logger.info('Khởi tạo dịch vụ chat')
 chatbot_service = ChatbotService()
@@ -20,12 +18,10 @@ async def index_folder(path_to_index):
 
     # Xây dựng index
     # path_to_index = r'C:\Users\Admin\Downloads'
-    indexed_data_path = INDEXED_DATA_PATH
     indexer = Indexer()
     await asyncio.to_thread(
-        indexer.build_index,
+        indexer.build_index_v2,
         path_to_index,
-        indexed_data_path
     )
 
     loading_msg.content = "✅ Đã lập chỉ mục cây thư mục dữ liệu thành công!"
@@ -48,7 +44,7 @@ async def on_chat_start():
     #         )
     #     ]
     # ).send()
-    default_path_to_index = r'C:\\Users\\Admin\\Downloads' # Nên cải tiến lấy từ người dùng
+    default_path_to_index = DEDAULT_ROOT_PATH # Nên cải tiến lấy từ người dùng
     history = chatbot_service.create_session(path_to_index=default_path_to_index)
     last_turn = history.last()
     first_mess = last_turn.get('content', 'Xin chào bạn.')
@@ -66,7 +62,7 @@ async def on_message(message: cl.Message):
         history = cl.user_session.get('history', None)
         if history:
             history.add('user', message.content)
-            new_history, paths_result = chatbot_service.chat(history=history, path_to_index=cl.user_session.get('paths_to_index', None))
+            new_history, paths_result = chatbot_service.chat(history=history)
             response = new_history.last().get('content', 'None')
             history.add('assistant', response)
         else:

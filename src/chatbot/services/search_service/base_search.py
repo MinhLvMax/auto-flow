@@ -1,25 +1,16 @@
 from abc import ABC, abstractmethod
-
-from src.config import BASE_DIR
-from src.chatbot.services.file_service.json_reader import JsonReader
-from src.loggers import main_logger
-from src.chatbot.config import INDEXED_DATA_PATH
+from src.chatbot.services.storage_analysis_service import StorageAnalysisService
 
 
 class BaseSearch(ABC):
-    default_path = INDEXED_DATA_PATH
+    def __init__(self, storage_service=None):
+        # Inject dịch vụ phân tích kho làm đơn vị cung cấp dữ liệu index sạch
+        self.storage_service = storage_service or StorageAnalysisService()
 
-    def __init__(self, root_path=None):
-        self.root_path = root_path or self.default_path
-        self.indexed_data = self._load_index()
-
-    def _load_index(self):
-        if not self.root_path.exists():
-            return {}
-
-        return JsonReader().read(self.root_path) or {}
+        # Nhận dữ liệu đã nạp sẵn từ bộ nhớ của dịch vụ phân tích
+        self.files_index_data = self.storage_service.files_data
+        self.folders_index_data = self.storage_service.folders_data
 
     @abstractmethod
     def search(self, query) -> list[str]:
         pass
-
