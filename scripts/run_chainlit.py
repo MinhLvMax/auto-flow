@@ -1,5 +1,5 @@
 from scripts.run_cmd_method import run
-import sys
+from scripts.config import venv_python
 
-entry_point = 'main.py' # sửa nếu có thay đổi entry point
-run(sys.executable, '-m', 'chainlit', 'run', entry_point)
+entry_point = 'main.py'  # sửa nếu có thay đổi entry point
+run(str(venv_python), '-m', 'chainlit', 'run', entry_point)
