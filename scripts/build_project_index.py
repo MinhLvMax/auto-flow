@@ -23,6 +23,7 @@ IGNORE_LIST = {
     'python-embed',
     "envato_browser_profile",
     'logs',
+    'embed',
 
     # File cụ thể cần bỏ qua
     ".env",

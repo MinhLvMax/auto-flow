@@ -1,1783 +1,512 @@
 # TỔNG QUAN KIẾN TRÚC DỰ ÁN (DIRECTORY TREE)
 ```text
-chatbot/
-├── chainlit_app.py
+scripts/
+├── build_project_index.py
 ├── config.py
-├── graph
-│   ├── config.py
-│   ├── nodes
-│   │   ├── __init__.py
-│   │   ├── base_node.py
-│   │   ├── classification.py
-│   │   ├── extract.py
-│   │   ├── natural_chat.py
-│   │   ├── retrieval_chat.py
-│   │   └── search.py
-│   ├── router.py
-│   ├── state.py
-│   └── workflows
-│       ├── natural_chat.py
-│       └── orchestrator.py
-├── indexing
-│   ├── __init__.py
-│   ├── build_tree.py
-│   └── indexer.py
-├── models
-│   ├── entity_extraction_result.py
-│   ├── found_path_result.py
-│   ├── history.py
-│   ├── intent_classification.py
-│   └── llm_response_model.py
-├── mvp_version.py
-├── prompts
-├── services
-│   ├── __init__.py
-│   ├── chatbot_service.py
-│   ├── file_service
-│   │   ├── __init__.py
-│   │   ├── json_reader.py
-│   │   └── json_writer.py
-│   ├── groq_llm_services.py
-│   ├── prompt_service.py
-│   ├── search_service
-│   │   ├── __init__.py
-│   │   ├── base_search.py
-│   │   └── keyword_search.py
-│   ├── storage_analysis_service.py
-│   └── text_reader.py
-└── text_nomalizer.py
+├── create_gitignore.py
+├── git
+│   ├── commit_and_push.py
+│   ├── git_add.py
+│   ├── git_add_remote.py
+│   ├── git_branch_M_main.py
+│   ├── git_commit.py
+│   ├── git_init.py
+│   ├── git_log.py
+│   ├── git_pull.py
+│   ├── git_push.py
+│   ├── git_push_u_origin_main.py
+│   ├── git_remote_v.py
+│   └── git_status.py
+├── pip_list.py
+├── requirements
+│   ├── freeze_requirements.py
+│   ├── install_for_py_embed
+│   │   ├── install_packages.py
+│   │   └── setup_py_embed.py
+│   └── install_for_venv.py
+├── run_chainlit.py
+├── run_cmd_method.py
+└── sys_executable.py
 ```
 
 ================================================================================
 
 # CHI TIẾT MÃ NGUỒN CÁC FILE
 
-## FILE: `chainlit_app.py`
+## FILE: `build_project_index.py`
 ```python
-import chainlit as cl
-from chainlit.input_widget import TextInput
-import asyncio
-import subprocess
-from src.chatbot.services.chatbot_service import ChatbotService
-from src.chatbot.indexing.indexer import Indexer
-from src.chatbot.config import INDEXED_DATA_PATH
-from src.loggers import main_logger
+import os
 from pathlib import Path
-from src.config import BASE_DIR
+from tkinter import Tk, filedialog
+from scripts.config import PROJECT_PATH
 
-main_logger.info('Khởi tạo dịch vụ chat')
-chatbot_service = ChatbotService()
+# Gộp tất cả thư mục, tên file, đuôi file cần bỏ qua vào một nơi duy nhất
+IGNORE_LIST = {
+    # Thư mục cần bỏ qua
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+    ".idea",
+    ".vscode",
+    ".obsidian",
+    "build",
+    "dist",
+    ".chainlit",
+    ".files",
+    ".profiles",
+    "profiles",
+    "python_embed",
+    'python-embed',
+    "envato_browser_profile",
+    'logs',
 
-async def index_folder(path_to_index):
-    loading_msg = cl.Message(
-        content="⚙️ Hệ thống đang tiến hành lập chỉ mục cây thư mục dữ liệu, vui lòng đợi trong giây lát..."
-    )
-    await loading_msg.send()
+    # File cụ thể cần bỏ qua
+    ".env",
+    ".gitignore",
+    "codebase_context.txt",  # Tránh tự đọc chính file output nếu chạy lại
+    'README.md',
 
-    # Xây dựng index
-    # path_to_index = r'C:\Users\Admin\Downloads'
-    indexed_data_path = INDEXED_DATA_PATH
-    indexer = Indexer()
-    await asyncio.to_thread(
-        indexer.build_index,
-        path_to_index,
-        indexed_data_path
-    )
-
-    loading_msg.content = "✅ Đã lập chỉ mục cây thư mục dữ liệu thành công!"
-    await loading_msg.update()
-
-@cl.action_callback('re_index')
-async def re_index(action: cl.Action):
-    path = cl.user_session.get('path_to_index', None)
-    await index_folder(path)
-    pass
-
-@cl.on_chat_start
-async def on_chat_start():
-    # await cl.ChatSettings(
-    #     [
-    #         TextInput(
-    #             id="index_path",
-    #             label="📂 Folder cần index",
-    #             initial=r"C:\Users\Admin\Downloads"
-    #         )
-    #     ]
-    # ).send()
-    default_path_to_index = r'C:\\Users\\Admin\\Downloads' # Nên cải tiến lấy từ người dùng
-    history = chatbot_service.create_session(path_to_index=default_path_to_index)
-    last_turn = history.last()
-    first_mess = last_turn.get('content', 'Xin chào bạn.')
-    await cl.Message(
-        content=first_mess
-    ).send()
-    cl.user_session.set('history', history)
-    cl.user_session.set('path_to_index', default_path_to_index)
+    # Đuôi file cần bỏ qua
+    ".json",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".mp4",
+    ".zip",
+    ".txt",
+    ".pyc",
+    ".db",
+}
 
 
-@cl.on_message
-async def on_message(message: cl.Message):
-    main_logger.info('Nhận xin nhắn và xử lý')
+def should_ignore(path: Path, ignore_set: set) -> bool:
+    """Kiểm tra đường dẫn có thuộc danh sách bỏ qua hay không"""
+    # 1. Kiểm tra nếu có bất kỳ thư mục cha nào trong đường dẫn nằm trong danh sách ignore
+    if any(part in ignore_set for part in path.parts):
+        return True
+
+    # 2. Kiểm tra tên file hoặc thư mục hiện tại
+    if path.name in ignore_set or path.name.lower() in ignore_set:
+        return True
+
+    # 3. Kiểm tra đuôi file (suffix)
+    if path.suffix.lower() in ignore_set:
+        return True
+
+    return False
+
+
+def generate_tree_string(path: Path, prefix: str = "", ignore_set=None) -> str:
+    """Tạo chuỗi sơ đồ cây thư mục trực quan"""
+    if ignore_set is None:
+        ignore_set = IGNORE_LIST
+
+    tree_str = ""
+    # Lọc bỏ các thư mục và file nằm trong danh sách ignore
+    children = sorted([
+        c for c in path.iterdir()
+        if not (c.name in ignore_set or c.suffix.lower() in ignore_set)
+    ])
+
+    for i, child in enumerate(children):
+        is_last = (i == len(children) - 1)
+        connector = "└── " if is_last else "├── "
+
+        tree_str += f"{prefix}{connector}{child.name}\n"
+
+        if child.is_dir():
+            indent = "    " if is_last else "│   "
+            tree_str += generate_tree_string(child, prefix + indent, ignore_set)
+
+    return tree_str
+
+
+def read_file(path: Path) -> str:
+    """Đọc nội dung file văn bản, bỏ qua lỗi giải mã"""
     try:
-        history = cl.user_session.get('history', None)
-        if history:
-            history.add('user', message.content)
-            new_history, paths_result = chatbot_service.chat(history=history, path_to_index=cl.user_session.get('paths_to_index', None))
-            response = new_history.last().get('content', 'None')
-            history.add('assistant', response)
-        else:
-            response = 'Thử lại'
-            paths_result = []
-
-        cl.user_session.set('history', history)
-        cl.user_session.set('paths_result', paths_result)
-
-        actions = []
-
-        if paths_result:
-            actions.append(
-                cl.Action(
-                    name="show_search_results",
-                    label=f"Xem {len(paths_result)} tài liệu",
-                    payload={}
-                )
-            )
-        actions.append(
-            cl.Action(
-                name="re_index",
-                label='Re-index thư mục',
-                payload={}
-            )
-        )
-
-        await cl.Message(
-            content=response,
-            actions=actions
-        ).send()
-    except Exception as e:
-        await cl.Message(
-            content= f'Có lỗi xảy ra: {e}'
-        ).send()
+        return path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
 
 
-@cl.action_callback("open_file")
-async def open_file(action: cl.Action):
-    path = Path(action.payload["path"]).resolve()
-
-    subprocess.Popen(
-        f'explorer.exe /select,"{path}"'
-    )
-
+def select_folder():
+    root = Tk()
+    root.withdraw()
+    folder = filedialog.askdirectory(title="Chọn thư mục dự án")
+    root.destroy()
+    return Path(folder) if folder else None
 
 
-@cl.action_callback("show_search_results")
-async def show_search_results(action: cl.Action):
-    paths_result = cl.user_session.get("paths_result", [])
+if __name__ == "__main__":
+    folder = select_folder() # Chọn đường dẫn cụ thể
+    # folder = PROJECT_PATH # Gán luôn bằng đường dẫn dự án
+    if folder is None:
+        exit()
 
-    paths_result = paths_result[:70]  # Lấy tối đa 100 link thôi
+    output_file = PROJECT_PATH / "codebase_context.txt"
 
-    actions = []
+    with open(output_file, "w", encoding="utf-8") as f:
+        # 1. Ghi tiêu đề và sơ đồ cây thư mục ở đầu file
+        f.write("# TỔNG QUAN KIẾN TRÚC DỰ ÁN (DIRECTORY TREE)\n")
+        f.write("```text\n")
+        f.write(f"{folder.name}/\n")
+        f.write(generate_tree_string(folder))
+        f.write("```\n\n")
+        f.write("=" * 80 + "\n\n")
 
-    content = " **Kết quả tìm kiếm**\n\n"
+        # 2. Quét và ghi nội dung từng file code
+        f.write("# CHI TIẾT MÃ NGUỒN CÁC FILE\n\n")
 
-    for item in paths_result:
-        path = item["path"]
+        for path in sorted(folder.rglob("*")):
+            # Bỏ qua nếu nằm trong danh sách ignore (áp dụng cho cả file và thư mục)
+            if should_ignore(path, IGNORE_LIST):
+                continue
 
-        # content += (
-        #     f"- `{path}`\n"
-        #     f"  Score: {item['score']}\n\n"
-        # )
+            # Chỉ xử lý file, bỏ qua thư mục
+            if not path.is_file():
+                continue
 
-        actions.append(
-            cl.Action(
-                name="open_file",
-                label=f"{path} score:{item['score']}",
-                payload={
-                    "path": path
-                }
-            )
-        )
+            relative_path = path.relative_to(folder)
+            content = read_file(path)
 
-    await cl.Message(
-        content=content,
-        actions=actions
-    ).send()
+            if content.strip():
+                # Xác định ngôn ngữ lập trình để hiển thị cú pháp
+                lang = path.suffix.lstrip(".")
+                if lang == "py":
+                    lang = "python"
 
-# python -m chainlit run chainlit_app.py
+                f.write(f"## FILE: `{relative_path}`\n")
+                f.write(f"```{lang}\n")
+                f.write(content)
+                if not content.endswith("\n"):
+                    f.write("\n")
+                f.write("```\n\n")
+                f.write("-" * 40 + "\n\n")
+
+    print(f"Đã xuất toàn bộ mã nguồn ra file: {output_file.absolute()}")
 ```
 
 ----------------------------------------
 
 ## FILE: `config.py`
 ```python
-from src.config import BASE_DIR
-PROJECT_PATH = BASE_DIR
-INDEXED_DATA_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'index.json'
-FILES_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'files_index.json'
-FOLDERS_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'folders_index.json'
-```
-
-----------------------------------------
-
-## FILE: `graph\config.py`
-```python
-from src.chatbot.services.groq_llm_services import GroqModelName
-
-
-class WorkFLowConfig:
-    CLASSIFICATION_MODEL = GroqModelName.LLAMA_3_1_8B_INSTANT #json
-    NATURAL_CHAT_MODEL = GroqModelName.COMPOUND_MINI
-    EXTRACT_MODEL = GroqModelName.GPT_OSS_20B #json
-    RETRIEVAL_MODEL = GroqModelName.GPT_OSS_120B
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\__init__.py`
-```python
-from .classification import ClassificationNode
-from .natural_chat import NaturalChatNode
-from .search import SearchNode
-from .extract import ExtractEntitiesNode
-from .retrieval_chat import RetrievalChatNode
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\base_node.py`
-```python
-from src.loggers import main_logger
-
-class BaseNode:
-    def __init__(self, logger = None):
-        self.loger = logger or main_logger
-
-    def __call__(self, raw_state):
-        self.loger.info(f"{self.__class__.__name__} started")
-        try:
-            return self.run(raw_state)
-        except Exception:
-            self.loger.exception(f"{self.__class__.__name__} failed")
-            raise
-        finally:
-            self.loger.info(f"{self.__class__.__name__} finished")
-
-    def run(self, raw_state):
-        raise NotImplementedError
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\classification.py`
-```python
-
-from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.models.intent_classification import IntentClassification
-from src.chatbot.graph.config import WorkFLowConfig
-from src.loggers import main_logger
-
-
-class ClassificationNode(BaseNode):
-    def __init__(self, llm_service=None):
-        super().__init__()
-        self.llm_service = llm_service or GroqServices()
-
-    def run(self, raw_state: dict):
-        state = State.model_validate(raw_state)
-
-        messages = state.history.messages[-5:]
-        classif_result = self.llm_service.chat_json(messages, IntentClassification, model_name=WorkFLowConfig.CLASSIFICATION_MODEL)
-        self.loger.debug(classif_result)
-        update_dict = State(
-            classification_results=classif_result,
-        ).model_dump(
-            exclude_none=True,
-            exclude_defaults=True
-        )
-        return update_dict
-
-
-if __name__ == '__main__':
-    data = {
-        'user_input': 'Kho dữ liệu tôi làm về vũ trụ chưa'
-    }
-    classification_node = ClassificationNode()
-    print(classification_node.__call__(data))
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\extract.py`
-```python
-from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.graph.config import WorkFLowConfig
-from src.chatbot.models.entity_extraction_result import EntityExtractionResult
-from src.loggers import main_logger
-
-
-class ExtractEntitiesNode(BaseNode):
-    def __init__(self, llm_service = None, promp_service = None):
-        super().__init__()
-        self.llm_service = llm_service or GroqServices()
-        self.prompt_service = promp_service or PromptService()
-
-    def run(self, raw_state: dict):
-        state = State.model_validate(raw_state)
-        messages = state.history.to_messages(last_n=3)
-        instruction = self.prompt_service.render('extract_entities_instruction')
-        result = self.llm_service.chat_json(messages, EntityExtractionResult, system_prompt=instruction, model_name=WorkFLowConfig.EXTRACT_MODEL)
-        self.loger.debug(result.model_dump())
-        update_dict = State(
-            entity_extraction_result=result.model_dump()
-        ).model_dump(
-            exclude_none=True,
-            exclude_defaults=True
-        )
-        return update_dict
-
-if __name__ == '__main__':
-    state = State()
-    state.history.add('user', 'Tôi từng làm về mặt trăng chưa?')
-    main_logger.debug(state.model_dump())
-    classification_node = ExtractEntitiesNode()
-    print(classification_node.__call__(state.model_dump()))
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\natural_chat.py`
-```python
-from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.graph.config import WorkFLowConfig
-
-
-class NaturalChatNode(BaseNode):
-    def __init__(self, llm_service=None, prompt_service=None):
-        super().__init__()
-        self.llm_service = llm_service or GroqServices()
-        self.prompt_service = prompt_service or PromptService()
-
-    def run(self, raw_state: dict):
-        state = State.model_validate(raw_state)
-
-        natural_instruction = self.prompt_service.render('natural', summary=state.dir_summary)
-        msges = state.history.to_messages(last_n=4, system_prompt=natural_instruction)
-        system_output = self.llm_service.chat_history(msges, WorkFLowConfig.NATURAL_CHAT_MODEL)
-
-        state.history.add('assistant', system_output)
-
-        update_dict = State(
-            history=state.history,
-        ).model_dump(
-            exclude_none=True,
-            exclude_defaults=True
-        )
-
-        return update_dict
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\retrieval_chat.py`
-```python
-from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.graph.config import WorkFLowConfig
-
-
-class RetrievalChatNode(BaseNode):
-    def __init__(self, llm_service=None, prompt_service=None):
-        super().__init__()
-        self.llm_service = llm_service or GroqServices()
-        self.prompt_service = prompt_service or PromptService()
-
-    def run(self, raw_state: dict):
-        state = State.model_validate(raw_state)
-        MIN_SCORE_THRESHOLD = 50
-        valid_paths = [
-            item for item in state.found_paths
-            if item.get("score", 0) >= MIN_SCORE_THRESHOLD
-        ]
-        if not valid_paths:
-            system_prompt = self.prompt_service.render('no_results', summary=state.dir_summary)
-        else:
-            paths = valid_paths[:10]  # Lấy một phần đầu để đưa vào llm nói
-            retrieval_instruction = self.prompt_service.render('retrieval')
-            context = self.prompt_service.render('search_context', paths=paths)
-            system_prompt = '\n\n'.join([retrieval_instruction, context])
-
-        msg = state.history.to_messages(system_prompt=system_prompt, last_n=10)
-        system_output = self.llm_service.chat_history(msg, model_name=WorkFLowConfig.RETRIEVAL_MODEL)
-
-        state.history.add('assistant', system_output)
-
-        update_dict = State(
-            history=state.history,
-        ).model_dump(
-            exclude_none=True,
-            exclude_defaults=True
-        )
-        return update_dict
-```
-
-----------------------------------------
-
-## FILE: `graph\nodes\search.py`
-```python
-from src.chatbot.graph.nodes.base_node import BaseNode
-from src.chatbot.services.search_service.keyword_search import KeywordSearch
-from src.chatbot.graph.state import State
-from src.loggers import main_logger
-
-
-class SearchNode(BaseNode):
-    def __init__(self, search_service=None):
-        super().__init__()
-        self.search_service = search_service or KeywordSearch()
-
-    def run(self, raw_state: dict):
-        state = State.model_validate(raw_state)
-        entities = state.entity_extraction_result.entities
-        found_paths = []
-        for entity in entities:
-            if entity.name != '':
-                paths = self.search_service.search(entity.name)
-                found_paths.extend(paths)
-            # for alias in entity.aliases:
-            #     if alias != '':
-            #         found_paths.extend(self.search_service.search(alias))
-        # Lọc trùng
-        seen = set()
-        unique_results = []
-
-        for item in found_paths:
-            if item["path"] not in seen:
-                seen.add(item["path"])
-                unique_results.append(item)
-
-        found_paths = unique_results
-        self.loger.debug(found_paths)
-        update_dict = State(
-            found_paths=found_paths,
-        ).model_dump(
-            exclude_none=True,
-            exclude_defaults=True
-        )
-        return update_dict
-```
-
-----------------------------------------
-
-## FILE: `graph\router.py`
-```python
-from src.chatbot.graph.state import State
-from src.chatbot.models.intent_classification import Intent
-from src.chatbot.graph.nodes import NaturalChatNode, ExtractEntitiesNode
-from src.chatbot.graph.workflows.natural_chat import build_natural_graph
-from src.loggers import main_logger
-
-def classification_router(raw_state):
-    state = State().model_validate(raw_state)
-    if state.classification_results.intent == Intent.NATURAL_CHAT:
-        return build_natural_graph.__name__
-    elif state.classification_results.intent == Intent.SEARCH:
-        return ExtractEntitiesNode.__name__
-```
-
-----------------------------------------
-
-## FILE: `graph\state.py`
-```python
-from pydantic import BaseModel, Field
-from src.chatbot.models.intent_classification import IntentClassification
-from src.chatbot.models.entity_extraction_result import EntityExtractionResult
-from src.chatbot.models.history import History
-
-class State(BaseModel):
-    classification_results: IntentClassification | None = None
-    entity_extraction_result: EntityExtractionResult | None = None
-    history: History = Field(default_factory=History)
-    found_paths: list[dict] = Field(default_factory=list)
-    dir_summary: str = ''
-```
-
-----------------------------------------
-
-## FILE: `graph\workflows\natural_chat.py`
-```python
-from langgraph.graph import StateGraph, START, END
-from src.chatbot.graph.nodes import NaturalChatNode
-from src.chatbot.graph.state import State
-
-def build_natural_graph():
-    graph = StateGraph(State)
-    graph.add_node(NaturalChatNode.__name__, NaturalChatNode())
-    graph.add_edge(START, NaturalChatNode.__name__)
-    graph.add_edge(NaturalChatNode.__name__, END)
-    return graph.compile()
-```
-
-----------------------------------------
-
-## FILE: `graph\workflows\orchestrator.py`
-```python
-from langgraph.graph import StateGraph, START, END
-from src.chatbot.graph.state import State
-from src.chatbot.graph.nodes import ClassificationNode, ExtractEntitiesNode, NaturalChatNode, SearchNode, \
-    RetrievalChatNode
-from src.chatbot.graph.router import classification_router
-from src.chatbot.graph.workflows.natural_chat import build_natural_graph
-
-def build_workflow():
-    graph = StateGraph(State)
-
-    graph.add_node(ClassificationNode.__name__, ClassificationNode())
-    graph.add_conditional_edges(
-        ClassificationNode.__name__,
-        classification_router,
-    )
-    graph.add_node(ExtractEntitiesNode.__name__, ExtractEntitiesNode())
-    graph.add_node(build_natural_graph.__name__, build_natural_graph())
-    # graph.add_node(NaturalChatNode.__name__, NaturalChatNode())
-    graph.add_node(SearchNode.__name__, SearchNode())
-    graph.add_node(RetrievalChatNode.__name__, RetrievalChatNode())
-
-    graph.set_entry_point(ClassificationNode.__name__)
-
-    graph.add_edge(ExtractEntitiesNode.__name__, SearchNode.__name__)
-    graph.add_edge(SearchNode.__name__, RetrievalChatNode.__name__)
-
-    return graph.compile()
-
-if __name__ == '__main__':
-    graph = build_workflow()
-    from src.chatbot.models.history import History
-    from pprint import pprint
-    history = History()
-    while True:
-        user_input = input('Enter a sentence: ')
-        if user_input == '':
-            break
-        history.add('user', user_input)
-        state = State(history=history)
-        last_row_state = graph.invoke(state)
-        last_state = State.model_validate(last_row_state)
-        system_output = last_state.history.last().get('content')
-        history.add('assistant', system_output)
-        print(system_output)
-        pprint(last_state.found_paths)
-```
-
-----------------------------------------
-
-## FILE: `indexing\build_tree.py`
-```python
 from pathlib import Path
-# from tkinter import Tk, filedialog
 
-
-# def build_tree(
-#         path,
-#         max_depth=None,
-#         current_depth=0,
-#         ignore_dirs=None
-# ):
-#     '''
-#     hàm này build theo kiểu cha gồm nhiều con
-#     :param path:
-#     :param max_depth:
-#     :param current_depth:
-#     :param ignore_dirs:
-#     :return:
-#     '''
-#     path = Path(path)
-#
-#     if ignore_dirs is None:
-#         ignore_dirs = DEFAULT_IGNORE_DIRS
-#
-#     if path.is_file():
-#         return None
-#         # return str(path.absolute())
-#
-#     if max_depth is not None and current_depth >= max_depth:
-#         return {}
-#
-#     tree = {}
-#
-#     for child in sorted(path.iterdir()):
-#
-#         # bỏ qua folder nằm trong blacklist
-#         if child.is_dir() and child.name in ignore_dirs:
-#             continue
-#
-#         tree[child.name] = build_tree(
-#             child,
-#             max_depth,
-#             current_depth + 1,
-#             ignore_dirs
-#         )
-#
-#     return tree
-
-def build_list_path(root_path: Path, dafault_ignore_dir) -> list[str]:
-    root = Path(root_path)
-    results = []
-
-    for path in root.rglob("*"):
-        if any(part in dafault_ignore_dir for part in path.parts):
-            continue
-
-        if path.is_file():
-            results.append(str(path.resolve()))
-
-    return results
-
-
-
-# def select_folder():
-#     root = Tk()
-#     root.withdraw()  # Ẩn cửa sổ chính
-#
-#     folder = filedialog.askdirectory(
-#         title="Chọn thư mục cần build tree"
-#     )
-#
-#     root.destroy()
-#
-#     return Path(folder) if folder else None
-
-
-# if __name__ == '__main__':
-    # DEFAULT_IGNORE_DIRS = {
-    #     ".git",
-    #     ".venv",
-    #     "__pycache__",
-    #     "node_modules",
-    #     ".idea",
-    #     ".vscode",
-    #     '.obsidian'
-    # }
-    #
-    # from src.chatbot.services.file_service.json_writer import JsonWriter
-    #
-    # json_writer = JsonWriter()
-    # path_folder = select_folder()
-    # # tree = build_tree(path_folder)
-    # tree = build_list_path(path_folder, DEFAULT_IGNORE_DIRS)
-    # json_writer.write(Path('tree_dir.json'), tree)
+PROJECT_PATH = Path(__file__).resolve().parents[1]
+venv_path = PROJECT_PATH / '.venv'
+venv_python = venv_path / "Scripts" / "python.exe"
 ```
 
 ----------------------------------------
 
-## FILE: `indexing\indexer.py`
+## FILE: `create_gitignore.py`
 ```python
-from pathlib import Path
-import json
-import os
-# from tkinter import Tk, filedialog
-# from src.chatbot.indexing.build_tree import select_folder
-from src.chatbot.text_nomalizer import TextNormalizer
-from src.chatbot.services.file_service.json_writer import JsonWriter
-from src.chatbot.config import FILES_INDEX_PATH, FOLDERS_INDEX_PATH
-
-
-class Indexer:
-
-    def __init__(self, text_normalizer=None, json_writer=None):
-        self.text_normalizer = text_normalizer or TextNormalizer()
-        self.json_writer = json_writer or JsonWriter()
-
-    def build_list(self, root: str) -> list[str]:
-        """
-        Quét toàn bộ file trong folder
-        """
-        paths = []
-
-        for path in Path(root).rglob("*"):
-            print(f'Đang quét {path=}')
-            if path.is_file():
-                paths.append(str(path.resolve()))
-        return paths
-
-    def build_index(self, root: str, output: str):
-        """
-        Build file index json
-        """
-
-        paths = self.build_list(root)
-
-        files_index = []
-
-        for i, path in enumerate(paths):
-            print(f'{i}/{len(paths)}, đang xử lý {path=}')
-            file_index = self._build_file_index(path)
-            files_index.append(file_index)
-
-        print(f'Lưu tại {output}')
-        with open(output, "w", encoding="utf-8") as f:
-            json.dump(files_index, f, ensure_ascii=False, indent=2)
-
-    def build_index_v2(self, root_path: Path):
-        print(self.build_index_v2.__name__)
-        files_index = []
-        folders_index = []
-
-        for current_path, list_subfolders, list_files in os.walk(root_path):
-            current_path_obj = Path(current_path)
-            normalized_parts = [
-                self.text_normalizer.normalize(x)
-                for x in current_path_obj.parts[:-1]
-            ]
-            # Index folder
-            folders_index.append({
-                "path": str(current_path_obj),
-                'normalize_stem': self.text_normalizer.normalize(current_path_obj.stem),
-                "normalize_parts": normalized_parts,
-                "depth": len(current_path_obj.parts) - 1,
-                "file_count": len(list_files),
-                "subfolder_count": len(list_subfolders),
-            })
-
-            # Index file
-            for file in list_files:
-                print(f'Đang xử lý {file=}')
-                path = current_path_obj / file
-                stat = path.stat()
-                preview = self._get_text_preview(path, max_chars=300)
-                record = {
-                    "path": str(path),
-                    'normalize_stem': self.text_normalizer.normalize(path.stem),
-                    'suffix': path.suffix.lower(),
-                    "normalize_parts": normalized_parts,
-                    "mtime": int(stat.st_mtime),
-                    "ctime": int(stat.st_ctime),
-                    "size": stat.st_size,
-                }
-                if preview:
-                    record["preview"] = preview
-
-                files_index.append(record)
-
-        self.json_writer.write(FILES_INDEX_PATH, files_index)
-        print(f'Đã lưu {FILES_INDEX_PATH=}')
-        self.json_writer.write(FOLDERS_INDEX_PATH, folders_index)
-        print(f'Đã lưu {FOLDERS_INDEX_PATH=}')
-
-
-    def _build_file_index(self, path: str):
-        p = Path(path)
-        stat = p.stat()
-
-        size_kb = stat.st_size / 1024
-        size_mb = size_kb / 1024
-        file_size_str = f"{size_mb:.2f} MB" if size_mb >= 1.0 else f"{size_kb:.1f} KB"
-
-        return {
-            "path": path,
-            'normalize_stem': self.text_normalizer.normalize(p.stem),
-            'suffix': p.suffix,
-            "folders": [
-                self.text_normalizer.normalize(x)
-                for x in p.parts[:-1]  # loại tên file ra, chỉ lấy các thành phần trước đó tức là folder thôi
-            ],
-            'mtime': stat.st_mtime,
-            "ctime": stat.st_ctime,  # Ngày tạo
-            'file_size': file_size_str,
-            "preview": self._get_text_preview(p, max_chars=300)  # Đoạn trích nội dung
-        }
-
-
-    def _get_text_preview(self, path_obj: Path, max_chars=300) -> str:
-        """Đọc thử một đoạn nội dung ngắn nếu là file văn bản để làm preview"""
-        # Chỉ đọc các file văn bản phổ biến
-        text_suffixes = {".txt", ".md", ".json", ".csv"}
-        if path_obj.suffix.lower() not in text_suffixes:
-            return ""
-        try:
-            # Đọc tối đa số lượng ký tự quy định để tránh file quá nặng
-            with open(path_obj, "r", encoding="utf-8", errors="ignore") as f:
-                content = f.read(max_chars)
-                # Dọn dẹp các ký tự xuống dòng dư thừa để lưu trữ gọn gàng
-                return " ".join(content.split())
-        except Exception:
-            return ""
-
-
-# def select_folder(self):
-#     root = Tk()
-#     root.withdraw()  # Ẩn cửa sổ chính
-#
-#     folder = filedialog.askdirectory(
-#         title="Chọn thư mục cần build tree"
-#     )
-#
-#     root.destroy()
-#
-#     return folder if folder else None
-
-
-if __name__ == '__main__':
-    # path = select_folder()
-    indexer = Indexer()
-    indexer.build_index_v2(r'C:\Users\Admin\Downloads')
-    pass
-```
-
-----------------------------------------
-
-## FILE: `models\entity_extraction_result.py`
-```python
-from pydantic import BaseModel, Field
-from src.chatbot.models.llm_response_model import LLMResponseModel
-
-class Entity(LLMResponseModel):
-    name: str = Field(
-        description="Tên chuẩn hoặc tên chính của thực thể được trích xuất từ câu hỏi."
-    )
-    aliases: list[str] = Field(
-        default_factory=list,
-        description=(
-            "Các tên gọi khác của thực thể, bao gồm từ đồng nghĩa, "
-            "cách viết khác, tên tiếng Anh, tên quốc tế hoặc các biến thể thường gặp."
-        )
-    )
-
-    # @classmethod
-    # def llm_schema(cls) -> str:
-    #     return """
-    # {
-    #   "name": "string",
-    #   "aliases": [
-    #     "string"
-    #   ]
-    # }
-    # """
-
-
-class EntityExtractionResult(LLMResponseModel):
-    entities: list[Entity] = Field(
-        default_factory=list,
-        description="Danh sách tất cả các thực thể được trích xuất từ câu hỏi của người dùng."
-    )
-
-    # @classmethod
-    # def llm_schema(cls) -> str:
-    #     return f"""
-    # {{
-    #   "entities": [
-    #     {Entity.llm_schema()}
-    #   ]
-    # }}
-    # """
-
-if __name__ == '__main__':
-    from pprint import pprint
-    pprint(f'{Entity.llm_schema()}')
-    pprint(f'{EntityExtractionResult.llm_schema()}')
-```
-
-----------------------------------------
-
-## FILE: `models\found_path_result.py`
-```python
-from pydantic import BaseModel
-
-class FoundPathResult(BaseModel):
-    path: str
-    score: float | int
-```
-
-----------------------------------------
-
-## FILE: `models\history.py`
-```python
-from pydantic import BaseModel
-
-
-class History(BaseModel):
-    # Chỉ nên lưu hội thoại, còn system thì gọi ở đâu thì chỗ đó thêm, vì mỗi chỗ có system prompt nó khác
-    messages: list[dict] = []
-
-    def add(self, role: str, content: str):
-        if role == 'system':
-            return
-        self.messages.append({
-            "role": role,
-            "content": content
-        })
-
-    def last(self):
-        return self.messages[-1]
-
-    def to_messages(self, system_prompt: str | None = None, last_n: int = 7):
-        '''
-        Tùy chỗ gọi mà nó sẽ thêm system prompt khác nhau
-        :param system_prompt:
-        :return:
-        '''
-        # Loại bỏ các tin system message ra để ghi đề system mess mới tránh lẫn vai trò
-        messages = [msg for msg in self.messages if msg.get("role") in ("user", "assistant")]
-
-        if last_n is not None:
-            messages = messages[-last_n:]
-            
-        if system_prompt:
-            return [
-                {
-                    "role": "system",
-                    "content": system_prompt
-                },
-                *messages
-            ]
-
-        return self.messages
-```
-
-----------------------------------------
-
-## FILE: `models\intent_classification.py`
-```python
-from enum import StrEnum
-from pydantic import BaseModel, Field
-from src.chatbot.models.llm_response_model import LLMResponseModel
-
-
-class Intent(StrEnum):
-    NATURAL_CHAT = "NATURAL_CHAT"
-    SEARCH = "SEARCH"
-    STORAGE_ANALYSIS = "STORAGE_ANALYSIS"
-
-    @classmethod
-    def intent_values(self):
-        return ", ".join(intent.value for intent in Intent)
-
-
-class IntentClassification(LLMResponseModel):
-    intent: Intent = Field(
-        description=f'''
-Phân loại ý định của người dùng.
-
-Các loại ý định:
-
-- {Intent.NATURAL_CHAT.value}: 
-  Người dùng chỉ muốn trò chuyện, hỏi đáp hoặc trao đổi thông thường,
-  không cần sử dụng dữ liệu nội bộ.
-
-- {Intent.SEARCH.value}: 
-  Người dùng muốn tìm kiếm thông tin cụ thể trong hệ thống,
-  cây thư mục hoặc dữ liệu đã được lập chỉ mục.
-
-- {Intent.STORAGE_ANALYSIS.value}: 
-  Người dùng muốn biết thông tin tổng quan về kho dữ liệu,
-  cấu trúc thư mục, thống kê, các nhóm dữ liệu hoặc kiến thức
-  được tổng hợp từ toàn bộ kho.
-
-Chỉ trả về đúng một trong các giá trị: {Intent.intent_values()}
-'''
-    )
-
-    reason: str = Field(
-        description="Giải thích ngắn gọn lý do chọn nhãn."
-    )
-
-    # @classmethod
-    # def llm_schema(cls) -> str:
-    #     return """
-    # {
-    #   "intent": "NATURAL_CHAT | SEARCH",
-    #   "reason": "string"
-    # }
-    # """
-```
-
-----------------------------------------
-
-## FILE: `models\llm_response_model.py`
-```python
-from typing import get_args, get_origin
-from pydantic import BaseModel
-import json
-
-
-class LLMResponseModel(BaseModel):
-
-    @classmethod
-    def llm_schema(cls):
-        template, rules = cls._build_schema(cls)
-
-        return f"""
-Output format:
-
-{json.dumps(template, indent=2, ensure_ascii=False)}
-
-Field rules:
-{chr(10).join(rules)}
+from scripts.config import PROJECT_PATH
+
+GITIGNORE_CONTENT = """
+__pycache__/
+*.pyc
+.idea/
+.venv/
+.env
 """
 
-    @classmethod
-    def _build_schema(cls, model: type[BaseModel], prefix=""):
-        template = {}
-        rules = []
 
-        for name, field in model.model_fields.items():
-            path = f"{prefix}{name}"
-            field_type = field.annotation
-            origin = get_origin(field_type)
+def create_gitignore():
+    file = PROJECT_PATH / ".gitignore"
 
-            # list[T]
-            if origin is list:
-                item_type = get_args(field_type)[0]
+    if file.exists():
+        print('Đã có file .gitignore rồi')
+        return
 
-                if (
-                        isinstance(item_type, type)
-                        and issubclass(item_type, BaseModel)
-                ):
-                    child_template, child_rules = cls._build_schema(
-                        item_type,
-                        prefix=f"{path}[]."
-                    )
-
-                    template[name] = [child_template]
-                    rules.extend(child_rules)
-
-                else:
-                    template[name] = ["string"]
-
-                    if field.description:
-                        rules.append(
-                            f"- {path}: {field.description}"
-                        )
-
-            # nested object
-            elif (
-                    isinstance(field_type, type)
-                    and issubclass(field_type, BaseModel)
-            ):
-                child_template, child_rules = cls._build_schema(
-                    field_type,
-                    prefix=f"{path}."
-                )
-
-                template[name] = child_template
-                rules.extend(child_rules)
-
-            # primitive
-            else:
-                template[name] = "string"
-
-                if field.description:
-                    rules.append(
-                        f"- {path}: {field.description}"
-                    )
-
-        return template, rules
-```
-
-----------------------------------------
-
-## FILE: `mvp_version.py`
-```python
-import json
-from typing import List, Dict
-from groq import Groq
-from pathlib import Path
-
-
-class GroqModelName:
-    COMPOUND = "groq/compound"
-    COMPOUND_MINI = "groq/compound-mini"
-
-    LLAMA_3_1_8B_INSTANT = "llama-3.1-8b-instant"
-    LLAMA_3_3_70B_VERSATILE = "llama-3.3-70b-versatile"
-
-    GPT_OSS_120B = "openai/gpt-oss-120b"
-    GPT_OSS_20B = "openai/gpt-oss-20b"
-
-    WHISPER_LARGE_V3 = "whisper-large-v3"
-    WHISPER_LARGE_V3_TURBO = "whisper-large-v3-turbo"
-
-    # Preview
-    QWEN3_32B = 'qwen/qwen3-32b'
-    QWEN_QWEN3_6_27B = 'qwen/qwen3.6-27b'
-
-    META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT = 'meta-llama/llama-4-scout-17b-16e-instruct'
-    META_LLAMA_LLAMA_PROMPT_GUARD_2_22M = 'meta-llama/llama-prompt-guard-2-22m'
-    META_LLAMA_LLAMA_PROMPT_GUARD_2_86M = 'meta-llama/llama-prompt-guard-2-86m'
-
-    OPENAI_GPT_OSS_SAFEGUARD_20B = 'openai/gpt-oss-safeguard-20b'
-
-
-class GroqServices:
-    def __init__(
-            self,
-            api_key: str
-    ):
-        self.client = Groq(api_key=api_key)
-
-    def chat(
-            self,
-            text: str,
-            model_name: str,
-            system_prompt: str | None = None
-    ) -> str:
-        messages = []
-
-        if system_prompt:
-            messages.append({
-                "role": "system",
-                "content": system_prompt
-            })
-
-        messages.append({
-            "role": "user",
-            "content": text
-        })
-
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages
-        )
-
-        return response.choices[0].message.content
-
-    def chat_json(self, text, model_name, system_prompt=''):
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=[
-                {"role": "system", "content": system_prompt + " Trả về JSON."},
-                {"role": "user", "content": text}
-            ],
-            response_format={"type": "json_object"}  # Ép buộc trả về JSON
-        )
-
-        return response.choices[0].message.content
-
-    def chat_history(
-            self,
-            model_name,
-            messages: List[Dict[str, str]]
-    ) -> str:
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages
-        )
-
-        return response.choices[0].message.content
-
-    # def summary(
-    #         self,
-    #         text,
-    #         model_name,
-    # ) -> str:
-    #     formatted_prompt = SUMMARIZE_PROMPT.format(content=text)
-    #     response = self.chat(formatted_prompt, model_name)
-    #     return response
-
-
-def build_tree(path, max_depth=None, current_depth=0):
-    path = Path(path)
-
-    if path.is_file():
-        return None
-
-    if max_depth is not None and current_depth >= max_depth:
-        return {}
-
-    return {
-        child.name: build_tree(child, max_depth, current_depth + 1)
-        for child in sorted(path.iterdir())
-    }
-
-
-IGNORE_DIRS = {
-    "__pycache__",
-    ".git",
-    ".venv",
-    "venv",
-    "node_modules",
-    'profiles',
-    '_internal'
-}
-
-def build_tree(path, max_depth=None, current_depth=0):
-    path = Path(path)
-
-    if path.is_file():
-        return None
-
-    if max_depth is not None and current_depth >= max_depth:
-        return {}
-
-    tree = {}
-
-    for child in sorted(path.iterdir()):
-        # Bỏ qua folder/file không cần thiết
-        if child.name in IGNORE_DIRS:
-            continue
-
-        tree[child.name] = build_tree(
-            child,
-            max_depth,
-            current_depth + 1
-        )
-
-    return tree
-
-def read_json(path):
-    path = Path(path)
-
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save_json(data, path):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-
-def scan_directory(root: str | Path):
-    root = Path(root).resolve()
-    results = []
-
-    for path in root.rglob("*"):
-        # Bỏ qua thư mục không cần
-        if any(part in IGNORE_DIRS for part in path.parts):
-            continue
-
-        # results.append({
-        #     "path": str(path.relative_to(root)),
-        #     "name": path.name,
-        #     "type": "dir" if path.is_dir() else "file",
-        # })
-
-        results.append(str(path.relative_to(root)))
-    return results
-
-
-def system_notification(msg=None, separator_length=80):
-    separator = '=' * separator_length
-    return separator + '\n' + msg
-
-
-SYSTEM_PROMPT = """
-Bạn là trợ lý AI quản lý kho thư mục, bạn hiểu kiến trúc cây thư mục.
-
-Nhiệm vụ của bạn là hỗ trợ người dùng tra cứu tài nguyên được trong thư mục.
-
-Dữ liệu thư mục mà bạn quản lý: 
-{data}
-"""
+    file.write_text(
+        GITIGNORE_CONTENT.strip(),
+        encoding="utf-8"
+    )
 
 if __name__ == '__main__':
-
-    path = Path(r"C:\Users\Admin\Downloads")
-    model_name = GroqModelName.LLAMA_3_1_8B_INSTANT
-
-    TAG_USER = '- Người dùng hỏi: '
-    TAG_SYSTEM = '- AI đáp:\n'
-
-    current_file = Path(__file__).resolve()
-    print(f'{current_file=}')
-    index_file_path = current_file.parent / f'{path.stem}_index.json'
-    if not index_file_path.exists():
-        print(system_notification('Tiến hành quét nội dung thư mục...'))
-        data = scan_directory(path)
-        save_json(data, index_file_path)
-    data = read_json(index_file_path)
-    print(f'{index_file_path=}')
-    from pprint import pprint
-
-    pprint(data[:5])
-    data = read_json(index_file_path)
-    g = GroqServices()
-    chat_history = [
-        {
-            'role': 'system',
-            'content': SYSTEM_PROMPT.format(data=data[:100])
-        }
-    ]
-    first_msg = g.chat_history(model_name, chat_history)
-    print(system_notification(f'{TAG_SYSTEM} {first_msg}'))
-    while True:
-        user_input = input(system_notification(TAG_USER))
-        if user_input == '':
-            break
-        chat_history.append({
-            'role': 'user',
-            'content': user_input
-        })
-        response = g.chat_history(model_name, chat_history)
-        print(system_notification(f'{TAG_SYSTEM} {response}'))
-    pass
-
-    # Các lệnh gói
-'''
-cd src
-cd chatbot
-pyinstaller --onefile llm1.py
-'''
+    create_gitignore()
 ```
 
 ----------------------------------------
 
-## FILE: `services\chatbot_service.py`
+## FILE: `git\commit_and_push.py`
 ```python
-import json
-from pathlib import Path
-from src.chatbot.models.history import History
-from src.chatbot.graph.workflows.orchestrator import build_workflow
-from src.chatbot.graph.state import State
-from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.loggers import main_logger
-from src.chatbot.config import INDEXED_DATA_PATH
-
-
-class ChatbotService:
-    def __init__(self, workflow=None, prompt_service=None, llm_service=None):
-        self.workflow = workflow or build_workflow()
-        self.prompt_service = prompt_service or PromptService()
-        self.llm_service = llm_service or GroqServices()
-
-    def create_session(self, **kwargs):
-        history = History()
-        dir_summary = self._get_directory_summary(kwargs.get('path_to_index'))
-        main_logger.debug(dir_summary)
-        system_prompt = self.prompt_service.render(name="system", summary=dir_summary)
-        # Tạo payload tạm thời để hỏi LLM câu chào đầu tiên
-        initial_payload = [{"role": "system", "content": system_prompt}]
-        first_mess = self.llm_service.chat_history(initial_payload)
-        history.add(role='assistant', content=first_mess)
-        return history
-
-    def _get_directory_summary(self, root_path) -> str:
-        """Đọc nhanh file index và lấy danh sách các thư mục/chủ đề chính hiện có"""
-        index_path = Path(root_path)
-        if not index_path.exists():
-            return "Hiện tại chưa có dữ liệu nào được lập chỉ mục."
-        try:
-            with open(index_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-
-            # Lấy ra các tên thư mục con cấp 1 (ngay sau thư mục gốc) để làm danh mục chính
-            main_categories = set()
-            for item in data:
-                folders = item.get("folders", [])
-                if len(folders) > 0:
-                    # Lấy folder đầu tiên trong chuỗi phân cấp làm danh mục chính
-                    main_categories.add(folders[-1])
-
-            if main_categories:
-                return "Các danh mục chính bạn đang quản lý bao gồm: " + ", ".join(list(main_categories)[:15])
-            return "Thư mục hiện tại đang trống hoặc chưa được phân loại."
-        except Exception as e:
-            main_logger.error(f"Lỗi khi đọc tóm tắt thư mục: {e}")
-            return "Không thể tải cấu trúc thư mục."
-
-    def chat(self, history=None, path_to_index=None):
-        main_logger.info('Chạy dịch vụ chat')
-        dir_summary = self._get_directory_summary(path_to_index or INDEXED_DATA_PATH)
-        state_dict = State(history=history,
-                           dir_summary=dir_summary).model_dump()
-        last_state_dict = self.workflow.invoke(state_dict)
-        last_state_obj = State.model_validate(last_state_dict)
-        return last_state_obj.history, last_state_obj.found_paths
+import scripts.git.git_add
+import scripts.git.git_commit
+import scripts.git.git_push
+import scripts.git.git_status
 ```
 
 ----------------------------------------
 
-## FILE: `services\file_service\json_reader.py`
+## FILE: `git\git_add.py`
 ```python
-import json
-from pathlib import Path
+from scripts.run_cmd_method import run
 
-class JsonReader:
-    def read(self, path: Path):
-        if path.stat().st_size == 0:
-            print(f'{path} File is empty')
-            return None
-        with open(path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        return data
-
-if __name__ == '__main__':
-    jsonreader = JsonReader()
-    data = jsonreader.read(Path('input/input.json'))
-    print(data)
+run('git', 'add', '.')
 ```
 
 ----------------------------------------
 
-## FILE: `services\file_service\json_writer.py`
+## FILE: `git\git_add_remote.py`
 ```python
-import json
-from pathlib import Path
+from scripts.run_cmd_method import run
 
-class JsonWriter:
-    def write(self, path: Path, data):
-        with open(path, 'w', encoding='utf-8') as f:
-            json.dump(
-                data,
-                f,
-                ensure_ascii=False,
-                indent=4
-            )
+link_repo = 'https://github.com/MinhLvMax/text2triple.git'
+run('git', 'remote', 'add', 'origin', link_repo)
 ```
 
 ----------------------------------------
 
-## FILE: `services\groq_llm_services.py`
+## FILE: `git\git_branch_M_main.py`
 ```python
-from groq import Groq, BadRequestError
-from pydantic import BaseModel, ValidationError
+from scripts.run_cmd_method import run
 
-from src.chatbot.models.history import History
-from src.chatbot.services.prompt_service import PromptService
-from src.config import GROQ_API_KEY
-from src.loggers import main_logger
-from src.chatbot.models.llm_response_model import LLMResponseModel
+# Đổi tên nhánh thành main
+run('git', 'branch', '-M', 'main')
+```
 
+----------------------------------------
 
-class GroqModelName:
-    COMPOUND = "groq/compound"
-    COMPOUND_MINI = "groq/compound-mini"
+## FILE: `git\git_commit.py`
+```python
+from scripts.run_cmd_method import run
+from datetime import datetime
 
-    LLAMA_3_1_8B_INSTANT = "llama-3.1-8b-instant"
-    LLAMA_3_3_70B_VERSATILE = "llama-3.3-70b-versatile"
+msg = input('Commit: ')
+if msg == '':
+    now = datetime.now()
+    timestamp = now.strftime("%Y%m%d%H%M%S")
+    msg = f'Auto commit {timestamp}'
 
-    GPT_OSS_120B = "openai/gpt-oss-120b"
-    GPT_OSS_20B = "openai/gpt-oss-20b"
+run('git', 'commit', '-m', msg)
+```
 
-    WHISPER_LARGE_V3 = "whisper-large-v3"
-    WHISPER_LARGE_V3_TURBO = "whisper-large-v3-turbo"
+----------------------------------------
 
-    # Preview
-    QWEN3_32B = 'qwen/qwen3-32b'
-    QWEN_QWEN3_6_27B = 'qwen/qwen3.6-27b'
+## FILE: `git\git_init.py`
+```python
+from scripts.run_cmd_method import run
 
-    META_LLAMA_LLAMA_4_SCOUT_17B_16E_INSTRUCT = 'meta-llama/llama-4-scout-17b-16e-instruct'
-    META_LLAMA_LLAMA_PROMPT_GUARD_2_22M = 'meta-llama/llama-prompt-guard-2-22m'
-    META_LLAMA_LLAMA_PROMPT_GUARD_2_86M = 'meta-llama/llama-prompt-guard-2-86m'
+run('git', 'init')
+```
 
-    OPENAI_GPT_OSS_SAFEGUARD_20B = 'openai/gpt-oss-safeguard-20b'
+----------------------------------------
 
+## FILE: `git\git_log.py`
+```python
+from scripts.run_cmd_method import run
 
-class GroqServices:
-    def __init__(
-            self,
-            api_key: str = '',
-            prompt_services=None,
-    ):
-        self.api_key = api_key or GROQ_API_KEY
-        self.client = Groq(api_key=self.api_key)
-        self.prompt_service = prompt_services or PromptService()
+run('git', 'log')
+```
 
-    def chat(
-            self,
-            text: str,
-            model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
-            system_prompt: str | None = None, response_format: dict | None = None,
-    ) -> str:
-        messages = []
+----------------------------------------
 
-        if system_prompt:
-            messages.append({
-                "role": "system",
-                "content": system_prompt
-            })
+## FILE: `git\git_pull.py`
+```python
+from scripts.run_cmd_method import run
 
-        messages.append({
-            "role": "user",
-            "content": text
-        })
+run('git', 'pull')
+```
 
-        kwargs = {}
+----------------------------------------
 
-        if response_format is not None:
-            kwargs["response_format"] = response_format
+## FILE: `git\git_push.py`
+```python
+from scripts.run_cmd_method import run
 
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages,
-            **kwargs
+run('git', 'push')
+```
+
+----------------------------------------
+
+## FILE: `git\git_push_u_origin_main.py`
+```python
+from scripts.run_cmd_method import run
+
+run('git', 'push', '-u', 'origin', 'main')
+```
+
+----------------------------------------
+
+## FILE: `git\git_remote_v.py`
+```python
+from scripts.run_cmd_method import run
+# Kiểm tra repository hiện tại đang kết nối tới remote nào và URL của chúng là gì.
+run('git', 'remote', '-v')
+```
+
+----------------------------------------
+
+## FILE: `git\git_status.py`
+```python
+from scripts.run_cmd_method import run
+
+run("git", "-c", "color.status=always", "status")
+```
+
+----------------------------------------
+
+## FILE: `pip_list.py`
+```python
+import sys
+from scripts.run_cmd_method import run
+
+run(sys.executable, '-m', 'pip', 'list')
+```
+
+----------------------------------------
+
+## FILE: `requirements\freeze_requirements.py`
+```python
+from scripts.run_cmd_method import run
+from scripts.config import PROJECT_PATH
+from scripts.config import venv_python
+
+requirements = PROJECT_PATH / 'requirements.txt'
+
+with requirements.open('w', encoding='utf-8') as f:
+    run(str(venv_python), '-m', 'pip', 'freeze', stdout=f)
+```
+
+----------------------------------------
+
+## FILE: `requirements\install_for_py_embed\install_packages.py`
+```python
+from scripts.config import PROJECT_PATH
+from scripts.requirements.install_for_py_embed.setup_py_embed import python_embed_extract_dir
+
+# Cài package
+from scripts.run_cmd_method import run
+
+python_path = python_embed_extract_dir / "python.exe"
+run(python_path, '-m', 'pip', 'install', '-r', "requirements.txt",)
+
+```
+
+----------------------------------------
+
+## FILE: `requirements\install_for_py_embed\setup_py_embed.py`
+```python
+import urllib.request
+import zipfile
+from scripts.config import PROJECT_PATH
+from scripts.run_cmd_method import run
+
+# Tải
+url_py_embed = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip"
+python_embed_zip_path = PROJECT_PATH / "python_embed.zip"
+if not python_embed_zip_path.exists():
+    print("Đang tải Python Embed...")
+    urllib.request.urlretrieve(
+        url_py_embed,
+        python_embed_zip_path
+    )
+    print("Tải xong!")
+else:
+    print("Đã có python-embed.zip, bỏ qua.")
+
+# Giải nén
+python_embed_extract_dir = PROJECT_PATH / python_embed_zip_path.stem
+if not python_embed_extract_dir.exists():
+    print("Đang giải nén...")
+    with zipfile.ZipFile(python_embed_zip_path) as z:
+        z.extractall(python_embed_extract_dir)
+    print("Giải nén xong!")
+else:
+    print("Python Embed đã sẵn sàng, bỏ qua.")
+
+# Bật import site
+pth_file = next(python_embed_extract_dir.glob("python*._pth"), None)
+
+if pth_file:
+    text = pth_file.read_text(encoding="utf-8")
+
+    if "#import site" in text:
+        pth_file.write_text(
+            text.replace("#import site", "import site"),
+            encoding="utf-8",
         )
+        print("Đã bật import site.")
+    else:
+        print("import site đã được bật.")
+else:
+    print("Không tìm thấy file python*._pth.")
 
-        return response.choices[0].message.content
+# Tải get-pip
+get_pip_path = python_embed_extract_dir / "get-pip.py"
+get_pip_url = "https://bootstrap.pypa.io/get-pip.py"
 
-    def chat_json(
-            self,
-            messages: list[dict],
-            response_model: type[LLMResponseModel],
-            model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
-            system_prompt: str | None = None
-    ) -> BaseModel:
+if not get_pip_path.exists():
+    print("Đang tải get-pip.py...")
+    urllib.request.urlretrieve(
+        get_pip_url,
+        get_pip_path
+    )
+    print("Tải get-pip.py xong!")
+else:
+    print("Đã có get-pip.py, bỏ qua.")
 
-        # lấy mô tả schema
-        schema = response_model.llm_schema()
+# Cài pip
+python_path = python_embed_extract_dir / "python.exe"
 
-        # format prompt trả về json, truyển mô tả schema vào
-        prompt = self.prompt_service.render(
-            "json_output",
-            schema=schema
-        )
+run(
+    python_path,
+    get_pip_path,
+    workdir=python_embed_extract_dir,
+)
 
-        # Nếu không có system prompt
-        system_content = prompt
-
-        # nếu có system prompt
-        if system_prompt:
-            system_content = f"{system_prompt}\n\n{prompt}"
-
-        messages = [
-            {
-                "role": "system",
-                "content": system_content
-            },
-            *messages
-        ]
-        try:
-            response = self.client.chat.completions.create(
-                model=model_name,
-                messages=messages,
-                response_format={"type": "json_object"})
-            return response_model.model_validate_json(
-                response.choices[0].message.content
-            )
-        except BadRequestError as e:
-            main_logger.exception(e)
-            raise
-        except ValidationError as e:
-            main_logger.exception(e)
-            raise
-
-    def chat_history(
-            self,
-            messages: list[dict[str, str]],
-            model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
-    ) -> str:
-        response = self.client.chat.completions.create(
-            model=model_name,
-            messages=messages
-        )
-
-        return response.choices[0].message.content
+import scripts.requirements.install_for_py_embed.install_packages
 ```
 
 ----------------------------------------
 
-## FILE: `services\prompt_service.py`
+## FILE: `requirements\install_for_venv.py`
+```python
+from scripts.run_cmd_method import run
+from scripts.config import venv_python
+
+run(str(venv_python), "-m", "pip", "install", "-r", "requirements.txt", )
+```
+
+----------------------------------------
+
+## FILE: `run_chainlit.py`
+```python
+from scripts.run_cmd_method import run
+from scripts.config import venv_python
+
+entry_point = 'main.py'  # sửa nếu có thay đổi entry point
+run(str(venv_python), '-m', 'chainlit', 'run', entry_point)
+```
+
+----------------------------------------
+
+## FILE: `run_cmd_method.py`
 ```python
 from pathlib import Path
-from src.config import BASE_DIR
+import subprocess
+from scripts.config import PROJECT_PATH
 
-class PromptService:
-    default_prompt_dir = BASE_DIR / 'src' / 'chatbot' / 'prompts'
-
-    def __init__(self, prompt_dir = None):
-        self.prompt_dir = Path(prompt_dir or self.default_prompt_dir)
-        self.cache = {}
-
-    def render(self, name, **kwargs):
-
-        if name not in self.cache:
-            path = self.prompt_dir / f"{name}.txt"
-            self.cache[name] = path.read_text("utf-8-sig")
-
-        return self.cache[name].format(**kwargs)
+def run(*command, workdir=PROJECT_PATH, **kwargs):
+    return subprocess.run(
+        [str(c) for c in command],
+        cwd=Path(workdir),
+        text=True,
+        check=True,
+        **kwargs,
+    )
 ```
 
 ----------------------------------------
 
-## FILE: `services\search_service\base_search.py`
+## FILE: `sys_executable.py`
 ```python
-from abc import ABC, abstractmethod
+import sys
 
-from src.config import BASE_DIR
-from src.chatbot.services.file_service.json_reader import JsonReader
-from src.loggers import main_logger
-from src.chatbot.config import INDEXED_DATA_PATH
-
-
-class BaseSearch(ABC):
-    default_path = INDEXED_DATA_PATH
-
-    def __init__(self, root_path=None):
-        self.root_path = root_path or self.default_path
-        self.indexed_data = self._load_index()
-
-    def _load_index(self):
-        if not self.root_path.exists():
-            return {}
-
-        return JsonReader().read(self.root_path) or {}
-
-    @abstractmethod
-    def search(self, query) -> list[str]:
-        pass
-
-```
-
-----------------------------------------
-
-## FILE: `services\search_service\keyword_search.py`
-```python
-from pathlib import Path
-from src.chatbot.services.search_service.base_search import BaseSearch
-from src.loggers import main_logger
-from src.chatbot.text_nomalizer import TextNormalizer
-from src.chatbot.models.found_path_result import FoundPathResult
-
-
-class KeywordSearch(BaseSearch):
-
-    def __init__(self, root_path=None, text_normalizer=None):
-        super().__init__(root_path)
-        self.text_normalizer = text_normalizer or TextNormalizer()
-
-    def search(self, query: str) -> list[dict]:
-        list_rerank_path_result = []
-        normalized_query = self.text_normalizer.normalize(query)
-        query_tokens = normalized_query.split()
-        for data in self.indexed_data:
-            score = 0
-            # So sánh tên nằm trong tên file
-            if normalized_query == data.get('normalize_stem', ''):
-                score += 150
-            elif normalized_query in data.get('normalize_stem', ''):
-                score += 100
-            # So sánh tên nằm trong đường dẫn
-            for folder in data.get('folders', []):
-                if normalized_query in folder:
-                    score += 30
-            # So sánh từ ngữ nằm trong tên
-            matched = set(query_tokens) & set(data.get('normalize_stem').split())
-            score += len(matched) * 30
-
-            if score > 0:
-                rerank_path_result = FoundPathResult(
-                    path=data.get('path', ''),
-                    score=score
-                )
-                list_rerank_path_result.append(rerank_path_result.model_dump())
-
-        return sorted(  # Sắp xếp kết quả giảm dần
-            list_rerank_path_result,
-            key=lambda x: x["score"],
-            reverse=True
-        )
-
-
-if __name__ == '__main__':
-    keyword_search = KeywordSearch()
-    paths = keyword_search.search('Black hole')
-    for path in paths:
-        print(path)
-```
-
-----------------------------------------
-
-## FILE: `services\storage_analysis_service.py`
-```python
-from src.chatbot.services.file_service.json_reader import JsonReader
-from src.chatbot.config import INDEXED_DATA_PATH, FILES_INDEX_PATH, FOLDERS_INDEX_PATH
-from src.chatbot.services.groq_llm_services import GroqServices
-
-class StorageAnalysisService:
-    '''
-    Cung cấp các cơ chế phân tích kho
-    '''
-    def __init__(self, files_index_path: None, folders_index_path: None, json_loader = None, llm_service = None):
-        self.files_index_path = files_index_path or FILES_INDEX_PATH
-        self.folders_index_path = folders_index_path or FOLDERS_INDEX_PATH
-        self.json_loader = json_loader or JsonReader()
-        self.llm_service = llm_service or GroqServices()
-
-
-
-
-
-
-
-
-```
-
-----------------------------------------
-
-## FILE: `services\text_reader.py`
-```python
-from pathlib import Path
-
-
-class TextReader:
-    def read(self, path: str | Path) -> str:
-        path = Path(path)
-
-        with path.open("r", encoding="utf-8") as f:
-            return f.read()
-```
-
-----------------------------------------
-
-## FILE: `text_nomalizer.py`
-```python
-import re
-
-
-class TextNormalizer:
-
-    def __init__(self):
-        self.char_map = self._build_char_map()
-
-    def _build_char_map(self):
-        groups = {
-            "a": ["à", "á", "ả", "ã", "ạ", "ă", "â"],
-            "d": ["đ"],
-            "e": ["è", "é", "ẻ", "ẽ", "ẹ", "ê"],
-            "i": ["ì", "í", "ỉ", "ĩ", "ị"],
-            "o": ["ò", "ó", "ỏ", "õ", "ọ", "ô", "ơ"],
-            "u": ["ù", "ú", "ủ", "ũ", "ụ", "ư"],
-            "y": ["ỳ", "ý", "ỷ", "ỹ", "ỵ"]
-        }
-
-        result = {}
-
-        for normal, chars in groups.items():
-            for c in chars:
-                result[c] = normal
-
-        return result
-
-    def normalize(self, text: str):
-        text = text.lower()
-
-        text = "".join(
-            self.char_map.get(c, c)
-            for c in text
-        )
-
-        text = re.sub(
-            r"[_\-.]+",
-            " ",
-            text
-        )
-
-        text = re.sub(
-            r"\s+",
-            " ",
-            text
-        )
-
-        return text.strip()
+print(sys.executable)
 ```
 
 ----------------------------------------

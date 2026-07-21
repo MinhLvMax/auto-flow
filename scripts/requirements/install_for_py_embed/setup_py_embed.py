@@ -5,7 +5,8 @@ from scripts.run_cmd_method import run
 
 # Tải
 url_py_embed = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-embed-amd64.zip"
-python_embed_zip_path = PROJECT_PATH / "python_embed.zip"
+python_embed_zip_path = PROJECT_PATH / 'embed' /  "python_embed.zip"
+python_embed_zip_path.parents.mkdir(parents=True, exist_ok=True)
 if not python_embed_zip_path.exists():
     print("Đang tải Python Embed...")
     urllib.request.urlretrieve(
@@ -65,3 +66,5 @@ run(
     get_pip_path,
     workdir=python_embed_extract_dir,
 )
+
+import scripts.requirements.install_for_py_embed.install_packages
