@@ -1,48 +1,28 @@
 import re
+import unicodedata
 
 
 class TextNormalizer:
 
-    def __init__(self):
-        self.char_map = self._build_char_map()
-
-    def _build_char_map(self):
-        groups = {
-            "a": ["à", "á", "ả", "ã", "ạ", "ă", "â"],
-            "d": ["đ"],
-            "e": ["è", "é", "ẻ", "ẽ", "ẹ", "ê"],
-            "i": ["ì", "í", "ỉ", "ĩ", "ị"],
-            "o": ["ò", "ó", "ỏ", "õ", "ọ", "ô", "ơ"],
-            "u": ["ù", "ú", "ủ", "ũ", "ụ", "ư"],
-            "y": ["ỳ", "ý", "ỷ", "ỹ", "ỵ"]
-        }
-
-        result = {}
-
-        for normal, chars in groups.items():
-            for c in chars:
-                result[c] = normal
-
-        return result
-
-    def normalize(self, text: str):
+    def normalize(self, text: str) -> str:
         text = text.lower()
 
+        text = unicodedata.normalize("NFD", text)
         text = "".join(
-            self.char_map.get(c, c)
+            c
             for c in text
+            if unicodedata.category(c) != "Mn"
         )
 
-        text = re.sub(
-            r"[_\-.]+",
-            " ",
-            text
-        )
+        text = text.replace("đ", "d").replace("Đ", "D")
 
-        text = re.sub(
-            r"\s+",
-            " ",
-            text
-        )
+        text = re.sub(r"[^a-z0-9]+", " ", text)
 
-        return text.strip()
+        return re.sub(r"\s+", " ", text).strip()
+
+
+if __name__ == '__main__':
+    text_normalizer = TextNormalizer()
+    text = fr'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE\TÀU LINHTINH\an-old-train-travels-on-a-railway-laid-in-the-wate-2025-12-17-03-34-57-utc.mov'
+    text_normalized = text_normalizer.normalize(text)
+    print(text_normalized.split())

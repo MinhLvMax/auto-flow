@@ -2,7 +2,7 @@ import chainlit as cl
 import asyncio
 import subprocess
 from src.chatbot.services.chatbot_service import ChatbotService
-from src.chatbot.indexing.indexer import Indexer
+from src.chatbot.indexing.indexer_old import Indexer
 from src.chatbot.config import DEDAULT_ROOT_PATH
 from src.loggers import main_logger
 from pathlib import Path
