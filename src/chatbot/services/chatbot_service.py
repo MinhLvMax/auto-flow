@@ -1,11 +1,9 @@
-import json
-from pathlib import Path
 from src.chatbot.models.history import History
 from src.chatbot.graph.workflows.orchestrator import build_workflow
 from src.chatbot.graph.state import State
 from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.services.groq_llm_services import GroqServices
-from src.chatbot.services.storage_analysis_service import StorageAnalysisService
+from src.chatbot.services.groq_llm_services import GroqService
+from services.storage.storage_analysis_service import StorageAnalysisService
 from src.loggers import main_logger
 
 
@@ -13,7 +11,7 @@ class ChatbotService:
     def __init__(self, workflow=None, prompt_service=None, llm_service=None, storage_service=None):
         self.workflow = workflow or build_workflow()
         self.prompt_service = prompt_service or PromptService()
-        self.llm_service = llm_service or GroqServices()
+        self.llm_service = llm_service or GroqService()
         self.storage_service = storage_service or StorageAnalysisService()
 
     def create_session(self, **kwargs):

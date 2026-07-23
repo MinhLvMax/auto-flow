@@ -6,5 +6,6 @@ TREE_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'tree_index.js
 TOKEN_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'token_index.json'
 
 DEDAULT_ROOT_PATH = Path(r'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE')
-FILES_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'files_index.json'
-FOLDERS_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'folders_index.json'
+
+# FILES_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'files_index.json'
+# FOLDERS_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'folders_index.json'

@@ -20,9 +20,13 @@ class TextNormalizer:
 
         return re.sub(r"\s+", " ", text).strip()
 
+    def tokenize(self, text: str) -> list[str]:
+        text_normalized = self.normalize(text)
+        return text_normalized.split()
 
 if __name__ == '__main__':
     text_normalizer = TextNormalizer()
-    text = fr'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE\TÀU LINHTINH\an-old-train-travels-on-a-railway-laid-in-the-wate-2025-12-17-03-34-57-utc.mov'
+    text = fr'\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\chap 07-Cầu kính Bạch Long – Việt Nam\\Cầu Kính Bạch Long-Mộc Châu, Sơn La   Bach Long Glass Bridge-Moc Chau, Son La_converted.mp4'
     text_normalized = text_normalizer.normalize(text)
+    print(text_normalized)
     print(text_normalized.split())

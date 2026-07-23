@@ -1,7 +1,6 @@
 from pathlib import Path
-import json
 import os
-from src.chatbot.text_nomalizer import TextNormalizer
+from services.text_nomalizer import TextNormalizer
 from src.chatbot.services.file_service.json_writer import JsonWriter
 from src.chatbot.services.file_service.json_reader import JsonReader
 from src.chatbot.config import TREE_INDEX_PATH, TOKEN_INDEX_PATH

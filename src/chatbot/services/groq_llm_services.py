@@ -32,7 +32,7 @@ class GroqModelName:
     OPENAI_GPT_OSS_SAFEGUARD_20B = 'openai/gpt-oss-safeguard-20b'
 
 
-class GroqServices:
+class GroqService:
     def __init__(
             self,
             api_key: str = '',

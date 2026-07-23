@@ -1,7 +1,7 @@
 from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
+from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.prompt_service import PromptService
-from src.chatbot.services.storage_analysis_service import StorageAnalysisService
+from services.storage.storage_analysis_service import StorageAnalysisService
 from src.chatbot.graph.nodes.base_node import BaseNode
 from src.chatbot.graph.config import WorkFLowConfig
 
@@ -9,7 +9,7 @@ from src.chatbot.graph.config import WorkFLowConfig
 class StorageAnalysisNode(BaseNode):
     def __init__(self, llm_service=None, prompt_service=None, storage_service=None):
         super().__init__()
-        self.llm_service = llm_service or GroqServices()
+        self.llm_service = llm_service or GroqService()
         self.prompt_service = prompt_service or PromptService()
         self.storage_service = storage_service or StorageAnalysisService()
 

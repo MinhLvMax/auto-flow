@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import chainlit as cl
 from chainlit.input_widget import Select, Slider
-from src.chatbot.services.groq_llm_services import GroqServices
+from src.chatbot.services.groq_llm_services import GroqService
 
 
 # chainlit run research_chainlit.py -w

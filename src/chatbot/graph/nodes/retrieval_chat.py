@@ -1,5 +1,5 @@
 from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
+from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.graph.nodes.base_node import BaseNode
 from src.chatbot.graph.config import WorkFLowConfig
@@ -8,7 +8,7 @@ from src.chatbot.graph.config import WorkFLowConfig
 class RetrievalChatNode(BaseNode):
     def __init__(self, llm_service=None, prompt_service=None):
         super().__init__()
-        self.llm_service = llm_service or GroqServices()
+        self.llm_service = llm_service or GroqService()
         self.prompt_service = prompt_service or PromptService()
 
     def run(self, raw_state: dict):

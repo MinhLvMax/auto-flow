@@ -1,6 +1,6 @@
 
 from src.chatbot.graph.state import State
-from src.chatbot.services.groq_llm_services import GroqServices
+from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.graph.nodes.base_node import BaseNode
 from src.chatbot.models.intent_classification import IntentClassification
 from src.chatbot.graph.config import WorkFLowConfig
@@ -10,7 +10,7 @@ from src.loggers import main_logger
 class ClassificationNode(BaseNode):
     def __init__(self, llm_service=None):
         super().__init__()
-        self.llm_service = llm_service or GroqServices()
+        self.llm_service = llm_service or GroqService()
 
     def run(self, raw_state: dict):
         state = State.model_validate(raw_state)
