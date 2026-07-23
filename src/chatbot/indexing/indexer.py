@@ -21,15 +21,16 @@ class Indexer:
 
     def build_index(self, root_path: str, output_path: str):
         result = {}
-        for dirpath, dirnames, filenames in os.walk(root_path):
+        for id, (dirpath, dirnames, filenames) in enumerate(os.walk(root_path)):
             dirnames[:] = [d for d in dirnames if d not in self.ignore]
-            result[dirpath] = {
+            result[id] = {
+                'dirpath': dirpath,
                 'dirnames': dirnames,
                 'filenames': filenames,
             }
         self.json_writer.write(output_path, result)
 
-    def build_invert_index(self, root_path, indexed_path=None, output_path=None):
+    def build_token_index(self, root_path, indexed_path=None, output_path=None):
         data = self.json_reader.read(indexed_path)
         inverted_index = {}
         for path, node in data.items():
@@ -57,9 +58,9 @@ if __name__ == '__main__':
     indexer = Indexer = Indexer()
     root_path = r'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE'
     indexer.build_index(root_path, TREE_INDEX_PATH)
-    indexer.build_invert_index(root_path, TREE_INDEX_PATH, TOKEN_INDEX_PATH)
+    indexer.build_token_index(root_path, TREE_INDEX_PATH, TOKEN_INDEX_PATH)
 
-    reader = JsonReader()
-    data = reader.read(TOKEN_INDEX_PATH)
-    print(len(data))
+    # reader = JsonReader()
+    # data = reader.read(TOKEN_INDEX_PATH)
+    # print(len(data))
     pass

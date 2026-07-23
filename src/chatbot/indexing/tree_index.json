@@ -1,5 +1,6 @@
 {
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE": {
+    "0": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE",
         "dirnames": [
             "America - MỸ",
             "Argentina",
@@ -71,7 +72,8 @@
             "llm1.exe"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ": {
+    "1": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ",
         "dirnames": [
             "10_Cumbres & Toltec Scenic Railroad, USA",
             "chap 04-Precipice Trail – Mỹ",
@@ -87,7 +89,8 @@
             "snowy-city-of-new-york-in-winter.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\10_Cumbres & Toltec Scenic Railroad, USA": {
+    "2": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\10_Cumbres & Toltec Scenic Railroad, USA",
         "dirnames": [],
         "filenames": [
             "0407.mp4",
@@ -102,7 +105,8 @@
             "Deep Canyon Clip 2.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 04-Precipice Trail – Mỹ": {
+    "3": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 04-Precipice Trail – Mỹ",
         "dirnames": [],
         "filenames": [
             "Acadia Autumn Precipice Trail, Fall Colors, & Best Ocean Views [4K]_converted.mp4",
@@ -118,7 +122,8 @@
             "tilting-up-shot-of-peregrine-falcon-2025-12-17-21-06-29-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 07-Deception Pass Bridge – Hoa Kỳ": {
+    "4": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 07-Deception Pass Bridge – Hoa Kỳ",
         "dirnames": [],
         "filenames": [
             "Deception Pass - driving over the bridge from the south_converted.mp4",
@@ -130,7 +135,8 @@
             "Driving over Deception Pass Bridge (Southbound), Washington State_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 09-Chesapeake Bay Bridge – Mỹ": {
+    "5": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 09-Chesapeake Bay Bridge – Mỹ",
         "dirnames": [],
         "filenames": [
             "4K Drone Chesapeake Bay Bridge, Annapolis, Navy Stadium - Maryland (New DJI Mavic Air 2S)_converted.mp4",
@@ -147,7 +153,8 @@
             "The Chesapeake Bay Bridge!_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 19-Mono Lake Tufa Towers – Mỹ": {
+    "6": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 19-Mono Lake Tufa Towers – Mỹ",
         "dirnames": [],
         "filenames": [
             "4k Drone video of 395 Near Mono Lake, Virginia Peak, from Conway Summit_converted.mp4",
@@ -166,7 +173,8 @@
             "USA, Mono Lake, California Amazing Planet (4K) 2022_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 21-Royal Gorge Bridge – Mỹ": {
+    "7": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\chap 21-Royal Gorge Bridge – Mỹ",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-royal-gorge-bridge-in-canon-city-c-2026-03-26-23-01-19-utc.mp4",
@@ -181,11 +189,13 @@
             "Walking along the Royal Gorge bridge_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\Colorado": {
+    "8": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\Colorado",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\Utah": {
+    "9": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\America - MỸ\\Utah",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -196,7 +206,8 @@
             "VALLEY OF THE GODS & MOKI DUGWAY Utah's BEST ROADS with a motorcycle and STUNNING MUST VISITS.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina": {
+    "10": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina",
         "dirnames": [
             "Salta",
             "Train to the Clouds Railways (Argentina)"
@@ -206,7 +217,8 @@
             "distant-aerial-drone-view-of-salta-argentina-mou-2025-12-17-15-23-52-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina\\Salta": {
+    "11": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina\\Salta",
         "dirnames": [],
         "filenames": [
             "0318(2).mp4",
@@ -214,7 +226,8 @@
             "TREN DE LAS NUBES 🚂 ATERRIZAMOS DRONE EN EL TECHO.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina\\Train to the Clouds Railways (Argentina)": {
+    "12": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Argentina\\Train to the Clouds Railways (Argentina)",
         "dirnames": [],
         "filenames": [
             "EXPERIENCE the BREATHTAKING SCENERY of the TRAIN to the CLOUDS (TREN a las NUBES) in ARGENTINA!.mp4.mov",
@@ -246,13 +259,15 @@
             "Train to the Clouds - Best Matterhorn View on Switzerland’s Gornergrat Railway🇨🇭.mp4_016.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Atacama Desert": {
+    "13": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Atacama Desert",
         "dirnames": [
             "FCAB Railways"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Atacama Desert\\FCAB Railways": {
+    "14": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Atacama Desert\\FCAB Railways",
         "dirnames": [],
         "filenames": [
             "El tren más largo de Chile - Desierto de Atacama.mp4.mov",
@@ -283,7 +298,8 @@
             "Trains in Chile's Norte Grande.mp4_008.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia": {
+    "15": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia",
         "dirnames": [
             "Canning stock",
             "Coober Pedy",
@@ -300,7 +316,8 @@
             "rural-road-in-the-australian-desert-in-the-karijin-2025-12-17-14-52-45-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Canning stock": {
+    "16": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Canning stock",
         "dirnames": [],
         "filenames": [
             "0318.mp4",
@@ -309,7 +326,8 @@
             "THE CANNING STOCK ROUTE TRIP THAT ALMOST ENDED 30km in.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Coober Pedy": {
+    "17": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Coober Pedy",
         "dirnames": [],
         "filenames": [
             "Coober Pedy Australia's Weird Underground Outback Town.mp4",
@@ -337,7 +355,8 @@
             "yt06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Kuranda": {
+    "18": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Australia\\Kuranda",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -349,14 +368,16 @@
             "06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh": {
+    "19": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh",
         "dirnames": [
             "3. Estación de Tongi – Bangladesh",
             "Biswajtema Train"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh\\3. Estación de Tongi – Bangladesh": {
+    "20": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh\\3. Estación de Tongi – Bangladesh",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-train-and-station-bangladesh-2026-01-22-17-04-20-utc.mp4",
@@ -372,7 +393,8 @@
             "🇧🇩 Tongi, Bangladesh- Bishwa Ijtema Walking Tour.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh\\Biswajtema Train": {
+    "21": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bangladesh\\Biswajtema Train",
         "dirnames": [],
         "filenames": [
             "1 May 2022, বাড়ি ফেরা মানুষের ট্রেনের ছাদে উপচে পড়া ভিড়।.mp4.mov",
@@ -404,13 +426,15 @@
             "Train Surfing during the Bishwa Ijtema in Dhaka_converted.mp4_001.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bolivia": {
+    "22": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bolivia",
         "dirnames": [
             "chap 23-Salar de Uyuni – Bolivia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bolivia\\chap 23-Salar de Uyuni – Bolivia": {
+    "23": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Bolivia\\chap 23-Salar de Uyuni – Bolivia",
         "dirnames": [],
         "filenames": [
             "Desertio de Atacama & Salar de Uyuni   4K   Drone Impressions_converted.mp4",
@@ -421,13 +445,15 @@
             "UYUNI SALT FLATS, BOLIVIA   DRONE AERIAL VIEWS   WORLD’S LARGEST MIRROR & OTHERWORLDLY LANDSCAPES_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\brazil": {
+    "24": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\brazil",
         "dirnames": [
             "Curitiba Railway"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\brazil\\Curitiba Railway": {
+    "25": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\brazil\\Curitiba Railway",
         "dirnames": [],
         "filenames": [
             "Imagens Aéreas Viaduto do Carvalho -  Estrada de Ferro Curitiba Paranaguá (Drone).mp4.mov",
@@ -458,7 +484,8 @@
             "🚂 Train Ride from Curitiba to Morretes   Brazil’s Most Beautiful Railway Journey! 🌿.mp4_002.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7": {
+    "26": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7",
         "dirnames": [
             "17. Huacachina – Perú",
             "18. Milos – Grecia",
@@ -472,7 +499,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\17. Huacachina – Perú": {
+    "27": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\17. Huacachina – Perú",
         "dirnames": [],
         "filenames": [
             "4k-aerial-shot-of-huacachina-peru-2025-12-17-11-21-35-utc.mp4",
@@ -483,7 +511,8 @@
             "huacachina-oasis-at-dune-edge-above-sandy-terrain-2026-01-22-23-00-52-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\18. Milos – Grecia": {
+    "28": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\18. Milos – Grecia",
         "dirnames": [],
         "filenames": [
             "4k-tourist-walking-while-looking-at-sarakiniko-vol-2025-12-17-21-58-44-utc.mov",
@@ -503,7 +532,8 @@
             "without-a-doubt-the-most-charming-town-on-the-isla-2026-01-21-17-04-39-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\19. Aogashima – Japón": {
+    "29": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\19. Aogashima – Japón",
         "dirnames": [],
         "filenames": [
             "[4K]Aerial view of Aogashima Volcano 青ヶ島ドローン空撮.mp4",
@@ -512,7 +542,8 @@
             "青ヶ島 ドローン空撮 Aerial view of Aogashima Volcano 絶景空撮【4K映像】.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\20. Sassi di Matera – Italia": {
+    "30": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\20. Sassi di Matera – Italia",
         "dirnames": [],
         "filenames": [
             "a-view-of-matera-city-in-basilicata-italy-2026-01-23-00-27-11-utc.mp4",
@@ -527,7 +558,8 @@
             "view-of-a-the-city-of-matera-basilicata-italy-2025-12-17-07-21-07-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\21. Masuleh – Irán": {
+    "31": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\21. Masuleh – Irán",
         "dirnames": [],
         "filenames": [
             "Beautiful Iran Village That Left Me Speechless!.mp4",
@@ -537,7 +569,8 @@
             "time-lapse-masuleh-village-in-iran-2025-12-17-07-38-33-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\22. Ban Rak Thai – Tailandia": {
+    "32": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\22. Ban Rak Thai – Tailandia",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ban-rak-thai-village-chinese-hotel-2026-01-20-15-16-51-utc.mp4",
@@ -558,7 +591,8 @@
             "thailand-2025-12-17-06-34-50-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\23. Pueblo Lô Lô Chải – Vietnam": {
+    "33": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\23. Pueblo Lô Lô Chải – Vietnam",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ha-giang-village-among-the-mountain-2025-12-17-07-04-34-utc.mov",
@@ -569,7 +603,8 @@
             "Lô Lô Chải Hà Giang - Ngôi Làng Cổ Tích   A Miraculous Village In The Northern Province Of Ha Giang.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\24. Taos Pueblo – EE. UU": {
+    "34": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\24. Taos Pueblo – EE. UU",
         "dirnames": [],
         "filenames": [
             "couple-exploring-taos-pueblo-native-american-heri-2025-12-18-01-25-29-utc.mp4",
@@ -592,7 +627,8 @@
             "taos-pueblo-new-mexico-usa-april-11-2019-to-2025-12-18-01-25-31-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\25. Igbo-Ora – Nigeria": {
+    "35": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 7\\25. Igbo-Ora – Nigeria",
         "dirnames": [],
         "filenames": [
             "Igbo Ora The Town Where Almost Everyone Is A Twin   Mysterious Phenomenon!!.mp4",
@@ -600,7 +636,8 @@
             "The Town Where Almost Everyone Is a Twin 😱 - Inside Igbo-Ora, Nigeria 🇳🇬.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9": {
+    "36": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9",
         "dirnames": [
             "1. Valle de Wangxian (China)",
             "10. Schafberg (Austria)",
@@ -630,35 +667,43 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\1. Valle de Wangxian (China)": {
+    "37": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\1. Valle de Wangxian (China)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\10. Schafberg (Austria)": {
+    "38": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\10. Schafberg (Austria)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\11. Isla Pitcairn (Territorio Británico)": {
+    "39": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\11. Isla Pitcairn (Territorio Británico)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\12. Al Hajjarah (Yemen)": {
+    "40": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\12. Al Hajjarah (Yemen)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\13. Vardzia (Georgia)": {
+    "41": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\13. Vardzia (Georgia)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\14. Ronda (España)": {
+    "42": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\14. Ronda (España)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\15. Tikal (Guatemala)": {
+    "43": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\15. Tikal (Guatemala)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\16. Dốc Nhà Bò (Vietnam)": {
+    "44": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\16. Dốc Nhà Bò (Vietnam)",
         "dirnames": [],
         "filenames": [
             "con dốc hạ gục biết bao tay lái ở Đà Lạt - Dốc Nhà Bò.mp4",
@@ -676,7 +721,8 @@
             "Tuột dốc nhà bò ở Đà Lạt và cái kết.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\17. Fanjingshan (China)": {
+    "45": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\17. Fanjingshan (China)",
         "dirnames": [],
         "filenames": [
             "Aerial photography of China Fanjing Mountain, one of the five famous Buddhist mountains in China.mkv",
@@ -690,7 +736,8 @@
             "aerial-view-of-rock-formations-in-tranquil-valley-2025-12-17-23-29-04-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\18. Sassi di Matera (Italia)": {
+    "46": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\18. Sassi di Matera (Italia)",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ancient-old-city-matera-on-edge-top-2026-01-22-08-19-43-utc.mp4",
@@ -708,7 +755,8 @@
             "view-of-a-the-city-of-matera-basilicata-italy-2025-12-17-07-21-07-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\19. Shibam (Yemen)": {
+    "47": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\19. Shibam (Yemen)",
         "dirnames": [],
         "filenames": [
             "cameleers-camel-drivers-at-sunset-2025-12-17-20-11-21-utc.mov",
@@ -718,14 +766,16 @@
             "Shibam -  Ancient Mud Skyscraper City.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\2. Pilar de Katskhi (Georgia)": {
+    "48": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\2. Pilar de Katskhi (Georgia)",
         "dirnames": [],
         "filenames": [
             "breathtaking-aerial-drone-footage-of-katskhi-colum-2026-01-21-14-27-11-utc.mp4",
             "katskhi-monastery-shrine-on-rock-pillar-next-to-st-2025-12-17-06-04-37-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\20. Taung Kalat (Myanmar)": {
+    "49": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\20. Taung Kalat (Myanmar)",
         "dirnames": [],
         "filenames": [
             "aerial-shot-of-mount-popa-myanmar-burma-01-2025-12-17-05-03-56-utc.mp4",
@@ -738,7 +788,8 @@
             "Taung Kalat -- Mount Popa -- Myanmar.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\21. Mesa Verde (Estados Unidos)": {
+    "50": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\21. Mesa Verde (Estados Unidos)",
         "dirnames": [],
         "filenames": [
             "aerial-shot-close-up-of-a-cave-in-the-cliffside-2025-12-17-07-20-03-utc.mp4",
@@ -749,7 +800,8 @@
             "🪜🪨 Discover Mesa Verde Cliff Palace, Ancestral Pueblo Cliff Dwellings - 51 Parks with the Newstates.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\22. Choquequirao (Perú)": {
+    "51": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\22. Choquequirao (Perú)",
         "dirnames": [],
         "filenames": [
             "Choquequirao 4k - Peru by Drone.mp4",
@@ -760,7 +812,8 @@
             "PHUGTAL MONASTERY -  MUST VISIT IN LADAKH - Zanskar - Phugtal Monastery Trek.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\23. Wae Rebo (Indonesia)": {
+    "52": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\23. Wae Rebo (Indonesia)",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -790,7 +843,8 @@
             "We Stayed in a REMOTE Village, Wae Rebo Village, Flores Indonesia  - Vlog #18 - Janine Freuling.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)": {
+    "53": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)",
         "dirnames": [
             "23 - Phuktal Monastery, India"
         ],
@@ -804,7 +858,8 @@
             "the-phugtal-monastery-in-south-east-zanskar-amidst-2026-01-22-02-46-32-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India": {
+    "54": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India",
         "dirnames": [
             "1",
             "2",
@@ -812,7 +867,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\1": {
+    "55": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\1",
         "dirnames": [],
         "filenames": [
             "Exploring India   EP 16   Hidden Marvel The Enchanting Phugtal Monastery.mp4",
@@ -823,7 +879,8 @@
             "The isolated Phugtal monastery, Zanskar   India   4K   nomadraul.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\2": {
+    "56": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\2",
         "dirnames": [],
         "filenames": [
             "5-6-24-a-tourist-walking-inside-a-cave-like-struc-2026-01-21-14-06-16-utc.mp4",
@@ -831,7 +888,8 @@
             "the-phugtal-monastery-in-south-east-zanskar-amidst-2026-01-22-02-46-32-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\3": {
+    "57": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\24. Monasterio de Phugtal (India)\\23 - Phuktal Monastery, India\\3",
         "dirnames": [],
         "filenames": [
             "alamy_AN4CN6.jpg",
@@ -839,7 +897,8 @@
             "alamy_CTAGDA.jpg"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\25. Coober Pedy (Australia)": {
+    "58": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\25. Coober Pedy (Australia)",
         "dirnames": [],
         "filenames": [
             "Coober Pedy Australia's Weird Underground Outback Town.mp4",
@@ -871,13 +930,15 @@
             "yt06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\3. Meteora (Grecia)": {
+    "59": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\3. Meteora (Grecia)",
         "dirnames": [],
         "filenames": [
             "meteora-monasteries-trikala-thessaly-greece-2026-01-21-12-04-02-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\4. Castellfollit de la Roca (España)": {
+    "60": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\4. Castellfollit de la Roca (España)",
         "dirnames": [],
         "filenames": [
             "0402 (1).mp4",
@@ -896,7 +957,8 @@
             "preview_540p_crf26_lower_quality.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\5. Montserrat (Territorio Británico)": {
+    "61": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\5. Montserrat (Territorio Británico)",
         "dirnames": [],
         "filenames": [
             "0402.mp4",
@@ -933,11 +995,13 @@
             "_9_-_TBN_-_Travel_Chapter_5.mp3 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\6. Churchill (Canadá)": {
+    "62": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\6. Churchill (Canadá)",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\7. Gansu (China)": {
+    "63": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\7. Gansu (China)",
         "dirnames": [
             "2"
         ],
@@ -952,7 +1016,8 @@
             "the-natural-scenery-of-maiji-mountain-in-asia-2025-12-17-19-22-10-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\7. Gansu (China)\\2": {
+    "64": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\7. Gansu (China)\\2",
         "dirnames": [],
         "filenames": [
             "aerial-maiji-mountain-in-china-2025-12-17-22-19-54-utc.mov",
@@ -970,7 +1035,8 @@
             "the-scenery-of-the-famous-scenic-spot-maiji-mounta-2025-12-17-19-41-22-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\8. Tonlé Sap (Camboya)": {
+    "65": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\8. Tonlé Sap (Camboya)",
         "dirnames": [],
         "filenames": [
             "aerial-video-of-an-expansive-tonle-sap-floating-vi-2026-01-22-14-57-13-utc.mov",
@@ -988,7 +1054,8 @@
             "wooden-boats-rest-by-tall-stilt-houses-above-muddy-2026-01-20-14-29-24-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\9. Oia, Santorini (Grecia)": {
+    "66": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\BÀI 9\\9. Oia, Santorini (Grecia)",
         "dirnames": [],
         "filenames": [
             "aerial-flying-towards-famous-greek-village-oia-wit-2026-01-22-07-41-55-utc.mp4",
@@ -1012,7 +1079,8 @@
             "walking-on-ipapantis-street-fira-santorini-gree-2025-12-17-08-58-33-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Campuchia": {
+    "67": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Campuchia",
         "dirnames": [
             "Bambooooo"
         ],
@@ -1025,7 +1093,8 @@
             "6015968_Vietnam Amusement Park Saigon Zoo Carriage_By_Phong_Croco_Artlist_6K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Campuchia\\Bambooooo": {
+    "68": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Campuchia\\Bambooooo",
         "dirnames": [],
         "filenames": [
             "0318.mp4",
@@ -1033,7 +1102,8 @@
             "The Phare Dream Team on the Bamboo Train.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada": {
+    "69": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada",
         "dirnames": [
             "6. Ferrocarril White Pass & Yukon Route – Canadá",
             "Capilano",
@@ -1059,7 +1129,8 @@
             "wide-shot-of-tourists-walking-on-sea-to-sky-suspen-2025-12-17-22-44-35-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\6. Ferrocarril White Pass & Yukon Route – Canadá": {
+    "70": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\6. Ferrocarril White Pass & Yukon Route – Canadá",
         "dirnames": [],
         "filenames": [
             "aerial-rises-above-coal-train-river-in-bow-valley-2025-12-17-05-44-47-utc.mov",
@@ -1077,7 +1148,8 @@
             "White Pass Scenic Train - 4K.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\Capilano": {
+    "71": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\Capilano",
         "dirnames": [],
         "filenames": [
             "Capilano Suspension Bridge Park (Vancouver's BEST Attraction)_converted.mp4",
@@ -1089,7 +1161,8 @@
             "✨ Glowing Forest at Christmas   Capilano Canyon Lights Vancouver BC_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\chap 20-Spotted Lake – Canada": {
+    "72": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Canada\\chap 20-Spotted Lake – Canada",
         "dirnames": [],
         "filenames": [
             "Aerial View for Spotted Lake Osoyoos, BC Canada June 10,2024_converted.mp4",
@@ -1104,7 +1177,8 @@
             "Spring at Spotted Lake, Osoyoos, BC #naturevideo #relaxingmusic #cinematictravel #djidrone_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile": {
+    "73": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile",
         "dirnames": [
             "07_Cajon del Maipo, Chile",
             "egg island",
@@ -1117,7 +1191,8 @@
             "snowcovered-andes-mountains-aerial-view-2026-01-22-07-17-27-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\07_Cajon del Maipo, Chile": {
+    "74": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\07_Cajon del Maipo, Chile",
         "dirnames": [],
         "filenames": [
             "Arthur's Pass From The Air - South Island New Zealand - Drone Footage 2022.mp4.3ad9-95b9-798a-417d.part",
@@ -1149,7 +1224,8 @@
             "VISTAS DEL CAJON DEL MAIPO - CHILE 4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\egg island": {
+    "75": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\egg island",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -1166,7 +1242,8 @@
             "Isla de Pascua dron   Easter island drone   Rapa Nui.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\Malleco Viaduct (Chile)": {
+    "76": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Chile\\Malleco Viaduct (Chile)",
         "dirnames": [],
         "filenames": [
             "Demostración imagen aérea sobre el puente Malleco, Chile. Drone Phantom  3_converted.mp4.mov",
@@ -1203,7 +1280,8 @@
             "Vista Aérea Viaducto Malleco en Collipulli 10 de septiembre de 2021_converted.mp4_006.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China": {
+    "77": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China",
         "dirnames": [
             "25. Taklamakan Desert Highway",
             "3. Wuhan Suspended Monorail",
@@ -1250,7 +1328,8 @@
             "zhangjiajie-mountains-china-2025-12-17-15-33-05-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\25. Taklamakan Desert Highway": {
+    "78": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\25. Taklamakan Desert Highway",
         "dirnames": [],
         "filenames": [
             "南疆大环线 穿越塔漠 第三条沙漠公路 尉且沙漠公路.mp4",
@@ -1260,7 +1339,8 @@
             "骑行死亡之海沙漠公路，龙卷风擦肩而过，露营石油工人的废弃房.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\3. Wuhan Suspended Monorail": {
+    "79": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\3. Wuhan Suspended Monorail",
         "dirnames": [],
         "filenames": [
             "China Built THIS in Wuhan… And Nobody Talks About It.mp4",
@@ -1301,7 +1381,8 @@
             "Đi Skyrail tương lai của Vũ Hán Bí mật Monorail bị treo ĐẦU TIÊN của Trung Quốc được tiết lộ   4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Buddha": {
+    "80": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Buddha",
         "dirnames": [],
         "filenames": [
             "buddha-statues-in-dambulla-cave-temple-sril-lanka-2025-12-17-04-45-04-utc.mov",
@@ -1333,7 +1414,8 @@
             "🇨🇳🚢⛰️ Boat Tour of Leshan Giant Buddha World's Largest Stone Buddha. Chengdu day trip #unesco_converted.mp4.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Chaka Salt Lake Railway": {
+    "81": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Chaka Salt Lake Railway",
         "dirnames": [],
         "filenames": [
             "the-dry-land-the-soil-by-the-salt-lake-in-qinghai-2026-01-22-16-07-52-utc.mov",
@@ -1354,7 +1436,8 @@
             "茶卡盐湖旅游观光小火车_converted.mp4.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\changsha": {
+    "82": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\changsha",
         "dirnames": [],
         "filenames": [
             "01.mov",
@@ -1368,14 +1451,16 @@
             "tải xuống.jpg"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Chung": {
+    "83": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Chung",
         "dirnames": [],
         "filenames": [
             "china.mov",
             "market.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu kính Trương Gia GIới- Zhangjiajie": {
+    "84": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu kính Trương Gia GIới- Zhangjiajie",
         "dirnames": [],
         "filenames": [
             "01.mov",
@@ -1390,7 +1475,8 @@
             "Cầu kính Trương Gia GIới.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu sông Sidu – Trung Quốc": {
+    "85": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu sông Sidu – Trung Quốc",
         "dirnames": [],
         "filenames": [
             "Highest bridge in the World - The Si Du River Bridge in China.mp4",
@@ -1400,7 +1486,8 @@
             "The world's highest shelf kilometers.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu tế an": {
+    "86": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Cầu tế an",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -1417,7 +1504,8 @@
             "wide-aerial-of-lijiang-old-town-framed-by-mountain-2026-01-22-10-04-28-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Daju Cliffside Train": {
+    "87": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Daju Cliffside Train",
         "dirnames": [],
         "filenames": [
             "I Took the World’s First Cliffside Train Like Flying at 1200 Meters_converted.mp4",
@@ -1427,7 +1515,8 @@
             "江西大觉山景区：两列悬崖动车相向而行、相互呼应的精彩瞬间_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Danyang - kunshan": {
+    "88": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Danyang - kunshan",
         "dirnames": [],
         "filenames": [
             "001.mov",
@@ -1436,14 +1525,16 @@
             "0318.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\DaTong Hanging Monastery": {
+    "89": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\DaTong Hanging Monastery",
         "dirnames": [],
         "filenames": [
             "China's Hanging Monastery - 4K.mp4",
             "China's Hanging Monastery.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Fanjingshan": {
+    "90": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Fanjingshan",
         "dirnames": [],
         "filenames": [
             "1_Sub_11.mp4",
@@ -1455,7 +1546,8 @@
             "Fanjingshan. 02.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Guoliang": {
+    "91": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Guoliang",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -1475,7 +1567,8 @@
             "The World's Most Dangerous Village Is on the Edge of a Cliff.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Hua shan": {
+    "92": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Hua shan",
         "dirnames": [],
         "filenames": [
             "01.mov",
@@ -1486,7 +1579,8 @@
             "05.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Human": {
+    "93": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Human",
         "dirnames": [],
         "filenames": [
             "chinese monk.mov",
@@ -1495,7 +1589,8 @@
             "sick.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Jianmen Pass": {
+    "94": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Jianmen Pass",
         "dirnames": [],
         "filenames": [
             "First-Person POV Walking the Bird Path at Jianmen Pass   Ancient Shu Roads, China_converted.mp4",
@@ -1505,7 +1600,8 @@
             "四川 劍門關 棧道 [4K]   Jianmen Pass, Sichuan, China_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Kailash": {
+    "95": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Kailash",
         "dirnames": [],
         "filenames": [
             "Fly over Mount Kailash_converted.mp4.mov",
@@ -1538,7 +1634,8 @@
             "Why Go to Mount Kailash Kora in 2026, the Year of the Horse_converted.mp4_004.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Lingpaishi Village Road": {
+    "96": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Lingpaishi Village Road",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-the-steep-sheer-rock-formations-an-2026-01-22-22-43-50-utc.mp4",
@@ -1552,7 +1649,8 @@
             "top-down-drone-shot-of-the-steep-sheer-rock-forma-2026-01-20-13-37-47-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Lions Canyon": {
+    "97": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Lions Canyon",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -1569,7 +1667,8 @@
             "湖北恩施狮子关景区，汽车居然可以在浮桥上行驶，听说出事了【30岁去旅行】.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Mountain": {
+    "98": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Mountain",
         "dirnames": [],
         "filenames": [
             "china mountain timelapse.mov",
@@ -1577,7 +1676,8 @@
             "mountains china.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Nanjing Metro Line S9 (China)": {
+    "99": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Nanjing Metro Line S9 (China)",
         "dirnames": [],
         "filenames": [
             "201023-160327南京地铁S3号线长江桥_converted.mp4",
@@ -1601,7 +1701,8 @@
             "南京天空之境视频版来啦！好看的不像话！_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Renzikou Railway Bridge (China)": {
+    "100": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Renzikou Railway Bridge (China)",
         "dirnames": [],
         "filenames": [
             "Aerial video of the century-old bridge on the Yunnan-Vietnam Railway._converted.mp4",
@@ -1611,7 +1712,8 @@
             "人字桥，深藏在丛山峻岭峡谷中的人类历史的工程奇迹Yunnan-Vietnam Railway_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Shanxi": {
+    "101": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Shanxi",
         "dirnames": [],
         "filenames": [
             "24 Hours on China's Holiest Mountain (Mount Wutai)_converted.mp4.mov",
@@ -1640,7 +1742,8 @@
             "《4k》Wutai Shan (Five Terrace Mountain)，Shanxi, China_converted.mp4_004.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Southern Xinjiang Railway (China)": {
+    "102": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Southern Xinjiang Railway (China)",
         "dirnames": [],
         "filenames": [
             "Luxury Night Train to Secret Xinjiang Province Epic Silk Road Journey Beijing-Urumqi (part 2).mp4",
@@ -1653,7 +1756,8 @@
             "自驾塔里木沙漠公路，纵穿塔克拉玛干沙漠.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tarim Desert Highway – Trung Quốc": {
+    "103": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tarim Desert Highway – Trung Quốc",
         "dirnames": [],
         "filenames": [
             "4K Desert Adventure Witness Life’s Power in Xinjiang’s Tarim Forest_converted.mp4",
@@ -1664,7 +1768,8 @@
             "vast-barren-soils-of-the-taklamakan-desert-2025-12-17-20-33-21-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Three Pagodas": {
+    "104": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Three Pagodas",
         "dirnames": [],
         "filenames": [
             "Three Pagodas Dali_converted.mp4.mov",
@@ -1680,7 +1785,8 @@
             "[Dali, Yunnan, China 🇨🇳] The Three Pagodas [4K No commentary]_converted.mp4_008.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\tháp thượng hải": {
+    "105": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\tháp thượng hải",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-shanghai-tower-shanghai-china-2025-12-17-04-08-16-utc.mp4",
@@ -1695,7 +1801,8 @@
             "Visiting the TALLEST Building in China – Shanghai Tower.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tianmen Mountain Road": {
+    "106": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tianmen Mountain Road",
         "dirnames": [],
         "filenames": [
             "1 of the MOST DANGEROUS ROADS IN CHINA! 99 turns!_converted.mp4",
@@ -1714,14 +1821,16 @@
             "Zhangjiajie Tianmen Mountain 99 Turn and Drift behind-the-scenes shot on a closed road section Z_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tianshan Gorge Railway (China)": {
+    "107": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Tianshan Gorge Railway (China)",
         "dirnames": [],
         "filenames": [
             "The Hotan-Ruoqiang Railway officially began operation.mp4",
             "天山大峡谷的火车穿越新疆旅游 天山大峡谷 新疆自驾游攻略 新疆 好好旅行节.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Valle de Wangxian – China": {
+    "108": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Valle de Wangxian – China",
         "dirnames": [],
         "filenames": [
             "0323 (2)(1).mp4",
@@ -1733,7 +1842,8 @@
             "wangxian-valley-scenic-area-in-jiangxi-china-is-2026-01-22-20-19-58-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xinjiang": {
+    "109": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xinjiang",
         "dirnames": [],
         "filenames": [
             "Explore the enthusiasm of the Flaming Mountain in Turpan, Xinjiang_converted.mp4.mov",
@@ -1768,7 +1878,8 @@
             "新疆 火焰山 吐魯番 葡萄溝 吐峪溝麻扎村 柏孜克里克石窟 [4K]   Turpan, Xinjiang, China_converted.mp4_018.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xixi Wetland, China": {
+    "110": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xixi Wetland, China",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-xixi-national-wetland-park-in-hangz-2026-01-22-05-25-38-utc.mov",
@@ -1784,7 +1895,8 @@
             "Xixi National Wetland Park Hangzhou China - 4K Walking Video Tour_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xuankong Hanging  Temple": {
+    "111": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Xuankong Hanging  Temple",
         "dirnames": [],
         "filenames": [
             "yt01.mp4",
@@ -1795,7 +1907,8 @@
             "yt06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Yanjin Yunnan": {
+    "112": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\China\\Yanjin Yunnan",
         "dirnames": [],
         "filenames": [
             "China Flood Yunnan Flood Nightmare Dam Collapse, Record Rainfall, Mass Evacuations   Weather Floods.mp4",
@@ -1817,7 +1930,8 @@
             "Yunnan city. 12.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ecuador": {
+    "113": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ecuador",
         "dirnames": [],
         "filenames": [
             "Devil's Nose Train Cuenca Ecuador Breathtaking Views & Epic Zigzag Ride 2025.mp4.mov",
@@ -1848,13 +1962,15 @@
             "🇪🇨Subí al  TREN MÁS DIFÍCIL del MUNDO 😱Alausí-Sibambe. el ZIGZAG en la  Nariz del diablo.mp4_004.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Egypt": {
+    "114": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Egypt",
         "dirnames": [
             "Saint simon"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Egypt\\Saint simon": {
+    "115": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Egypt\\Saint simon",
         "dirnames": [],
         "filenames": [
             "Cave Church   St. Simon  The Tanner  Monastery   Cairo   Cinematic Highlight Video_converted.mp4.mov",
@@ -1887,7 +2003,8 @@
             "the winter church in saint Simon monastery_converted.mp4_004.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England": {
+    "116": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England",
         "dirnames": [
             "Chung",
             "Lindisfarne",
@@ -1904,13 +2021,15 @@
             "suburban-area-along-tweed-river-in-new-south-wales-2026-01-21-17-34-20-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Chung": {
+    "117": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Chung",
         "dirnames": [],
         "filenames": [
             "coast of England.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Lindisfarne": {
+    "118": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Lindisfarne",
         "dirnames": [],
         "filenames": [
             "Lindisfarne. 01.mp4",
@@ -1922,7 +2041,8 @@
             "open_Sub_01.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\MAgic Roundabout": {
+    "119": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\MAgic Roundabout",
         "dirnames": [],
         "filenames": [
             "0318.mp4",
@@ -1932,7 +2052,8 @@
             "The magic roundabout in Swindon - HYPERLAPSE 👍🏻.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Ribblehead Viaduct": {
+    "120": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Ribblehead Viaduct",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ribblehead-viaduct-united-kingdom-2026-01-22-13-09-38-utc.mp4",
@@ -1957,7 +2078,8 @@
             "Trains Along The Ribblehead Viaduct In The Yorkshire Dales.mp4_002.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Union Chain Bridge": {
+    "121": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\England\\Union Chain Bridge",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -1967,18 +2089,21 @@
             "04.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia": {
+    "122": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia",
         "dirnames": [
             "14. Tribu Mursi – Etiopía",
             "chap 24-Danakil Depression – Ethiopia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia\\14. Tribu Mursi – Etiopía": {
+    "123": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia\\14. Tribu Mursi – Etiopía",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia\\chap 24-Danakil Depression – Ethiopia": {
+    "124": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ethiopia\\chap 24-Danakil Depression – Ethiopia",
         "dirnames": [],
         "filenames": [
             "Dallol Wonders Danakil Depression Extreme Environment Tour_converted.mp4",
@@ -1989,14 +2114,16 @@
             "The Hottest Place On Earth   Danakil Desert   Travel Video 4K_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia": {
+    "125": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia",
         "dirnames": [
             "10. Ushguli – Georgia",
             "chap 12-Abano Pass – Georgia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia\\10. Ushguli – Georgia": {
+    "126": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia\\10. Ushguli – Georgia",
         "dirnames": [],
         "filenames": [
             "4wd-drives-in-ushguli-in-spring-georgia-2026-01-22-07-49-08-utc.mov",
@@ -2019,7 +2146,8 @@
             "village-in-ushguli-in-georgian-mountains-drone-s-2025-12-17-16-18-12-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia\\chap 12-Abano Pass – Georgia": {
+    "127": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Georgia\\chap 12-Abano Pass – Georgia",
         "dirnames": [],
         "filenames": [
             "Abano pass at night and in the fog_converted.mp4",
@@ -2034,13 +2162,15 @@
             "Перевал Абано, Тушети._converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ghana": {
+    "128": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ghana",
         "dirnames": [
             "chap 05-Kakum Canopy Walkway – Ghana"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ghana\\chap 05-Kakum Canopy Walkway – Ghana": {
+    "129": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ghana\\chap 05-Kakum Canopy Walkway – Ghana",
         "dirnames": [],
         "filenames": [
             "2014 01 24 Kakum Canopy Walk_converted.mp4",
@@ -2051,7 +2181,8 @@
             "Last Part of the Canopy Walk at Kakum National Park - Ghana Nov 2018 Tour_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece": {
+    "130": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece",
         "dirnames": [
             "11. Meteora – Grecia",
             "18. Milos – Grecia"
@@ -2062,7 +2193,8 @@
             "greek.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece\\11. Meteora – Grecia": {
+    "131": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece\\11. Meteora – Grecia",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -2102,7 +2234,8 @@
             "yt06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece\\18. Milos – Grecia": {
+    "132": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Greece\\18. Milos – Grecia",
         "dirnames": [],
         "filenames": [
             "4k-tourist-walking-while-looking-at-sarakiniko-vol-2025-12-17-21-58-44-utc.mov",
@@ -2122,13 +2255,15 @@
             "without-a-doubt-the-most-charming-town-on-the-isla-2026-01-21-17-04-39-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Hà Lan": {
+    "133": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Hà Lan",
         "dirnames": [
             "Công ty Delta Works – Hà Lan"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Hà Lan\\Công ty Delta Works – Hà Lan": {
+    "134": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Hà Lan\\Công ty Delta Works – Hà Lan",
         "dirnames": [],
         "filenames": [
             "(Drone 4K) Dutch Deltaworks - Netherlands 2021 (DJI Mavic pro platinum).mp4",
@@ -2140,7 +2275,8 @@
             "Wind Turbine at Delta Works, Tulip Cruise, April 11, 2023.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland": {
+    "135": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland",
         "dirnames": [
             "27_Ellidaey_Iceland",
             "Grindavik",
@@ -2149,18 +2285,21 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\27_Ellidaey_Iceland": {
+    "136": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\27_Ellidaey_Iceland",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Grindavik": {
+    "137": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Grindavik",
         "dirnames": [],
         "filenames": [
             "iceland vocano town. 01.mp4",
             "iceland vocano town.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Route 622": {
+    "138": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Route 622",
         "dirnames": [],
         "filenames": [
             "Iceland Roadtrip 2021 #10 Road 622 - Dangerous Beauty - Cinematic Travel Video_converted.mp4",
@@ -2168,11 +2307,13 @@
             "Roads of Westfjords, Iceland 622 (Svalvogavegur)   The most dangerous road in Iceland (07.07.2021)_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Volcano": {
+    "139": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iceland\\Volcano",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India": {
+    "140": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India",
         "dirnames": [
             "Hampi",
             "kailasa temple",
@@ -2183,7 +2324,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Hampi": {
+    "141": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Hampi",
         "dirnames": [],
         "filenames": [
             "Exploring Hampi   India’s Ancient Ruins   A UNESCO World Heritage Site   Vijayanagara Empire   Ep-3_converted.mp4.mov",
@@ -2202,7 +2344,8 @@
             "Why you must visit this town in INDIA! Hampi_converted.mp4_003.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\kailasa temple": {
+    "142": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\kailasa temple",
         "dirnames": [],
         "filenames": [
             "The Mystery of the Kailasa Temple   Wonders of Ancient India, Ep. 4 (Part 2)_converted.mp4.mov",
@@ -2220,11 +2363,13 @@
             "🇮🇳 Is KAILASA TEMPLE the Most Underrated Tourist Destination in India_converted.mp4_003.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\killar sss": {
+    "143": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\killar sss",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Konkan Railway (India)": {
+    "144": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Konkan Railway (India)",
         "dirnames": [],
         "filenames": [
             "12124 Deccan Queen Full Journey   Pune to Mumbai   Beautiful Bhor Ghat in Monsoon.mp4.mov",
@@ -2254,13 +2399,15 @@
             "Trains Passing Ukshi Waterfalls   Ranpat Village   Konkan Railway   Ratnagiri.mp4_003.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Rohtang": {
+    "145": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Rohtang",
         "dirnames": [],
         "filenames": [
             "Mesmerizing Rohtang Drone View!!!.webm"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Tuyến đường cầu Pamban – Ấn Độ": {
+    "146": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\India\\Tuyến đường cầu Pamban – Ấn Độ",
         "dirnames": [],
         "filenames": [
             "2-trains-coming-from-naigoan-to-bhayandar-on-vasai-2026-01-22-05-27-47-utc.mov",
@@ -2319,7 +2466,8 @@
             "under-construction-pamban-bridge-on-palk-strait-ri-2026-01-21-16-14-56-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia": {
+    "147": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia",
         "dirnames": [
             "08_Argo Gede Railway, Indonesia",
             "12. Tana Toraja – Indonesia",
@@ -2336,7 +2484,8 @@
             "tropical-forest-in-indonesia-2026-01-22-05-20-03-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\08_Argo Gede Railway, Indonesia": {
+    "148": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\08_Argo Gede Railway, Indonesia",
         "dirnames": [],
         "filenames": [
             "Cikubang Train Bridge.mp4",
@@ -2347,7 +2496,8 @@
             "Walk over Cikubang railway bridge, Cikalong, West Java.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\12. Tana Toraja – Indonesia": {
+    "149": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\12. Tana Toraja – Indonesia",
         "dirnames": [],
         "filenames": [
             "Beautiful villages and Landscape of Tana Toraja, Sulawesi, Indonesia.mkv",
@@ -2362,7 +2512,8 @@
             "Video Drone Kualitas 4K Ultra HD Lampio , Sangalla Tana Toraja.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\2. Tribu Korowai – Indonesia": {
+    "150": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\2. Tribu Korowai – Indonesia",
         "dirnames": [],
         "filenames": [
             "Inside the Korowai Tribe   Wild Amazon Survival Compilation.mp4",
@@ -2372,7 +2523,8 @@
             "Wangxian Valley, Shangrao, Jiangxi, China #scenery #nature #travel #beautiful trending #travel.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\chap 19-Pandawa Beach Road – Indonesia": {
+    "151": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\chap 19-Pandawa Beach Road – Indonesia",
         "dirnames": [],
         "filenames": [
             "Bali Pandawa Beach (Secret Beach)_converted.mp4",
@@ -2383,13 +2535,15 @@
             "The Most BEAUTIFUL Road in Bali Pandawa Beach & Uluwatu (4K Drone)_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\Merapi": {
+    "152": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\Merapi",
         "dirnames": [],
         "filenames": [
             "village on volcano.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\Waerebo Village": {
+    "153": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Indonesia\\Waerebo Village",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -2417,14 +2571,16 @@
             "We Stayed in a REMOTE Village, Wae Rebo Village, Flores Indonesia  - Vlog #18 - Janine Freuling.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran": {
+    "154": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran",
         "dirnames": [
             "21. Masuleh – Irán",
             "5. Kandovan – Irán"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran\\21. Masuleh – Irán": {
+    "155": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran\\21. Masuleh – Irán",
         "dirnames": [],
         "filenames": [
             "Beautiful Iran Village That Left Me Speechless!.mp4",
@@ -2434,7 +2590,8 @@
             "time-lapse-masuleh-village-in-iran-2025-12-17-07-38-33-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran\\5. Kandovan – Irán": {
+    "156": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Iran\\5. Kandovan – Irán",
         "dirnames": [],
         "filenames": [
             "'My Walking Tour of the Most Ancient Village - Kandovan Village, IRAN {Subtitles Active} 🎥'.mkv",
@@ -2458,13 +2615,15 @@
             "Walking through narrow streets of Kandovan, Iran.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ireland": {
+    "157": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ireland",
         "dirnames": [
             "Skellig Michael"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ireland\\Skellig Michael": {
+    "158": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ireland\\Skellig Michael",
         "dirnames": [],
         "filenames": [
             "Best Things to do in Ireland   Explore Skellig Michael Island Near Portmagee_converted.mp4.mov",
@@ -2497,7 +2656,8 @@
             "Welcome to Skellig Michael_converted.mp4_001.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy": {
+    "159": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy",
         "dirnames": [
             "20. Sassi di Matera – Italia",
             "Amalfi",
@@ -2508,7 +2668,8 @@
             "503843_Tourism City Sightseeing Rome_By_Adrian_Vidak_Artlist_4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\20. Sassi di Matera – Italia": {
+    "160": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\20. Sassi di Matera – Italia",
         "dirnames": [],
         "filenames": [
             "a-view-of-matera-city-in-basilicata-italy-2026-01-23-00-27-11-utc.mp4",
@@ -2523,14 +2684,16 @@
             "view-of-a-the-city-of-matera-basilicata-italy-2025-12-17-07-21-07-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\Amalfi": {
+    "161": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\Amalfi",
         "dirnames": [],
         "filenames": [
             "amalfi-cityscape-italy.mp4",
             "family.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\chap 23-Pasubio – Ý": {
+    "162": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\chap 23-Pasubio – Ý",
         "dirnames": [],
         "filenames": [
             "Con i cani sulla Strada delle 52 Gallerie del Monte Pasubio - 4k_converted.mp4",
@@ -2543,7 +2706,8 @@
             "The Strada delle 52 Gallerie ( Road of 52 tunnels )_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\Poveglia": {
+    "163": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Italy\\Poveglia",
         "dirnames": [],
         "filenames": [
             "01.mov",
@@ -2557,7 +2721,8 @@
             "yt Poveglia Island full Urban Exploration(1).mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan": {
+    "164": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan",
         "dirnames": [
             "19. Aogashima – Japón",
             "chap 02-Tateyama Kurobe Alpine Route – Nhật Bản",
@@ -2574,7 +2739,8 @@
             "stunning-scenery-of-mount-fuji-with-ocean-and-soft-2025-12-17-14-34-03-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\19. Aogashima – Japón": {
+    "165": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\19. Aogashima – Japón",
         "dirnames": [
             "Aogashima"
         ],
@@ -2591,11 +2757,13 @@
             "青ヶ島 ドローン空撮 Aerial view of Aogashima Volcano 絶景空撮【4K映像】.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\19. Aogashima – Japón\\Aogashima": {
+    "166": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\19. Aogashima – Japón\\Aogashima",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\chap 02-Tateyama Kurobe Alpine Route – Nhật Bản": {
+    "167": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\chap 02-Tateyama Kurobe Alpine Route – Nhật Bản",
         "dirnames": [],
         "filenames": [
             "Completing Tateyama Kurobe Alpine Route Through The Highest Snow Wall In Japan_converted.mp4",
@@ -2612,7 +2780,8 @@
             "[18m] The Highest Snow Wall in Japan⛄️$ 1 Million to Remove the Snow💸Solo Travel 雪の大谷 立山黒部アルペンルート_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\chap 05-Vine Bridges – Nhật Bản": {
+    "168": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Japan\\chap 05-Vine Bridges – Nhật Bản",
         "dirnames": [],
         "filenames": [
             "Miyoshi, Tokushima - Iyanokazura Vine Bridge (祖谷のかずら橋)_converted.mp4",
@@ -2626,13 +2795,15 @@
             "日本三奇橋のひとつ「祖谷のかずら橋」をドローンで空撮【徳島県三好市】_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Kenia": {
+    "169": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Kenia",
         "dirnames": [
             "7. Dandora – Kenia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Kenia\\7. Dandora – Kenia": {
+    "170": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Kenia\\7. Dandora – Kenia",
         "dirnames": [],
         "filenames": [
             "birds-fly-over-the-city-dump-2026-01-20-17-28-21-utc.mov",
@@ -2645,13 +2816,15 @@
             "seagulls-storks-and-birds-of-prey-above-a-garbage-2025-12-17-23-25-32-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Malaysia": {
+    "171": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Malaysia",
         "dirnames": [
             "9. Pueblo Acuático Bajau – Malasia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Malaysia\\9. Pueblo Acuático Bajau – Malasia": {
+    "172": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Malaysia\\9. Pueblo Acuático Bajau – Malasia",
         "dirnames": [],
         "filenames": [
             "7 Days With The Tribe That BREATHES Underwater _ Bajau Sea Nomads _  {4k}.mkv",
@@ -2659,13 +2832,15 @@
             "Bajau Laut Di Pulau Maiga.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritania": {
+    "173": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritania",
         "dirnames": [
             "5. Tren Mineral – Mauritania"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritania\\5. Tren Mineral – Mauritania": {
+    "174": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritania\\5. Tren Mineral – Mauritania",
         "dirnames": [],
         "filenames": [
             "Aerial View Following a Long Train Carrying Iron Ore   2025_converted.mp4.mov",
@@ -2712,13 +2887,15 @@
             "train-wagons-with-iron-ore-parked-at-choum-maurit-2025-12-17-17-29-02-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritius": {
+    "175": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritius",
         "dirnames": [
             "Đường cao tốc bờ biển phía Bắc, Mauritius"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritius\\Đường cao tốc bờ biển phía Bắc, Mauritius": {
+    "176": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mauritius\\Đường cao tốc bờ biển phía Bắc, Mauritius",
         "dirnames": [],
         "filenames": [
             "B9 Coastal Drive Bel Ombre to Le Morne Beach   Mauritius 4K.mp4",
@@ -2730,25 +2907,29 @@
             "Mauritius street view 4K - Bel Ombre to Maconde viewpoint.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mexico": {
+    "177": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mexico",
         "dirnames": [
             "Guatemala"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mexico\\Guatemala": {
+    "178": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Mexico\\Guatemala",
         "dirnames": [],
         "filenames": [
             "Guatemala.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Montenegro": {
+    "179": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Montenegro",
         "dirnames": [
             "chap 13-Kotor Serpentine – Montenegro"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Montenegro\\chap 13-Kotor Serpentine – Montenegro": {
+    "180": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Montenegro\\chap 13-Kotor Serpentine – Montenegro",
         "dirnames": [],
         "filenames": [
             "23_TW9udGVuZWdyb18zNg.mov",
@@ -2764,13 +2945,15 @@
             "Дрон сече завоите (Kotor Serpentine from above)_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar": {
+    "181": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar",
         "dirnames": [
             "03_Gokteik Viaduct, Myanmar"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar": {
+    "182": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar",
         "dirnames": [
             "New folder",
             "yt"
@@ -2809,7 +2992,8 @@
             "WorldTrip 2018 - Myanmar - Gokteik Viaduc_converted.mp4.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\New folder": {
+    "183": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\New folder",
         "dirnames": [
             "img"
         ],
@@ -2824,7 +3008,8 @@
             "grok-video-733b8922-bfea-4422-9d06-a328c2a17969.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\New folder\\img": {
+    "184": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\New folder\\img",
         "dirnames": [],
         "filenames": [
             "1GokteikViaductMartinCallum.jpg",
@@ -2835,20 +3020,23 @@
             "GokteikTrainByGoran_BMW_Overlander.jpg"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\yt": {
+    "185": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Myanmar\\03_Gokteik Viaduct, Myanmar\\yt",
         "dirnames": [],
         "filenames": [
             "Gokteik Viaduct Myanmar.mp4",
             "Most Dangerous Bridge Myanmar.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nam Cực": {
+    "186": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nam Cực",
         "dirnames": [
             "chap 25-Blood Falls – Nam Cực"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nam Cực\\chap 25-Blood Falls – Nam Cực": {
+    "187": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nam Cực\\chap 25-Blood Falls – Nam Cực",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -2873,13 +3061,15 @@
             "Why is this Antarctic Glacier “Bleeding”   Antarctic Extremes.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Namibia": {
+    "188": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Namibia",
         "dirnames": [
             "chap 06-Deadvlei – Namibia"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Namibia\\chap 06-Deadvlei – Namibia": {
+    "189": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Namibia\\chap 06-Deadvlei – Namibia",
         "dirnames": [],
         "filenames": [
             "aerial-view-tracking-shot-of-the-deadvlei-in-namib-2025-12-18-00-19-39-utc.mp4",
@@ -2899,13 +3089,15 @@
             "Visiting Deadvlei & Sossusvlei, Namibia Sand Dunes in the Namib Naukluft National Park_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nepal": {
+    "190": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nepal",
         "dirnames": [
             "chap 10-Karnali Highway – Nepal"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nepal\\chap 10-Karnali Highway – Nepal": {
+    "191": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nepal\\chap 10-Karnali Highway – Nepal",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-a-remote-village-in-the-center-of-m-2026-01-22-22-57-24-utc.mov",
@@ -2919,19 +3111,22 @@
             "World dangerous Road in Nepal_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New folder": {
+    "192": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New folder",
         "dirnames": [],
         "filenames": [
             "「The most frightening bridge in Japan Ejima Ohashi」 べた踏み坂（江島大橋）のトリックを空撮で暴露？ 松江市 Mavic3 4K ドローン.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New Zealand": {
+    "193": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New Zealand",
         "dirnames": [
             "09_Arthur's Pass, New Zealand"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New Zealand\\09_Arthur's Pass, New Zealand": {
+    "194": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\New Zealand\\09_Arthur's Pass, New Zealand",
         "dirnames": [],
         "filenames": [
             "432566_Rock Stones Low Angle Earth_By_Runimation_Studios_Artlist_4K.mp4",
@@ -2956,7 +3151,8 @@
             "view-from-a-vehicle-driving-on-famous-arthurs-brid-2026-01-21-13-54-48-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga": {
+    "195": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga",
         "dirnames": [
             "Burlinskoye Lake Train",
             "chap 01-Kuandinsky Bridge – Nga",
@@ -2965,7 +3161,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\Burlinskoye Lake Train": {
+    "196": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\Burlinskoye Lake Train",
         "dirnames": [],
         "filenames": [
             "aerial-of-an-old-train-standing-on-the-railway-in-2025-12-17-14-56-51-utc.mov",
@@ -2989,7 +3186,8 @@
             "Поезд, который едет по розовому озеру_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\chap 01-Kuandinsky Bridge – Nga": {
+    "197": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\chap 01-Kuandinsky Bridge – Nga",
         "dirnames": [],
         "filenames": [
             "17.06.2018г. БАМ, автомобильный мост через р.Витим._converted.mp4",
@@ -3007,7 +3205,8 @@
             "Витимский мост. Поездка в поселок Куанда по аварийному мосту_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\chap 25-Cao tốc Kolyma – Nga": {
+    "198": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\chap 25-Cao tốc Kolyma – Nga",
         "dirnames": [],
         "filenames": [
             "One upon a time at Kolyma Highway_converted.mp4",
@@ -3018,7 +3217,8 @@
             "Колыма летом с высоты 4К   Kolyma summer shooting from a quadcopte_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\Oymyakon, Russia": {
+    "199": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nga\\Oymyakon, Russia",
         "dirnames": [],
         "filenames": [
             "0530.mp4",
@@ -3031,14 +3231,16 @@
             "❄️ Oymyakon, Russia – Life in the Coldest Inhabited Place on Earth! 🥶    Explore Edge.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria": {
+    "200": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria",
         "dirnames": [
             "25. Igbo-Ora – Nigeria",
             "Makok"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria\\25. Igbo-Ora – Nigeria": {
+    "201": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria\\25. Igbo-Ora – Nigeria",
         "dirnames": [],
         "filenames": [
             "Igbo Ora The Town Where Almost Everyone Is A Twin   Mysterious Phenomenon!!.mp4",
@@ -3046,7 +3248,8 @@
             "The Town Where Almost Everyone Is a Twin 😱 - Inside Igbo-Ora, Nigeria 🇳🇬.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria\\Makok": {
+    "202": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Nigeria\\Makok",
         "dirnames": [],
         "filenames": [
             "Canoeing Through Makoko Daily Life on the Water in Africa's Floating City_converted.mp4",
@@ -3058,13 +3261,15 @@
             "The isolated Phugtal monastery, Zanskar   India   4K   nomadraul_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\North Pole": {
+    "203": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\North Pole",
         "dirnames": [],
         "filenames": [
             "north pole.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway": {
+    "204": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway",
         "dirnames": [
             "con duong dai tay duong",
             "Svalbard"
@@ -3076,13 +3281,15 @@
             "to norway.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway\\con duong dai tay duong": {
+    "205": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway\\con duong dai tay duong",
         "dirnames": [],
         "filenames": [
             "conduongdaitayduong.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway\\Svalbard": {
+    "206": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Norway\\Svalbard",
         "dirnames": [],
         "filenames": [
             "polar-bear svalbard 02.mp4",
@@ -3107,7 +3314,8 @@
             "yt06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan": {
+    "207": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan",
         "dirnames": [
             "06_Babusar Pass, Pakistan",
             "chap 03-Hussaini Hanging Bridge – Pakistan",
@@ -3119,7 +3327,8 @@
             "6517860_Desert Hatta Drone Fpv_By_Thomas_Gellert_Artlist_4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\06_Babusar Pass, Pakistan": {
+    "208": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\06_Babusar Pass, Pakistan",
         "dirnames": [],
         "filenames": [
             "0406.mp4",
@@ -3174,7 +3383,8 @@
             "winding-snow-road-through-mountain-range-2026-01-22-05-24-51-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\chap 03-Hussaini Hanging Bridge – Pakistan": {
+    "209": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\chap 03-Hussaini Hanging Bridge – Pakistan",
         "dirnames": [],
         "filenames": [
             "aerial-drone-flying-backwards-as-tourists-cross-th-2025-12-17-04-03-40-utc (1).mov",
@@ -3196,7 +3406,8 @@
             "Thrilling Drone Footage of Hussaini Suspension Bridge  Aerial Views of Hussaini Suspension Bridge_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Fairy Road": {
+    "210": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Fairy Road",
         "dirnames": [],
         "filenames": [
             "Cliffhanger route Kishtwar - Pangi Valley   Winter Pangi 2020_converted.mp4.mov",
@@ -3219,11 +3430,13 @@
             "Fairy Meadows Road - World's most dangerous road - Raikot to Tattu Jeep Track_converted.mp4_006.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Karakoram": {
+    "211": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Karakoram",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Nanga Parbat": {
+    "212": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pakistan\\Nanga Parbat",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -3232,7 +3445,8 @@
             "Nanga Parbat Beautiful 4K Drone Video.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru": {
+    "213": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru",
         "dirnames": [
             "1. La Rinconada – Perú",
             "17. Huacachina – Perú",
@@ -3252,7 +3466,8 @@
             "wooden-boat-sailing-up-narrow-section-of-amazon-in-2026-01-21-22-51-07-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\1. La Rinconada – Perú": {
+    "214": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\1. La Rinconada – Perú",
         "dirnames": [],
         "filenames": [
             "7a284fbd-5bc8-4a38-9b6f-e5587770d93f.mp4",
@@ -3276,7 +3491,8 @@
             "Suku Asmat  Suku Asli Papua Indonesia, Wanita Menjadi Tulang Punggung Keluarga.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\17. Huacachina – Perú": {
+    "215": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\17. Huacachina – Perú",
         "dirnames": [],
         "filenames": [
             "4k-aerial-shot-of-huacachina-peru-2025-12-17-11-21-35-utc.mp4",
@@ -3287,7 +3503,8 @@
             "huacachina-oasis-at-dune-edge-above-sandy-terrain-2026-01-22-23-00-52-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Iquitos": {
+    "216": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Iquitos",
         "dirnames": [
             "used"
         ],
@@ -3307,7 +3524,8 @@
             "18.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Iquitos\\used": {
+    "217": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Iquitos\\used",
         "dirnames": [],
         "filenames": [
             "02.mp4",
@@ -3326,7 +3544,8 @@
             "yt08.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Lake Titicaca": {
+    "218": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Lake Titicaca",
         "dirnames": [
             "0000"
         ],
@@ -3365,17 +3584,20 @@
             "yt02.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Lake Titicaca\\0000": {
+    "219": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Peru\\Lake Titicaca\\0000",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Philippines": {
+    "220": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Philippines",
         "dirnames": [
             "13. Sagada – Filipinas"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Philippines\\13. Sagada – Filipinas": {
+    "221": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Philippines\\13. Sagada – Filipinas",
         "dirnames": [],
         "filenames": [
             "A trip to Sagada and Buscalan   Hanging Coffins, Sumaguing Cave, Marlboro Hills   Travel VLOG.mkv",
@@ -3385,7 +3607,8 @@
             "The hanging coffins of Sagada.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France": {
+    "222": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France",
         "dirnames": [
             "01. Mont Saint-Michel, France",
             "Aiguille",
@@ -3398,7 +3621,8 @@
             "rocamadour-in-france-aerial-view-2025-12-17-16-16-29-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\01. Mont Saint-Michel, France": {
+    "223": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\01. Mont Saint-Michel, France",
         "dirnames": [],
         "filenames": [
             "A day in MONT SAINT MICHEL from PARIS France 🇫🇷_converted.mp4",
@@ -3437,7 +3661,8 @@
             "Week-end dans le Vercors (Mont-Aiguille et Pas de l'Aiguille )_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\Aiguille": {
+    "224": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\Aiguille",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -3452,7 +3677,8 @@
             "09.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\chap 21-Cung đường GR20 – Pháp": {
+    "225": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\chap 21-Cung đường GR20 – Pháp",
         "dirnames": [],
         "filenames": [
             "Corse - Les paysages du GR20 vu d'un drone - part 1_converted.mp4",
@@ -3465,7 +3691,8 @@
             "Silent Hiking the GR20 in Corsica for 13 days_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\Passage du Gois": {
+    "226": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Pháp - France\\Passage du Gois",
         "dirnames": [],
         "filenames": [
             "0318.mp4",
@@ -3480,7 +3707,8 @@
             "[4K] Passage du Gois (Ile de Noirmoutier - Continent) Juin 2017.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania": {
+    "227": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania",
         "dirnames": [
             "05_Transfagarasan Road, Romania",
             "Salt Mine"
@@ -3498,7 +3726,8 @@
             "Transfagarasan Romania Scenic Drive 4K 🇷🇴   Northern Part - Mountain Road (Best Road in the World).mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania\\05_Transfagarasan Road, Romania": {
+    "228": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania\\05_Transfagarasan Road, Romania",
         "dirnames": [],
         "filenames": [
             "4K Driving the Transfagarasan Highway - SCENIC DRIVE - #transfagarasan #transylvania #romania - YouTube.mp4",
@@ -3539,7 +3768,8 @@
             "winding-serpentine-of-the-transfagarasan-highway-w-2025-12-18-02-00-46-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania\\Salt Mine": {
+    "229": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\romania\\Salt Mine",
         "dirnames": [],
         "filenames": [
             "A Journey 400 Feet Below! Exploring Salina Turda Salt Mine, Romania_converted.mp4.mov",
@@ -3568,13 +3798,15 @@
             "This Romanian Salt Mine Has an Underground Ferris Wheel!_converted.mp4_009.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Singapore": {
+    "230": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Singapore",
         "dirnames": [
             "Henderson Waves"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Singapore\\Henderson Waves": {
+    "231": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Singapore\\Henderson Waves",
         "dirnames": [],
         "filenames": [
             "01.mov",
@@ -3585,7 +3817,8 @@
             "06.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain": {
+    "232": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain",
         "dirnames": [
             "06. Gaztelugatxe, Spain",
             "Castellfollit de la Roca"
@@ -3601,7 +3834,8 @@
             "the-santa-margarida-volcano-is-an-extinct-volcano-2025-12-17-23-26-53-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\06. Gaztelugatxe, Spain": {
+    "233": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\06. Gaztelugatxe, Spain",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-gaztelugatxe-chapel-spain-2025-12-18-01-34-12-utc.mp4",
@@ -3618,7 +3852,8 @@
             "tourists-climb-the-stone-steps-of-gaztelugatxe-isl-2025-12-17-13-13-59-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\Castellfollit de la Roca": {
+    "234": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\Castellfollit de la Roca",
         "dirnames": [
             "used"
         ],
@@ -3644,7 +3879,8 @@
             "yt09.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\Castellfollit de la Roca\\used": {
+    "235": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Spain\\Castellfollit de la Roca\\used",
         "dirnames": [],
         "filenames": [
             "Castellfollit de la Roca. 01.mov",
@@ -3654,13 +3890,15 @@
             "Castellfollit de la Roca. 10.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Sri Lanka": {
+    "236": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Sri Lanka",
         "dirnames": [
             "05. Dambulla Cave Temple, Sri Lanka"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Sri Lanka\\05. Dambulla Cave Temple, Sri Lanka": {
+    "237": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Sri Lanka\\05. Dambulla Cave Temple, Sri Lanka",
         "dirnames": [],
         "filenames": [
             "buddha-statues-in-dambulla-cave-temple-sril-lanka-2025-12-17-04-45-04-utc.mov",
@@ -3703,17 +3941,20 @@
             "interior-of-dambulla-cave-temple-in-sri-lanka-show-2026-02-20-16-31-20-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Taiwan": {
+    "238": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Taiwan",
         "dirnames": [
             "Taroko"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Taiwan\\Taroko": {
+    "239": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Taiwan\\Taroko",
         "dirnames": [],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand": {
+    "240": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand",
         "dirnames": [
             "01_Maeklong Railway Market, Thai Lan",
             "02. Wat Samphran Dragon Temple, Thailand",
@@ -3722,7 +3963,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\01_Maeklong Railway Market, Thai Lan": {
+    "241": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\01_Maeklong Railway Market, Thai Lan",
         "dirnames": [
             "YT"
         ],
@@ -3788,7 +4030,8 @@
             "train-market-in-thailand-2026-01-21-12-10-16-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\01_Maeklong Railway Market, Thai Lan\\YT": {
+    "242": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\01_Maeklong Railway Market, Thai Lan\\YT",
         "dirnames": [],
         "filenames": [
             "MAEKLONG RAILWAY MARKET   DAMNOEN SADUAK FLOATING MARKET    World's Craziest Markets   Thailand.mp4",
@@ -3796,7 +4039,8 @@
             "Watch a Train Run Through Thailand’s Most Dangerous Market.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\02. Wat Samphran Dragon Temple, Thailand": {
+    "243": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\02. Wat Samphran Dragon Temple, Thailand",
         "dirnames": [],
         "filenames": [
             "aerial-orbit-unique-pink-dragon-wat-samphran-templ-2026-01-21-12-24-14-utc.mp4",
@@ -3814,7 +4058,8 @@
             "Visiting Amazing Thailand's Dragon Temple   Wat Samphran in Bangkok - Thailand Travel 2023_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\22. Ban Rak Thai – Tailandia": {
+    "244": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\22. Ban Rak Thai – Tailandia",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ban-rak-thai-village-chinese-hotel-2026-01-20-15-16-51-utc.mp4",
@@ -3835,7 +4080,8 @@
             "thailand-2025-12-17-06-34-50-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\Death railways": {
+    "245": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thailand\\Death railways",
         "dirnames": [],
         "filenames": [
             "Death Railway Bridge   Bridge on the River Kwai   Kanchanaburi.mp4.mov",
@@ -3860,7 +4106,8 @@
             "🇹🇭 Trains in Thailand - Death Railway - Along the Line (2026) [4K].mp4_012.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ": {
+    "246": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ",
         "dirnames": [
             "11_Furka Pass, Thuy Si",
             "Albula railway",
@@ -3876,7 +4123,8 @@
             "famous-lauterbrunnen-town-and-staubbach-waterfall-2025-12-17-16-35-42-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\11_Furka Pass, Thuy Si": {
+    "247": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\11_Furka Pass, Thuy Si",
         "dirnames": [],
         "filenames": [
             "20887_Wheel of car rolling on road_By_Ami_Bornstein_Artlist_4.6K.mp4",
@@ -3900,7 +4148,8 @@
             "waterfall-at-furka-pass-in-switzerland-during-clou-2025-12-17-16-34-22-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Albula railway": {
+    "248": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Albula railway",
         "dirnames": [],
         "filenames": [
             "A Stormy Winter Adventure on the Albula Line.mp4.mov",
@@ -3930,7 +4179,8 @@
             "★ 4K 🇨🇭Chur - Albulabahn - St. Moritz summer cab ride, Switzerland [07.2020].mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Bermina": {
+    "249": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Bermina",
         "dirnames": [],
         "filenames": [
             "0309(1).mp4",
@@ -3944,7 +4194,8 @@
             "Switzerland's Most Scenic Train Ride  in FULL HD 4K -  Drone & Window view in High Quality 4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\chap 03-Titlis Cliff Walk – Thụy Sĩ": {
+    "250": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\chap 03-Titlis Cliff Walk – Thụy Sĩ",
         "dirnames": [],
         "filenames": [
             "Cliff walk Titlis_converted.mp4",
@@ -3954,7 +4205,8 @@
             "Titlis mountain drone - Royalty Free Clips   stock footage 4k_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\chap 18-Klausen Pass – Thụy Sĩ": {
+    "251": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\chap 18-Klausen Pass – Thụy Sĩ",
         "dirnames": [],
         "filenames": [
             "Dive above the Klausenpass with FPV drone, Switzerland_converted.mp4",
@@ -3968,7 +4220,8 @@
             "Swiss Alps - Klausenpass - Cinematic FPV_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Gornergrat Rack Railways": {
+    "252": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Gornergrat Rack Railways",
         "dirnames": [],
         "filenames": [
             "Drone｜Matterhorn｜Zermatt.mp4.mov",
@@ -4000,7 +4253,8 @@
             "Zermatt-Gornergrat-Switzerland TEASER 4K.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Pilatus railway": {
+    "253": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Thụy Sĩ\\Pilatus railway",
         "dirnames": [],
         "filenames": [
             "PB Pilatus Bahn   Trains avec les automotrices Bhe 1 2    1939 - 2022   World's steepest cogwheel_converted.mp4.mov",
@@ -4035,14 +4289,16 @@
             "Scenic Switzerland - Pilatus Railway - Front Seat Passenger View of the World's Steepest Railway_converted.mp4_008.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray": {
+    "254": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray",
         "dirnames": [
             "Abuna Yemata Guh",
             "Chung"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray\\Abuna Yemata Guh": {
+    "255": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray\\Abuna Yemata Guh",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -4057,13 +4313,15 @@
             "1_Sub_08_Sub_02.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray\\Chung": {
+    "256": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Tigray\\Chung",
         "dirnames": [],
         "filenames": [
             "Tigray.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkish": {
+    "257": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkish",
         "dirnames": [],
         "filenames": [
             "0318(1).mp4",
@@ -4077,13 +4335,15 @@
             "[4K Drone] Darvaza Gas Crater (The Door to Hell) Turkmenistan.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkmenistan": {
+    "258": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkmenistan",
         "dirnames": [
             "01_Karakum_Desert_Turkmenistan"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkmenistan\\01_Karakum_Desert_Turkmenistan": {
+    "259": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Turkmenistan\\01_Karakum_Desert_Turkmenistan",
         "dirnames": [],
         "filenames": [
             "4K Drone Footage -  Door to Hell   Darvaza Gas Crater_converted.mp4",
@@ -4096,7 +4356,8 @@
             "Karakum Desert Survival in the Sands 4k #Documentary #Wildlife #desert   #Nature_converted.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\TÀU LINHTINH": {
+    "260": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\TÀU LINHTINH",
         "dirnames": [],
         "filenames": [
             "aerial-close-up-of-the-pamban-bridge-landscape-2026-01-22-04-22-43-utc.mov",
@@ -4129,7 +4390,8 @@
             "vast-barren-soils-of-the-taklamakan-desert-2025-12-17-20-33-21-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ": {
+    "261": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ",
         "dirnames": [
             "6. Burj Al Babas – Turquía",
             "chap 22-Pamukkale – Thổ Nhĩ Kỳ",
@@ -4137,7 +4399,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\6. Burj Al Babas – Turquía": {
+    "262": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\6. Burj Al Babas – Turquía",
         "dirnames": [],
         "filenames": [
             "0327(1).mp4",
@@ -4154,7 +4417,8 @@
             "The Road to Burj.mkv"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\chap 22-Pamukkale – Thổ Nhĩ Kỳ": {
+    "263": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\chap 22-Pamukkale – Thổ Nhĩ Kỳ",
         "dirnames": [
             "Pamukkale – Türkiye"
         ],
@@ -4190,7 +4454,8 @@
             "fly-over-pamukkale-mountain-in-aegean-turkey-is-al-2025-12-17-06-41-40-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\chap 22-Pamukkale – Thổ Nhĩ Kỳ\\Pamukkale – Türkiye": {
+    "264": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\chap 22-Pamukkale – Thổ Nhĩ Kỳ\\Pamukkale – Türkiye",
         "dirnames": [],
         "filenames": [
             "fly-over-steamy-pamukkale-hot-springs-turkey-tur-2025-12-17-22-38-47-utc.mp4",
@@ -4234,7 +4499,8 @@
             "white-travertine-terraces-or-travertine-pools-that-2025-12-17-22-51-19-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\Uchisar": {
+    "265": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Türkiye (Turquía) - Thổ Nhĩ Kỳ\\Uchisar",
         "dirnames": [],
         "filenames": [
             "Day Trip Itinerary in Uchisar, Cappadocia   Turkey Travel Vlog_converted.mp4.mov",
@@ -4250,13 +4516,15 @@
             "uchisar-castle-rock-2025-12-17-05-35-10-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ukraine": {
+    "266": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ukraine",
         "dirnames": [
             "8. Zona de Exclusión de Chernóbil – Ucrania"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ukraine\\8. Zona de Exclusión de Chernóbil – Ucrania": {
+    "267": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Ukraine\\8. Zona de Exclusión de Chernóbil – Ucrania",
         "dirnames": [],
         "filenames": [
             "A Day in the Chernobyl Exclusion Zone 🇺🇦.mkv",
@@ -4273,13 +4541,15 @@
             "pripyat-cityview-of-exclusion-zone-near-the-cherno-2026-01-28-03-55-32-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Uruguây": {
+    "268": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Uruguây",
         "dirnames": [
             "grazon"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Uruguây\\grazon": {
+    "269": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Uruguây\\grazon",
         "dirnames": [],
         "filenames": [
             "01.mp4",
@@ -4295,7 +4565,8 @@
             "09.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA": {
+    "270": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA",
         "dirnames": [
             "24. Taos Pueblo – EE. UU",
             "4. Autopista James W. Dalton – EE. UU",
@@ -4308,7 +4579,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\24. Taos Pueblo – EE. UU": {
+    "271": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\24. Taos Pueblo – EE. UU",
         "dirnames": [],
         "filenames": [
             "couple-exploring-taos-pueblo-native-american-heri-2025-12-18-01-25-29-utc.mp4",
@@ -4331,7 +4603,8 @@
             "taos-pueblo-new-mexico-usa-april-11-2019-to-2025-12-18-01-25-31-utc.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\4. Autopista James W. Dalton – EE. UU": {
+    "272": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\4. Autopista James W. Dalton – EE. UU",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-winding-road-through-mountains-uni-2026-01-22-20-15-58-utc.mp4",
@@ -4347,7 +4620,8 @@
             "Reaching the END of the Dalton Highway  - Alaska's ARCTIC North! 🇺🇸   Ep 26.mp4 44100.pek"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Cầu Rolling Bridge – Vương quốc Anh": {
+    "273": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Cầu Rolling Bridge – Vương quốc Anh",
         "dirnames": [],
         "filenames": [
             "Heatherwick Studio's Rolling Bridge Pedestrians.mp4",
@@ -4359,7 +4633,8 @@
             "[4K] Paddington Basin with The Rolling Bridge..mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Durango and Silverton Narrow Gauge Railroad": {
+    "274": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Durango and Silverton Narrow Gauge Railroad",
         "dirnames": [],
         "filenames": [
             "Durango & Silverton Narrow Gauge Railroad Echoes of Autumn on the Silverton Branch [4K].mp4.mov",
@@ -4388,7 +4663,8 @@
             "The High Line of the Durango & Silverton NGRR - Drone Footage.mp4_002.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Great Salt Lake Causeway": {
+    "275": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Great Salt Lake Causeway",
         "dirnames": [],
         "filenames": [
             "aerial-sideway-shot-with-train-going-on-tracks-a-2025-12-17-08-41-47-utc.mov",
@@ -4412,7 +4688,8 @@
             "utah-circa-2019-aerial-view-of-great-salt-lake-u-2026-01-22-20-09-25-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Mount Washington Cog Railway (USA)": {
+    "276": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Mount Washington Cog Railway (USA)",
         "dirnames": [],
         "filenames": [
             "Cog Railway & Mt Washington, NH_converted.mp4.mov",
@@ -4451,7 +4728,8 @@
             "[4K] Mount Washington Cog Railway_converted.mp4_024.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\White Pass and Yukon Railway (USA": {
+    "277": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\White Pass and Yukon Railway (USA",
         "dirnames": [],
         "filenames": [
             "8-Hour Skagway White Pass Train Tour That Will CHANGE YOUR VIEW of the Yukon.mp4.mov",
@@ -4486,7 +4764,8 @@
             "White Pass Scenic Railway May 2024.mp4.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Đường hầm eo biển Manche – Vương quốc Anh - Pháp": {
+    "278": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\USA\\Đường hầm eo biển Manche – Vương quốc Anh - Pháp",
         "dirnames": [],
         "filenames": [
             "4K Drive Through The Eurotunnel - Calais to Folkestone Car Train - Le Shuttle Car Train to Europe.mp4",
@@ -4506,7 +4785,8 @@
             "World’s Longest Cable Car 🇻🇳 This Blew Me Away 😳.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam": {
+    "279": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam",
         "dirnames": [
             "02_Deo Khau Coc Cha, Viet Nam",
             "23. Pueblo Lô Lô Chải – Vietnam",
@@ -4516,7 +4796,8 @@
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\02_Deo Khau Coc Cha, Viet Nam": {
+    "280": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\02_Deo Khau Coc Cha, Viet Nam",
         "dirnames": [
             "bổ sung"
         ],
@@ -4550,7 +4831,8 @@
             "Đèo Khau Cốc Chà - Bảo Lạc - Cao Bằng..ngày trở lại..5-2023 - YouTube.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\02_Deo Khau Coc Cha, Viet Nam\\bổ sung": {
+    "281": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\02_Deo Khau Coc Cha, Viet Nam\\bổ sung",
         "dirnames": [],
         "filenames": [
             "a-point-of-view-shot-of-a-vehicle-riding-through-a-2026-01-20-22-54-09-utc.mp4",
@@ -4563,7 +4845,8 @@
             "slow-motion-rockfall-in-the-mountains-close-up-pe-2025-12-17-06-37-08-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\23. Pueblo Lô Lô Chải – Vietnam": {
+    "282": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\23. Pueblo Lô Lô Chải – Vietnam",
         "dirnames": [],
         "filenames": [
             "aerial-view-of-ha-giang-village-among-the-mountain-2025-12-17-07-04-34-utc.mov",
@@ -4574,7 +4857,8 @@
             "Lô Lô Chải Hà Giang - Ngôi Làng Cổ Tích   A Miraculous Village In The Northern Province Of Ha Giang.mp4"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\chap 07-Cầu kính Bạch Long – Việt Nam": {
+    "283": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\chap 07-Cầu kính Bạch Long – Việt Nam",
         "dirnames": [],
         "filenames": [
             "Bach Long Glass Bridge Moc Chau - The longest glass bridge in the world   Travel to Vietnam Official_converted.mp4",
@@ -4587,7 +4871,8 @@
             "zoom-in-aerial-view-of-green-agricultural-fields-i-2026-01-22-22-57-34-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\chap 16-Dốc Thẩm Mã – Việt Nam": {
+    "284": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\chap 16-Dốc Thẩm Mã – Việt Nam",
         "dirnames": [],
         "filenames": [
             "0325.mp4",
@@ -4607,7 +4892,8 @@
             "tham-ma-pass-in-ha-giang-province-vietnam-aeria-2025-12-17-17-02-16-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\Hanoi Railway Street (Vietnam)": {
+    "285": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Viet Nam\\Hanoi Railway Street (Vietnam)",
         "dirnames": [],
         "filenames": [
             "Choáng Cảnh Du Khách Ùn Ùn Kéo Về Phố Đường Tàu Hà Nội - Tran Phu Train Line Hanoi_converted.mp4.mov",
@@ -4641,13 +4927,15 @@
             "young-woman-traveler-explores-the-area-of-the-hano-2025-12-17-04-57-47-utc.mov"
         ]
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Yemen": {
+    "286": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Yemen",
         "dirnames": [
             "4. Haid al-Jazil – Yemen"
         ],
         "filenames": []
     },
-    "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Yemen\\4. Haid al-Jazil – Yemen": {
+    "287": {
+        "dirpath": "\\\\192.168.100.155\\Socy Media\\COUNTRY FOOTAGE\\Yemen\\4. Haid al-Jazil – Yemen",
         "dirnames": [],
         "filenames": [
             "0323 (2)(2).mp4",

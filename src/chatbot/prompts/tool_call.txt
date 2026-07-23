@@ -55,6 +55,3 @@ LƯU Ý QUAN TRỌNG:
 - Chỉ trả về duy nhất khối JSON sạch, không có ký tự thừa bên ngoài.
 - Nếu không có công cụ nào phù hợp, bắt buộc đặt "tool_name" là null.
 - Đảm bảo các tham số trong "arguments" phải khớp với mô tả của công cụ được chọn.
-
-YÊU CẦU CỦA NGƯỜI DÙNG:
-"{user_query}"
