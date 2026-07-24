@@ -4,7 +4,7 @@ import subprocess
 
 from src.chatbot.models.history import History
 from src.chatbot.services.chatbot_service import ChatbotService
-from src.chatbot.indexing.indexer_old import Indexer
+from src.chatbot.indexing.indexer import Indexer
 from src.chatbot.config import DEDAULT_ROOT_PATH
 from src.loggers import main_logger
 from pathlib import Path
@@ -23,8 +23,8 @@ async def index_folder(path_to_index):
     # path_to_index = r'C:\Users\Admin\Downloads'
     indexer = Indexer()
     await asyncio.to_thread(
-        indexer.build_index_v2,
-        path_to_index,
+        indexer.build_index,
+        # path_to_index,
     )
 
     loading_msg.content = "✅ Đã lập chỉ mục cây thư mục dữ liệu thành công!"

@@ -1,9 +1,9 @@
 from pathlib import Path
 import os
-from services.text_nomalizer import TextNormalizer
+from src.chatbot.services.text_nomalizer import TextNormalizer
 from src.chatbot.services.file_service.json_writer import JsonWriter
 from src.chatbot.services.file_service.json_reader import JsonReader
-from src.chatbot.config import TREE_INDEX_PATH, TOKEN_INDEX_PATH, PATH_ID_INDEX
+from src.chatbot.config import TREE_INDEX_PATH, TOKEN_INDEX_PATH, PATH_ID_INDEX, DEDAULT_ROOT_PATH
 
 
 class Indexer:
@@ -19,7 +19,7 @@ class Indexer:
             "__pycache__",
         ]
 
-    def build_index(self, root_path: str, output_path: str):
+    def build_tree_index(self, root_path: str=DEDAULT_ROOT_PATH, output_path: str = TREE_INDEX_PATH):
         result = {}
         i = 0
         for dirpath, dirnames, filenames in os.walk(root_path):
@@ -40,8 +40,8 @@ class Indexer:
                 i += 1
         self.json_writer.write(output_path, result)
 
-    def build_token_index(self, root_path, indexed_path=None, output_path=None):
-        data = self.json_reader.read(indexed_path)
+    def build_token_index(self, root_path=DEDAULT_ROOT_PATH, tree_indexed_path=TREE_INDEX_PATH, output_path=TOKEN_INDEX_PATH):
+        data = self.json_reader.read(tree_indexed_path)
         inverted_index = {}
         for path, node in data.items():
             targets = [path]
@@ -63,20 +63,23 @@ class Indexer:
         }
         self.json_writer.write(output_path, inverted_index)
 
-    def build_path_id_index(self, tree_indexed_path, output_path=None):
+    def build_path_id_index(self, tree_indexed_path=TREE_INDEX_PATH, output_path=PATH_ID_INDEX):
         data = self.json_reader.read(tree_indexed_path)
         result = {}
         for k, v in data.items():
             result[v["id"]] = k
         self.json_writer.write(output_path, result)
 
+    def build_index(self):
+        self.build_tree_index()
+        self.build_token_index()
+        self.build_path_id_index()
+
 
 if __name__ == '__main__':
     indexer = Indexer = Indexer()
     root_path = r'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE'
-    indexer.build_index(root_path, TREE_INDEX_PATH)
-    indexer.build_token_index(root_path, TREE_INDEX_PATH, TOKEN_INDEX_PATH)
-    indexer.build_path_id_index(TREE_INDEX_PATH, PATH_ID_INDEX)
+    indexer.build_index()
     # reader = JsonReader()
     # data = reader.read(TOKEN_INDEX_PATH)
     # print(len(data))

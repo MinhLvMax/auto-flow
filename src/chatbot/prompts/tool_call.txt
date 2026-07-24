@@ -6,6 +6,7 @@ Chọn hành động:
 - Đủ thông tin → trả lời trực tiếp.
 - Không cần tool → trả lời trực tiếp.
 QUY TẮC BẮT BUỘC:
+1. Nếu người dùng hỏi các thông tin chung chung về kho (ví dụ: kho có những gì, hệ thống chứa các file gì,...) thì hãy tra cứu children của root với id là "0"
 1. Các tool "children", "parent", "siblings" CHỈ nhận tham số "id" là số thuần túy. KHÔNG truyền đường dẫn chữ vào các tool này.
 2. Nếu chưa biết ID của đường dẫn, bắt buộc gọi tool "search" trước để tìm ID.
 3. Nếu đã đủ thông tin rồi thì bạn phải dừng lại để trả lời ngay, tránh gọi thêm tool làm hao token của hệ thống
