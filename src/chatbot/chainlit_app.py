@@ -1,14 +1,17 @@
 import chainlit as cl
 import asyncio
 import subprocess
+
+from src.chatbot.models.history import History
 from src.chatbot.services.chatbot_service import ChatbotService
 from src.chatbot.indexing.indexer_old import Indexer
 from src.chatbot.config import DEDAULT_ROOT_PATH
 from src.loggers import main_logger
 from pathlib import Path
+from src.chatbot.graph.workflows.agent_graph import build_agent_graph
 
 main_logger.info('Khởi tạo dịch vụ chat')
-chatbot_service = ChatbotService()
+chatbot_service = ChatbotService(workflow=build_agent_graph())
 
 async def index_folder(path_to_index):
     loading_msg = cl.Message(
@@ -45,11 +48,10 @@ async def on_chat_start():
     #     ]
     # ).send()
     default_path_to_index = DEDAULT_ROOT_PATH # Nên cải tiến lấy từ người dùng
-    history = chatbot_service.create_session(path_to_index=default_path_to_index)
-    last_turn = history.last()
-    first_mess = last_turn.get('content', 'Xin chào bạn.')
+    history = History()
+    history.add('assistant', 'Xin chào!')
     await cl.Message(
-        content=first_mess
+        content=history.last().get('content', 'None'),
     ).send()
     cl.user_session.set('history', history)
     cl.user_session.set('path_to_index', default_path_to_index)
@@ -64,7 +66,6 @@ async def on_message(message: cl.Message):
             history.add('user', message.content)
             new_history, paths_result = chatbot_service.chat(history=history)
             response = new_history.last().get('content', 'None')
-            history.add('assistant', response)
         else:
             response = 'Thử lại'
             paths_result = []
@@ -131,7 +132,7 @@ async def show_search_results(action: cl.Action):
         actions.append(
             cl.Action(
                 name="open_file",
-                label=f"{path} score:{item['score']}",
+                label=f"{path} id:{item['id']}",
                 payload={
                     "path": path
                 }

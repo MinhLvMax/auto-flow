@@ -7,13 +7,13 @@ class GetChildrensTool(BaseTool):
         self.storage_analysis = storage_analysis or StorageAnalysisService()
 
     def run(self, **kargs):
-        paths = self.storage_analysis.get_children(**kargs)
+        paths = self.storage_analysis.children(**kargs)
         return paths
 
     def description(self):
-        return self.storage_analysis.get_children.__doc__
+        return self.storage_analysis.children.__doc__
 
     @property
     def name(self):
-        return self.storage_analysis.get_children.__name__
+        return self.storage_analysis.children.__name__
 

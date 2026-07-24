@@ -7,12 +7,12 @@ class GetSiblingsTool(BaseTool):
         self.storage_analysis = storage_analysis or StorageAnalysisService()
 
     def run(self, **kargs):
-        paths = self.storage_analysis.get_siblings(**kargs)
+        paths = self.storage_analysis.siblings(**kargs)
         return paths
 
     def description(self):
-        return self.storage_analysis.get_siblings.__doc__
+        return self.storage_analysis.siblings.__doc__
 
     @property
     def name(self):
-        return self.storage_analysis.get_siblings.__name__
+        return self.storage_analysis.siblings.__name__

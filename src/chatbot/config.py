@@ -4,6 +4,7 @@ PROJECT_PATH = BASE_DIR
 
 TREE_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'tree_index.json'
 TOKEN_INDEX_PATH = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'token_index.json'
+PATH_ID_INDEX = PROJECT_PATH / 'src' / 'chatbot' / 'indexing' / 'path_id_index.json'
 
 DEDAULT_ROOT_PATH = Path(r'\\192.168.100.155\Socy Media\COUNTRY FOOTAGE')
 

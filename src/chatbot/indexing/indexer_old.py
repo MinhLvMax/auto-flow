@@ -3,9 +3,8 @@ import json
 import os
 # from tkinter import Tk, filedialog
 # from src.chatbot.indexing.build_tree import select_folder
-from services.text_nomalizer import TextNormalizer
+from src.chatbot.services.text_nomalizer import TextNormalizer
 from src.chatbot.services.file_service.json_writer import JsonWriter
-from src.chatbot.config import FILES_INDEX_PATH, FOLDERS_INDEX_PATH
 import uuid
 from datetime import datetime
 

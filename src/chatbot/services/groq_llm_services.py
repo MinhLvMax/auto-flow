@@ -1,11 +1,13 @@
+import json
+
 from groq import Groq, BadRequestError
 from pydantic import BaseModel, ValidationError
-
 from src.chatbot.models.history import History
 from src.chatbot.services.prompt_service import PromptService
 from src.config import GROQ_API_KEY
 from src.loggers import main_logger
 from src.chatbot.models.llm_response_model import LLMResponseModel
+from src.chatbot.models.tool_call import ToolCall
 
 
 class GroqModelName:
@@ -127,7 +129,28 @@ class GroqService:
     ) -> str:
         response = self.client.chat.completions.create(
             model=model_name,
-            messages=messages
+            messages=messages,
+            response_format={"type": "json_object"},
         )
-
         return response.choices[0].message.content
+
+    def get_tool_schema(self, messages, model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT):
+        last_error = None
+        for _ in range(3):
+            response = self.chat_history(messages, model_name)
+            try:
+                data = json.loads(response)
+
+                data["arguments"] = {
+                    k: str(v)
+                    for k, v in data.get("arguments", {}).items()
+                }
+                tool_call = ToolCall.model_validate(data)
+                return tool_call
+            except (BadRequestError, ValidationError) as e:
+                print(f'{response=}')
+                last_error = e
+                continue
+        raise last_error
+
+

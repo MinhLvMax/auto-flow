@@ -7,12 +7,12 @@ class GetParentTool(BaseTool):
         self.storage_analysis = storage_analysis or StorageAnalysisService()
 
     def run(self, **kargs):
-        path = self.storage_analysis.get_parent(**kargs)
+        path = self.storage_analysis.parent(**kargs)
         return path
 
     def description(self):
-        return self.storage_analysis.get_parent.__doc__
+        return self.storage_analysis.parent.__doc__
 
     @property
     def name(self):
-        return self.storage_analysis.get_parent.__name__
+        return self.storage_analysis.parent.__name__

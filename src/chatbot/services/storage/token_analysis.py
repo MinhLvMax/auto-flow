@@ -1,15 +1,17 @@
 from collections import Counter
 from pathlib import Path
 from src.chatbot.services.file_service.json_reader import JsonReader
-from src.chatbot.config import TOKEN_INDEX_PATH
+from src.chatbot.config import TOKEN_INDEX_PATH, TREE_INDEX_PATH
 from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.text_nomalizer import TextNormalizer
 
 
 class TokenAnalysisService:
-    def __init__(self, llm_service=None, token_index_path=None, json_reader=None, text_normalizer=None):
+    def __init__(self, llm_service=None, token_index_path=None, tree_index_path=None, json_reader=None,
+                 text_normalizer=None):
         self.llmservice = llm_service or GroqService
         self.token_index_path = token_index_path or TOKEN_INDEX_PATH
+        self.tree_index_path = tree_index_path or TREE_INDEX_PATH
         self.json_reader = json_reader or JsonReader()
         self.text_normalizer = text_normalizer or TextNormalizer()
 
@@ -17,7 +19,11 @@ class TokenAnalysisService:
     def token_data(self):
         return self.json_reader.read(self.token_index_path)
 
-    def token_search(self, query: str):
+    @property
+    def tree_data(self):
+        return self.json_reader.read(self.tree_index_path)
+
+    def token_search(self, query: str): # Đang bị duyệt 3 lần
         scores = Counter()
         query_nomalizer = self.text_normalizer.normalize(query)
         query_tokens = set(self.text_normalizer.tokenize(query))
@@ -39,13 +45,20 @@ class TokenAnalysisService:
             reverse=True
         )
 
-        return result
+        return [
+        {
+            "path": path,
+            "id": self.tree_data.get(path, {}).get("id"),
+            "score": score
+        }
+        for path, score in result
+    ]
 
 
 if __name__ == '__main__':
     tas = TokenAnalysisService()
-    query = 'Châu âu'
+    query = 'trung quốc'
     candicates = tas.token_search(query)
-    print(len(candicates))
+    print(f'{len(candicates)=}')
     for candidate in candicates:
         print(candidate)
