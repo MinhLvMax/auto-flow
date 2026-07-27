@@ -70,9 +70,15 @@ class Indexer:
             result[v["id"]] = k
         self.json_writer.write(output_path, result)
 
-    def build_index(self):
-        self.build_tree_index()
-        self.build_token_index()
+    def build_index(self, root_path: str | Path = DEDAULT_ROOT_PATH) -> None:
+        root_path = Path(root_path)
+
+        self.build_tree_index(
+            root_path=root_path,
+        )
+        self.build_token_index(
+            root_path=root_path,
+        )
         self.build_path_id_index()
 
 

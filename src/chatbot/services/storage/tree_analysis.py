@@ -3,7 +3,9 @@ from src.chatbot.services.file_service.json_reader import JsonReader
 from src.chatbot.config import TREE_INDEX_PATH, PATH_ID_INDEX
 from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.text_nomalizer import TextNormalizer
+from src import log
 
+logger = log.get_logger(__name__)
 
 class TreeAnalysisService:
     def __init__(self, llm_service=None, tree_index_path=None, path_id_index=None, json_reader=None,
@@ -22,6 +24,7 @@ class TreeAnalysisService:
     def path_id_data(self):
         return self.json_reader.read(self.path_id_index)
 
+    @log.log_call(logger)
     def get_parent(self, path_id: str):
         path = self.path_id_data.get(path_id, None)
         parent_path = Path(path).parent
@@ -33,6 +36,7 @@ class TreeAnalysisService:
             'id': parent_id
         }]
 
+    @log.log_call(logger)
     def get_children(self, path_id: str):
         path = self.path_id_data.get(path_id, None)
         path_obj = self.tree_data.get(path)
@@ -57,6 +61,7 @@ class TreeAnalysisService:
             return childrens
         return []
 
+    @log.log_call(logger)
     def get_siblings(self, path_id: str):
         this_path = self.path_id_data.get(path_id, None)
         parent = self.get_parent(path_id)

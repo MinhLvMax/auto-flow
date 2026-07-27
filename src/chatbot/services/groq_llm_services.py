@@ -5,8 +5,6 @@ from pydantic import BaseModel, ValidationError
 from src.chatbot.models.history import History
 from src.chatbot.services.prompt_service import PromptService
 from src.config import GROQ_API_KEY
-from src.loggers import main_logger
-from src.chatbot.models.llm_response_model import LLMResponseModel
 from src.chatbot.models.tool_call import ToolCall
 
 
@@ -79,7 +77,7 @@ class GroqService:
     def chat_json(
             self,
             messages: list[dict],
-            response_model: type[LLMResponseModel],
+            response_model: type[BaseModel],
             model_name: str = GroqModelName.LLAMA_3_1_8B_INSTANT,
             system_prompt: str | None = None
     ) -> BaseModel:
@@ -116,10 +114,8 @@ class GroqService:
                 response.choices[0].message.content
             )
         except BadRequestError as e:
-            main_logger.exception(e)
             raise
         except ValidationError as e:
-            main_logger.exception(e)
             raise
 
     def chat_history(

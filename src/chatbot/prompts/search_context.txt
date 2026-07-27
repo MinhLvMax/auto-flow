@@ -1,4 +1,0 @@
-Dưới đây là các tài nguyên được tìm thấy trong hệ thống.
-
-Các tài nguyên:
-{paths}

@@ -4,7 +4,9 @@ from src.chatbot.services.file_service.json_reader import JsonReader
 from src.chatbot.config import TOKEN_INDEX_PATH, TREE_INDEX_PATH
 from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.text_nomalizer import TextNormalizer
+from src import log
 
+logger = log.get_logger(__name__)
 
 class TokenAnalysisService:
     def __init__(self, llm_service=None, token_index_path=None, tree_index_path=None, json_reader=None,
@@ -14,15 +16,24 @@ class TokenAnalysisService:
         self.tree_index_path = tree_index_path or TREE_INDEX_PATH
         self.json_reader = json_reader or JsonReader()
         self.text_normalizer = text_normalizer or TextNormalizer()
+        self._token_data = None
+        self._tree_data = None
 
     @property
     def token_data(self):
-        return self.json_reader.read(self.token_index_path)
+        if self._token_data is None:
+            return self.json_reader.read(self.token_index_path)
+        else:
+            return self._token_data
 
     @property
     def tree_data(self):
-        return self.json_reader.read(self.tree_index_path)
+        if self._tree_data is None:
+            return self.json_reader.read(self.tree_index_path)
+        else:
+            return self._tree_data
 
+    @log.log_call(logger)
     def token_search(self, query: str): # Đang bị duyệt 3 lần
         scores = Counter()
         query_nomalizer = self.text_normalizer.normalize(query)

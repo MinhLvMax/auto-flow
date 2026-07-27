@@ -7,8 +7,7 @@ from src.chatbot.services.groq_llm_services import GroqService, GroqModelName
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.services.storage.storage_analysis_service import StorageAnalysisService
 from src.chatbot.models.tool_call import ToolCall
-from src.loggers import main_logger
-
+from src import log
 
 class ToolExecutorNode(BaseNode):
     def __init__(self, registry=None):
@@ -31,7 +30,6 @@ class ToolExecutorNode(BaseNode):
             exclude_none=True,
             exclude_defaults=True
         )
-        main_logger.debug(update_dict)
         return update_dict
 
 

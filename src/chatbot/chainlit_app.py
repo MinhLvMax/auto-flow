@@ -6,11 +6,9 @@ from src.chatbot.models.history import History
 from src.chatbot.services.chatbot_service import ChatbotService
 from src.chatbot.indexing.indexer import Indexer
 from src.chatbot.config import DEDAULT_ROOT_PATH
-from src.loggers import main_logger
 from pathlib import Path
 from src.chatbot.graph.workflows.agent_graph import build_agent_graph
 
-main_logger.info('Khởi tạo dịch vụ chat')
 chatbot_service = ChatbotService(workflow=build_agent_graph())
 
 async def index_folder(path_to_index):
@@ -59,7 +57,6 @@ async def on_chat_start():
 
 @cl.on_message
 async def on_message(message: cl.Message):
-    main_logger.info('Nhận xin nhắn và xử lý')
     try:
         history = cl.user_session.get('history', None)
         if history:

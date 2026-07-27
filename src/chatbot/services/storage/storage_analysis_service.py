@@ -5,12 +5,16 @@ from src.chatbot.services.groq_llm_services import GroqService
 from src.chatbot.services.storage.token_analysis import TokenAnalysisService
 from src.chatbot.services.storage.tree_analysis import TreeAnalysisService
 
-
-import inspect
 import json
 
 
 def tool(description: str):
+    '''
+    Decorator dùng để tạo thêm thuộc tính mới cho hàm
+    Tạo thêm thuộc tính mô tả tool
+    :param description:
+    :return:
+    '''
     def decorator(func):
         signature = inspect.signature(func)
 
@@ -27,10 +31,6 @@ def tool(description: str):
         return func
 
     return decorator
-
-
-import inspect
-
 
 
 class StorageAnalysisService:

@@ -1,13 +1,10 @@
 import json
-
 from src.chatbot.graph.nodes.base_node import BaseNode
 from src.chatbot.graph.state import State
 from src.chatbot.services.groq_llm_services import GroqService, GroqModelName
 from src.chatbot.services.prompt_service import PromptService
 from src.chatbot.services.storage.storage_analysis_service import StorageAnalysisService
-from src.chatbot.models.history import History
 from src.chatbot.models.tool_call import ToolCall
-from src.loggers import main_logger
 
 
 class AgentNode(BaseNode):
@@ -61,7 +58,6 @@ class AgentNode(BaseNode):
             exclude_none=True,
             exclude_defaults=True
         )
-        main_logger.debug(update_dict)
         return update_dict
 
 
