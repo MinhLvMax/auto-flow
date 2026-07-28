@@ -16,4 +16,3 @@ class GetChildrensTool(BaseTool):
     @property
     def name(self):
         return self.storage_analysis.children.__name__
-
